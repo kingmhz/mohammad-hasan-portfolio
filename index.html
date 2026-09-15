@@ -539,268 +539,372 @@
       <!-- 3D Tilt Project Cards Grid (6 Luxury Projects) -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         
-        <!-- ==================== PROJECT 1: SaaS Web App ==================== -->
-        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between border border-slate-200/80 shadow-sm hover:shadow-xl transition-all" data-category="web">
-          <div class="tilt-inner space-y-5">
-            <!-- Header Badges (Larger & Luxury Clear) -->
+        <!-- ==================== PROJECT 1: Full-Stack SaaS Platform ==================== -->
+        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-[#0A66C2]/50 transition-all bg-white" data-category="web">
+          <div class="tilt-inner space-y-4">
+            <!-- Premium Display Tags Header -->
             <div class="flex items-center justify-between gap-2">
-              <span class="px-3.5 py-1.5 rounded-lg text-xs font-mono-luxury tracking-wider text-[#004182] bg-blue-50 border border-blue-200 uppercase font-semibold shadow-sm">
-                Full-Stack SaaS Platform
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono-luxury tracking-wider text-[#0A66C2] bg-blue-50/90 border border-blue-200/80 uppercase font-bold shadow-xs">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#0A66C2] animate-pulse"></span>
+                <span>Full-Stack SaaS Platform</span>
               </span>
-              <span class="text-xs text-slate-400 font-mono-luxury uppercase font-medium">US Startup</span>
+              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-mono-luxury text-slate-600 bg-slate-100 border border-slate-200 uppercase font-semibold">
+                🇺🇸 YC / Series-A
+              </span>
             </div>
 
-            <!-- THUMBNAIL: Simply replace 'src' below with your project screenshot -->
+            <!-- Interactive Thumbnail Preview -->
             <div class="relative h-48 sm:h-52 w-full rounded-xl overflow-hidden bg-slate-100 border border-slate-200 group-hover:border-[#0A66C2]/40 transition-all duration-500 shadow-inner">
               <img src="assets/images/project1.svg" alt="Nexus SaaS Analytics" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy">
-              <div class="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent pointer-events-none"></div>
-              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-md border border-slate-200 text-[11px] font-mono-luxury text-slate-800 flex items-center gap-1.5 shadow-sm">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                <span>Live Preview</span>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/20 via-transparent to-transparent pointer-events-none"></div>
+              
+              <!-- Live System Status Badge -->
+              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md border border-slate-200/90 text-[10px] font-mono-luxury text-slate-800 flex items-center gap-1.5 shadow-sm font-semibold">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse"></span>
+                <span>Production 99.8% Uptime</span>
               </div>
             </div>
 
-            <div>
-              <h3 class="text-lg sm:text-xl font-luxury font-bold text-slate-950 group-hover:text-[#0A66C2] transition-colors">Nexus SaaS Analytics</h3>
-              <p class="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed font-light">
-                Enterprise workflow & revenue dashboard with Next.js App Router, Prisma, and Stripe recurring billing. Shaved 72% off server latency.
+            <!-- Title & Architecture Summary -->
+            <div class="space-y-1.5">
+              <h3 class="text-lg sm:text-xl font-luxury font-bold text-slate-950 group-hover:text-[#0A66C2] transition-colors leading-tight">
+                Nexus Cloud Analytics & RevOps
+              </h3>
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light">
+                Multi-tenant revenue operations dashboard. Engineered with Next.js 14 App Router, Server Actions, Prisma ORM, and automated Stripe billing webhooks.
               </p>
             </div>
 
-            <!-- Technology Badges -->
-            <div class="flex flex-wrap gap-2 pt-1">
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Next.js 14</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">TypeScript</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">PostgreSQL</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Stripe</span>
+            <!-- Executive Business Impact Metric -->
+            <div class="p-2.5 rounded-xl bg-slate-50/80 border border-slate-200/80 flex items-center justify-between text-xs font-mono">
+              <span class="text-slate-600 text-[11px] font-medium flex items-center gap-1.5">
+                <i data-lucide="zap" class="w-3.5 h-3.5 text-[#0A66C2]"></i>
+                <span>72% Latency Drop</span>
+              </span>
+              <span class="text-[#0A66C2] font-bold text-[11px] font-mono-luxury">$2.4M ARR Scaled</span>
+            </div>
+
+            <!-- Technology Spec Badges -->
+            <div class="flex flex-wrap gap-1.5 pt-0.5">
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0A66C2] hover:bg-blue-50/70 hover:text-[#0A66C2] transition-all">Next.js 14</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0A66C2] hover:bg-blue-50/70 hover:text-[#0A66C2] transition-all">TypeScript</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0A66C2] hover:bg-blue-50/70 hover:text-[#0A66C2] transition-all">Prisma</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0A66C2] hover:bg-blue-50/70 hover:text-[#0A66C2] transition-all">PostgreSQL</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0A66C2] hover:bg-blue-50/70 hover:text-[#0A66C2] transition-all">Stripe</span>
             </div>
           </div>
 
-          <div class="pt-6 mt-4 border-t border-slate-200 flex items-center justify-between">
-            <span class="text-xs text-slate-500 font-mono-luxury">Delivery: <strong class="text-slate-900">4.5 Wks</strong></span>
-            <a href="https://ui.shadcn.com/examples/dashboard" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0A66C2] hover:text-[#004182] transition-colors uppercase tracking-wider">
-              <span>View Build</span>
-              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          <!-- Card Delivery Footer -->
+          <div class="pt-4 mt-4 border-t border-slate-200 flex items-center justify-between text-xs">
+            <span class="text-slate-500 font-mono-luxury text-[11px]">Delivery: <strong class="text-slate-900 font-semibold">4.5 Wks to MVP</strong></span>
+            <a href="https://ui.shadcn.com/examples/dashboard" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-bold text-[#0A66C2] hover:text-[#004182] transition-colors uppercase tracking-wider text-[11px]">
+              <span>View Case Study</span>
+              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
             </a>
           </div>
         </div>
 
-        <!-- ==================== PROJECT 2: Mobile App ==================== -->
-        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between border border-slate-200/80 shadow-sm hover:shadow-xl transition-all" data-category="mobile">
-          <div class="tilt-inner space-y-5">
+        <!-- ==================== PROJECT 2: Cross-Platform Mobile ==================== -->
+        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-[#0A66C2]/50 transition-all bg-white" data-category="mobile">
+          <div class="tilt-inner space-y-4">
+            <!-- Premium Display Tags Header -->
             <div class="flex items-center justify-between gap-2">
-              <span class="px-3.5 py-1.5 rounded-lg text-xs font-mono-luxury tracking-wider text-[#004182] bg-blue-50 border border-blue-200 uppercase font-semibold shadow-sm">
-                Cross-Platform Mobile App
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono-luxury tracking-wider text-[#0A66C2] bg-blue-50/90 border border-blue-200/80 uppercase font-bold shadow-xs">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#0A66C2] animate-pulse"></span>
+                <span>Cross-Platform Mobile</span>
               </span>
-              <span class="text-xs text-slate-400 font-mono-luxury uppercase font-medium">EU Brand</span>
+              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-mono-luxury text-slate-600 bg-slate-100 border border-slate-200 uppercase font-semibold">
+                🇪🇺 Health Scale-Up
+              </span>
             </div>
 
-            <!-- THUMBNAIL -->
+            <!-- Thumbnail -->
             <div class="relative h-48 sm:h-52 w-full rounded-xl overflow-hidden bg-slate-100 border border-slate-200 group-hover:border-[#0A66C2]/40 transition-all duration-500 shadow-inner">
               <img src="assets/images/project2.svg" alt="Aura Pulse Mobile" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy">
-              <div class="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent pointer-events-none"></div>
-              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-md border border-slate-200 text-[11px] font-mono-luxury text-slate-800 flex items-center gap-1.5 shadow-sm">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                <span>iOS & Android</span>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/20 via-transparent to-transparent pointer-events-none"></div>
+              
+              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md border border-slate-200/90 text-[10px] font-mono-luxury text-slate-800 flex items-center gap-1.5 shadow-sm font-semibold">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse"></span>
+                <span>iOS & Android · 60 FPS</span>
               </div>
             </div>
 
-            <div>
-              <h3 class="text-lg sm:text-xl font-luxury font-bold text-slate-950 group-hover:text-[#0A66C2] transition-colors">Aura Pulse Health</h3>
-              <p class="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed font-light">
-                Unified cross-platform fitness & wellness tracker in Flutter. Features 60fps animations, Supabase auth, and offline state persistence.
+            <div class="space-y-1.5">
+              <h3 class="text-lg sm:text-xl font-luxury font-bold text-slate-950 group-hover:text-[#0A66C2] transition-colors leading-tight">
+                Aura Pulse Biometric Health
+              </h3>
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light">
+                Unified cross-platform fitness & telemetry client engineered in Flutter. Features 60 FPS custom canvas shaders, offline-first SQLite sync, and Apple HealthKit bridging.
               </p>
             </div>
 
-            <div class="flex flex-wrap gap-2 pt-1">
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Flutter</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Dart</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Supabase</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">BLoC</span>
+            <!-- Executive Business Impact Metric -->
+            <div class="p-2.5 rounded-xl bg-slate-50/80 border border-slate-200/80 flex items-center justify-between text-xs font-mono">
+              <span class="text-slate-600 text-[11px] font-medium flex items-center gap-1.5">
+                <i data-lucide="smartphone" class="w-3.5 h-3.5 text-[#0A66C2]"></i>
+                <span>48,000+ Active DAU</span>
+              </span>
+              <span class="text-emerald-600 font-bold text-[11px] font-mono-luxury">4.9 ★ App Store</span>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5 pt-0.5">
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0A66C2] hover:bg-blue-50/70 hover:text-[#0A66C2] transition-all">Flutter 3</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0A66C2] hover:bg-blue-50/70 hover:text-[#0A66C2] transition-all">Dart</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0A66C2] hover:bg-blue-50/70 hover:text-[#0A66C2] transition-all">Supabase</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0A66C2] hover:bg-blue-50/70 hover:text-[#0A66C2] transition-all">BLoC State</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0A66C2] hover:bg-blue-50/70 hover:text-[#0A66C2] transition-all">HealthKit</span>
             </div>
           </div>
 
-          <div class="pt-6 mt-4 border-t border-slate-200 flex items-center justify-between">
-            <span class="text-xs text-slate-500 font-mono-luxury">Delivery: <strong class="text-slate-900">6.0 Wks</strong></span>
-            <a href="https://wonderous.app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0A66C2] hover:text-[#004182] transition-colors uppercase tracking-wider">
-              <span>View Build</span>
-              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          <div class="pt-4 mt-4 border-t border-slate-200 flex items-center justify-between text-xs">
+            <span class="text-slate-500 font-mono-luxury text-[11px]">Delivery: <strong class="text-slate-900 font-semibold">6.0 Wks App Launch</strong></span>
+            <a href="https://wonderous.app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-bold text-[#0A66C2] hover:text-[#004182] transition-colors uppercase tracking-wider text-[11px]">
+              <span>View App Build</span>
+              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
             </a>
           </div>
         </div>
 
-        <!-- ==================== PROJECT 3: Luxury Bespoke Web ==================== -->
-        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between border border-slate-200/80 shadow-sm hover:shadow-xl transition-all" data-category="luxury">
-          <div class="tilt-inner space-y-5">
+        <!-- ==================== PROJECT 3: Haute Luxury Editorial Commerce ==================== -->
+        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-[#0A66C2]/50 transition-all bg-white" data-category="luxury">
+          <div class="tilt-inner space-y-4">
+            <!-- Premium Display Tags Header -->
             <div class="flex items-center justify-between gap-2">
-              <span class="px-3.5 py-1.5 rounded-lg text-xs font-mono-luxury tracking-wider text-[#004182] bg-blue-50 border border-blue-200 uppercase font-semibold shadow-sm">
-                Haute Luxury Web
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono-luxury tracking-wider text-[#0A66C2] bg-blue-50/90 border border-blue-200/80 uppercase font-bold shadow-xs">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#0A66C2] animate-pulse"></span>
+                <span>Haute Luxury Commerce</span>
               </span>
-              <span class="text-xs text-slate-400 font-mono-luxury uppercase font-medium">UK / UAE Luxury</span>
+              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-mono-luxury text-slate-600 bg-slate-100 border border-slate-200 uppercase font-semibold">
+                🇬🇧 Mayfair London
+              </span>
             </div>
 
-            <!-- THUMBNAIL -->
+            <!-- Thumbnail -->
             <div class="relative h-48 sm:h-52 w-full rounded-xl overflow-hidden bg-slate-100 border border-slate-200 group-hover:border-[#0A66C2]/40 transition-all duration-500 shadow-inner">
               <img src="assets/images/project3.svg" alt="Maison Élan Luxury" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy">
-              <div class="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent pointer-events-none"></div>
-              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-md border border-slate-200 text-[11px] font-mono-luxury text-slate-800 flex items-center gap-1.5 shadow-sm">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                <span>97/100 Speed</span>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/20 via-transparent to-transparent pointer-events-none"></div>
+              
+              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md border border-slate-200/90 text-[10px] font-mono-luxury text-slate-800 flex items-center gap-1.5 shadow-sm font-semibold">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse"></span>
+                <span>99/100 PageSpeed</span>
               </div>
             </div>
 
-            <div>
-              <h3 class="text-lg sm:text-xl font-luxury font-bold text-slate-950 group-hover:text-[#0A66C2] transition-colors">Maison Élan Luxury</h3>
-              <p class="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed font-light">
-                Bespoke digital editorial platform with fluid micro-interactions, magnetic cursors, and instant drawer checkouts. Increased mobile conversion by 28%.
+            <div class="space-y-1.5">
+              <h3 class="text-lg sm:text-xl font-luxury font-bold text-slate-950 group-hover:text-[#0A66C2] transition-colors leading-tight">
+                Maison Élan High-Jewelry
+              </h3>
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light">
+                Digital flagship for luxury horlogerie with sub-second page transitions, magnetic interactive cursors, and instant checkout drawer mechanics.
               </p>
             </div>
 
-            <div class="flex flex-wrap gap-2 pt-1">
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Next.js</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Tailwind</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">GSAP</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Framer Motion</span>
+            <!-- Executive Business Impact Metric -->
+            <div class="p-2.5 rounded-xl bg-slate-50/80 border border-slate-200/80 flex items-center justify-between text-xs font-mono">
+              <span class="text-slate-600 text-[11px] font-medium flex items-center gap-1.5">
+                <i data-lucide="gauge" class="w-3.5 h-3.5 text-[#0A66C2]"></i>
+                <span>99 Mobile PageSpeed</span>
+              </span>
+              <span class="text-[#0A66C2] font-bold text-[11px] font-mono-luxury">+28% Mobile Conversion</span>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5 pt-0.5">
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0A66C2] hover:bg-blue-50/70 hover:text-[#0A66C2] transition-all">Next.js 14</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0A66C2] hover:bg-blue-50/70 hover:text-[#0A66C2] transition-all">Tailwind CSS</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0A66C2] hover:bg-blue-50/70 hover:text-[#0A66C2] transition-all">GSAP</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0A66C2] hover:bg-blue-50/70 hover:text-[#0A66C2] transition-all">Framer Motion</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0A66C2] hover:bg-blue-50/70 hover:text-[#0A66C2] transition-all">Shopify API</span>
             </div>
           </div>
 
-          <div class="pt-6 mt-4 border-t border-slate-200 flex items-center justify-between">
-            <span class="text-xs text-slate-500 font-mono-luxury">Timeline: <strong class="text-slate-900">3.5 Wks</strong></span>
-            <a href="https://demo.vercel.store" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0A66C2] hover:text-[#004182] transition-colors uppercase tracking-wider">
-              <span>View Build</span>
-              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          <div class="pt-4 mt-4 border-t border-slate-200 flex items-center justify-between text-xs">
+            <span class="text-slate-500 font-mono-luxury text-[11px]">Delivery: <strong class="text-slate-900 font-semibold">3.5 Wks to Launch</strong></span>
+            <a href="https://demo.vercel.store" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-bold text-[#0A66C2] hover:text-[#004182] transition-colors uppercase tracking-wider text-[11px]">
+              <span>View Flagship</span>
+              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
             </a>
           </div>
         </div>
 
-        <!-- ==================== PROJECT 4: AI SaaS Platform ==================== -->
-        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between border border-slate-200/80 shadow-sm hover:shadow-xl transition-all" data-category="web">
-          <div class="tilt-inner space-y-5">
+        <!-- ==================== PROJECT 4: Autonomous AI Intelligence ==================== -->
+        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-[#0A66C2]/50 transition-all bg-white" data-category="web">
+          <div class="tilt-inner space-y-4">
+            <!-- Premium Display Tags Header -->
             <div class="flex items-center justify-between gap-2">
-              <span class="px-3.5 py-1.5 rounded-lg text-xs font-mono-luxury tracking-wider text-[#004182] bg-blue-50 border border-blue-200 uppercase font-semibold shadow-sm">
-                AI Intelligence Platform
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono-luxury tracking-wider text-[#0A66C2] bg-blue-50/90 border border-blue-200/80 uppercase font-bold shadow-xs">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#0A66C2] animate-pulse"></span>
+                <span>Autonomous AI Engine</span>
               </span>
-              <span class="text-xs text-slate-400 font-mono-luxury uppercase font-medium">Silicon Valley AI</span>
+              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-mono-luxury text-slate-600 bg-slate-100 border border-slate-200 uppercase font-semibold">
+                ⚡ Silicon Valley AI
+              </span>
             </div>
 
-            <!-- THUMBNAIL -->
+            <!-- Thumbnail -->
             <div class="relative h-48 sm:h-52 w-full rounded-xl overflow-hidden bg-slate-100 border border-slate-200 group-hover:border-[#0A66C2]/40 transition-all duration-500 shadow-inner">
               <img src="assets/images/project4.svg" alt="Krypton AI Intelligence" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy">
-              <div class="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent pointer-events-none"></div>
-              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-md border border-slate-200 text-[11px] font-mono-luxury text-slate-800 flex items-center gap-1.5 shadow-sm">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                <span>FastAPI + Streaming</span>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/20 via-transparent to-transparent pointer-events-none"></div>
+              
+              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md border border-slate-200/90 text-[10px] font-mono-luxury text-slate-800 flex items-center gap-1.5 shadow-sm font-semibold">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse"></span>
+                <span>Real-Time Streaming</span>
               </div>
             </div>
 
-            <div>
-              <h3 class="text-lg sm:text-xl font-luxury font-bold text-slate-950 group-hover:text-[#0A66C2] transition-colors">Krypton AI Copilot</h3>
-              <p class="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed font-light">
-                Autonomous LLM workflow dashboard built with Next.js 14 and Python FastAPI. Features real-time token streaming and vector search caching.
+            <div class="space-y-1.5">
+              <h3 class="text-lg sm:text-xl font-luxury font-bold text-slate-950 group-hover:text-[#0A66C2] transition-colors leading-tight">
+                Krypton AI Cognitive Copilot
+              </h3>
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light">
+                Autonomous LLM agent orchestration console. Real-time token streaming with Python FastAPI, pgvector similarity indexing, and edge vector caching.
               </p>
             </div>
 
-            <div class="flex flex-wrap gap-2 pt-1">
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Next.js 14</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Python</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">FastAPI</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Vector DB</span>
+            <!-- Executive Business Impact Metric -->
+            <div class="p-2.5 rounded-xl bg-slate-50/80 border border-slate-200/80 flex items-center justify-between text-xs font-mono">
+              <span class="text-slate-600 text-[11px] font-medium flex items-center gap-1.5">
+                <i data-lucide="cpu" class="w-3.5 h-3.5 text-[#0A66C2]"></i>
+                <span>&lt;18ms Edge Latency</span>
+              </span>
+              <span class="text-emerald-600 font-bold text-[11px] font-mono-luxury">Zero Token Stalling</span>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5 pt-0.5">
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0A66C2] hover:bg-blue-50/70 hover:text-[#0A66C2] transition-all">Next.js 14</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0A66C2] hover:bg-blue-50/70 hover:text-[#0A66C2] transition-all">FastAPI</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0A66C2] hover:bg-blue-50/70 hover:text-[#0A66C2] transition-all">Python</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0A66C2] hover:bg-blue-50/70 hover:text-[#0A66C2] transition-all">pgvector</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0A66C2] hover:bg-blue-50/70 hover:text-[#0A66C2] transition-all">Redis Cache</span>
             </div>
           </div>
 
-          <div class="pt-6 mt-4 border-t border-slate-200 flex items-center justify-between">
-            <span class="text-xs text-slate-500 font-mono-luxury">Timeline: <strong class="text-slate-900">5.0 Wks</strong></span>
-            <a href="https://linear.app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0A66C2] hover:text-[#004182] transition-colors uppercase tracking-wider">
-              <span>View Build</span>
-              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          <div class="pt-4 mt-4 border-t border-slate-200 flex items-center justify-between text-xs">
+            <span class="text-slate-500 font-mono-luxury text-[11px]">Delivery: <strong class="text-slate-900 font-semibold">5.0 Wks Deployment</strong></span>
+            <a href="https://linear.app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-bold text-[#0A66C2] hover:text-[#004182] transition-colors uppercase tracking-wider text-[11px]">
+              <span>View Architecture</span>
+              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
             </a>
           </div>
         </div>
 
-        <!-- ==================== PROJECT 5: FinTech Mobile App ==================== -->
-        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between border border-slate-200/80 shadow-sm hover:shadow-xl transition-all" data-category="mobile">
-          <div class="tilt-inner space-y-5">
+        <!-- ==================== PROJECT 5: FinTech Mobile Neobanking ==================== -->
+        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-[#0A66C2]/50 transition-all bg-white" data-category="mobile">
+          <div class="tilt-inner space-y-4">
+            <!-- Premium Display Tags Header -->
             <div class="flex items-center justify-between gap-2">
-              <span class="px-3.5 py-1.5 rounded-lg text-xs font-mono-luxury tracking-wider text-[#004182] bg-blue-50 border border-blue-200 uppercase font-semibold shadow-sm">
-                FinTech Mobile App
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono-luxury tracking-wider text-[#0A66C2] bg-blue-50/90 border border-blue-200/80 uppercase font-bold shadow-xs">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#0A66C2] animate-pulse"></span>
+                <span>Tier-1 FinTech Neobank</span>
               </span>
-              <span class="text-xs text-slate-400 font-mono-luxury uppercase font-medium">Global Banking</span>
+              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-mono-luxury text-slate-600 bg-slate-100 border border-slate-200 uppercase font-semibold">
+                🌐 Global Banking
+              </span>
             </div>
 
-            <!-- THUMBNAIL -->
+            <!-- Thumbnail -->
             <div class="relative h-48 sm:h-52 w-full rounded-xl overflow-hidden bg-slate-100 border border-slate-200 group-hover:border-[#0A66C2]/40 transition-all duration-500 shadow-inner">
               <img src="assets/images/project5.svg" alt="Apex Global NeoBank" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy">
-              <div class="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent pointer-events-none"></div>
-              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-md border border-slate-200 text-[11px] font-mono-luxury text-slate-800 flex items-center gap-1.5 shadow-sm">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/20 via-transparent to-transparent pointer-events-none"></div>
+              
+              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md border border-slate-200/90 text-[10px] font-mono-luxury text-slate-800 flex items-center gap-1.5 shadow-sm font-semibold">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse"></span>
                 <span>256-Bit Encrypted</span>
               </div>
             </div>
 
-            <div>
-              <h3 class="text-lg sm:text-xl font-luxury font-bold text-slate-950 group-hover:text-[#0A66C2] transition-colors">Apex Global NeoBank</h3>
-              <p class="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed font-light">
-                High-security international banking & multi-currency wallet application in Flutter. Integrated biometric authentication and real-time wire transfers.
+            <div class="space-y-1.5">
+              <h3 class="text-lg sm:text-xl font-luxury font-bold text-slate-950 group-hover:text-[#0A66C2] transition-colors leading-tight">
+                Apex International Private Bank
+              </h3>
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light">
+                High-security cross-border treasury management and multi-currency mobile wallet. Integrated FaceID biometric authorization and Swift wire tracking.
               </p>
             </div>
 
-            <div class="flex flex-wrap gap-2 pt-1">
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Flutter</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Dart</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Firebase</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Stripe SDK</span>
+            <!-- Executive Business Impact Metric -->
+            <div class="p-2.5 rounded-xl bg-slate-50/80 border border-slate-200/80 flex items-center justify-between text-xs font-mono">
+              <span class="text-slate-600 text-[11px] font-medium flex items-center gap-1.5">
+                <i data-lucide="shield-check" class="w-3.5 h-3.5 text-[#0A66C2]"></i>
+                <span>SOC2 &amp; PCI-DSS Ready</span>
+              </span>
+              <span class="text-[#0A66C2] font-bold text-[11px] font-mono-luxury">$12M+ Transacted/Mo</span>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5 pt-0.5">
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0A66C2] hover:bg-blue-50/70 hover:text-[#0A66C2] transition-all">Flutter 3</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0A66C2] hover:bg-blue-50/70 hover:text-[#0A66C2] transition-all">Dart</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0A66C2] hover:bg-blue-50/70 hover:text-[#0A66C2] transition-all">Firebase</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0A66C2] hover:bg-blue-50/70 hover:text-[#0A66C2] transition-all">Stripe Issuing</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0A66C2] hover:bg-blue-50/70 hover:text-[#0A66C2] transition-all">Plaid API</span>
             </div>
           </div>
 
-          <div class="pt-6 mt-4 border-t border-slate-200 flex items-center justify-between">
-            <span class="text-xs text-slate-500 font-mono-luxury">Timeline: <strong class="text-slate-900">6.5 Wks</strong></span>
-            <a href="https://gallery.flutter.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0A66C2] hover:text-[#004182] transition-colors uppercase tracking-wider">
-              <span>View Build</span>
-              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          <div class="pt-4 mt-4 border-t border-slate-200 flex items-center justify-between text-xs">
+            <span class="text-slate-500 font-mono-luxury text-[11px]">Delivery: <strong class="text-slate-900 font-semibold">6.5 Wks Certified</strong></span>
+            <a href="https://gallery.flutter.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-bold text-[#0A66C2] hover:text-[#004182] transition-colors uppercase tracking-wider text-[11px]">
+              <span>View Mobile Client</span>
+              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
             </a>
           </div>
         </div>
 
-        <!-- ==================== PROJECT 6: 3D Interactive Web ==================== -->
-        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between border border-slate-200/80 shadow-sm hover:shadow-xl transition-all" data-category="luxury">
-          <div class="tilt-inner space-y-5">
+        <!-- ==================== PROJECT 6: 3D Spatial Experience ==================== -->
+        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-[#0A66C2]/50 transition-all bg-white" data-category="luxury">
+          <div class="tilt-inner space-y-4">
+            <!-- Premium Display Tags Header -->
             <div class="flex items-center justify-between gap-2">
-              <span class="px-3.5 py-1.5 rounded-lg text-xs font-mono-luxury tracking-wider text-[#004182] bg-blue-50 border border-blue-200 uppercase font-semibold shadow-sm">
-                Interactive 3D Web
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono-luxury tracking-wider text-[#0A66C2] bg-blue-50/90 border border-blue-200/80 uppercase font-bold shadow-xs">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#0A66C2] animate-pulse"></span>
+                <span>Spatial 3D Visualization</span>
               </span>
-              <span class="text-xs text-slate-400 font-mono-luxury uppercase font-medium">Bespoke Architecture</span>
+              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-mono-luxury text-slate-600 bg-slate-100 border border-slate-200 uppercase font-semibold">
+                🇨🇭 Swiss Horlogerie
+              </span>
             </div>
 
-            <!-- THUMBNAIL -->
+            <!-- Thumbnail -->
             <div class="relative h-48 sm:h-52 w-full rounded-xl overflow-hidden bg-slate-100 border border-slate-200 group-hover:border-[#0A66C2]/40 transition-all duration-500 shadow-inner">
               <img src="assets/images/project6.svg" alt="Atelier Noir 3D Studio" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy">
-              <div class="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent pointer-events-none"></div>
-              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-md border border-slate-200 text-[11px] font-mono-luxury text-slate-800 flex items-center gap-1.5 shadow-sm">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                <span>WebGL 60 FPS</span>
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/20 via-transparent to-transparent pointer-events-none"></div>
+              
+              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md border border-slate-200/90 text-[10px] font-mono-luxury text-slate-800 flex items-center gap-1.5 shadow-sm font-semibold">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse"></span>
+                <span>WebGL 60 FPS PBR</span>
               </div>
             </div>
 
-            <div>
-              <h3 class="text-lg sm:text-xl font-luxury font-bold text-slate-950 group-hover:text-[#0A66C2] transition-colors">Atelier Noir 3D Studio</h3>
-              <p class="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed font-light">
-                Haute couture architectural visualization platform featuring real-time Three.js WebGL lighting and smooth Lenis momentum scroll physics.
+            <div class="space-y-1.5">
+              <h3 class="text-lg sm:text-xl font-luxury font-bold text-slate-950 group-hover:text-[#0A66C2] transition-colors leading-tight">
+                Atelier Noir 3D Horlogerie
+              </h3>
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light">
+                Interactive luxury watch visualization platform with real-time Three.js raytraced lighting, physically-based materials (PBR), and smooth momentum scroll kinematics.
               </p>
             </div>
 
-            <div class="flex flex-wrap gap-2 pt-1">
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Three.js</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">WebGL</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Next.js</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Lenis</span>
+            <!-- Executive Business Impact Metric -->
+            <div class="p-2.5 rounded-xl bg-slate-50/80 border border-slate-200/80 flex items-center justify-between text-xs font-mono">
+              <span class="text-slate-600 text-[11px] font-medium flex items-center gap-1.5">
+                <i data-lucide="orbit" class="w-3.5 h-3.5 text-[#0A66C2]"></i>
+                <span>Locked 60 FPS WebGL</span>
+              </span>
+              <span class="text-emerald-600 font-bold text-[11px] font-mono-luxury">Zero GPU Stutter</span>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5 pt-0.5">
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0A66C2] hover:bg-blue-50/70 hover:text-[#0A66C2] transition-all">Three.js</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0A66C2] hover:bg-blue-50/70 hover:text-[#0A66C2] transition-all">WebGL</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0A66C2] hover:bg-blue-50/70 hover:text-[#0A66C2] transition-all">GLSL Shaders</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0A66C2] hover:bg-blue-50/70 hover:text-[#0A66C2] transition-all">Next.js 14</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0A66C2] hover:bg-blue-50/70 hover:text-[#0A66C2] transition-all">Lenis Scroll</span>
             </div>
           </div>
 
-          <div class="pt-6 mt-4 border-t border-slate-200 flex items-center justify-between">
-            <span class="text-xs text-slate-500 font-mono-luxury">Timeline: <strong class="text-slate-900">4.0 Wks</strong></span>
-            <a href="https://cuberto.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0A66C2] hover:text-[#004182] transition-colors uppercase tracking-wider">
-              <span>View Build</span>
-              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+          <div class="pt-4 mt-4 border-t border-slate-200 flex items-center justify-between text-xs">
+            <span class="text-slate-500 font-mono-luxury text-[11px]">Delivery: <strong class="text-slate-900 font-semibold">4.0 Wks Deployment</strong></span>
+            <a href="https://cuberto.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-bold text-[#0A66C2] hover:text-[#004182] transition-colors uppercase tracking-wider text-[11px]">
+              <span>View 3D Build</span>
+              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
             </a>
           </div>
         </div>
