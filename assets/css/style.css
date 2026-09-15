@@ -8,17 +8,17 @@
   --bg-pure: #FFFFFF;
   --bg-surface: #F8FAFC;
   --bg-card: rgba(255, 255, 255, 0.94);
-  --blue-primary: #0A66C2;
-  --blue-midnight: #004182;
-  --blue-deep: #002D62;
-  --blue-electric: #2563EB;
-  --blue-soft: #EBF3FA;
-  --blue-dim: rgba(10, 102, 194, 0.08);
+  --blue-primary: #0284C7;
+  --blue-midnight: #0369A1;
+  --blue-deep: #075985;
+  --blue-electric: #0EA5E9;
+  --blue-soft: #F0F9FF;
+  --blue-dim: rgba(14, 165, 233, 0.08);
   --text-primary: #0F172A;
   --text-secondary: #334155;
   --text-muted: #64748B;
   --border-subtle: rgba(226, 232, 240, 0.9);
-  --border-blue: rgba(10, 102, 194, 0.28);
+  --border-blue: rgba(14, 165, 233, 0.28);
 }
 
 html {
@@ -65,7 +65,7 @@ body {
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #0A66C2;
+  background: #0284C7;
 }
 
 /* Touch-safe Canvas Container */
@@ -99,8 +99,8 @@ body {
 }
 
 .glass-card:hover {
-  border-color: rgba(10, 102, 194, 0.4);
-  box-shadow: 0 20px 48px -15px rgba(10, 102, 194, 0.12), 0 1px 3px rgba(0, 0, 0, 0.03), inset 0 1px 0 rgba(255, 255, 255, 1);
+  border-color: rgba(14, 165, 233, 0.4);
+  box-shadow: 0 20px 48px -15px rgba(14, 165, 233, 0.12), 0 1px 3px rgba(0, 0, 0, 0.03), inset 0 1px 0 rgba(255, 255, 255, 1);
 }
 
 /* 3D Perspective Card Tilt */
@@ -118,14 +118,14 @@ body {
 .bg-mesh {
   background-color: #FFFFFF;
   background-image: 
-    radial-gradient(circle at 50% -5%, rgba(10, 102, 194, 0.06) 0%, transparent 55%),
+    radial-gradient(circle at 50% -5%, rgba(14, 165, 233, 0.06) 0%, transparent 55%),
     radial-gradient(circle at 90% 25%, rgba(37, 99, 235, 0.035) 0%, transparent 45%),
-    radial-gradient(circle at 10% 75%, rgba(10, 102, 194, 0.04) 0%, transparent 50%);
+    radial-gradient(circle at 10% 75%, rgba(14, 165, 233, 0.04) 0%, transparent 50%);
 }
 
 /* Executive Gradient Typography */
 .text-blue-gradient {
-  background: linear-gradient(135deg, #0A66C2 0%, #004182 60%, #002D62 100%);
+  background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 60%, #0369A1 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -149,9 +149,9 @@ body {
 
 .btn-silver:hover {
   background: #FFFFFF;
-  border-color: #0A66C2;
-  color: #0A66C2;
-  box-shadow: inset 0 1px 1px 0 #FFFFFF, 0 8px 24px rgba(10, 102, 194, 0.15);
+  border-color: #0284C7;
+  color: #0284C7;
+  box-shadow: inset 0 1px 1px 0 #FFFFFF, 0 8px 24px rgba(14, 165, 233, 0.15);
   transform: translateY(-1px);
 }
 
@@ -162,13 +162,13 @@ body {
 /* High-Precision Luxury Button */
 .btn-catchy-gold, .btn-catchy-blue {
   position: relative;
-  background: linear-gradient(180deg, #0A66C2 0%, #004F9E 100%);
+  background: linear-gradient(180deg, #0EA5E9 0%, #0284C7 100%);
   color: #FFFFFF !important;
   font-weight: 700;
   border: 1px solid rgba(255, 255, 255, 0.25);
   box-shadow: 
     0 1px 2px rgba(0, 0, 0, 0.06),
-    0 8px 20px -4px rgba(10, 102, 194, 0.35),
+    0 8px 20px -4px rgba(14, 165, 233, 0.35),
     inset 0 1px 0 rgba(255, 255, 255, 0.35);
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
@@ -195,10 +195,10 @@ body {
 
 .btn-catchy-gold:hover, .btn-catchy-blue:hover {
   transform: translateY(-1.5px);
-  background: linear-gradient(180deg, #1075DC 0%, #0A66C2 100%);
+  background: linear-gradient(180deg, #38BDF8 0%, #0EA5E9 100%);
   box-shadow: 
     0 4px 12px rgba(0, 0, 0, 0.08),
-    0 14px 28px -4px rgba(10, 102, 194, 0.45),
+    0 14px 28px -4px rgba(14, 165, 233, 0.45),
     inset 0 1px 0 rgba(255, 255, 255, 0.45);
 }
 
@@ -206,7 +206,7 @@ body {
   transform: translateY(0.5px);
   box-shadow: 
     0 1px 2px rgba(0, 0, 0, 0.1),
-    0 4px 10px -2px rgba(10, 102, 194, 0.35),
+    0 4px 10px -2px rgba(14, 165, 233, 0.35),
     inset 0 1px 1px rgba(0, 0, 0, 0.15);
 }
 
@@ -229,8 +229,8 @@ body {
 
 .slot-pill.active {
   background: #FFFFFF !important;
-  border-color: #0A66C2 !important;
-  box-shadow: 0 4px 14px -3px rgba(10, 102, 194, 0.2), inset 0 0 0 1px #0A66C2;
+  border-color: #0284C7 !important;
+  box-shadow: 0 4px 14px -3px rgba(14, 165, 233, 0.2), inset 0 0 0 1px #0284C7;
 }
 
 /* Haute Executive Obsidian & Sapphire Advisory Deck */
@@ -258,9 +258,9 @@ body {
 }
 
 .deck-slot-pill.active {
-  background: rgba(10, 102, 194, 0.2) !important;
-  border-color: #0A66C2 !important;
-  box-shadow: 0 0 16px -2px rgba(10, 102, 194, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  background: rgba(14, 165, 233, 0.2) !important;
+  border-color: #0284C7 !important;
+  box-shadow: 0 0 16px -2px rgba(14, 165, 233, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 /* Glass Buttons */
@@ -274,16 +274,16 @@ body {
 }
 
 .glass-btn-gold, .glass-btn-blue {
-  background: #0A66C2;
+  background: #0284C7;
   color: #FFFFFF;
-  border-color: #0A66C2;
-  box-shadow: 0 6px 20px -3px rgba(10, 102, 194, 0.35);
+  border-color: #0284C7;
+  box-shadow: 0 6px 20px -3px rgba(14, 165, 233, 0.35);
 }
 
 .glass-btn-gold:hover, .glass-btn-blue:hover {
-  background: #0052A3;
+  background: #0284C7;
   transform: translateY(-2px);
-  box-shadow: 0 12px 28px -4px rgba(10, 102, 194, 0.45);
+  box-shadow: 0 12px 28px -4px rgba(14, 165, 233, 0.45);
 }
 
 .glass-btn-silver {
@@ -293,10 +293,10 @@ body {
 }
 
 .glass-btn-silver:hover {
-  border-color: #0A66C2;
-  color: #0A66C2;
+  border-color: #0284C7;
+  color: #0284C7;
   transform: translateY(-2px);
-  box-shadow: 0 8px 24px -4px rgba(10, 102, 194, 0.15);
+  box-shadow: 0 8px 24px -4px rgba(14, 165, 233, 0.15);
 }
 
 /* Meeting Modal Transition */
@@ -323,7 +323,7 @@ body {
 }
 #modal-time-grid::-webkit-scrollbar-thumb:hover,
 #meeting-modal div::-webkit-scrollbar-thumb:hover {
-  background: #0A66C2;
+  background: #0284C7;
 }
 
 /* High Precision Date & Time Inputs */

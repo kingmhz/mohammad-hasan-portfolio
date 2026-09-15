@@ -130,7 +130,7 @@
     ctx.font = 'bold 15px -apple-system, sans-serif';
     ctx.fillText('NEXUS ARCHITECTURE', 96, 27);
 
-    ctx.fillStyle = '#0A66C2';
+    ctx.fillStyle = '#0EA5E9';
     ctx.font = 'bold 12px monospace';
     ctx.fillText('NEXT.JS 14 · APP ROUTER', 300, 26);
 
@@ -153,7 +153,7 @@
     const navIcons = ['📊', '⚡', '👥', '💳', '⚙️'];
     ctx.font = '16px sans-serif';
     navIcons.forEach((icon, i) => {
-      ctx.fillStyle = i === 0 ? '#0A66C2' : '#475569';
+      ctx.fillStyle = i === 0 ? '#0EA5E9' : '#475569';
       if (i === 0) ctx.fillRect(0, 60 + i * 46, 4, 28);
       ctx.fillText(icon, 20, 80 + i * 46);
     });
@@ -161,7 +161,7 @@
     // 3 Stat Cards
     const stats = [
       { label: 'ANNUAL RUN RATE', val: '$284,500', note: '+34.2% MoM', col: '#10B981' },
-      { label: 'P99 LATENCY', val: '14.2 ms', note: 'Edge Caching Active', col: '#0A66C2' },
+      { label: 'P99 LATENCY', val: '14.2 ms', note: 'Edge Caching Active', col: '#0EA5E9' },
       { label: 'FIDELITY SCORE', val: '100.0%', note: 'Pixel Perfect Code', col: '#38BDF8' }
     ];
 
@@ -213,8 +213,8 @@
 
     // Chart Gradient Area
     const chartGrad = ctx.createLinearGradient(0, 240, 0, 480);
-    chartGrad.addColorStop(0, 'rgba(10, 102, 194, 0.5)');
-    chartGrad.addColorStop(1, 'rgba(10, 102, 194, 0.0)');
+    chartGrad.addColorStop(0, 'rgba(14, 165, 233, 0.5)');
+    chartGrad.addColorStop(1, 'rgba(14, 165, 233, 0.0)');
 
     const chartPts = [
       {x: 110, y: 440}, {x: 210, y: 410}, {x: 310, y: 430}, 
@@ -230,7 +230,7 @@
     ctx.closePath();
     ctx.fill();
 
-    ctx.strokeStyle = '#0A66C2';
+    ctx.strokeStyle = '#0EA5E9';
     ctx.lineWidth = 3.5;
     ctx.beginPath();
     chartPts.forEach((p, idx) => {
@@ -438,8 +438,8 @@
     ctx.fillText('AURA PULSE', 36, 100);
 
     // 60 FPS Badge
-    ctx.fillStyle = 'rgba(10, 102, 194, 0.2)';
-    ctx.strokeStyle = '#0A66C2';
+    ctx.fillStyle = 'rgba(14, 165, 233, 0.2)';
+    ctx.strokeStyle = '#0EA5E9';
     ctx.lineWidth = 1.5;
     ctx.beginPath();
     drawCanvasRoundedRect(ctx, 330, 78, 146, 32, 16);
@@ -458,10 +458,10 @@
     const cy = 290;
 
     // Ring 1 (Royal Blue)
-    ctx.strokeStyle = 'rgba(10, 102, 194, 0.25)';
+    ctx.strokeStyle = 'rgba(14, 165, 233, 0.25)';
     ctx.lineWidth = 18;
     ctx.beginPath(); ctx.arc(cx, cy, 96, 0, Math.PI * 2); ctx.stroke();
-    ctx.strokeStyle = '#0A66C2';
+    ctx.strokeStyle = '#0EA5E9';
     ctx.lineCap = 'round';
     ctx.beginPath(); ctx.arc(cx, cy, 96, -Math.PI / 2, Math.PI * 0.95); ctx.stroke();
 
@@ -711,7 +711,7 @@
 
   // Polished Sapphire Titanium Frame
   const titaniumMat = new THREE.MeshStandardMaterial({
-    color: 0x0A66C2,
+    color: 0x0EA5E9,
     metalness: 0.94,
     roughness: 0.16
   });
@@ -750,7 +750,7 @@
     color: 0x38BDF8,
     metalness: 0.94,
     roughness: 0.12,
-    emissive: 0x0A66C2,
+    emissive: 0x0EA5E9,
     emissiveIntensity: 0.25
   });
   const phoneLogoMesh = new THREE.Mesh(phoneLogoGeo, phoneLogoMat);
@@ -796,7 +796,7 @@
   scene.add(keyLight);
 
   // Sapphire Rim Light (Back-Left)
-  const sapphireRim = new THREE.PointLight(0x0A66C2, 3.2, 12);
+  const sapphireRim = new THREE.PointLight(0x0EA5E9, 3.2, 12);
   sapphireRim.position.set(-4, -1, 3);
   scene.add(sapphireRim);
 
@@ -810,7 +810,7 @@
   backStudioLight.position.set(-3, 4, -6);
   scene.add(backStudioLight);
 
-  const backSapphireRim = new THREE.PointLight(0x0A66C2, 2.8, 12);
+  const backSapphireRim = new THREE.PointLight(0x0EA5E9, 2.8, 12);
   backSapphireRim.position.set(3, 1, -4);
   scene.add(backSapphireRim);
 

@@ -103,9 +103,9 @@ document.addEventListener('DOMContentLoaded', () => {
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => {
-        b.classList.remove('bg-[#0A66C2]', 'text-white', 'border-[#0A66C2]', 'shadow-sm'); b.classList.add('text-slate-600', 'border-transparent');
+        b.classList.remove('bg-[#0284C7]', 'text-white', 'border-[#0284C7]', 'shadow-sm'); b.classList.add('text-slate-600', 'border-transparent');
       });
-      btn.classList.add('bg-[#0A66C2]', 'text-white', 'border-[#0A66C2]', 'shadow-sm'); btn.classList.remove('text-slate-600', 'border-transparent');
+      btn.classList.add('bg-[#0284C7]', 'text-white', 'border-[#0284C7]', 'shadow-sm'); btn.classList.remove('text-slate-600', 'border-transparent');
 
       const filter = btn.getAttribute('data-filter');
 
@@ -253,13 +253,13 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.type = 'button';
       btn.className = `p-2.5 rounded-xl border text-center transition-all cursor-pointer ${
         isSelected 
-          ? 'border-[#0A66C2] bg-blue-50 text-[#0A66C2] font-bold shadow-xs' 
+          ? 'border-[#0284C7] bg-blue-50 text-[#0284C7] font-bold shadow-xs' 
           : 'border-slate-200 bg-slate-50 text-slate-700 hover:border-slate-300 hover:bg-white'
       }`;
       btn.innerHTML = `
-        <div class="text-[10px] font-mono-luxury uppercase ${isSelected ? 'text-[#0A66C2]' : 'text-slate-400'}">${d.dayName}</div>
+        <div class="text-[10px] font-mono-luxury uppercase ${isSelected ? 'text-[#0284C7]' : 'text-slate-400'}">${d.dayName}</div>
         <div class="text-sm font-bold font-sans mt-0.5 ${isSelected ? 'text-slate-950' : 'text-slate-800'}">${d.dayNum}</div>
-        <div class="text-[9px] font-mono uppercase ${isSelected ? 'text-[#0A66C2]' : 'text-slate-400'}">${d.monthName}</div>
+        <div class="text-[9px] font-mono uppercase ${isSelected ? 'text-[#0284C7]' : 'text-slate-400'}">${d.monthName}</div>
       `;
 
       btn.addEventListener('click', () => {
@@ -317,8 +317,8 @@ document.addEventListener('DOMContentLoaded', () => {
       btn.type = 'button';
       btn.className = `py-2 px-2.5 rounded-xl text-xs font-mono transition-all text-center cursor-pointer border ${
         isSelected 
-          ? 'border-[#0A66C2] bg-[#0A66C2] text-white font-bold shadow-sm ring-2 ring-[#0A66C2]/20' 
-          : 'border-slate-200 bg-white text-slate-700 hover:border-blue-300 hover:text-[#0A66C2]'
+          ? 'border-[#0284C7] bg-[#0284C7] text-white font-bold shadow-sm ring-2 ring-[#0284C7]/20' 
+          : 'border-slate-200 bg-white text-slate-700 hover:border-blue-300 hover:text-[#0284C7]'
       }`;
       btn.textContent = s.time;
 
@@ -337,10 +337,10 @@ document.addEventListener('DOMContentLoaded', () => {
   timeFilterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       timeFilterBtns.forEach(b => {
-        b.classList.remove('active', 'bg-white', 'text-[#0A66C2]', 'shadow-xs');
+        b.classList.remove('active', 'bg-white', 'text-[#0284C7]', 'shadow-xs');
         b.classList.add('text-slate-600');
       });
-      btn.classList.add('active', 'bg-white', 'text-[#0A66C2]', 'shadow-xs');
+      btn.classList.add('active', 'bg-white', 'text-[#0284C7]', 'shadow-xs');
       btn.classList.remove('text-slate-600');
       activePeriod = btn.getAttribute('data-period') || 'all';
       renderTimeSlots();
@@ -396,10 +396,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Update Hero Platform Toggles
     platformToggles.forEach(t => {
       if (t.getAttribute('data-platform') === platform) {
-        t.classList.add('active', 'bg-[#0A66C2]', 'text-white', 'font-semibold');
+        t.classList.add('active', 'bg-[#0284C7]', 'text-white', 'font-semibold');
         t.classList.remove('text-slate-400', 'font-medium');
       } else {
-        t.classList.remove('active', 'bg-[#0A66C2]', 'text-white', 'font-semibold');
+        t.classList.remove('active', 'bg-[#0284C7]', 'text-white', 'font-semibold');
         t.classList.add('text-slate-400', 'font-medium');
       }
     });
@@ -409,13 +409,13 @@ document.addEventListener('DOMContentLoaded', () => {
       const p = choice.getAttribute('data-platform');
       const dot = choice.querySelector('.rounded-full');
       if (p === platform) {
-        choice.classList.add('active', 'border-[#0A66C2]', 'bg-blue-50/70', 'text-slate-900');
+        choice.classList.add('active', 'border-[#0284C7]', 'bg-blue-50/70', 'text-slate-900');
         choice.classList.remove('border-slate-200', 'bg-slate-50', 'text-slate-700');
         if (dot) {
-          dot.className = 'w-2 h-2 rounded-full bg-[#0A66C2]';
+          dot.className = 'w-2 h-2 rounded-full bg-[#0284C7]';
         }
       } else {
-        choice.classList.remove('active', 'border-[#0A66C2]', 'bg-blue-50/70', 'text-slate-900');
+        choice.classList.remove('active', 'border-[#0284C7]', 'bg-blue-50/70', 'text-slate-900');
         choice.classList.add('border-slate-200', 'bg-slate-50', 'text-slate-700');
         if (dot) {
           dot.className = 'w-2 h-2 rounded-full bg-transparent border border-slate-300';
@@ -587,7 +587,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <i data-lucide="video" class="w-6 h-6"></i>
               </div>
               <div class="space-y-1">
-                <div class="text-[10px] font-mono-luxury uppercase tracking-widest text-[#0A66C2] font-semibold">Consultation Confirmed · ${result.data ? result.data.reference : 'MH-EXEC'}</div>
+                <div class="text-[10px] font-mono-luxury uppercase tracking-widest text-[#0284C7] font-semibold">Consultation Confirmed · ${result.data ? result.data.reference : 'MH-EXEC'}</div>
                 <h3 class="text-xl sm:text-2xl font-luxury font-bold text-slate-950">Video Meeting Scheduled</h3>
               </div>
               
@@ -597,8 +597,8 @@ document.addEventListener('DOMContentLoaded', () => {
                   <span class="text-emerald-600 font-semibold uppercase">Locked In</span>
                 </div>
                 <div class="text-slate-950 font-bold text-sm">🗓️ ${escapeHtml(payload.meetingSlot)}</div>
-                <div class="text-slate-700 text-xs pt-1">Platform: <strong class="text-[#0A66C2]">${escapeHtml(payload.platform)}</strong></div>
-                <div class="text-slate-500 text-[11px] truncate pt-0.5">Meeting Link: <a href="${meetUrl}" target="_blank" class="text-[#0A66C2] hover:underline">${meetUrl}</a></div>
+                <div class="text-slate-700 text-xs pt-1">Platform: <strong class="text-[#0284C7]">${escapeHtml(payload.platform)}</strong></div>
+                <div class="text-slate-500 text-[11px] truncate pt-0.5">Meeting Link: <a href="${meetUrl}" target="_blank" class="text-[#0284C7] hover:underline">${meetUrl}</a></div>
               </div>
 
               <p class="text-xs text-slate-600 font-light max-w-md mx-auto leading-relaxed">
@@ -612,7 +612,7 @@ document.addEventListener('DOMContentLoaded', () => {
                   <span>Test Video Room</span>
                 </a>
                 <a href="${gCalUrl}" target="_blank" rel="noopener noreferrer" class="btn-silver w-full sm:w-auto px-5 py-2.5 rounded-xl text-xs uppercase tracking-wider font-semibold inline-flex items-center justify-center gap-2 text-slate-800">
-                  <i data-lucide="calendar-plus" class="w-3.5 h-3.5 text-[#0A66C2]"></i>
+                  <i data-lucide="calendar-plus" class="w-3.5 h-3.5 text-[#0284C7]"></i>
                   <span>Add to Google Cal</span>
                 </a>
               </div>
@@ -715,11 +715,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (response.ok && result.success) {
           briefForm.innerHTML = `
             <div class="p-6 sm:p-8 rounded-2xl bg-white border border-slate-200 text-center space-y-4 shadow-xl">
-              <div class="w-12 h-12 rounded-full bg-blue-50 border border-blue-200 text-[#0A66C2] mx-auto flex items-center justify-center">
+              <div class="w-12 h-12 rounded-full bg-blue-50 border border-blue-200 text-[#0284C7] mx-auto flex items-center justify-center">
                 <i data-lucide="check" class="w-6 h-6"></i>
               </div>
               <div class="space-y-1">
-                <div class="text-[10px] font-mono-luxury uppercase tracking-widest text-[#0A66C2] font-semibold">Brief Confirmed · Reference ${result.data ? result.data.reference : 'MH-EXEC'}</div>
+                <div class="text-[10px] font-mono-luxury uppercase tracking-widest text-[#0284C7] font-semibold">Brief Confirmed · Reference ${result.data ? result.data.reference : 'MH-EXEC'}</div>
                 <h3 class="text-xl sm:text-2xl font-luxury font-bold text-slate-950">Transmission Successful</h3>
               </div>
               <p class="text-xs sm:text-sm text-slate-600 font-light max-w-md mx-auto leading-relaxed">
@@ -752,8 +752,8 @@ document.addEventListener('DOMContentLoaded', () => {
       formFeedback.className = 'text-xs p-3.5 rounded-xl border border-red-500/40 bg-red-950/30 text-red-300 flex items-center gap-2';
       formFeedback.innerHTML = `<i data-lucide="alert-circle" class="w-4 h-4 text-red-400 shrink-0"></i><span>${escapeHtml(msg)}</span>`;
     } else {
-      formFeedback.className = 'text-xs p-3.5 rounded-xl border border-blue-200 bg-blue-50/80 text-[#0A66C2] flex items-center gap-2 font-medium';
-      formFeedback.innerHTML = `<i data-lucide="check-circle" class="w-4 h-4 text-[#0A66C2] shrink-0"></i><span>${escapeHtml(msg)}</span>`;
+      formFeedback.className = 'text-xs p-3.5 rounded-xl border border-blue-200 bg-blue-50/80 text-[#0284C7] flex items-center gap-2 font-medium';
+      formFeedback.innerHTML = `<i data-lucide="check-circle" class="w-4 h-4 text-[#0284C7] shrink-0"></i><span>${escapeHtml(msg)}</span>`;
     }
     if (window.lucide) window.lucide.createIcons();
   }
