@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mohammad Hasan — Haute Digital Engineering | Web & App Consultant</title>
+  <meta name="description" content="Senior software consultant engineering production-grade Next.js web applications, cross-platform Flutter mobile apps, and bespoke luxury digital experiences.">
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
+
+  <!-- Open Graph & Social Metadata -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mohammad Hasan — Haute Digital Engineering | Web & Mobile Consultant">
+  <meta property="og:description" content="Senior software consultant engineering production-grade Next.js web applications, cross-platform Flutter mobile apps, and bespoke luxury digital experiences.">
+  <meta property="og:image" content="assets/images/banner.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mohammad Hasan — Haute Digital Engineering">
+  <meta name="twitter:description" content="Senior software consultant engineering Next.js web platforms and Flutter mobile apps.">
+  <meta name="twitter:image" content="assets/images/banner.jpg">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#040507',
+            surface: '#090B0F',
+            gold: {
+              300: '#FDF4DC',
+              400: '#F3E5AB',
+              500: '#D4AF37',
+              600: '#B89225'
+            },
+            silver: {
+              100: '#FFFFFF',
+              200: '#F1F5F9',
+              300: '#E2E8F0',
+              400: '#CBD5E1',
+              500: '#94A3B8'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Three.js (WebGL 3D Engine) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Custom Luxury CSS -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-mesh min-h-screen text-silver-300 antialiased selection:bg-[#D4AF37] selection:text-black">
+
+  <!-- ==================== HAUTE NAVIGATION BAR ==================== -->
+  <nav class="fixed top-0 left-0 right-0 z-50 glass-nav px-5 sm:px-8 lg:px-12 py-3.5 transition-all duration-300">
+    <div class="w-full flex items-center justify-between">
+      
+      <!-- Minimalist Luxury Name (Smaller & Clean Left) -->
+      <a href="#" class="group flex items-baseline gap-1 py-1 mr-6 sm:mr-10" aria-label="Mohammad Hasan - Home">
+        <span class="font-brand font-semibold text-[11px] sm:text-xs tracking-[0.22em] sm:tracking-[0.28em] text-white group-hover:text-gold-400 transition-colors duration-300 uppercase whitespace-nowrap">
+          Mohammad Hasan
+        </span>
+        <span class="w-1 h-1 rounded-full bg-gold-400 inline-block opacity-80 group-hover:opacity-100 group-hover:scale-125 transition-all duration-300 mb-0.5"></span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <div class="hidden md:flex items-center gap-8 lg:gap-10 text-xs tracking-[0.16em] uppercase font-medium text-silver-400">
+        <a href="#work" class="hover:text-gold-400 transition-colors duration-200">Selected Work</a>
+        <a href="#services" class="hover:text-gold-400 transition-colors duration-200">Capabilities</a>
+        <a href="#stack" class="hover:text-gold-400 transition-colors duration-200">Architecture</a>
+        <a href="#about" class="hover:text-gold-400 transition-colors duration-200">Philosophy</a>
+      </div>
+
+      <!-- Action Button & Status -->
+      <div class="hidden md:flex items-center gap-4 lg:gap-5">
+        <div class="flex items-center gap-2 px-3 py-1 rounded-full bg-gold-500/5 border border-gold-500/20 text-gold-400 text-[11px] font-medium tracking-wider">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#D4AF37] status-gold"></span>
+          <span>Available for Q4 Engagements</span>
+        </div>
+        <a href="#contact" class="btn-silver px-4 py-2 rounded-lg text-xs uppercase tracking-wider font-semibold shadow-md">
+          Initiate Brief
+        </a>
+      </div>
+
+      <!-- Mobile Menu Hamburger -->
+      <button id="mobile-menu-btn" class="md:hidden text-silver-300 hover:text-white p-2 focus:outline-none" aria-label="Toggle Navigation">
+        <i data-lucide="menu" class="w-5 h-5"></i>
+      </button>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="hidden md:hidden pt-4 pb-3 px-4 space-y-3 bg-[#040507]/95 border-b border-white/10 mt-3 rounded-xl text-xs tracking-widest uppercase">
+      <a href="#work" class="block py-2 text-silver-300 hover:text-gold-400">Selected Work</a>
+      <a href="#services" class="block py-2 text-silver-300 hover:text-gold-400">Capabilities</a>
+      <a href="#stack" class="block py-2 text-silver-300 hover:text-gold-400">Architecture</a>
+      <a href="#about" class="block py-2 text-silver-300 hover:text-gold-400">Philosophy</a>
+      <a href="#contact" class="block py-2.5 text-center text-black btn-silver rounded-lg font-bold">Initiate Brief</a>
+    </div>
+  </nav>
+
+  <!-- ==================== HERO SECTION ==================== -->
+  <section class="relative pt-32 pb-20 sm:pt-40 sm:pb-28 lg:pt-48 lg:pb-36 overflow-hidden px-4 sm:px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+      
+      <!-- Left Column: High-Readability Luxury Copy -->
+      <div class="lg:col-span-7 space-y-7 z-10">
+        
+        <!-- Header Pill -->
+        <div class="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-[#090B0F] border border-gold-500/25 text-[11px] uppercase tracking-[0.2em] font-medium text-gold-400">
+          <span class="w-1.5 h-1.5 rounded-full bg-gold-500"></span>
+          <span>Lead Full-Stack & Mobile Consultant</span>
+        </div>
+
+        <!-- Main Headline -->
+        <h1 class="text-3xl sm:text-5xl lg:text-6xl font-luxury font-bold tracking-tight leading-[1.14] text-white">
+          Architecting High-Scale Software with <span class="text-gold">Luxury Craftsmanship.</span>
+        </h1>
+
+        <!-- Subheadline (Readable, High Contrast) -->
+        <p class="text-sm sm:text-base lg:text-lg text-silver-300 max-w-xl leading-relaxed font-light">
+          Partnering with international founders, startups, and creative studios across the US, UK, Europe, and UAE. Engineering production-grade <strong class="text-white font-medium">Next.js</strong> web applications, cross-platform <strong class="text-white font-medium">Flutter</strong> mobile apps, and bespoke digital experiences in 4–6 weeks.
+        </p>
+
+        <!-- Floating Glass Action Buttons -->
+        <div class="flex flex-wrap items-center gap-3.5 sm:gap-4 pt-1">
+          <a href="#work" class="glass-btn glass-btn-gold animate-float px-6 sm:px-7 py-3.5 rounded-xl text-xs uppercase tracking-widest font-semibold flex items-center gap-2.5 group">
+            <span>Explore Works</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-gold-400 group-hover:translate-x-1 transition-transform"></i>
+          </a>
+          <!-- Eye-Catching Luxury Schedule Discovery Button -->
+          <a href="#contact" class="btn-schedule-luxury animate-float-delayed px-5 sm:px-6 py-3 rounded-xl text-xs uppercase tracking-wider font-semibold flex items-center gap-3 group shadow-xl">
+            <div class="w-7 h-7 rounded-lg bg-gold-500/20 border border-gold-400/40 flex items-center justify-center text-gold-300 group-hover:bg-gold-400 group-hover:text-black transition-all duration-300 shrink-0">
+              <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+            </div>
+            <div class="flex flex-col text-left">
+              <span class="text-white group-hover:text-gold-300 transition-colors text-xs font-semibold tracking-wider">Book 15-Min Discovery</span>
+              <span class="text-[10px] text-gold-400 font-mono-luxury tracking-normal normal-case flex items-center gap-1.5 font-normal">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-pulse"></span>
+                <span>Available this week · Direct with Hasan</span>
+              </span>
+            </div>
+            <i data-lucide="arrow-up-right" class="w-4 h-4 text-gold-400 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform ml-0.5"></i>
+          </a>
+          <a href="https://linkedin.com/in/mohammadhasantechie" target="_blank" rel="noopener noreferrer" class="glass-btn glass-btn-silver px-4 py-3.5 rounded-xl text-silver-300 hover:text-gold-400 transition-colors flex items-center justify-center self-stretch sm:self-auto" title="LinkedIn Profile">
+            <i data-lucide="linkedin" class="w-4 h-4"></i>
+          </a>
+        </div>
+
+        <!-- Hairline Metric Bar -->
+        <div class="pt-8 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 text-left">
+          <div class="p-2">
+            <div class="text-2xl sm:text-3xl font-luxury font-bold text-white">4–6 <span class="text-xs font-normal text-silver-400 font-mono-luxury">WKS</span></div>
+            <div class="text-[10px] text-silver-400 uppercase tracking-widest mt-1">Concept to MVP</div>
+          </div>
+          <div class="p-2">
+            <div class="text-2xl sm:text-3xl font-luxury font-bold text-gold-400">98+</div>
+            <div class="text-[10px] text-silver-400 uppercase tracking-widest mt-1">PageSpeed Standard</div>
+          </div>
+          <div class="p-2">
+            <div class="text-2xl sm:text-3xl font-luxury font-bold text-white">100%</div>
+            <div class="text-[10px] text-silver-400 uppercase tracking-widest mt-1">Figma Fidelity</div>
+          </div>
+          <div class="p-2">
+            <div class="text-2xl sm:text-3xl font-luxury font-bold text-gold-400">Global</div>
+            <div class="text-[10px] text-silver-400 uppercase tracking-widest mt-1">US/UK/EU Hours</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Interactive 3D Gold & Platinum Scene -->
+      <div class="lg:col-span-5 relative flex items-center justify-center h-[340px] sm:h-[420px] lg:h-[480px] w-full">
+        <!-- 3D Canvas Mount -->
+        <div id="three-hero-container" class="absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing"></div>
+
+        <!-- Floating Minimal Badges -->
+        <div class="absolute -top-2 -right-1 glass-card px-4 py-2.5 rounded-xl border border-gold-500/25 shadow-2xl pointer-events-none hidden sm:block">
+          <div class="text-[10px] text-gold-400 tracking-widest uppercase font-mono-luxury">Next.js 14 & React</div>
+          <div class="text-xs text-white font-medium">Enterprise Web Scale</div>
+        </div>
+
+        <div class="absolute -bottom-2 -left-1 glass-card px-4 py-2.5 rounded-xl border border-white/10 shadow-2xl pointer-events-none hidden sm:block">
+          <div class="text-[10px] text-silver-300 tracking-widest uppercase font-mono-luxury">Flutter Mobile</div>
+          <div class="text-xs text-white font-medium">iOS & Android 60fps</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== SELECTED WORK / CASE STUDIES ==================== -->
+  <section id="work" class="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 relative z-10 border-t border-white/10">
+    <div class="max-w-7xl mx-auto space-y-12 sm:space-y-14">
+      
+      <!-- Section Header & Filter Tabs -->
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+        <div class="space-y-2">
+          <span class="text-[10px] font-mono-luxury tracking-[0.25em] text-gold-400 uppercase">Selected Portfolio</span>
+          <h2 class="text-2xl sm:text-4xl font-luxury font-bold text-white">Proven Architectural Delivery</h2>
+          <p class="text-silver-400 text-xs sm:text-sm max-w-xl font-light">Commercial outcomes across enterprise SaaS platforms, cross-platform mobile apps, and luxury editorial web.</p>
+        </div>
+
+        <!-- Category Filter Tabs -->
+        <div class="flex items-center gap-1.5 p-1 rounded-xl bg-[#090B0F] border border-white/10 self-start text-[11px] uppercase tracking-wider">
+          <button class="filter-btn px-3.5 py-1.5 rounded-lg font-medium transition-all bg-gold-500/15 text-gold-400 border border-gold-500/30" data-filter="all">All</button>
+          <button class="filter-btn px-3.5 py-1.5 rounded-lg font-medium text-silver-400 border border-transparent hover:text-white transition-all" data-filter="web">SaaS Web</button>
+          <button class="filter-btn px-3.5 py-1.5 rounded-lg font-medium text-silver-400 border border-transparent hover:text-white transition-all" data-filter="mobile">Mobile</button>
+          <button class="filter-btn px-3.5 py-1.5 rounded-lg font-medium text-silver-400 border border-transparent hover:text-white transition-all" data-filter="luxury">Luxury</button>
+        </div>
+      </div>
+
+      <!-- 3D Tilt Project Cards Grid (6 Luxury Projects) -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        
+        <!-- ==================== PROJECT 1: SaaS Web App ==================== -->
+        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between" data-category="web">
+          <div class="tilt-inner space-y-5">
+            <!-- Header Badges (Larger & Luxury Clear) -->
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-3.5 py-1.5 rounded-lg text-xs font-mono-luxury tracking-wider text-gold-300 bg-gold-500/10 border border-gold-500/30 uppercase font-semibold shadow-sm">
+                Full-Stack SaaS Platform
+              </span>
+              <span class="text-xs text-silver-400 font-mono-luxury uppercase font-medium">US Startup</span>
+            </div>
+
+            <!-- THUMBNAIL: Simply replace 'src' below with your project screenshot (e.g. assets/images/your-image.jpg or https://image-url) -->
+            <div class="relative h-48 sm:h-52 w-full rounded-xl overflow-hidden bg-[#0C0E14] border border-white/10 group-hover:border-gold-500/40 transition-all duration-500">
+              <img src="assets/images/project1.svg" alt="Nexus SaaS Analytics" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out opacity-90 group-hover:opacity-100" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#090B0F]/90 via-transparent to-transparent pointer-events-none"></div>
+              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md border border-white/15 text-[11px] font-mono-luxury text-silver-300 flex items-center gap-1.5 shadow-lg">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                <span>Live Preview</span>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-lg sm:text-xl font-luxury font-bold text-white group-hover:text-gold-400 transition-colors">Nexus SaaS Analytics</h3>
+              <p class="text-silver-300 text-xs sm:text-sm mt-2 leading-relaxed font-light">
+                Enterprise workflow & revenue dashboard with Next.js App Router, Prisma, and Stripe recurring billing. Shaved 72% off server latency.
+              </p>
+            </div>
+
+            <!-- Technology Badges (Bigger, Clearer & Luxury) -->
+            <div class="flex flex-wrap gap-2 pt-1">
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Next.js 14</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">TypeScript</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">PostgreSQL</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Stripe</span>
+            </div>
+          </div>
+
+          <div class="pt-6 mt-4 border-t border-white/10 flex items-center justify-between">
+            <span class="text-xs text-silver-400 font-mono-luxury">Delivery: <strong class="text-white">4.5 Wks</strong></span>
+            <a href="https://ui.shadcn.com/examples/dashboard" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-gold-400 hover:text-gold-300 transition-colors uppercase tracking-wider">
+              <span>View Build</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- ==================== PROJECT 2: Mobile App ==================== -->
+        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between" data-category="mobile">
+          <div class="tilt-inner space-y-5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-3.5 py-1.5 rounded-lg text-xs font-mono-luxury tracking-wider text-gold-300 bg-gold-500/10 border border-gold-500/30 uppercase font-semibold shadow-sm">
+                Cross-Platform Mobile App
+              </span>
+              <span class="text-xs text-silver-400 font-mono-luxury uppercase font-medium">EU Brand</span>
+            </div>
+
+            <!-- THUMBNAIL: Simply replace 'src' below with your project screenshot -->
+            <div class="relative h-48 sm:h-52 w-full rounded-xl overflow-hidden bg-[#0C0E14] border border-white/10 group-hover:border-gold-500/40 transition-all duration-500">
+              <img src="assets/images/project2.svg" alt="Aura Pulse Mobile" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out opacity-90 group-hover:opacity-100" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#090B0F]/90 via-transparent to-transparent pointer-events-none"></div>
+              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md border border-white/15 text-[11px] font-mono-luxury text-silver-300 flex items-center gap-1.5 shadow-lg">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                <span>iOS & Android</span>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-lg sm:text-xl font-luxury font-bold text-white group-hover:text-gold-400 transition-colors">Aura Pulse Health</h3>
+              <p class="text-silver-300 text-xs sm:text-sm mt-2 leading-relaxed font-light">
+                Unified cross-platform fitness & wellness tracker in Flutter. Features 60fps animations, Supabase auth, and offline state persistence.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-2 pt-1">
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Flutter</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Dart</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Supabase</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">BLoC</span>
+            </div>
+          </div>
+
+          <div class="pt-6 mt-4 border-t border-white/10 flex items-center justify-between">
+            <span class="text-xs text-silver-400 font-mono-luxury">Delivery: <strong class="text-white">6.0 Wks</strong></span>
+            <a href="https://wonderous.app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-gold-400 hover:text-gold-300 transition-colors uppercase tracking-wider">
+              <span>View Build</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- ==================== PROJECT 3: Luxury Bespoke Web ==================== -->
+        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between" data-category="luxury">
+          <div class="tilt-inner space-y-5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-3.5 py-1.5 rounded-lg text-xs font-mono-luxury tracking-wider text-gold-300 bg-gold-500/10 border border-gold-500/30 uppercase font-semibold shadow-sm">
+                Haute Luxury Web
+              </span>
+              <span class="text-xs text-silver-400 font-mono-luxury uppercase font-medium">UK / UAE Luxury</span>
+            </div>
+
+            <!-- THUMBNAIL: Simply replace 'src' below with your project screenshot -->
+            <div class="relative h-48 sm:h-52 w-full rounded-xl overflow-hidden bg-[#0C0E14] border border-white/10 group-hover:border-gold-500/40 transition-all duration-500">
+              <img src="assets/images/project3.svg" alt="Maison Élan Luxury" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out opacity-90 group-hover:opacity-100" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#090B0F]/90 via-transparent to-transparent pointer-events-none"></div>
+              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md border border-white/15 text-[11px] font-mono-luxury text-silver-300 flex items-center gap-1.5 shadow-lg">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                <span>97/100 Speed</span>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-lg sm:text-xl font-luxury font-bold text-white group-hover:text-gold-400 transition-colors">Maison Élan Luxury</h3>
+              <p class="text-silver-300 text-xs sm:text-sm mt-2 leading-relaxed font-light">
+                Bespoke digital editorial platform with fluid micro-interactions, magnetic cursors, and instant drawer checkouts. Increased mobile conversion by 28%.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-2 pt-1">
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Next.js</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Tailwind</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">GSAP</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Framer Motion</span>
+            </div>
+          </div>
+
+          <div class="pt-6 mt-4 border-t border-white/10 flex items-center justify-between">
+            <span class="text-xs text-silver-400 font-mono-luxury">Timeline: <strong class="text-white">3.5 Wks</strong></span>
+            <a href="https://demo.vercel.store" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-gold-400 hover:text-gold-300 transition-colors uppercase tracking-wider">
+              <span>View Build</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- ==================== PROJECT 4: AI SaaS Platform ==================== -->
+        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between" data-category="web">
+          <div class="tilt-inner space-y-5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-3.5 py-1.5 rounded-lg text-xs font-mono-luxury tracking-wider text-gold-300 bg-gold-500/10 border border-gold-500/30 uppercase font-semibold shadow-sm">
+                AI Intelligence Platform
+              </span>
+              <span class="text-xs text-silver-400 font-mono-luxury uppercase font-medium">Silicon Valley AI</span>
+            </div>
+
+            <!-- THUMBNAIL: Simply replace 'src' below with your project screenshot -->
+            <div class="relative h-48 sm:h-52 w-full rounded-xl overflow-hidden bg-[#0C0E14] border border-white/10 group-hover:border-gold-500/40 transition-all duration-500">
+              <img src="assets/images/project4.svg" alt="Krypton AI Intelligence" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out opacity-90 group-hover:opacity-100" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#090B0F]/90 via-transparent to-transparent pointer-events-none"></div>
+              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md border border-white/15 text-[11px] font-mono-luxury text-silver-300 flex items-center gap-1.5 shadow-lg">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                <span>FastAPI + Streaming</span>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-lg sm:text-xl font-luxury font-bold text-white group-hover:text-gold-400 transition-colors">Krypton AI Copilot</h3>
+              <p class="text-silver-300 text-xs sm:text-sm mt-2 leading-relaxed font-light">
+                Autonomous LLM workflow dashboard built with Next.js 14 and Python FastAPI. Features real-time token streaming and vector search caching.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-2 pt-1">
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Next.js 14</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Python</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">FastAPI</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Vector DB</span>
+            </div>
+          </div>
+
+          <div class="pt-6 mt-4 border-t border-white/10 flex items-center justify-between">
+            <span class="text-xs text-silver-400 font-mono-luxury">Timeline: <strong class="text-white">5.0 Wks</strong></span>
+            <a href="https://linear.app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-gold-400 hover:text-gold-300 transition-colors uppercase tracking-wider">
+              <span>View Build</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- ==================== PROJECT 5: FinTech Mobile App ==================== -->
+        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between" data-category="mobile">
+          <div class="tilt-inner space-y-5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-3.5 py-1.5 rounded-lg text-xs font-mono-luxury tracking-wider text-gold-300 bg-gold-500/10 border border-gold-500/30 uppercase font-semibold shadow-sm">
+                FinTech Mobile App
+              </span>
+              <span class="text-xs text-silver-400 font-mono-luxury uppercase font-medium">Global Banking</span>
+            </div>
+
+            <!-- THUMBNAIL: Simply replace 'src' below with your project screenshot -->
+            <div class="relative h-48 sm:h-52 w-full rounded-xl overflow-hidden bg-[#0C0E14] border border-white/10 group-hover:border-gold-500/40 transition-all duration-500">
+              <img src="assets/images/project5.svg" alt="Apex Global NeoBank" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out opacity-90 group-hover:opacity-100" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#090B0F]/90 via-transparent to-transparent pointer-events-none"></div>
+              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md border border-white/15 text-[11px] font-mono-luxury text-silver-300 flex items-center gap-1.5 shadow-lg">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                <span>256-Bit Encrypted</span>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-lg sm:text-xl font-luxury font-bold text-white group-hover:text-gold-400 transition-colors">Apex Global NeoBank</h3>
+              <p class="text-silver-300 text-xs sm:text-sm mt-2 leading-relaxed font-light">
+                High-security international banking & multi-currency wallet application in Flutter. Integrated biometric authentication and real-time wire transfers.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-2 pt-1">
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Flutter</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Dart</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Firebase</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Stripe SDK</span>
+            </div>
+          </div>
+
+          <div class="pt-6 mt-4 border-t border-white/10 flex items-center justify-between">
+            <span class="text-xs text-silver-400 font-mono-luxury">Timeline: <strong class="text-white">6.5 Wks</strong></span>
+            <a href="https://gallery.flutter.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-gold-400 hover:text-gold-300 transition-colors uppercase tracking-wider">
+              <span>View Build</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- ==================== PROJECT 6: 3D Interactive Web ==================== -->
+        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between" data-category="luxury">
+          <div class="tilt-inner space-y-5">
+            <div class="flex items-center justify-between gap-2">
+              <span class="px-3.5 py-1.5 rounded-lg text-xs font-mono-luxury tracking-wider text-gold-300 bg-gold-500/10 border border-gold-500/30 uppercase font-semibold shadow-sm">
+                Interactive 3D Web
+              </span>
+              <span class="text-xs text-silver-400 font-mono-luxury uppercase font-medium">Bespoke Architecture</span>
+            </div>
+
+            <!-- THUMBNAIL: Simply replace 'src' below with your project screenshot -->
+            <div class="relative h-48 sm:h-52 w-full rounded-xl overflow-hidden bg-[#0C0E14] border border-white/10 group-hover:border-gold-500/40 transition-all duration-500">
+              <img src="assets/images/project6.svg" alt="Atelier Noir 3D Studio" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out opacity-90 group-hover:opacity-100" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-[#090B0F]/90 via-transparent to-transparent pointer-events-none"></div>
+              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md border border-white/15 text-[11px] font-mono-luxury text-silver-300 flex items-center gap-1.5 shadow-lg">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                <span>WebGL 60 FPS</span>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-lg sm:text-xl font-luxury font-bold text-white group-hover:text-gold-400 transition-colors">Atelier Noir 3D Studio</h3>
+              <p class="text-silver-300 text-xs sm:text-sm mt-2 leading-relaxed font-light">
+                Haute couture architectural visualization platform featuring real-time Three.js WebGL lighting and smooth Lenis momentum scroll physics.
+              </p>
+            </div>
+
+            <div class="flex flex-wrap gap-2 pt-1">
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Three.js</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">WebGL</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Next.js</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Lenis</span>
+            </div>
+          </div>
+
+          <div class="pt-6 mt-4 border-t border-white/10 flex items-center justify-between">
+            <span class="text-xs text-silver-400 font-mono-luxury">Timeline: <strong class="text-white">4.0 Wks</strong></span>
+            <a href="https://cuberto.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-gold-400 hover:text-gold-300 transition-colors uppercase tracking-wider">
+              <span>View Build</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== CAPABILITIES & SERVICES ==================== -->
+  <section id="services" class="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 relative z-10 border-t border-white/10 bg-[#07090C]/50">
+    <div class="max-w-7xl mx-auto space-y-14">
+      
+      <div class="text-center max-w-2xl mx-auto space-y-2">
+        <span class="text-[10px] font-mono-luxury tracking-[0.25em] text-gold-400 uppercase">Consulting Capabilities</span>
+        <h2 class="text-2xl sm:text-4xl font-luxury font-bold text-white">How I Partner with Clients</h2>
+        <p class="text-silver-400 text-xs sm:text-sm font-light">Eliminating junior subcontractor code and agency overhead with direct, senior-level architectural execution.</p>
+      </div>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        
+        <!-- Service 1 -->
+        <div class="glass-card p-6 sm:p-7 rounded-xl space-y-4 hover:-translate-y-1 transition-all">
+          <div class="w-10 h-10 rounded-lg bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400">
+            <i data-lucide="layout" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-base sm:text-lg font-luxury font-bold text-white">Full-Stack Web Apps</h3>
+          <p class="text-silver-400 text-xs sm:text-sm leading-relaxed font-light">
+            Scalable Next.js & React architectures with Node.js/Python backends. Real-time data caching, multi-tenant auth, and high-frequency APIs.
+          </p>
+        </div>
+
+        <!-- Service 2 -->
+        <div class="glass-card p-6 sm:p-7 rounded-xl space-y-4 hover:-translate-y-1 transition-all">
+          <div class="w-10 h-10 rounded-lg bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400">
+            <i data-lucide="smartphone" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-base sm:text-lg font-luxury font-bold text-white">Cross-Platform Mobile</h3>
+          <p class="text-silver-400 text-xs sm:text-sm leading-relaxed font-light">
+            High-performance Flutter applications deployed natively to App Store & Google Play Store from a single clean codebase.
+          </p>
+        </div>
+
+        <!-- Service 3 -->
+        <div class="glass-card p-6 sm:p-7 rounded-xl space-y-4 hover:-translate-y-1 transition-all">
+          <div class="w-10 h-10 rounded-lg bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400">
+            <i data-lucide="sparkles" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-base sm:text-lg font-luxury font-bold text-white">Luxury Bespoke Web</h3>
+          <p class="text-silver-400 text-xs sm:text-sm leading-relaxed font-light">
+            Ultra-slick interactive platforms with GSAP scroll mechanics and refined micro-interactions designed to convert high-net-worth buyers.
+          </p>
+        </div>
+
+        <!-- Service 4 -->
+        <div class="glass-card p-6 sm:p-7 rounded-xl space-y-4 hover:-translate-y-1 transition-all">
+          <div class="w-10 h-10 rounded-lg bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400">
+            <i data-lucide="users" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-base sm:text-lg font-luxury font-bold text-white">White-Label Partner</h3>
+          <p class="text-silver-400 text-xs sm:text-sm leading-relaxed font-light">
+            Invisible engineering execution for design studios and agencies. Coding complex Figma designs with 100% fidelity and zero hand-holding.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== ARCHITECTURE / TECH STACK ==================== -->
+  <section id="stack" class="py-20 px-4 sm:px-6 lg:px-8 relative z-10 border-t border-white/10">
+    <div class="max-w-7xl mx-auto space-y-10">
+      
+      <div class="text-center max-w-xl mx-auto space-y-2">
+        <span class="text-[10px] font-mono-luxury tracking-[0.25em] text-gold-400 uppercase">Architecture</span>
+        <h2 class="text-2xl sm:text-3xl font-luxury font-bold text-white">Core Technology Stack</h2>
+        <p class="text-silver-400 text-xs font-light">Selected for raw execution speed, security, and developer ergonomics.</p>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 max-w-4xl mx-auto">
+        <span class="px-4 py-2 rounded-lg bg-[#090B0F] border border-white/10 hover:border-gold-500/40 text-xs sm:text-sm font-mono-luxury text-silver-300 flex items-center gap-2 transition-all">
+          <strong class="text-gold-400 font-semibold">Next.js 14</strong> (App Router)
+        </span>
+        <span class="px-4 py-2 rounded-lg bg-[#090B0F] border border-white/10 hover:border-gold-500/40 text-xs sm:text-sm font-mono-luxury text-silver-300 flex items-center gap-2 transition-all">
+          <strong class="text-white font-semibold">React.js</strong>
+        </span>
+        <span class="px-4 py-2 rounded-lg bg-[#090B0F] border border-white/10 hover:border-gold-500/40 text-xs sm:text-sm font-mono-luxury text-silver-300 flex items-center gap-2 transition-all">
+          <strong class="text-gold-400 font-semibold">Flutter & Dart</strong>
+        </span>
+        <span class="px-4 py-2 rounded-lg bg-[#090B0F] border border-white/10 hover:border-gold-500/40 text-xs sm:text-sm font-mono-luxury text-silver-300 flex items-center gap-2 transition-all">
+          <strong class="text-silver-300 font-semibold">TypeScript</strong>
+        </span>
+        <span class="px-4 py-2 rounded-lg bg-[#090B0F] border border-white/10 hover:border-gold-500/40 text-xs sm:text-sm font-mono-luxury text-silver-300 flex items-center gap-2 transition-all">
+          <strong class="text-white font-semibold">Node.js</strong>
+        </span>
+        <span class="px-4 py-2 rounded-lg bg-[#090B0F] border border-white/10 hover:border-gold-500/40 text-xs sm:text-sm font-mono-luxury text-silver-300 flex items-center gap-2 transition-all">
+          <strong class="text-gold-400 font-semibold">PostgreSQL</strong>
+        </span>
+        <span class="px-4 py-2 rounded-lg bg-[#090B0F] border border-white/10 hover:border-gold-500/40 text-xs sm:text-sm font-mono-luxury text-silver-300 flex items-center gap-2 transition-all">
+          <strong class="text-white font-semibold">Supabase</strong>
+        </span>
+        <span class="px-4 py-2 rounded-lg bg-[#090B0F] border border-white/10 hover:border-gold-500/40 text-xs sm:text-sm font-mono-luxury text-silver-300 flex items-center gap-2 transition-all">
+          <strong class="text-gold-400 font-semibold">Tailwind CSS</strong>
+        </span>
+        <span class="px-4 py-2 rounded-lg bg-[#090B0F] border border-white/10 hover:border-gold-500/40 text-xs sm:text-sm font-mono-luxury text-silver-300 flex items-center gap-2 transition-all">
+          <strong class="text-white font-semibold">GSAP & Three.js</strong>
+        </span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== PHILOSOPHY & ADVANTAGE ==================== -->
+  <section id="about" class="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 relative z-10 border-t border-white/10 bg-[#07090C]/50">
+    <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+      
+      <div class="lg:col-span-6 space-y-6">
+        <span class="text-[10px] font-mono-luxury tracking-[0.25em] text-gold-400 uppercase">Consultant Standard</span>
+        <h2 class="text-2xl sm:text-4xl font-luxury font-bold text-white">Why International Teams Partner With Me</h2>
+        <p class="text-silver-300 text-xs sm:text-sm leading-relaxed font-light">
+          Traditional agencies involve bloated management layers, junior developers, and bureaucracy. Working with me gives you direct senior architectural ownership, transparent weekly milestones, and uncompromising design execution.
+        </p>
+
+        <div class="space-y-4 pt-2">
+          <div class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-lg bg-gold-500/10 border border-gold-500/20 text-gold-400 flex items-center justify-center shrink-0 mt-0.5">
+              <i data-lucide="clock" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <h4 class="text-xs sm:text-sm uppercase tracking-wider font-bold text-white">Daily Time Zone Overlap</h4>
+              <p class="text-xs text-silver-400 mt-0.5 font-light">4–5 hours daily overlap with US EST/PST, UK GMT, and European CET for real-time Slack/Teams sync.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-lg bg-gold-500/10 border border-gold-500/20 text-gold-400 flex items-center justify-center shrink-0 mt-0.5">
+              <i data-lucide="check-circle" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <h4 class="text-xs sm:text-sm uppercase tracking-wider font-bold text-white">Weekly Staging Demos</h4>
+              <p class="text-xs text-silver-400 mt-0.5 font-light">Transparent sprint cadences. You test live production staging URLs every single week.</p>
+            </div>
+          </div>
+
+          <div class="flex items-start gap-4">
+            <div class="w-8 h-8 rounded-lg bg-gold-500/10 border border-gold-500/20 text-gold-400 flex items-center justify-center shrink-0 mt-0.5">
+              <i data-lucide="shield-check" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <h4 class="text-xs sm:text-sm uppercase tracking-wider font-bold text-white">100% IP Code Ownership</h4>
+              <p class="text-xs text-silver-400 mt-0.5 font-light">Complete source code ownership and Git history transferred upon milestone completion.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Column: Minimalist Executive Card -->
+      <div class="lg:col-span-6 glass-card p-6 sm:p-8 rounded-2xl border border-white/10 relative space-y-6">
+        <div class="flex items-center gap-4">
+          <div class="w-14 h-14 rounded-xl bg-gradient-to-tr from-[#D4AF37] to-[#AA820A] p-[1px]">
+            <div class="w-full h-full bg-[#040507] rounded-[11px] flex items-center justify-center font-brand font-bold text-base text-white">
+              MH
+            </div>
+          </div>
+          <div>
+            <h3 class="text-base sm:text-lg font-luxury font-bold text-white">Mohammad Hasan</h3>
+            <div class="text-xs text-gold-400 font-mono-luxury">Lead Full-Stack & Mobile Consultant</div>
+            <div class="text-[10px] text-silver-400 uppercase tracking-wider mt-0.5">Serving US, UK, EU & UAE Clients</div>
+          </div>
+        </div>
+
+        <p class="text-xs sm:text-sm text-silver-200 leading-relaxed italic border-l border-gold-500/40 pl-4 font-light">
+          "Software should be engineered with the same precision and aesthetic restraint as haute horlogerie: silent performance, flawless geometry, and zero wasted motion."
+        </p>
+
+        <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-silver-400">
+          <span>LinkedIn Verified: <strong class="text-gold-400 font-mono">mohammadhasantechie</strong></span>
+          <a href="https://linkedin.com/in/mohammadhasantechie" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gold-400 font-medium inline-flex items-center gap-1 uppercase text-[10px] tracking-wider">
+            <span>Connect ↗</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== CALL TO ACTION / CONTACT ==================== -->
+  <section id="contact" class="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 relative z-10 border-t border-white/10">
+    <div class="max-w-3xl mx-auto glass-card rounded-2xl p-6 sm:p-12 relative overflow-hidden">
+      
+      <!-- Subtle Gold Ambient Flare -->
+      <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+      <div class="text-center space-y-3 relative z-10 mb-8 sm:mb-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-500/5 border border-gold-500/20 text-gold-400 text-[10px] font-mono-luxury uppercase tracking-[0.2em]">
+          <span class="w-1.5 h-1.5 rounded-full bg-gold-400"></span>
+          <span>Initiate Project Engagement</span>
+        </div>
+        <h2 class="text-2xl sm:text-4xl font-luxury font-bold text-white tracking-tight">
+          Ready to Build Something <span class="text-gold">Exceptional?</span>
+        </h2>
+        <p class="text-silver-300 text-xs sm:text-sm max-w-lg mx-auto font-light leading-relaxed">
+          Transmitting your technical requirements directly routes to Mohammad Hasan’s executive inbox. Guaranteed architectural response within 24 hours.
+        </p>
+      </div>
+
+      <!-- ==================== INTERACTIVE BRIEF FORM ==================== -->
+      <form id="brief-form" class="space-y-4 sm:space-y-5 relative z-10 text-left" novalidate>
+        <!-- Anti-Spam Honeypot -->
+        <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off">
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- Client Name / Company -->
+          <div class="space-y-1.5">
+            <label for="client-name" class="block text-[11px] font-mono-luxury uppercase tracking-wider text-silver-400">
+              Your Name / Organization <span class="text-gold-400">*</span>
+            </label>
+            <input 
+              type="text" 
+              id="client-name" 
+              name="name" 
+              required 
+              placeholder="e.g. Julian Vance, Founder"
+              class="w-full px-4 py-3 rounded-xl bg-[#07090C] border border-white/10 text-white placeholder:text-silver-500 text-xs font-light focus:outline-none focus:border-gold-500/60 focus:ring-1 focus:ring-gold-500/30 transition-all"
+            >
+          </div>
+
+          <!-- Client Work Email -->
+          <div class="space-y-1.5">
+            <label for="client-email" class="block text-[11px] font-mono-luxury uppercase tracking-wider text-silver-400">
+              Work or Personal Email <span class="text-gold-400">*</span>
+            </label>
+            <input 
+              type="email" 
+              id="client-email" 
+              name="email" 
+              required 
+              placeholder="julian@venture.com"
+              class="w-full px-4 py-3 rounded-xl bg-[#07090C] border border-white/10 text-white placeholder:text-silver-500 text-xs font-light focus:outline-none focus:border-gold-500/60 focus:ring-1 focus:ring-gold-500/30 transition-all"
+            >
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- Project Category -->
+          <div class="space-y-1.5">
+            <label for="project-type" class="block text-[11px] font-mono-luxury uppercase tracking-wider text-silver-400">
+              Project Domain
+            </label>
+            <select 
+              id="project-type" 
+              name="projectType"
+              class="w-full px-4 py-3 rounded-xl bg-[#07090C] border border-white/10 text-silver-200 text-xs font-light focus:outline-none focus:border-gold-500/60 focus:ring-1 focus:ring-gold-500/30 transition-all cursor-pointer"
+            >
+              <option value="Next.js Full-Stack SaaS Platform" class="bg-[#090B0F]">Next.js Full-Stack SaaS Platform</option>
+              <option value="Cross-Platform Mobile App (Flutter)" class="bg-[#090B0F]">Cross-Platform Mobile App (Flutter)</option>
+              <option value="Luxury Bespoke 3D Web Experience" class="bg-[#090B0F]">Luxury Bespoke 3D Web Experience</option>
+              <option value="Senior Architectural Advisory / Audit" class="bg-[#090B0F]">Senior Architectural Advisory / Audit</option>
+              <option value="Agency White-Label Partner" class="bg-[#090B0F]">Agency White-Label Partner</option>
+            </select>
+          </div>
+
+          <!-- Target Budget -->
+          <div class="space-y-1.5">
+            <label for="budget" class="block text-[11px] font-mono-luxury uppercase tracking-wider text-silver-400">
+              Estimated Budget Tier
+            </label>
+            <select 
+              id="budget" 
+              name="budget"
+              class="w-full px-4 py-3 rounded-xl bg-[#07090C] border border-white/10 text-silver-200 text-xs font-light focus:outline-none focus:border-gold-500/60 focus:ring-1 focus:ring-gold-500/30 transition-all cursor-pointer"
+            >
+              <option value="$3,000 – $5,000 USD (Sprint / MVP)" class="bg-[#090B0F]">$3,000 – $5,000 USD (Sprint / MVP)</option>
+              <option value="$5,000 – $10,000 USD (Core Product)" class="bg-[#090B0F]">$5,000 – $10,000 USD (Core Product)</option>
+              <option value="$10,000 – $25,000 USD (Enterprise / High Scale)" class="bg-[#090B0F]">$10,000 – $25,000 USD (Enterprise / High Scale)</option>
+              <option value="$25,000+ USD (Custom Architecture / Retainer)" class="bg-[#090B0F]">$25,000+ USD (Custom Architecture / Retainer)</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Project Overview / Specifications -->
+        <div class="space-y-1.5">
+          <label for="client-message" class="block text-[11px] font-mono-luxury uppercase tracking-wider text-silver-400">
+            Technical Scope & Key Goals <span class="text-gold-400">*</span>
+          </label>
+          <textarea 
+            id="client-message" 
+            name="message" 
+            rows="3" 
+            required 
+            placeholder="Outline your target deliverable, tech stack preferences, current blockers, and timeline goals..."
+            class="w-full px-4 py-3 rounded-xl bg-[#07090C] border border-white/10 text-white placeholder:text-silver-500 text-xs font-light focus:outline-none focus:border-gold-500/60 focus:ring-1 focus:ring-gold-500/30 transition-all leading-relaxed resize-none"
+          ></textarea>
+        </div>
+
+        <!-- Feedback Messages Container -->
+        <div id="form-feedback" class="hidden text-xs p-3 rounded-xl transition-all"></div>
+
+        <!-- Submit Button -->
+        <button 
+          type="submit" 
+          id="brief-submit-btn" 
+          class="btn-schedule-luxury w-full py-3.5 sm:py-4 rounded-xl text-xs uppercase tracking-wider font-semibold flex items-center justify-center gap-2.5 group shadow-xl transition-all"
+        >
+          <span id="btn-text">Transmit Project Brief</span>
+          <i data-lucide="send" id="btn-icon" class="w-3.5 h-3.5 text-gold-400 group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform"></i>
+        </button>
+
+        <div class="flex items-center justify-between text-[10px] text-silver-500 font-mono-luxury pt-1">
+          <span class="flex items-center gap-1.5">
+            <i data-lucide="lock" class="w-3 h-3 text-gold-400/70"></i>
+            <span>Encrypted Transmission</span>
+          </span>
+          <span>NDA Executed Prior to Kickoff</span>
+        </div>
+      </form>
+
+      <!-- ==================== ALTERNATIVE QUICK CHANNELS ==================== -->
+      <div class="mt-10 pt-8 border-t border-white/10 space-y-4 relative z-10 text-center">
+        <div class="text-[10px] uppercase font-mono-luxury tracking-widest text-silver-400">Or Direct Communication Channels</div>
+        
+        <div class="flex flex-wrap items-center justify-center gap-3">
+          <a href="https://linkedin.com/in/mohammadhasantechie" target="_blank" rel="noopener noreferrer" class="glass-btn glass-btn-gold px-5 py-2.5 rounded-xl text-[11px] uppercase tracking-wider font-semibold flex items-center gap-2">
+            <i data-lucide="linkedin" class="w-3.5 h-3.5"></i>
+            <span>LinkedIn Message</span>
+          </a>
+
+          <!-- Copy Email Button -->
+          <button id="copy-email-btn" data-email="hasanisbest786@gmail.com" class="glass-btn glass-btn-silver px-5 py-2.5 rounded-xl text-[11px] uppercase tracking-wider font-medium flex items-center gap-2 relative group">
+            <i data-lucide="copy" class="w-3.5 h-3.5 text-gold-400 group-hover:scale-110 transition-transform"></i>
+            <span>Copy Email</span>
+            <span id="copy-feedback" class="absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-[#D4AF37] text-black text-[9px] font-bold rounded opacity-0 transition-opacity pointer-events-none">Copied!</span>
+          </button>
+        </div>
+
+        <div class="text-[11px] text-silver-400 font-mono">
+          Direct Email: <span class="text-silver-200">hasanisbest786@gmail.com</span> · Mon–Sat (US/UK/EU Hours)
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer class="py-8 px-4 sm:px-6 lg:px-8 border-t border-white/10 text-center text-xs text-silver-500">
+    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="text-[11px] tracking-wider uppercase text-silver-400">
+        © 2026 Mohammad Hasan · Haute Digital Engineering
+      </div>
+      <div class="flex items-center gap-6 text-[11px] uppercase tracking-wider text-silver-400">
+        <a href="https://linkedin.com/in/mohammadhasantechie" target="_blank" rel="noopener noreferrer" class="hover:text-gold-400 transition-colors">LinkedIn</a>
+        <a href="#work" class="hover:text-gold-400 transition-colors">Selected Work</a>
+        <a href="#contact" class="hover:text-gold-400 transition-colors">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="assets/js/three-scene.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

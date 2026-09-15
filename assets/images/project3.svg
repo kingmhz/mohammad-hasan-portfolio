@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="600" height="380">
+    <defs>
+      <linearGradient id="bg_project3.svg" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#14100A" />
+        <stop offset="100%" stop-color="#261E13" />
+      </linearGradient>
+      <radialGradient id="glow_project3.svg" cx="80%" cy="20%" r="60%">
+        <stop offset="0%" stop-color="#D4AF37" stop-opacity="0.18" />
+        <stop offset="100%" stop-color="#D4AF37" stop-opacity="0" />
+      </radialGradient>
+    </defs>
+    <rect width="600" height="380" fill="url(#bg_project3.svg)" />
+    <rect width="600" height="380" fill="url(#glow_project3.svg)" />
+    
+    <!-- Fine Grid Lines -->
+    <g stroke="rgba(255,255,255,0.04)" stroke-width="1">
+      <line x1="0" y1="95" x2="600" y2="95" />
+      <line x1="0" y1="190" x2="600" y2="190" />
+      <line x1="0" y1="285" x2="600" y2="285" />
+      <line x1="150" y1="0" x2="150" y2="380" />
+      <line x1="300" y1="0" x2="300" y2="380" />
+      <line x1="450" y1="0" x2="450" y2="380" />
+    </g>
+
+    <!-- Header Pill -->
+    <rect x="40" y="40" width="180" height="28" rx="6" fill="rgba(0,0,0,0.4)" stroke="#D4AF37" stroke-opacity="0.4" />
+    <text x="52" y="58" fill="#D4AF37" font-family="monospace" font-size="11" font-weight="600" letter-spacing="1">Haute Horlogerie & Fashion</text>
+
+    <!-- Main Title -->
+    <text x="40" y="145" fill="#FFFFFF" font-family="'Cinzel', serif, sans-serif" font-size="28" font-weight="700" letter-spacing="1">Maison Élan Luxury</text>
+    
+    <!-- Accent Bar -->
+    <rect x="40" y="165" width="80" height="3" rx="1.5" fill="#D4AF37" />
+
+    <!-- Metric Tag -->
+    <rect x="40" y="300" width="220" height="34" rx="8" fill="rgba(255,255,255,0.03)" stroke="rgba(255,255,255,0.1)" />
+    <circle cx="56" cy="317" r="4" fill="#D4AF37" />
+    <text x="70" y="321" fill="#E2E8F0" font-family="monospace" font-size="11" font-weight="500">97/100 SPEED · GSAP</text>
+
+    <!-- Geometric Accent Outline -->
+    <circle cx="500" cy="280" r="60" fill="none" stroke="#D4AF37" stroke-opacity="0.15" stroke-dasharray="4 4" />
+    <circle cx="500" cy="280" r="30" fill="none" stroke="#D4AF37" stroke-opacity="0.25" />
+  </svg>
