@@ -5,22 +5,6 @@
   const container = document.getElementById('three-hero-container');
   if (!container) return;
 
-  // WebGL Availability Verification
-  function checkWebGL() {
-    try {
-      const c = document.createElement('canvas');
-      return !!(window.WebGLRenderingContext && (c.getContext('webgl') || c.getContext('experimental-webgl')));
-    } catch (e) {
-      return false;
-    }
-  }
-
-  if (!checkWebGL()) {
-    console.warn('[Three.js] WebGL context unavailable. Displaying static high-res fallback.');
-    container.innerHTML = '<div class="w-full h-full flex items-center justify-center text-slate-400 text-xs font-mono">3D Acceleration Unavailable</div>';
-    return;
-  }
-
   const isMobile = window.innerWidth < 768;
 
   // Scene, Camera, Renderer
@@ -81,6 +65,23 @@
 
   // =========================================================================
   // 1. DYNAMIC RETINA CANVAS TEXTURES (Next.js SaaS Web & Flutter Mobile)
+
+  // Cross-browser safe canvas rounded rectangle helper (guaranteed support across all browser engines)
+  function drawCanvasRoundedRect(ctx, x, y, width, height, radius) {
+    if (typeof radius === 'undefined') radius = 4;
+    ctx.beginPath();
+    ctx.moveTo(x + radius, y);
+    ctx.lineTo(x + width - radius, y);
+    ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+    ctx.lineTo(x + width, y + height - radius);
+    ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+    ctx.lineTo(x + radius, y + height);
+    ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+    ctx.lineTo(x, y + radius);
+    ctx.quadraticCurveTo(x, y, x + radius, y);
+    ctx.closePath();
+  }
+
   // =========================================================================
 
   // A. Next.js SaaS Web Dashboard (1024 x 640)
@@ -108,8 +109,7 @@
 
     // MacBook Liquid Retina Camera Notch at Top Center
     ctx.fillStyle = '#050810';
-    ctx.beginPath();
-    ctx.roundRect(476, 0, 72, 20, [0, 0, 8, 8]);
+    drawCanvasRoundedRect(ctx, 476, 0, 72, 20, 6);
     ctx.fill();
 
     // Camera Sensor Lens
@@ -135,7 +135,7 @@
     ctx.strokeStyle = 'rgba(16, 185, 129, 0.4)';
     ctx.lineWidth = 1;
     ctx.beginPath();
-    ctx.roundRect(830, 10, 170, 24, 12);
+    drawCanvasRoundedRect(ctx, 830, 10, 170, 24, 12);
     ctx.fill(); ctx.stroke();
 
     ctx.fillStyle = '#10B981';
@@ -167,7 +167,7 @@
       ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
       ctx.lineWidth = 1;
       ctx.beginPath();
-      ctx.roundRect(sx, 60, 292, 92, 10);
+      drawCanvasRoundedRect(ctx, sx, 60, 292, 92, 10);
       ctx.fill(); ctx.stroke();
 
       ctx.fillStyle = '#94A3B8';
@@ -187,7 +187,7 @@
     ctx.fillStyle = '#0F172A';
     ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
     ctx.beginPath();
-    ctx.roundRect(80, 168, 920, 350, 12);
+    drawCanvasRoundedRect(ctx, 80, 168, 920, 350, 12);
     ctx.fill(); ctx.stroke();
 
     ctx.fillStyle = '#FFFFFF';
@@ -257,6 +257,156 @@
     return texture;
   }
 
+  
+  // B. Ultra-Refined MacBook Pro Keyboard Deck Texture (Chiclet Keys, Speakers & Trackpad)
+  function createMacKeyboardTexture() {
+    const canvas = document.createElement('canvas');
+    canvas.width = 1024;
+    canvas.height = 680;
+    const ctx = canvas.getContext('2d');
+
+    // Unibody Space Gray / Silver Aluminum Surface
+    ctx.fillStyle = '#CBD5E1';
+    ctx.fillRect(0, 0, 1024, 680);
+
+    // Subtle brushed metallic gradient
+    const grad = ctx.createLinearGradient(0, 0, 1024, 680);
+    grad.addColorStop(0, 'rgba(255, 255, 255, 0.25)');
+    grad.addColorStop(0.5, 'rgba(255, 255, 255, 0.05)');
+    grad.addColorStop(1, 'rgba(0, 0, 0, 0.12)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, 1024, 680);
+
+    // Dual Speaker Grilles (Left & Right Flanking Micro-Perforations)
+    ctx.fillStyle = 'rgba(15, 23, 42, 0.45)';
+    // Left Speaker Strip
+    for (let x = 40; x <= 96; x += 6) {
+      for (let y = 48; y <= 385; y += 7) {
+        ctx.beginPath();
+        ctx.arc(x, y, 1.2, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+    // Right Speaker Strip
+    for (let x = 928; x <= 984; x += 6) {
+      for (let y = 48; y <= 385; y += 7) {
+        ctx.beginPath();
+        ctx.arc(x, y, 1.2, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    // Recessed Keyboard Well (Dark Matte Anodized Aluminum Tray)
+    ctx.fillStyle = '#090D16';
+    drawCanvasRoundedRect(ctx, 116, 42, 792, 352, 8);
+    ctx.fill();
+
+    // Subtle inner bevel stroke
+    ctx.strokeStyle = 'rgba(0, 0, 0, 0.5)';
+    ctx.lineWidth = 1.5;
+    ctx.stroke();
+
+    // Key Matrix Definition
+    const keyRows = [
+      { count: 14, y: 50, h: 28, labels: ['esc', 'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12', '⌽'] },
+      { count: 14, y: 88, h: 46, labels: ['~', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 'delete'] },
+      { count: 14, y: 144, h: 46, labels: ['tab', 'Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P', '[', ']', '\\'] },
+      { count: 13, y: 200, h: 46, labels: ['caps', 'A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L', ';', "'", 'return'] },
+      { count: 12, y: 256, h: 46, labels: ['shift', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', '<', '>', '?', 'shift'] },
+      { isBottom: true, y: 312, h: 50 }
+    ];
+
+    keyRows.forEach((row) => {
+      if (row.isBottom) {
+        const bottomKeys = [
+          { label: 'fn', w: 42, x: 128 },
+          { label: 'control', w: 46, x: 178 },
+          { label: 'option', w: 48, x: 232 },
+          { label: 'command ⌘', w: 66, x: 288 },
+          { label: '', w: 290, x: 362 }, // Spacebar
+          { label: '⌘', w: 66, x: 660 },
+          { label: 'option', w: 48, x: 734 },
+          { label: '◀', w: 32, x: 790 },
+          { label: '▲▼', w: 32, x: 830 },
+          { label: '▶', w: 32, x: 870 }
+        ];
+
+        bottomKeys.forEach((k) => {
+          ctx.fillStyle = '#151C2C';
+          drawCanvasRoundedRect(ctx, k.x, row.y, k.w, row.h, 4);
+          ctx.fill();
+
+          ctx.fillStyle = '#1E283D';
+          drawCanvasRoundedRect(ctx, k.x + 1, row.y + 1, k.w - 2, row.h - 3, 3);
+          ctx.fill();
+
+          if (k.label) {
+            ctx.fillStyle = '#94A3B8';
+            ctx.font = '9px -apple-system, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText(k.label, k.x + k.w / 2, row.y + row.h / 2 + 3);
+          }
+        });
+      } else {
+        const startX = 128;
+        const totalW = 768;
+        const gap = 8;
+        const keyW = (totalW - (row.count - 1) * gap) / row.count;
+
+        for (let c = 0; c < row.count; c++) {
+          const kx = startX + c * (keyW + gap);
+
+          ctx.fillStyle = '#151C2C';
+          drawCanvasRoundedRect(ctx, kx, row.y, keyW, row.h, 4);
+          ctx.fill();
+
+          ctx.fillStyle = '#1E283D';
+          drawCanvasRoundedRect(ctx, kx + 1, row.y + 1, keyW - 2, row.h - 3, 3);
+          ctx.fill();
+
+          if (row.labels && row.labels[c]) {
+            ctx.fillStyle = '#CBD5E1';
+            ctx.font = row.h > 30 ? 'bold 11px -apple-system, sans-serif' : '9px -apple-system, sans-serif';
+            ctx.textAlign = 'center';
+            ctx.fillText(row.labels[c], kx + keyW / 2, row.y + row.h / 2 + 4);
+          }
+        }
+      }
+    });
+
+    // Force Touch Trackpad (Large Centered Satin Glass)
+    const tpX = 352;
+    const tpY = 420;
+    const tpW = 320;
+    const tpH = 222;
+
+    ctx.fillStyle = '#CBD5E1';
+    drawCanvasRoundedRect(ctx, tpX, tpY, tpW, tpH, 10);
+    ctx.fill();
+
+    const tpGrad = ctx.createLinearGradient(tpX, tpY, tpX, tpY + tpH);
+    tpGrad.addColorStop(0, 'rgba(255, 255, 255, 0.4)');
+    tpGrad.addColorStop(1, 'rgba(255, 255, 255, 0.08)');
+    ctx.fillStyle = tpGrad;
+    drawCanvasRoundedRect(ctx, tpX, tpY, tpW, tpH, 10);
+    ctx.fill();
+
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.75)';
+    ctx.lineWidth = 1.5;
+    drawCanvasRoundedRect(ctx, tpX, tpY, tpW, tpH, 10);
+    ctx.stroke();
+
+    // Front Edge Opening Notch
+    ctx.fillStyle = '#94A3B8';
+    drawCanvasRoundedRect(ctx, 436, 664, 152, 16, 6);
+    ctx.fill();
+
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.anisotropy = 4;
+    return texture;
+  }
+
+
   // B. Flutter Mobile App Screen (512 x 1024)
   function createIPhoneScreenTexture() {
     const canvas = document.createElement('canvas');
@@ -271,7 +421,7 @@
     // Dynamic Island
     ctx.fillStyle = '#000000';
     ctx.beginPath();
-    ctx.roundRect(176, 18, 160, 36, 18);
+    drawCanvasRoundedRect(ctx, 176, 18, 160, 36, 18);
     ctx.fill();
 
     // Camera Lens Dot
@@ -288,7 +438,7 @@
     ctx.strokeStyle = '#0A66C2';
     ctx.lineWidth = 1.5;
     ctx.beginPath();
-    ctx.roundRect(330, 78, 146, 32, 16);
+    drawCanvasRoundedRect(ctx, 330, 78, 146, 32, 16);
     ctx.fill(); ctx.stroke();
 
     ctx.fillStyle = '#38BDF8';
@@ -381,7 +531,7 @@
     // Home Bar
     ctx.fillStyle = '#FFFFFF';
     ctx.beginPath();
-    ctx.roundRect(176, 1004, 160, 6, 3);
+    drawCanvasRoundedRect(ctx, 176, 1004, 160, 6, 3);
     ctx.fill();
 
     const texture = new THREE.CanvasTexture(canvas);
@@ -753,16 +903,8 @@
     passiveY = my * 0.08;
   }, { passive: true });
 
-  // IntersectionObserver: Pause 60 FPS WebGL render loop when scrolled off-screen to save battery & GPU
+  // High performance render flag
   let isSceneVisible = true;
-  if ('IntersectionObserver' in window) {
-    const visibilityObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        isSceneVisible = entry.isIntersecting;
-      });
-    }, { threshold: 0.05 });
-    visibilityObserver.observe(container);
-  }
 
   // Handle window blur/focus to prevent stuck drag states
   window.addEventListener('blur', () => {
@@ -777,7 +919,7 @@
 
   function animate() {
     requestAnimationFrame(animate);
-    if (!isSceneVisible) return; // Save GPU/CPU when off-screen
+    // Active frame render
     const elapsed = clock.getElapsedTime();
 
     if (!isDragging) {
@@ -818,12 +960,21 @@
 
   // Resize Handler with Debouncing
   let resizeTimer;
+  function handleResize() {
+    if (!container) return;
+    updateCameraDistance();
+    const w = container.clientWidth || 500;
+    const h = container.clientHeight || 450;
+    renderer.setSize(w, h);
+  }
+
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      if (!container) return;
-      updateCameraDistance();
-      renderer.setSize(container.clientWidth, container.clientHeight);
-    }, 100);
+    resizeTimer = setTimeout(handleResize, 100);
   });
+
+  // Ensure size is calibrated after initial reflow and window load
+  window.addEventListener('load', handleResize);
+  setTimeout(handleResize, 200);
+  setTimeout(handleResize, 600);
 })();
