@@ -251,7 +251,16 @@
       <!-- Right Column: Interactive 3D Sapphire & Diamond Scene -->
       <div class="lg:col-span-5 relative flex items-center justify-center h-[340px] sm:h-[420px] lg:h-[480px] w-full">
         <!-- 3D Canvas Mount -->
-        <div id="three-hero-container" class="absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing"></div>
+        <div id="three-hero-container" class="absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing select-none"></div>
+
+        <!-- 360° Interactive Rotation Hint -->
+        <div id="drag-360-hint" class="absolute bottom-2 left-1/2 -translate-x-1/2 px-3.5 py-1 rounded-full glass-card border border-slate-200/90 shadow-sm pointer-events-none flex items-center gap-2 transition-all duration-300 z-20">
+          <span class="w-2 h-2 rounded-full bg-[#0A66C2] animate-pulse"></span>
+          <span class="text-[10px] font-mono-luxury uppercase tracking-wider text-slate-700 font-bold flex items-center gap-1.5">
+            <i data-lucide="orbit" class="w-3.5 h-3.5 text-[#0A66C2]"></i>
+            <span>Hold & Drag 360°</span>
+          </span>
+        </div>
 
         <!-- Floating Minimal Badges -->
         <div class="absolute -top-3 -right-1 glass-card px-4 py-2.5 rounded-xl border border-slate-200/90 shadow-lg pointer-events-none hidden sm:flex items-center gap-2.5">

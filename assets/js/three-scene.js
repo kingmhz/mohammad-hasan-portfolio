@@ -436,6 +436,20 @@
   lidMesh.position.set(0, 0.91, 0);
   lidGroup.add(lidMesh);
 
+  // Reflective Silver Apple Logo on MacBook Rear Lid (Visible in 360° rotation)
+  const appleLogoGeo = new THREE.CircleGeometry(0.13, 32);
+  const appleLogoMat = new THREE.MeshStandardMaterial({
+    color: 0xFFFFFF,
+    metalness: 0.95,
+    roughness: 0.12,
+    emissive: 0x38BDF8,
+    emissiveIntensity: 0.2
+  });
+  const appleLogoMesh = new THREE.Mesh(appleLogoGeo, appleLogoMat);
+  appleLogoMesh.rotation.y = Math.PI; // faces backwards
+  appleLogoMesh.position.set(0, 0.91, -0.02);
+  lidGroup.add(appleLogoMesh);
+
   // Screen Bezel (Front Black Border)
   const bezelMat = new THREE.MeshBasicMaterial({ color: 0x050810 });
   const bezelGeo = new THREE.PlaneGeometry(2.74, 1.76);
@@ -496,6 +510,20 @@
   camMesh.position.set(-0.22, 0.72, -0.045);
   phoneGroup.add(camMesh);
 
+  // Polished Sapphire Emblem on iPhone Rear Back (Visible in 360° rotation)
+  const phoneLogoGeo = new THREE.CircleGeometry(0.08, 32);
+  const phoneLogoMat = new THREE.MeshStandardMaterial({
+    color: 0x38BDF8,
+    metalness: 0.94,
+    roughness: 0.12,
+    emissive: 0x0A66C2,
+    emissiveIntensity: 0.25
+  });
+  const phoneLogoMesh = new THREE.Mesh(phoneLogoGeo, phoneLogoMat);
+  phoneLogoMesh.rotation.y = Math.PI; // faces backwards
+  phoneLogoMesh.position.set(0, 0, -0.048);
+  phoneGroup.add(phoneLogoMesh);
+
   // 3 Camera Lenses
   const lensGeo = new THREE.CylinderGeometry(0.065, 0.065, 0.02, 16);
   const lensMat = new THREE.MeshStandardMaterial({ color: 0x050810, metalness: 0.95, roughness: 0.1 });
@@ -543,44 +571,141 @@
   cyanFill.position.set(3, -2, 4);
   scene.add(cyanFill);
 
-  // =========================================================================
-  // 5. MOUSE PARALLAX & SMOOTH FLOATING ANIMATION
-  // =========================================================================
-  let targetX = 0;
-  let targetY = 0;
-  let currentX = 0;
-  let currentY = 0;
+  // Studio Back Lighting for 360° Inspection (Illuminates rear aluminum & camera bump)
+  const backStudioLight = new THREE.DirectionalLight(0xFFFFFF, 1.3);
+  backStudioLight.position.set(-3, 4, -6);
+  scene.add(backStudioLight);
 
-  window.addEventListener('mousemove', (e) => {
-    const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
-    const mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
-    targetX = mouseX * 0.22;
-    targetY = mouseY * 0.22;
-  }, { passive: true });
+  const backSapphireRim = new THREE.PointLight(0x0A66C2, 2.8, 12);
+  backSapphireRim.position.set(3, 1, -4);
+  scene.add(backSapphireRim);
 
-  window.addEventListener('touchmove', (e) => {
-    if (e.touches && e.touches.length > 0) {
-      const touchX = (e.touches[0].clientX / window.innerWidth) * 2 - 1;
-      const touchY = -(e.touches[0].clientY / window.innerHeight) * 2 + 1;
-      targetX = touchX * 0.12;
-      targetY = touchY * 0.12;
+  // =========================================================================
+  // 5. 360° INTERACTIVE CURSOR & TOUCH HOLD-AND-DRAG ORBIT RIG WITH INERTIA
+  // =========================================================================
+  let isDragging = false;
+  let prevPointerX = 0;
+  let prevPointerY = 0;
+  let velocityX = 0;
+  let velocityY = 0;
+
+  // Base rotation angles
+  let targetRotY = -0.22;
+  let targetRotX = 0.14;
+  let currentRotY = -0.22;
+  let currentRotX = 0.14;
+
+  const dragHint = document.getElementById('drag-360-hint');
+  const canvasElement = renderer.domElement;
+  canvasElement.style.touchAction = 'none'; // Enables 360 touch drag without scrolling page
+
+  // Pointer Down (Mouse Click or Touch Hold)
+  function onPointerDown(e) {
+    isDragging = true;
+    prevPointerX = e.clientX;
+    prevPointerY = e.clientY;
+    velocityX = 0;
+    velocityY = 0;
+
+    container.style.cursor = 'grabbing';
+    document.body.style.cursor = 'grabbing';
+    document.body.classList.add('select-none');
+
+    try {
+      canvasElement.setPointerCapture(e.pointerId);
+    } catch (err) {}
+
+    if (dragHint) {
+      dragHint.style.opacity = '0.35';
     }
+  }
+
+  // Pointer Move (Active Dragging in 360°)
+  function onPointerMove(e) {
+    if (!isDragging) return;
+
+    const deltaX = e.clientX - prevPointerX;
+    const deltaY = e.clientY - prevPointerY;
+
+    // Direct 360° rotational sensitivity
+    const rotSpeed = 0.007;
+    targetRotY += deltaX * rotSpeed;
+    targetRotX += deltaY * rotSpeed;
+
+    // Track instant velocity for smooth flick momentum/inertia
+    velocityX = deltaX * rotSpeed;
+    velocityY = deltaY * rotSpeed;
+
+    // Clamp pitch (X-axis) between -80° and +80° so devices stay upright
+    targetRotX = Math.max(-Math.PI * 0.44, Math.min(Math.PI * 0.44, targetRotX));
+
+    prevPointerX = e.clientX;
+    prevPointerY = e.clientY;
+  }
+
+  // Pointer Up / Cancel (Release Hold)
+  function onPointerUp(e) {
+    if (!isDragging) return;
+    isDragging = false;
+
+    container.style.cursor = 'grab';
+    document.body.style.cursor = '';
+    document.body.classList.remove('select-none');
+
+    try {
+      canvasElement.releasePointerCapture(e.pointerId);
+    } catch (err) {}
+  }
+
+  canvasElement.addEventListener('pointerdown', onPointerDown);
+  window.addEventListener('pointermove', onPointerMove, { passive: true });
+  window.addEventListener('pointerup', onPointerUp);
+  window.addEventListener('pointercancel', onPointerUp);
+
+  // Subtle Mouse Parallax Influence When Idle
+  let passiveX = 0;
+  let passiveY = 0;
+  window.addEventListener('mousemove', (e) => {
+    if (isDragging) return;
+    const mx = (e.clientX / window.innerWidth) * 2 - 1;
+    const my = -(e.clientY / window.innerHeight) * 2 + 1;
+    passiveX = mx * 0.08;
+    passiveY = my * 0.08;
   }, { passive: true });
 
+  // 60 FPS Render Loop with Silky Momentum & Out-of-Phase Levitation
   const clock = new THREE.Clock();
 
   function animate() {
     requestAnimationFrame(animate);
     const elapsed = clock.getElapsedTime();
 
-    // Smooth Weighted Parallax
-    currentX += (targetX - currentX) * 0.045;
-    currentY += (targetY - currentY) * 0.045;
+    if (!isDragging) {
+      // Apply flick inertia / momentum
+      targetRotY += velocityX;
+      targetRotX += velocityY;
 
-    masterRig.rotation.y = -0.22 + currentX;
-    masterRig.rotation.x = 0.14 - currentY;
+      // Friction damping deceleration
+      velocityX *= 0.935;
+      velocityY *= 0.935;
 
-    // Gentle Independent Floating Breathing (Never intersecting!)
+      // Gentle ambient 360° drift when at rest
+      if (Math.abs(velocityX) < 0.0001 && Math.abs(velocityY) < 0.0001) {
+        targetRotY += 0.0012;
+      }
+    }
+
+    // Keep pitch within comfortable viewing bounds
+    targetRotX = Math.max(-Math.PI * 0.44, Math.min(Math.PI * 0.44, targetRotX));
+
+    // Smooth weighted interpolation (lerp)
+    currentRotY += (targetRotY + (!isDragging ? passiveX : 0) - currentRotY) * 0.085;
+    currentRotX += (targetRotX + (!isDragging ? -passiveY : 0) - currentRotX) * 0.085;
+
+    masterRig.rotation.y = currentRotY;
+    masterRig.rotation.x = currentRotX;
+
+    // Gentle Independent Floating Levitation (Always perfectly separated!)
     macGroup.position.y = -0.15 + Math.sin(elapsed * 1.0) * 0.045;
     macGroup.rotation.z = Math.sin(elapsed * 0.7) * 0.01;
 
