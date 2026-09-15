@@ -162,26 +162,38 @@
             </div>
           </div>
 
-          <!-- Interactive Quick Slots (Executive Dark Tokens) -->
-          <div class="grid grid-cols-3 gap-2.5 relative z-10" id="hero-slot-list">
-            <button type="button" class="deck-slot-pill slot-pill active p-3 rounded-xl text-left flex flex-col justify-between" data-slot="Thu, Sep 17 · 2:00 PM EST">
-              <div class="flex items-center justify-between w-full">
-                <span class="text-[10px] uppercase font-mono-luxury text-[#38BDF8] font-bold">Thu, Sep 17</span>
-                <span class="w-1.5 h-1.5 rounded-full bg-[#38BDF8] inline-block"></span>
+          <!-- Interactive Date & Time Selector Strip (Opens Pop-up Modal) -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 relative z-10">
+            <!-- Select Date Trigger -->
+            <button type="button" id="hero-pick-date-trigger" class="p-3 sm:p-3.5 rounded-xl bg-slate-900/80 border border-slate-700/80 hover:border-[#38BDF8] text-left flex items-center justify-between group transition-all cursor-pointer">
+              <div class="flex items-center gap-2.5">
+                <div class="w-7 h-7 rounded-lg bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-[#38BDF8] group-hover:scale-110 transition-transform">
+                  <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                </div>
+                <div>
+                  <div class="text-[9px] uppercase font-mono-luxury text-slate-400 font-semibold tracking-wider">Choose Date</div>
+                  <div class="text-white font-bold text-xs sm:text-sm font-sans tracking-tight" id="hero-selected-date-display">Thu, Sep 17</div>
+                </div>
               </div>
-              <span class="text-white font-bold text-xs sm:text-sm font-sans tracking-tight mt-1">2:00 PM EST</span>
+              <span class="text-[10px] text-[#38BDF8] font-mono-luxury font-semibold uppercase tracking-wider group-hover:translate-x-0.5 transition-transform flex items-center gap-0.5">
+                Select ▾
+              </span>
             </button>
-            <button type="button" class="deck-slot-pill slot-pill p-3 rounded-xl text-left flex flex-col justify-between" data-slot="Fri, Sep 18 · 10:30 AM EST">
-              <div class="flex items-center justify-between w-full">
-                <span class="text-[10px] uppercase font-mono-luxury text-slate-400 font-semibold">Fri, Sep 18</span>
+
+            <!-- Select Time Trigger -->
+            <button type="button" id="hero-pick-time-trigger" class="p-3 sm:p-3.5 rounded-xl bg-slate-900/80 border border-slate-700/80 hover:border-[#38BDF8] text-left flex items-center justify-between group transition-all cursor-pointer">
+              <div class="flex items-center gap-2.5">
+                <div class="w-7 h-7 rounded-lg bg-blue-500/15 border border-blue-500/30 flex items-center justify-center text-[#38BDF8] group-hover:scale-110 transition-transform">
+                  <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+                </div>
+                <div>
+                  <div class="text-[9px] uppercase font-mono-luxury text-slate-400 font-semibold tracking-wider">Time (12 PM – 12 AM)</div>
+                  <div class="text-white font-bold text-xs sm:text-sm font-sans tracking-tight" id="hero-selected-time-display">2:00 PM EST</div>
+                </div>
               </div>
-              <span class="text-slate-200 font-medium text-xs sm:text-sm font-sans tracking-tight mt-1">10:30 AM EST</span>
-            </button>
-            <button type="button" class="deck-slot-pill slot-pill p-3 rounded-xl text-left flex flex-col justify-between" data-slot="Mon, Sep 21 · 4:00 PM EST">
-              <div class="flex items-center justify-between w-full">
-                <span class="text-[10px] uppercase font-mono-luxury text-slate-400 font-semibold">Mon, Sep 21</span>
-              </div>
-              <span class="text-slate-200 font-medium text-xs sm:text-sm font-sans tracking-tight mt-1">4:00 PM EST</span>
+              <span class="text-[10px] text-[#38BDF8] font-mono-luxury font-semibold uppercase tracking-wider group-hover:translate-x-0.5 transition-transform flex items-center gap-0.5">
+                Slots ▾
+              </span>
             </button>
           </div>
 
@@ -193,11 +205,11 @@
               </div>
               <div class="flex flex-col text-left">
                 <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-white leading-tight" id="hero-btn-title">Schedule Direct Video Call</span>
-                <span class="text-[10px] font-mono font-medium text-white/85" id="hero-btn-slot-label">Thu, Sep 17 · 2:00 PM EST (Google Meet)</span>
+                <span class="text-[10px] font-mono font-medium text-white/85" id="hero-btn-slot-label">Thu, Sep 17 at 2:00 PM EST (Google Meet)</span>
               </div>
             </div>
             <div class="flex items-center gap-2">
-              <span class="text-[10px] font-mono-luxury uppercase tracking-widest text-white/90 hidden sm:inline-block font-bold">1-Click Reserve</span>
+              <span class="text-[10px] font-mono-luxury uppercase tracking-widest text-white/90 hidden sm:inline-block font-bold">Pick Date & Time</span>
               <i data-lucide="arrow-right" class="w-4 h-4 text-white group-hover:translate-x-1 transition-transform duration-300"></i>
             </div>
           </button>
@@ -208,7 +220,7 @@
               <i data-lucide="shield-check" class="w-3.5 h-3.5 text-[#38BDF8]"></i>
               <span>Direct with Hasan</span>
             </span>
-            <span class="hidden sm:inline text-slate-400">Auto Meet Link · NDA Ready</span>
+            <span class="hidden sm:inline text-slate-400">12 PM – 12 AM Day/Night · NDA Ready</span>
             <a href="#contact" class="text-[#38BDF8] hover:underline font-semibold flex items-center gap-0.5">Written Brief ↗</a>
           </div>
 
@@ -267,108 +279,227 @@
   </section>
 
   <!-- ==================== HAUTE LUXURY MEETING RESERVATION MODAL ==================== -->
-  <div id="meeting-modal" class="fixed inset-0 z-[100] modal-backdrop hidden flex items-center justify-center p-4 transition-all duration-300">
-    <div class="relative w-full max-w-lg glass-card rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-2xl bg-white/95 text-left space-y-6 overflow-hidden">
+  <div id="meeting-modal" class="fixed inset-0 z-[100] modal-backdrop hidden flex items-center justify-center p-3 sm:p-4 transition-all duration-300">
+    <div class="relative w-full max-w-2xl max-h-[92vh] flex flex-col glass-card rounded-2xl border border-slate-200 shadow-2xl bg-white text-left overflow-hidden">
       
       <!-- Subtle Blue Ambient Glow -->
       <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
-      <!-- Modal Header -->
-      <div class="flex items-start justify-between gap-4 relative z-10">
+      <!-- Modal Header (Fixed at top) -->
+      <div class="p-5 sm:p-6 pb-4 border-b border-slate-100 flex items-start justify-between gap-4 relative z-10 shrink-0 bg-white">
         <div>
-          <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-[10px] font-mono-luxury uppercase text-[#0A66C2] font-semibold tracking-wider mb-2">
+          <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-[10px] font-mono-luxury uppercase text-[#0A66C2] font-semibold tracking-wider mb-1.5">
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse"></span>
-            <span>Private Technical Discovery (15 Min)</span>
+            <span>Direct 1-on-1 Consultation · 15 Min</span>
           </div>
-          <h3 class="text-xl sm:text-2xl font-luxury font-bold text-slate-950">Reserve Consultation Slot</h3>
-          <p class="text-xs text-slate-500 font-light mt-1">Direct architectural sync with Mohammad Hasan over Google Meet or Zoom.</p>
+          <h3 class="text-xl sm:text-2xl font-luxury font-bold text-slate-950">Schedule at Your Convenience</h3>
+          <p class="text-xs text-slate-500 font-light mt-0.5">Pick any date and convenient time slot between 12:00 PM (Midday) and 12:00 AM (Midnight).</p>
         </div>
-        <button type="button" id="close-modal-btn" class="text-slate-400 hover:text-slate-700 p-1 rounded-lg hover:bg-slate-100 transition-colors" aria-label="Close Modal">
+        <button type="button" id="close-modal-btn" class="text-slate-400 hover:text-slate-700 p-2 rounded-xl hover:bg-slate-100 transition-colors cursor-pointer shrink-0" aria-label="Close Modal">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
 
-      <!-- Selected Slot Banner -->
-      <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between text-xs relative z-10">
-        <div class="flex items-center gap-2.5">
-          <div class="w-7 h-7 rounded-lg bg-blue-50 text-[#0A66C2] flex items-center justify-center">
-            <i data-lucide="clock" class="w-3.5 h-3.5"></i>
+      <!-- Modal Scrollable Content Body -->
+      <div class="p-5 sm:p-6 space-y-5 overflow-y-auto relative z-10 flex-1">
+        
+        <!-- STEP 1: SELECT DATE -->
+        <div class="space-y-2.5">
+          <div class="flex items-center justify-between">
+            <label class="text-[11px] font-mono-luxury uppercase tracking-wider text-slate-700 font-bold flex items-center gap-1.5">
+              <i data-lucide="calendar" class="w-3.5 h-3.5 text-[#0A66C2]"></i>
+              <span>1. Choose Meeting Date</span>
+            </label>
+            <span class="text-[10px] font-mono text-slate-500">Mon–Sat Available</span>
           </div>
-          <div>
-            <div class="text-[10px] uppercase font-mono-luxury text-slate-500">Selected Slot</div>
-            <div class="text-slate-950 font-bold text-xs font-mono" id="modal-slot-display">Thu, Sep 17 · 2:00 PM EST</div>
+
+          <!-- Quick Date Strip (Upcoming Days) -->
+          <div class="grid grid-cols-3 sm:grid-cols-6 gap-2" id="modal-date-strip">
+            <!-- Dynamically populated via JS with day of week + date number -->
+          </div>
+
+          <!-- Custom Date Picker Option -->
+          <div class="pt-1 flex flex-wrap items-center justify-between gap-2 text-xs">
+            <span class="text-slate-500 text-[11px]">Or choose any date from calendar:</span>
+            <input 
+              type="date" 
+              id="modal-custom-date" 
+              class="px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-800 text-xs font-mono focus:bg-white focus:outline-none focus:border-[#0A66C2] cursor-pointer"
+            >
           </div>
         </div>
-        <a href="#hero-slot-list" id="modal-change-slot" class="text-[11px] text-[#0A66C2] hover:underline uppercase font-mono-luxury font-semibold">Change Slot</a>
+
+        <!-- STEP 2: SELECT TIME SLOT (12 PM - 12 AM) -->
+        <div class="space-y-2.5 pt-2 border-t border-slate-100">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+            <label class="text-[11px] font-mono-luxury uppercase tracking-wider text-slate-700 font-bold flex items-center gap-1.5">
+              <i data-lucide="clock" class="w-3.5 h-3.5 text-[#0A66C2]"></i>
+              <span>2. Choose Time Slot (12:00 PM – 12:00 AM)</span>
+            </label>
+            <span class="text-[10px] font-mono text-[#0A66C2] font-semibold bg-blue-50 px-2 py-0.5 rounded-md border border-blue-200/60">
+              ⚡ Available Day to Night (12 PM – 12 AM)
+            </span>
+          </div>
+
+          <!-- Time Period Filters -->
+          <div class="flex flex-wrap items-center gap-1 p-1 bg-slate-100 rounded-xl text-[11px] font-mono-luxury font-semibold">
+            <button type="button" class="time-filter-btn active px-3 py-1 rounded-lg bg-white text-[#0A66C2] shadow-xs transition-all" data-period="all">All Hours</button>
+            <button type="button" class="time-filter-btn px-3 py-1 rounded-lg text-slate-600 hover:text-slate-950 transition-all" data-period="afternoon">☀️ Afternoon (12–5 PM)</button>
+            <button type="button" class="time-filter-btn px-3 py-1 rounded-lg text-slate-600 hover:text-slate-950 transition-all" data-period="evening">🌆 Evening (5–9 PM)</button>
+            <button type="button" class="time-filter-btn px-3 py-1 rounded-lg text-slate-600 hover:text-slate-950 transition-all" data-period="night">🌙 Night (9–12 AM)</button>
+          </div>
+
+          <!-- Time Slot Grid -->
+          <div class="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-2 max-h-44 overflow-y-auto p-1 border border-slate-100 rounded-xl bg-slate-50/50" id="modal-time-grid">
+            <!-- Dynamically populated via JS with slots from 12:00 PM to 12:00 AM -->
+          </div>
+
+          <!-- Timezone & Custom Time Precision -->
+          <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-2 text-xs">
+            <div class="flex items-center gap-2">
+              <span class="text-slate-500 text-[11px] whitespace-nowrap font-mono">Your Timezone:</span>
+              <select id="modal-timezone-select" class="px-2.5 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-800 text-xs font-mono focus:bg-white focus:outline-none focus:border-[#0A66C2] cursor-pointer">
+                <option value="EST">EST (US Eastern - New York)</option>
+                <option value="PST">PST (US Pacific - San Francisco)</option>
+                <option value="CST">CST (US Central - Chicago)</option>
+                <option value="GMT">GMT / BST (London / UK)</option>
+                <option value="CET">CET (Paris / Berlin / Europe)</option>
+                <option value="GST">GST (Dubai / UAE)</option>
+                <option value="PKT">PKT (Pakistan Standard Time)</option>
+                <option value="IST">IST (India Standard Time)</option>
+                <option value="SGT">SGT (Singapore / Asia)</option>
+              </select>
+            </div>
+            
+            <div class="flex items-center gap-2">
+              <span class="text-slate-500 text-[11px] whitespace-nowrap font-mono">Or exact custom time:</span>
+              <input 
+                type="time" 
+                id="modal-custom-time" 
+                min="12:00" 
+                max="23:59" 
+                class="px-2.5 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-800 text-xs font-mono focus:bg-white focus:outline-none focus:border-[#0A66C2]"
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3: PLATFORM SELECTOR -->
+        <div class="space-y-2 pt-2 border-t border-slate-100">
+          <label class="text-[11px] font-mono-luxury uppercase tracking-wider text-slate-700 font-bold flex items-center gap-1.5">
+            <i data-lucide="video" class="w-3.5 h-3.5 text-[#0A66C2]"></i>
+            <span>3. Video Call Platform</span>
+          </label>
+          <div class="grid grid-cols-2 gap-2.5">
+            <button type="button" class="modal-platform-choice active p-3 rounded-xl border border-[#0A66C2] bg-blue-50/70 text-slate-900 flex items-center justify-between transition-all cursor-pointer" data-platform="Google Meet">
+              <div class="flex items-center gap-2">
+                <i data-lucide="video" class="w-4 h-4 text-[#0A66C2]"></i>
+                <div class="text-left">
+                  <div class="text-xs font-bold font-sans">Google Meet</div>
+                  <div class="text-[10px] text-slate-500 font-mono">Instant meeting link in invite</div>
+                </div>
+              </div>
+              <span class="w-2 h-2 rounded-full bg-[#0A66C2]"></span>
+            </button>
+
+            <button type="button" class="modal-platform-choice p-3 rounded-xl border border-slate-200 bg-slate-50 text-slate-700 hover:border-slate-300 flex items-center justify-between transition-all cursor-pointer" data-platform="Zoom">
+              <div class="flex items-center gap-2">
+                <i data-lucide="monitor" class="w-4 h-4 text-slate-500"></i>
+                <div class="text-left">
+                  <div class="text-xs font-bold font-sans">Zoom Meeting</div>
+                  <div class="text-[10px] text-slate-500 font-mono">Dedicated Zoom room</div>
+                </div>
+              </div>
+              <span class="w-2 h-2 rounded-full bg-transparent border border-slate-300"></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- STEP 4: CLIENT DETAILS FORM -->
+        <form id="meeting-form" class="space-y-4 pt-2 border-t border-slate-100" novalidate>
+          <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off">
+          <input type="hidden" name="meetingSlot" id="modal-hidden-slot" value="">
+          <input type="hidden" name="platform" id="modal-hidden-platform" value="Google Meet">
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div class="space-y-1">
+              <label for="modal-name" class="block text-[11px] font-mono-luxury uppercase tracking-wider text-slate-600 font-medium">
+                Your Name / Company <span class="text-[#0A66C2] font-bold">*</span>
+              </label>
+              <input 
+                type="text" 
+                id="modal-name" 
+                name="name" 
+                required 
+                placeholder="e.g. Julian Vance, Founder"
+                class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder:text-slate-400 text-xs font-light focus:bg-white focus:outline-none focus:border-[#0A66C2] focus:ring-1 focus:ring-[#0A66C2]/30 transition-all"
+              >
+            </div>
+
+            <div class="space-y-1">
+              <label for="modal-email" class="block text-[11px] font-mono-luxury uppercase tracking-wider text-slate-600 font-medium">
+                Work or Personal Email <span class="text-[#0A66C2] font-bold">*</span>
+              </label>
+              <input 
+                type="email" 
+                id="modal-email" 
+                name="email" 
+                required 
+                placeholder="julian@venture.com"
+                class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder:text-slate-400 text-xs font-light focus:bg-white focus:outline-none focus:border-[#0A66C2] focus:ring-1 focus:ring-[#0A66C2]/30 transition-all"
+              >
+            </div>
+          </div>
+
+          <div class="space-y-1">
+            <label for="modal-topic" class="block text-[11px] font-mono-luxury uppercase tracking-wider text-slate-600 font-medium">
+              Primary Agenda / Scope
+            </label>
+            <select 
+              id="modal-topic" 
+              name="projectType"
+              class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs font-light focus:bg-white focus:outline-none focus:border-[#0A66C2] transition-all cursor-pointer"
+            >
+              <option value="Next.js SaaS MVP / Web Architecture">Next.js SaaS MVP / Web Architecture</option>
+              <option value="Cross-Platform Flutter Mobile Application">Cross-Platform Flutter Mobile Application</option>
+              <option value="Bespoke Luxury 3D Web Experience">Bespoke Luxury 3D Web Experience</option>
+              <option value="Technical Code Audit / Agency Partner">Technical Code Audit / Agency Partner</option>
+            </select>
+          </div>
+
+          <!-- Dynamic Live Booking Preview Banner -->
+          <div class="p-3.5 rounded-xl bg-blue-50/80 border border-blue-200/90 flex items-center justify-between text-xs">
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-lg bg-[#0A66C2] text-white flex items-center justify-center shrink-0 shadow-xs">
+                <i data-lucide="check" class="w-4 h-4"></i>
+              </div>
+              <div>
+                <div class="text-[9px] uppercase font-mono-luxury text-slate-500 font-semibold">Your Selected Consultation</div>
+                <div class="text-slate-950 font-bold text-xs font-mono" id="modal-summary-slot">Thu, Sep 17 · 2:00 PM EST (Google Meet)</div>
+              </div>
+            </div>
+            <span class="text-[10px] uppercase font-mono-luxury text-[#0A66C2] font-bold">15-Min Sync</span>
+          </div>
+
+          <!-- Feedback Container -->
+          <div id="modal-feedback" class="hidden text-xs p-3 rounded-xl transition-all"></div>
+
+          <!-- Confirm Submit Button -->
+          <button 
+            type="submit" 
+            id="modal-submit-btn" 
+            class="btn-catchy-blue w-full py-3.5 rounded-xl text-xs uppercase tracking-wider font-bold flex items-center justify-center gap-2 cursor-pointer shadow-xl transition-all text-white"
+          >
+            <span id="modal-btn-text">Confirm & Reserve Video Call</span>
+            <i data-lucide="arrow-right" class="w-4 h-4 text-white"></i>
+          </button>
+
+          <div class="text-[10px] text-center text-slate-500 font-mono">
+            Direct sync with Mohammad Hasan · Calendar invite with link dispatched instantly upon booking.
+          </div>
+        </form>
+
       </div>
-
-      <!-- Reservation Form -->
-      <form id="meeting-form" class="space-y-4 relative z-10" novalidate>
-        <input type="text" name="_gotcha" class="hidden" tabindex="-1" autocomplete="off">
-        <input type="hidden" name="meetingSlot" id="modal-hidden-slot" value="Thu, Sep 17 · 2:00 PM EST">
-        <input type="hidden" name="platform" id="modal-hidden-platform" value="Google Meet">
-
-        <div class="space-y-1.5">
-          <label for="modal-name" class="block text-[11px] font-mono-luxury uppercase tracking-wider text-slate-600 font-medium">
-            Your Name / Company <span class="text-[#0A66C2] font-bold">*</span>
-          </label>
-          <input 
-            type="text" 
-            id="modal-name" 
-            name="name" 
-            required 
-            placeholder="e.g. Julian Vance, Founder"
-            class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder:text-slate-400 text-xs font-light focus:bg-white focus:outline-none focus:border-[#0A66C2] focus:ring-1 focus:ring-[#0A66C2]/30 transition-all"
-          >
-        </div>
-
-        <div class="space-y-1.5">
-          <label for="modal-email" class="block text-[11px] font-mono-luxury uppercase tracking-wider text-slate-600 font-medium">
-            Work or Personal Email <span class="text-[#0A66C2] font-bold">*</span>
-          </label>
-          <input 
-            type="email" 
-            id="modal-email" 
-            name="email" 
-            required 
-            placeholder="julian@venture.com"
-            class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder:text-slate-400 text-xs font-light focus:bg-white focus:outline-none focus:border-[#0A66C2] focus:ring-1 focus:ring-[#0A66C2]/30 transition-all"
-          >
-        </div>
-
-        <div class="space-y-1.5">
-          <label for="modal-topic" class="block text-[11px] font-mono-luxury uppercase tracking-wider text-slate-600 font-medium">
-            Primary Agenda / Scope
-          </label>
-          <select 
-            id="modal-topic" 
-            name="projectType"
-            class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs font-light focus:bg-white focus:outline-none focus:border-[#0A66C2] transition-all cursor-pointer"
-          >
-            <option value="Next.js SaaS MVP / Web Architecture">Next.js SaaS MVP / Web Architecture</option>
-            <option value="Cross-Platform Flutter Mobile Application">Cross-Platform Flutter Mobile Application</option>
-            <option value="Bespoke Luxury 3D Web Experience">Bespoke Luxury 3D Web Experience</option>
-            <option value="Technical Code Audit / Agency Partner">Technical Code Audit / Agency Partner</option>
-          </select>
-        </div>
-
-        <!-- Feedback Container -->
-        <div id="modal-feedback" class="hidden text-xs p-3 rounded-xl transition-all"></div>
-
-        <!-- Confirm Button -->
-        <button 
-          type="submit" 
-          id="modal-submit-btn" 
-          class="btn-catchy-blue w-full py-3.5 rounded-xl text-xs uppercase tracking-wider font-bold flex items-center justify-center gap-2 cursor-pointer shadow-xl transition-all text-white"
-        >
-          <span id="modal-btn-text">Confirm 15-Min Meeting</span>
-          <i data-lucide="check-circle" class="w-4 h-4 text-white"></i>
-        </button>
-
-        <div class="text-[10px] text-center text-slate-500 font-mono">
-          Calendar invite + Google Meet link dispatched instantly upon submission.
-        </div>
-      </form>
     </div>
   </div>
 

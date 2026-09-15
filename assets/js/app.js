@@ -127,137 +127,320 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 5. Direct Video Call Scheduler (Google Meet / Zoom)
-  const slotPills = document.querySelectorAll('.slot-pill');
-  const platformToggles = document.querySelectorAll('.platform-toggle');
+  // 5. Direct Video Call Scheduler & Interactive Date/Time Modal
+  // Clients can pick ANY date and ANY time from 12:00 PM (Midday) to 12:00 AM (Midnight) Day/Night
+  const heroPickDateTrigger = document.getElementById('hero-pick-date-trigger');
+  const heroPickTimeTrigger = document.getElementById('hero-pick-time-trigger');
+  const heroDateDisplay = document.getElementById('hero-selected-date-display');
+  const heroTimeDisplay = document.getElementById('hero-selected-time-display');
   const heroBtnSlotLabel = document.getElementById('hero-btn-slot-label');
   const heroBookBtn = document.getElementById('hero-book-meeting-btn');
+  const platformToggles = document.querySelectorAll('.platform-toggle');
+
   const meetingModal = document.getElementById('meeting-modal');
   const closeModalBtn = document.getElementById('close-modal-btn');
-  const modalSlotDisplay = document.getElementById('modal-slot-display');
+  const modalDateStrip = document.getElementById('modal-date-strip');
+  const modalCustomDate = document.getElementById('modal-custom-date');
+  const modalTimeGrid = document.getElementById('modal-time-grid');
+  const timeFilterBtns = document.querySelectorAll('.time-filter-btn');
+  const modalTimezoneSelect = document.getElementById('modal-timezone-select');
+  const modalCustomTime = document.getElementById('modal-custom-time');
+  const modalPlatformChoices = document.querySelectorAll('.modal-platform-choice');
+  const modalSummarySlot = document.getElementById('modal-summary-slot');
   const modalHiddenSlot = document.getElementById('modal-hidden-slot');
   const modalHiddenPlatform = document.getElementById('modal-hidden-platform');
-  const modalChangeSlot = document.getElementById('modal-change-slot');
 
-  let selectedSlot = 'Thu, Sep 17 · 2:00 PM EST';
-  let selectedPlatform = 'Google Meet';
+  // Available Time Slots: Strictly from 12:00 PM (Noon) to 12:00 AM (Midnight)
+  const timeSlots = [
+    // ☀️ Afternoon (12:00 PM - 5:00 PM)
+    { time: '12:00 PM', period: 'afternoon' },
+    { time: '12:30 PM', period: 'afternoon' },
+    { time: '1:00 PM', period: 'afternoon' },
+    { time: '1:30 PM', period: 'afternoon' },
+    { time: '2:00 PM', period: 'afternoon' },
+    { time: '2:30 PM', period: 'afternoon' },
+    { time: '3:00 PM', period: 'afternoon' },
+    { time: '3:30 PM', period: 'afternoon' },
+    { time: '4:00 PM', period: 'afternoon' },
+    { time: '4:30 PM', period: 'afternoon' },
+    // 🌆 Evening (5:00 PM - 9:00 PM)
+    { time: '5:00 PM', period: 'evening' },
+    { time: '5:30 PM', period: 'evening' },
+    { time: '6:00 PM', period: 'evening' },
+    { time: '6:30 PM', period: 'evening' },
+    { time: '7:00 PM', period: 'evening' },
+    { time: '7:30 PM', period: 'evening' },
+    { time: '8:00 PM', period: 'evening' },
+    { time: '8:30 PM', period: 'evening' },
+    // 🌙 Night (9:00 PM - 12:00 AM)
+    { time: '9:00 PM', period: 'night' },
+    { time: '9:30 PM', period: 'night' },
+    { time: '10:00 PM', period: 'night' },
+    { time: '10:30 PM', period: 'night' },
+    { time: '11:00 PM', period: 'night' },
+    { time: '11:30 PM', period: 'night' },
+    { time: '12:00 AM', period: 'night' }
+  ];
 
-  // Compute realistic upcoming business day slots
-  function generateUpcomingSlots() {
+  // Helper to compute next 6 available business days (skipping Sundays)
+  function getUpcomingDays() {
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    const times = ['2:00 PM EST', '10:30 AM EST', '4:00 PM EST'];
+    const list = [];
+    const now = new Date();
+    let offset = now.getHours() >= 20 ? 1 : 0;
     
-    let current = new Date();
-    let slotData = [];
-    let added = 0;
-    
-    for (let i = 1; i <= 10 && added < 3; i++) {
-      let d = new Date();
-      d.setDate(current.getDate() + i);
-      let dayOfWeek = d.getDay();
-      if (dayOfWeek !== 0 && dayOfWeek !== 6) { // Skip weekends
-        let formatted = `${days[dayOfWeek]}, ${months[d.getMonth()]} ${d.getDate()} · ${times[added]}`;
-        slotData.push({
-          day: `${days[dayOfWeek]}, ${months[d.getMonth()]} ${d.getDate()}`,
-          time: times[added],
-          full: formatted
+    for (let i = offset; list.length < 6; i++) {
+      const cur = new Date();
+      cur.setDate(now.getDate() + i);
+      const dow = cur.getDay();
+      if (dow !== 0) { // Skip Sundays
+        list.push({
+          dayName: days[dow],
+          monthName: months[cur.getMonth()],
+          dayNum: cur.getDate(),
+          year: cur.getFullYear(),
+          short: `${days[dow]}, ${months[cur.getMonth()]} ${cur.getDate()}`,
+          full: `${days[dow]}, ${months[cur.getMonth()]} ${cur.getDate()}, ${cur.getFullYear()}`,
+          iso: cur.toISOString().split('T')[0]
         });
-        added++;
       }
     }
-    return slotData;
+    return list;
   }
 
-  const liveSlots = generateUpcomingSlots();
-  if (slotPills && slotPills.length >= 3 && liveSlots.length >= 3) {
-    slotPills.forEach((pill, idx) => {
-      const s = liveSlots[idx];
-      pill.setAttribute('data-slot', s.full);
-      pill.innerHTML = `
-        <div class="flex items-center justify-between w-full">
-          <span class="text-[10px] uppercase font-mono-luxury ${idx === 0 ? 'text-[#38BDF8] font-bold' : 'text-slate-400 font-semibold'}">${s.day}</span>
-          ${idx === 0 ? '<span class="w-1.5 h-1.5 rounded-full bg-[#38BDF8] inline-block"></span>' : ''}
-        </div>
-        <span class="${idx === 0 ? 'text-white font-bold' : 'text-slate-200 font-medium'} text-xs sm:text-sm font-sans tracking-tight mt-1">${s.time}</span>
+  const upcomingDays = getUpcomingDays();
+
+  // State Management
+  let selectedDate = upcomingDays.length > 1 ? upcomingDays[1] : upcomingDays[0]; // Default to tomorrow/next available day
+  let selectedTime = '2:00 PM';
+  let selectedTimezone = 'EST';
+  let selectedPlatform = 'Google Meet';
+
+  // Render Date Strip in Modal
+  function renderDateStrip() {
+    if (!modalDateStrip) return;
+    modalDateStrip.innerHTML = '';
+
+    upcomingDays.forEach((d) => {
+      const isSelected = selectedDate.iso === d.iso;
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = `p-2.5 rounded-xl border text-center transition-all cursor-pointer ${
+        isSelected 
+          ? 'border-[#0A66C2] bg-blue-50 text-[#0A66C2] font-bold shadow-xs' 
+          : 'border-slate-200 bg-slate-50 text-slate-700 hover:border-slate-300 hover:bg-white'
+      }`;
+      btn.innerHTML = `
+        <div class="text-[10px] font-mono-luxury uppercase ${isSelected ? 'text-[#0A66C2]' : 'text-slate-400'}">${d.dayName}</div>
+        <div class="text-sm font-bold font-sans mt-0.5 ${isSelected ? 'text-slate-950' : 'text-slate-800'}">${d.dayNum}</div>
+        <div class="text-[9px] font-mono uppercase ${isSelected ? 'text-[#0A66C2]' : 'text-slate-400'}">${d.monthName}</div>
       `;
+
+      btn.addEventListener('click', () => {
+        selectedDate = d;
+        if (modalCustomDate) modalCustomDate.value = d.iso;
+        renderDateStrip();
+        updateAllDisplays();
+      });
+
+      modalDateStrip.appendChild(btn);
     });
-    selectedSlot = liveSlots[0].full;
-    updateHeroBtnLabel();
+
+    if (modalCustomDate) {
+      modalCustomDate.min = upcomingDays[0].iso;
+      if (!modalCustomDate.value) modalCustomDate.value = selectedDate.iso;
+    }
   }
 
-  function updateHeroBtnLabel() {
-    if (heroBtnSlotLabel) {
-      heroBtnSlotLabel.textContent = `${selectedSlot} (${selectedPlatform})`;
-    }
-    if (modalSlotDisplay) {
-      modalSlotDisplay.textContent = `${selectedSlot} · ${selectedPlatform}`;
-    }
-    if (modalHiddenSlot) modalHiddenSlot.value = selectedSlot;
+  if (modalCustomDate) {
+    modalCustomDate.addEventListener('change', (e) => {
+      const val = e.target.value;
+      if (!val) return;
+      const parts = val.split('-');
+      const d = new Date(parts[0], parts[1] - 1, parts[2]);
+      const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+      const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      selectedDate = {
+        dayName: days[d.getDay()],
+        monthName: months[d.getMonth()],
+        dayNum: d.getDate(),
+        year: d.getFullYear(),
+        short: `${days[d.getDay()]}, ${months[d.getMonth()]} ${d.getDate()}`,
+        full: `${days[d.getDay()]}, ${months[d.getMonth()]} ${d.getDate()}, ${d.getFullYear()}`,
+        iso: val
+      };
+      renderDateStrip();
+      updateAllDisplays();
+    });
+  }
+
+  // Render Time Slots Grid
+  let activePeriod = 'all';
+
+  function renderTimeSlots() {
+    if (!modalTimeGrid) return;
+    modalTimeGrid.innerHTML = '';
+
+    const filtered = activePeriod === 'all' 
+      ? timeSlots 
+      : timeSlots.filter(s => s.period === activePeriod);
+
+    filtered.forEach(s => {
+      const isSelected = selectedTime === s.time;
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = `py-2 px-2.5 rounded-xl text-xs font-mono transition-all text-center cursor-pointer border ${
+        isSelected 
+          ? 'border-[#0A66C2] bg-[#0A66C2] text-white font-bold shadow-sm ring-2 ring-[#0A66C2]/20' 
+          : 'border-slate-200 bg-white text-slate-700 hover:border-blue-300 hover:text-[#0A66C2]'
+      }`;
+      btn.textContent = s.time;
+
+      btn.addEventListener('click', () => {
+        selectedTime = s.time;
+        if (modalCustomTime) modalCustomTime.value = '';
+        renderTimeSlots();
+        updateAllDisplays();
+      });
+
+      modalTimeGrid.appendChild(btn);
+    });
+  }
+
+  // Time Period Tab Handlers
+  timeFilterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      timeFilterBtns.forEach(b => {
+        b.classList.remove('active', 'bg-white', 'text-[#0A66C2]', 'shadow-xs');
+        b.classList.add('text-slate-600');
+      });
+      btn.classList.add('active', 'bg-white', 'text-[#0A66C2]', 'shadow-xs');
+      btn.classList.remove('text-slate-600');
+      activePeriod = btn.getAttribute('data-period') || 'all';
+      renderTimeSlots();
+    });
+  });
+
+  // Timezone Dropdown Handler
+  if (modalTimezoneSelect) {
+    modalTimezoneSelect.addEventListener('change', (e) => {
+      selectedTimezone = e.target.value;
+      updateAllDisplays();
+    });
+  }
+
+  // Custom Time Input Handler (Enforcing 12:00 PM to 12:00 AM)
+  if (modalCustomTime) {
+    modalCustomTime.addEventListener('change', (e) => {
+      const val = e.target.value;
+      if (!val) return;
+      const [hStr, mStr] = val.split(':');
+      let h = parseInt(hStr, 10);
+      const m = mStr;
+
+      // Validate not before 12:00 (midday)
+      if (h < 12) {
+        showModalFeedback('Please select a time between 12:00 PM (Midday) and 12:00 AM (Midnight).', 'error');
+        modalCustomTime.value = '12:00';
+        h = 12;
+      }
+
+      let ampm = 'PM';
+      let displayH = h;
+      if (h === 12) {
+        ampm = 'PM';
+      } else if (h === 24 || h === 0) {
+        displayH = 12;
+        ampm = 'AM';
+      } else if (h > 12) {
+        displayH = h - 12;
+        ampm = 'PM';
+      }
+
+      selectedTime = `${displayH}:${m} ${ampm}`;
+      renderTimeSlots();
+      updateAllDisplays();
+    });
+  }
+
+  // Synchronize Platform Selectors
+  function setPlatform(platform) {
+    selectedPlatform = platform;
+    
+    // Update Hero Platform Toggles
+    platformToggles.forEach(t => {
+      if (t.getAttribute('data-platform') === platform) {
+        t.classList.add('active', 'bg-[#0A66C2]', 'text-white', 'font-semibold');
+        t.classList.remove('text-slate-400', 'font-medium');
+      } else {
+        t.classList.remove('active', 'bg-[#0A66C2]', 'text-white', 'font-semibold');
+        t.classList.add('text-slate-400', 'font-medium');
+      }
+    });
+
+    // Update Modal Platform Choices
+    modalPlatformChoices.forEach(choice => {
+      const p = choice.getAttribute('data-platform');
+      const dot = choice.querySelector('.rounded-full');
+      if (p === platform) {
+        choice.classList.add('active', 'border-[#0A66C2]', 'bg-blue-50/70', 'text-slate-900');
+        choice.classList.remove('border-slate-200', 'bg-slate-50', 'text-slate-700');
+        if (dot) {
+          dot.className = 'w-2 h-2 rounded-full bg-[#0A66C2]';
+        }
+      } else {
+        choice.classList.remove('active', 'border-[#0A66C2]', 'bg-blue-50/70', 'text-slate-900');
+        choice.classList.add('border-slate-200', 'bg-slate-50', 'text-slate-700');
+        if (dot) {
+          dot.className = 'w-2 h-2 rounded-full bg-transparent border border-slate-300';
+        }
+      }
+    });
+
+    updateAllDisplays();
+  }
+
+  platformToggles.forEach(t => {
+    t.addEventListener('click', () => {
+      setPlatform(t.getAttribute('data-platform') || 'Google Meet');
+    });
+  });
+
+  modalPlatformChoices.forEach(choice => {
+    choice.addEventListener('click', () => {
+      setPlatform(choice.getAttribute('data-platform') || 'Google Meet');
+    });
+  });
+
+  // Centralized Display Update
+  function updateAllDisplays() {
+    const formattedSlot = `${selectedDate.full} · ${selectedTime} ${selectedTimezone}`;
+    const shortSlot = `${selectedDate.short} · ${selectedTime} ${selectedTimezone}`;
+
+    if (heroDateDisplay) heroDateDisplay.textContent = selectedDate.short;
+    if (heroTimeDisplay) heroTimeDisplay.textContent = `${selectedTime} ${selectedTimezone}`;
+    if (heroBtnSlotLabel) heroBtnSlotLabel.textContent = `${shortSlot} (${selectedPlatform})`;
+    if (modalSummarySlot) modalSummarySlot.textContent = `${shortSlot} (${selectedPlatform})`;
+    if (modalHiddenSlot) modalHiddenSlot.value = formattedSlot;
     if (modalHiddenPlatform) modalHiddenPlatform.value = selectedPlatform;
   }
 
-  // Handle Platform Toggle (Google Meet vs Zoom)
-  platformToggles.forEach(toggle => {
-    toggle.addEventListener('click', () => {
-      platformToggles.forEach(t => {
-        t.classList.remove('active', 'bg-[#0A66C2]', 'text-white', 'font-semibold');
-        t.classList.add('text-slate-400', 'font-medium');
-      });
-      toggle.classList.add('active', 'bg-[#0A66C2]', 'text-white', 'font-semibold');
-      toggle.classList.remove('text-slate-400', 'font-medium');
-      selectedPlatform = toggle.getAttribute('data-platform') || 'Google Meet';
-      updateHeroBtnLabel();
-    });
-  });
+  // Initialize Modal Dates & Time Slots
+  renderDateStrip();
+  renderTimeSlots();
+  updateAllDisplays();
 
-  slotPills.forEach(pill => {
-    pill.addEventListener('click', () => {
-      slotPills.forEach(p => {
-        p.classList.remove('active');
-        const daySpan = p.querySelector('span:first-child');
-        const timeSpan = p.querySelector('span:last-child');
-        const dotSpan = p.querySelector('.rounded-full');
-        if (daySpan) {
-          daySpan.classList.remove('text-[#38BDF8]', 'font-bold');
-          daySpan.classList.add('text-slate-400', 'font-semibold');
-        }
-        if (timeSpan) {
-          timeSpan.classList.remove('text-white', 'font-bold');
-          timeSpan.classList.add('text-slate-200', 'font-medium');
-        }
-        if (dotSpan) dotSpan.remove();
-      });
-
-      pill.classList.add('active');
-      const topDiv = pill.querySelector('div:first-child');
-      const activeDay = pill.querySelector('span:first-child');
-      const activeTime = pill.querySelector('span:last-child');
-      if (activeDay) {
-        activeDay.classList.add('text-[#38BDF8]', 'font-bold');
-        activeDay.classList.remove('text-slate-400');
-      }
-      if (topDiv && !topDiv.querySelector('.rounded-full')) {
-        const dot = document.createElement('span');
-        dot.className = 'w-1.5 h-1.5 rounded-full bg-[#38BDF8] inline-block';
-        topDiv.appendChild(dot);
-      }
-      if (activeTime) {
-        activeTime.classList.add('text-white', 'font-bold');
-        activeTime.classList.remove('text-slate-200');
-      }
-
-      selectedSlot = pill.getAttribute('data-slot');
-      updateHeroBtnLabel();
-      openModal();
-    });
-  });
-
-  function openModal() {
+  // Modal Open & Close Functions
+  function openModal(focusSection) {
     if (meetingModal) {
       meetingModal.classList.remove('hidden');
       document.body.style.overflow = 'hidden';
       if (window.lucide) window.lucide.createIcons();
+
+      if (focusSection === 'time' && modalTimeGrid) {
+        modalTimeGrid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
     }
   }
 
@@ -268,37 +451,28 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  if (heroPickDateTrigger) {
+    heroPickDateTrigger.addEventListener('click', () => openModal('date'));
+  }
+  if (heroPickTimeTrigger) {
+    heroPickTimeTrigger.addEventListener('click', () => openModal('time'));
+  }
   if (heroBookBtn) {
-    heroBookBtn.addEventListener('click', openModal);
+    heroBookBtn.addEventListener('click', () => openModal('general'));
   }
 
   const headerBookBtn = document.getElementById('header-book-call-btn');
   if (headerBookBtn) {
-    headerBookBtn.addEventListener('click', openModal);
+    headerBookBtn.addEventListener('click', () => openModal('general'));
   }
 
   const mobileBookBtn = document.getElementById('mobile-book-call-btn');
   if (mobileBookBtn) {
-    mobileBookBtn.addEventListener('click', () => {
-      const mobileMenu = document.getElementById('mobile-menu');
-      if (mobileMenu) mobileMenu.classList.add('hidden');
-      openModal();
-    });
+    mobileBookBtn.addEventListener('click', () => openModal('general'));
   }
 
   if (closeModalBtn) {
     closeModalBtn.addEventListener('click', closeModal);
-  }
-
-  if (modalChangeSlot) {
-    modalChangeSlot.addEventListener('click', (e) => {
-      e.preventDefault();
-      closeModal();
-      const slotContainer = document.getElementById('hero-slot-list');
-      if (slotContainer) {
-        slotContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      }
-    });
   }
 
   if (meetingModal) {
@@ -331,12 +505,15 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       const formData = new FormData(meetingForm);
+      const slotString = modalHiddenSlot ? modalHiddenSlot.value : `${selectedDate.full} · ${selectedTime} ${selectedTimezone}`;
+      const platformString = modalHiddenPlatform ? modalHiddenPlatform.value : selectedPlatform;
+
       const payload = {
         name: formData.get('name') ? formData.get('name').trim() : '',
         email: formData.get('email') ? formData.get('email').trim() : '',
-        projectType: formData.get('projectType') || '15-Min Technical Discovery',
-        meetingSlot: formData.get('meetingSlot') || selectedSlot,
-        platform: formData.get('platform') || selectedPlatform,
+        projectType: formData.get('projectType') || '15-Min Technical Consultation',
+        meetingSlot: slotString,
+        platform: platformString,
         _gotcha: formData.get('_gotcha')
       };
 
@@ -355,7 +532,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modalSubmitBtn.disabled = true;
         modalSubmitBtn.classList.add('opacity-75', 'cursor-not-allowed');
       }
-      if (modalBtnText) modalBtnText.textContent = 'Locking In Video Call Slot...';
+      if (modalBtnText) modalBtnText.textContent = 'Locking In Consultation Slot...';
 
       try {
         const response = await fetch('/api/contact', {
@@ -370,48 +547,48 @@ document.addEventListener('DOMContentLoaded', () => {
         const result = await response.json();
 
         if (response.ok && result.success) {
-          const meetUrl = result.data?.meetingLink || 'https://meet.google.com/new';
-          const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Video Consultation: Mohammad Hasan & ' + payload.name)}&details=${encodeURIComponent(`15-Min Video Consultation with Mohammad Hasan (Lead Consultant).\\nAgenda: ${payload.projectType}\\nJoin Video Call: ${meetUrl}`)}&location=${encodeURIComponent(meetUrl)}`;
+          const meetUrl = result.data?.meetingLink || (payload.platform === 'Zoom' ? 'https://zoom.us/join' : 'https://meet.google.com/new');
+          const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Video Consultation: Mohammad Hasan & ' + payload.name)}&details=${encodeURIComponent('15-Min Strategic Video Consultation with Mohammad Hasan (Lead Consultant).\nAgenda: ' + payload.projectType + '\nJoin Call: ' + meetUrl)}&location=${encodeURIComponent(meetUrl)}`;
 
           meetingForm.innerHTML = `
             <div class="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 text-center space-y-4 shadow-xl animate-fade-in">
-              <div class="w-12 h-12 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-600 mx-auto flex items-center justify-center">
+              <div class="w-12 h-12 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-600 mx-auto flex items-center justify-center shadow-xs">
                 <i data-lucide="video" class="w-6 h-6"></i>
               </div>
               <div class="space-y-1">
-                <div class="text-[10px] font-mono-luxury uppercase tracking-widest text-[#0A66C2] font-semibold">Video Call Scheduled · ${result.data ? result.data.reference : 'MH-EXEC'}</div>
-                <h3 class="text-xl sm:text-2xl font-luxury font-bold text-slate-950">Private Video Room Ready</h3>
+                <div class="text-[10px] font-mono-luxury uppercase tracking-widest text-[#0A66C2] font-semibold">Consultation Confirmed · ${result.data ? result.data.reference : 'MH-EXEC'}</div>
+                <h3 class="text-xl sm:text-2xl font-luxury font-bold text-slate-950">Video Meeting Scheduled</h3>
               </div>
               
-              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-mono space-y-1.5 text-left">
+              <div class="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs font-mono space-y-2 text-left">
                 <div class="flex items-center justify-between text-slate-500 text-[10px]">
                   <span>DATE & TIME</span>
-                  <span class="text-emerald-600 font-semibold">CONFIRMED</span>
+                  <span class="text-emerald-600 font-semibold uppercase">Locked In</span>
                 </div>
-                <div class="text-slate-950 font-bold text-xs">🗓️ ${escapeHtml(payload.meetingSlot)}</div>
-                <div class="text-slate-700 text-[11px] pt-1">Platform: <strong class="text-[#0A66C2]">${escapeHtml(payload.platform)}</strong></div>
-                <div class="text-slate-500 text-[10px] truncate pt-0.5">Link: <a href="${meetUrl}" target="_blank" class="text-[#0A66C2] hover:underline">${meetUrl}</a></div>
+                <div class="text-slate-950 font-bold text-sm">🗓️ ${escapeHtml(payload.meetingSlot)}</div>
+                <div class="text-slate-700 text-xs pt-1">Platform: <strong class="text-[#0A66C2]">${escapeHtml(payload.platform)}</strong></div>
+                <div class="text-slate-500 text-[11px] truncate pt-0.5">Meeting Link: <a href="${meetUrl}" target="_blank" class="text-[#0A66C2] hover:underline">${meetUrl}</a></div>
               </div>
 
-              <p class="text-xs text-slate-600 font-light max-w-sm mx-auto leading-relaxed">
-                A calendar invite with your video room link has been dispatched to <strong class="text-slate-900">${escapeHtml(payload.email)}</strong>. Mohammad Hasan has received your direct alert.
+              <p class="text-xs text-slate-600 font-light max-w-md mx-auto leading-relaxed">
+                Calendar invite and room credentials have been emailed to <strong class="text-slate-900">${escapeHtml(payload.email)}</strong>. Mohammad Hasan has received direct notification.
               </p>
 
               <!-- Actions -->
               <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-2.5">
-                <a href="${meetUrl}" target="_blank" rel="noopener noreferrer" class="btn-catchy-blue w-full sm:w-auto px-4 py-2.5 rounded-xl text-xs uppercase tracking-wider font-bold inline-flex items-center justify-center gap-2 text-white">
+                <a href="${meetUrl}" target="_blank" rel="noopener noreferrer" class="btn-catchy-blue w-full sm:w-auto px-5 py-2.5 rounded-xl text-xs uppercase tracking-wider font-bold inline-flex items-center justify-center gap-2 text-white">
                   <i data-lucide="video" class="w-3.5 h-3.5 text-white"></i>
-                  <span>Test Video Link</span>
+                  <span>Test Video Room</span>
                 </a>
-                <a href="${gCalUrl}" target="_blank" rel="noopener noreferrer" class="btn-silver w-full sm:w-auto px-4 py-2.5 rounded-xl text-xs uppercase tracking-wider font-semibold inline-flex items-center justify-center gap-2 text-slate-800">
-                  <i data-lucide="calendar-plus" class="w-3.5 h-3.5"></i>
+                <a href="${gCalUrl}" target="_blank" rel="noopener noreferrer" class="btn-silver w-full sm:w-auto px-5 py-2.5 rounded-xl text-xs uppercase tracking-wider font-semibold inline-flex items-center justify-center gap-2 text-slate-800">
+                  <i data-lucide="calendar-plus" class="w-3.5 h-3.5 text-[#0A66C2]"></i>
                   <span>Add to Google Cal</span>
                 </a>
               </div>
 
-              <div class="pt-1">
-                <button type="button" onclick="document.getElementById('meeting-modal').classList.add('hidden'); document.body.style.overflow='';" class="text-slate-500 hover:text-slate-900 text-xs font-mono uppercase tracking-wider">
-                  Dismiss Window
+              <div class="pt-2">
+                <button type="button" onclick="document.getElementById('meeting-modal').classList.add('hidden'); document.body.style.overflow='';" class="text-slate-500 hover:text-slate-900 text-xs font-mono uppercase tracking-wider cursor-pointer">
+                  Close Window
                 </button>
               </div>
             </div>
@@ -442,7 +619,7 @@ document.addEventListener('DOMContentLoaded', () => {
       modalSubmitBtn.disabled = false;
       modalSubmitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
     }
-    if (modalBtnText) modalBtnText.textContent = 'Confirm Video Call Slot';
+    if (modalBtnText) modalBtnText.textContent = 'Confirm & Reserve Video Call';
   }
 
   // 7. Interactive Luxury Brief Form Submission (Footer Section)
