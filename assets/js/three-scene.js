@@ -106,6 +106,21 @@
     ctx.fillStyle = '#10B981';
     ctx.beginPath(); ctx.arc(64, 22, 6, 0, Math.PI * 2); ctx.fill();
 
+    // MacBook Liquid Retina Camera Notch at Top Center
+    ctx.fillStyle = '#050810';
+    ctx.beginPath();
+    ctx.roundRect(476, 0, 72, 20, [0, 0, 8, 8]);
+    ctx.fill();
+
+    // Camera Sensor Lens
+    ctx.fillStyle = '#1E293B';
+    ctx.beginPath(); ctx.arc(512, 10, 4, 0, Math.PI * 2); ctx.fill();
+    ctx.fillStyle = '#050810';
+    ctx.beginPath(); ctx.arc(512, 10, 2, 0, Math.PI * 2); ctx.fill();
+    // Green Active Indicator LED
+    ctx.fillStyle = '#10B981';
+    ctx.beginPath(); ctx.arc(526, 10, 1.5, 0, Math.PI * 2); ctx.fill();
+
     // App Branding
     ctx.fillStyle = '#FFFFFF';
     ctx.font = 'bold 15px -apple-system, sans-serif';
@@ -375,114 +390,159 @@
   }
 
   // =========================================================================
-  // 2. CONSTRUCT REALISTIC MACBOOK PRO (LEFT SIDE)
+  // 2. CONSTRUCT ULTRA-REFINED MACBOOK PRO 16" (LEFT SIDE)
   // =========================================================================
   const macGroup = new THREE.Group();
-  // Distinct position separated from the phone:
+  // Guaranteed generous separation from phone (phone is at x: 1.42):
   macGroup.position.set(-0.7, -0.15, -0.2);
   masterRig.add(macGroup);
 
-  // Precision Apple Brushed Aluminum Material
+  // Precision Apple Space Gray / Silver Anodized Aluminum
   const macAluminumMat = new THREE.MeshStandardMaterial({
-    color: 0xCBD5E1,
-    metalness: 0.85,
-    roughness: 0.28
+    color: 0xD1D5DB,
+    metalness: 0.88,
+    roughness: 0.22
   });
 
-  const macKeyboardMat = new THREE.MeshStandardMaterial({
-    color: 0x0F172A,
-    metalness: 0.5,
-    roughness: 0.45
+  const darkPortMat = new THREE.MeshStandardMaterial({
+    color: 0x090D16,
+    metalness: 0.95,
+    roughness: 0.15
   });
 
-  const macTrackpadMat = new THREE.MeshStandardMaterial({
-    color: 0xE2E8F0,
-    metalness: 0.65,
-    roughness: 0.32
-  });
+  // Base Chassis Dimensions: 2.62 wide x 1.72 deep x 0.046 high
+  const baseW = 2.62;
+  const baseD = 1.72;
+  const baseRadius = 0.09;
 
-  // Base Chassis (Curved unibody extrusion)
-  const baseShape = createRoundedRectShape(2.8, 1.85, 0.08);
+  // Extruded Unibody Base with Multi-Segment Bevel
+  const baseShape = createRoundedRectShape(baseW, baseD, baseRadius);
   const baseGeo = new THREE.ExtrudeGeometry(baseShape, {
-    depth: 0.06,
+    depth: 0.046,
     bevelEnabled: true,
-    bevelSegments: 2,
-    steps: 1,
-    bevelSize: 0.015,
-    bevelThickness: 0.015
-  });
-  const baseMesh = new THREE.Mesh(baseGeo, macAluminumMat);
-  baseMesh.rotation.x = Math.PI / 2;
-  baseMesh.position.set(0, 0, 0);
-  macGroup.add(baseMesh);
-
-  // Keyboard Bed
-  const kbGeo = new THREE.BoxGeometry(2.4, 0.008, 0.95);
-  const kbMesh = new THREE.Mesh(kbGeo, macKeyboardMat);
-  kbMesh.position.set(0, 0.045, -0.25);
-  macGroup.add(kbMesh);
-
-  // Trackpad
-  const tpGeo = new THREE.BoxGeometry(0.95, 0.006, 0.6);
-  const tpMesh = new THREE.Mesh(tpGeo, macTrackpadMat);
-  tpMesh.position.set(0, 0.045, 0.5);
-  macGroup.add(tpMesh);
-
-  // Hinge Cylinder
-  const hingeGeo = new THREE.CylinderGeometry(0.025, 0.025, 2.4, 16);
-  const hingeMesh = new THREE.Mesh(hingeGeo, macAluminumMat);
-  hingeMesh.rotation.z = Math.PI / 2;
-  hingeMesh.position.set(0, 0.04, -0.92);
-  macGroup.add(hingeMesh);
-
-  // Display Lid Group (Hinged at rear, angled upright to face viewer)
-  const lidGroup = new THREE.Group();
-  lidGroup.position.set(0, 0.04, -0.92);
-  // Opened at ~104° backwards so screen faces directly forward into camera
-  lidGroup.rotation.x = -Math.PI / 2 + 0.26;
-  macGroup.add(lidGroup);
-
-  // Lid Aluminum Back
-  const lidShape = createRoundedRectShape(2.8, 1.82, 0.08);
-  const lidGeo = new THREE.ExtrudeGeometry(lidShape, {
-    depth: 0.035,
-    bevelEnabled: true,
-    bevelSegments: 2,
+    bevelSegments: 3,
     steps: 1,
     bevelSize: 0.012,
     bevelThickness: 0.012
   });
+  const baseMesh = new THREE.Mesh(baseGeo, macAluminumMat);
+  baseMesh.rotation.x = Math.PI / 2;
+  baseMesh.position.set(0, -0.023, 0);
+  macGroup.add(baseMesh);
+
+  // Front Edge Thumb Scoop Opening Indent
+  const scoopGeo = new THREE.BoxGeometry(0.38, 0.018, 0.02);
+  const scoopMat = new THREE.MeshStandardMaterial({ color: 0x94A3B8, metalness: 0.8, roughness: 0.3 });
+  const scoopMesh = new THREE.Mesh(scoopGeo, scoopMat);
+  scoopMesh.position.set(0, 0.012, 0.87);
+  macGroup.add(scoopMesh);
+
+  // Precision Side I/O Ports
+  // Left Side: MagSafe 3 + 2x Thunderbolt 4 (USB-C)
+  const portGeo = new THREE.BoxGeometry(0.015, 0.014, 0.045);
+  const p1 = new THREE.Mesh(portGeo, darkPortMat);
+  p1.position.set(-baseW / 2 - 0.008, 0, -0.45);
+  macGroup.add(p1);
+
+  const p2 = new THREE.Mesh(portGeo, darkPortMat);
+  p2.position.set(-baseW / 2 - 0.008, 0, -0.32);
+  macGroup.add(p2);
+
+  const p3 = new THREE.Mesh(portGeo, darkPortMat);
+  p3.position.set(-baseW / 2 - 0.008, 0, -0.19);
+  macGroup.add(p3);
+
+  // Right Side: HDMI Port + SDXC Card Slot
+  const hdmiGeo = new THREE.BoxGeometry(0.015, 0.015, 0.06);
+  const pRight1 = new THREE.Mesh(hdmiGeo, darkPortMat);
+  pRight1.position.set(baseW / 2 + 0.008, 0, -0.42);
+  macGroup.add(pRight1);
+
+  const sdGeo = new THREE.BoxGeometry(0.015, 0.008, 0.09);
+  const pRight2 = new THREE.Mesh(sdGeo, darkPortMat);
+  pRight2.position.set(baseW / 2 + 0.008, 0, -0.25);
+  macGroup.add(pRight2);
+
+  // High-Resolution Keyboard Deck Surface (Keys, Speakers & Trackpad)
+  const kbTexture = createMacKeyboardTexture();
+  const kbSurfaceGeo = new THREE.PlaneGeometry(baseW - 0.02, baseD - 0.02);
+  const kbSurfaceMat = new THREE.MeshBasicMaterial({ map: kbTexture });
+  const kbSurfaceMesh = new THREE.Mesh(kbSurfaceGeo, kbSurfaceMat);
+  kbSurfaceMesh.rotation.x = -Math.PI / 2;
+  kbSurfaceMesh.position.set(0, 0.024, 0);
+  macGroup.add(kbSurfaceMesh);
+
+  // 4 Black Rubber Feet on Bottom Chassis
+  const footGeo = new THREE.CylinderGeometry(0.038, 0.038, 0.01, 16);
+  const footMat = new THREE.MeshStandardMaterial({ color: 0x0F172A, roughness: 0.9 });
+  [
+    [-1.05, -0.032, 0.62],
+    [1.05, -0.032, 0.62],
+    [-1.05, -0.032, -0.62],
+    [1.05, -0.032, -0.62]
+  ].forEach(([fx, fy, fz]) => {
+    const foot = new THREE.Mesh(footGeo, footMat);
+    foot.position.set(fx, fy, fz);
+    macGroup.add(foot);
+  });
+
+  // Precision Rear Hinge Cylinder
+  const hingeGeo = new THREE.CylinderGeometry(0.022, 0.022, baseW - 0.35, 20);
+  const hingeMesh = new THREE.Mesh(hingeGeo, macAluminumMat);
+  hingeMesh.rotation.z = Math.PI / 2;
+  hingeMesh.position.set(0, 0.022, -0.84);
+  macGroup.add(hingeMesh);
+
+  // Display Lid Assembly (Hinged at rear, angled upright facing camera)
+  const lidGroup = new THREE.Group();
+  lidGroup.position.set(0, 0.022, -0.84);
+  // Opened at ~104° backwards so screen faces directly forward into camera view
+  lidGroup.rotation.x = -Math.PI / 2 + 0.25;
+  macGroup.add(lidGroup);
+
+  // Slim Aluminum Display Lid Back
+  const lidW = baseW;
+  const lidH = 1.66;
+  const lidShape = createRoundedRectShape(lidW, lidH, baseRadius);
+  const lidGeo = new THREE.ExtrudeGeometry(lidShape, {
+    depth: 0.024,
+    bevelEnabled: true,
+    bevelSegments: 2,
+    steps: 1,
+    bevelSize: 0.01,
+    bevelThickness: 0.01
+  });
   const lidMesh = new THREE.Mesh(lidGeo, macAluminumMat);
-  lidMesh.position.set(0, 0.91, 0);
+  lidMesh.position.set(0, lidH / 2, 0);
   lidGroup.add(lidMesh);
 
   // Reflective Silver Apple Logo on MacBook Rear Lid (Visible in 360° rotation)
-  const appleLogoGeo = new THREE.CircleGeometry(0.13, 32);
+  const appleLogoGeo = new THREE.CircleGeometry(0.12, 32);
   const appleLogoMat = new THREE.MeshStandardMaterial({
     color: 0xFFFFFF,
-    metalness: 0.95,
-    roughness: 0.12,
+    metalness: 0.96,
+    roughness: 0.1,
     emissive: 0x38BDF8,
-    emissiveIntensity: 0.2
+    emissiveIntensity: 0.22
   });
   const appleLogoMesh = new THREE.Mesh(appleLogoGeo, appleLogoMat);
   appleLogoMesh.rotation.y = Math.PI; // faces backwards
-  appleLogoMesh.position.set(0, 0.91, -0.02);
+  appleLogoMesh.position.set(0, lidH / 2, -0.016);
   lidGroup.add(appleLogoMesh);
 
-  // Screen Bezel (Front Black Border)
+  // Ultra-Thin Screen Bezel (Front Black Border)
   const bezelMat = new THREE.MeshBasicMaterial({ color: 0x050810 });
-  const bezelGeo = new THREE.PlaneGeometry(2.74, 1.76);
+  const bezelGeo = new THREE.PlaneGeometry(lidW - 0.04, lidH - 0.04);
   const bezelMesh = new THREE.Mesh(bezelGeo, bezelMat);
-  bezelMesh.position.set(0, 0.91, 0.024);
+  bezelMesh.position.set(0, lidH / 2, 0.015);
   lidGroup.add(bezelMesh);
 
-  // Live Screen Texture Face
+  // Live Screen Texture Face with Liquid Retina Camera Notch
   const macTexture = createMacScreenTexture();
-  const screenFaceGeo = new THREE.PlaneGeometry(2.62, 1.64);
+  const screenFaceGeo = new THREE.PlaneGeometry(lidW - 0.09, lidH - 0.09);
   const screenFaceMat = new THREE.MeshBasicMaterial({ map: macTexture });
   const screenFaceMesh = new THREE.Mesh(screenFaceGeo, screenFaceMat);
-  screenFaceMesh.position.set(0, 0.91, 0.026);
+  screenFaceMesh.position.set(0, lidH / 2, 0.017);
   lidGroup.add(screenFaceMesh);
 
   // =========================================================================
