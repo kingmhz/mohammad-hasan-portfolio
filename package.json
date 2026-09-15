@@ -2,11 +2,9 @@
   "name": "mohammad-hasan-portfolio",
   "version": "1.0.0",
   "description": "Haute Digital Engineering Portfolio — Senior Web & Mobile Consultant",
-  "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node server.js",
-    "build": "node -e \"console.log('Build completed successfully')\""
+    "dev": "node server.js"
   },
   "keywords": [
     "portfolio",

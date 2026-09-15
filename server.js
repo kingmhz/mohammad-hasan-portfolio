@@ -125,19 +125,25 @@ const server = http.createServer((req, res) => {
   });
 });
 
-findAvailablePort(DEFAULT_PORT, (err, port) => {
-  if (err) {
-    console.error('Failed to find an open port:', err);
-    process.exit(1);
-  }
+if (require.main === module) {
+  findAvailablePort(DEFAULT_PORT, (err, port) => {
+    if (err) {
+      console.error('Failed to find an open port:', err);
+      process.exit(1);
+    }
 
-  server.listen(port, () => {
-    console.log(`\n======================================================`);
-    console.log(`🚀 Luxury Portfolio Dev Server is LIVE!`);
-    console.log(`👉 Open in browser: http://localhost:${port}`);
-    console.log(`📁 Serving directory: ${PUBLIC_DIR}`);
-    console.log(`⚡ API Routes: http://localhost:${port}/api/contact`);
-    console.log(`⚡ Health Check: http://localhost:${port}/api/health`);
-    console.log(`======================================================\n`);
+    server.listen(port, () => {
+      console.log(`\n======================================================`);
+      console.log(`🚀 Luxury Portfolio Dev Server is LIVE!`);
+      console.log(`👉 Open in browser: http://localhost:${port}`);
+      console.log(`📁 Serving directory: ${PUBLIC_DIR}`);
+      console.log(`⚡ API Routes: http://localhost:${port}/api/contact`);
+      console.log(`⚡ Health Check: http://localhost:${port}/api/health`);
+      console.log(`======================================================\n`);
+    });
   });
-});
+}
+
+module.exports = (req, res) => {
+  server.emit('request', req, res);
+};
