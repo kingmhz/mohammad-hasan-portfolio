@@ -1,4 +1,4 @@
-﻿// Main Application Interactions: 3D Tilt, Project Filtering, Modals & Direct Video Call Scheduler
+// Main Application Interactions: 3D Tilt, Project Filtering, Modals & Direct Video Call Scheduler
 // Optimized for Mobile Touch, Tablet, and Desktop PC
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -261,6 +261,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (heroBookBtn) {
     heroBookBtn.addEventListener('click', openModal);
+  }
+
+  const headerBookBtn = document.getElementById('header-book-call-btn');
+  if (headerBookBtn) {
+    headerBookBtn.addEventListener('click', openModal);
+  }
+
+  const mobileBookBtn = document.getElementById('mobile-book-call-btn');
+  if (mobileBookBtn) {
+    mobileBookBtn.addEventListener('click', () => {
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (mobileMenu) mobileMenu.classList.add('hidden');
+      openModal();
+    });
   }
 
   if (closeModalBtn) {
