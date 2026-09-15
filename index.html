@@ -3,6 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0B0F19">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <title>Mohammad Hasan — Haute Digital Engineering | Web & App Consultant</title>
   <meta name="description" content="Senior software consultant engineering production-grade Next.js web applications, cross-platform Flutter mobile apps, and bespoke luxury digital experiences.">
   <!-- Favicon -->
@@ -332,7 +335,7 @@
             <span class="text-slate-500 text-[11px]">Or choose any date from calendar:</span>
             <input 
               type="date" 
-              id="modal-custom-date" 
+              id="modal-custom-date" aria-label="Select custom meeting date" 
               class="px-3 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-800 text-xs font-mono focus:bg-white focus:outline-none focus:border-[#0A66C2] cursor-pointer"
             >
           </div>
@@ -367,7 +370,7 @@
           <div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-2 text-xs">
             <div class="flex items-center gap-2">
               <span class="text-slate-500 text-[11px] whitespace-nowrap font-mono">Your Timezone:</span>
-              <select id="modal-timezone-select" class="px-2.5 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-800 text-xs font-mono focus:bg-white focus:outline-none focus:border-[#0A66C2] cursor-pointer">
+              <select id="modal-timezone-select" aria-label="Select your timezone" class="px-2.5 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-800 text-xs font-mono focus:bg-white focus:outline-none focus:border-[#0A66C2] cursor-pointer">
                 <option value="EST">EST (US Eastern - New York)</option>
                 <option value="PST">PST (US Pacific - San Francisco)</option>
                 <option value="CST">CST (US Central - Chicago)</option>
@@ -384,7 +387,7 @@
               <span class="text-slate-500 text-[11px] whitespace-nowrap font-mono">Or exact custom time:</span>
               <input 
                 type="time" 
-                id="modal-custom-time" 
+                id="modal-custom-time" aria-label="Select exact custom meeting time" 
                 min="12:00" 
                 max="23:59" 
                 class="px-2.5 py-1.5 rounded-lg bg-slate-50 border border-slate-200 text-slate-800 text-xs font-mono focus:bg-white focus:outline-none focus:border-[#0A66C2]"

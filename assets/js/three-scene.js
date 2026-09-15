@@ -5,11 +5,29 @@
   const container = document.getElementById('three-hero-container');
   if (!container) return;
 
+  // WebGL Availability Verification
+  function checkWebGL() {
+    try {
+      const c = document.createElement('canvas');
+      return !!(window.WebGLRenderingContext && (c.getContext('webgl') || c.getContext('experimental-webgl')));
+    } catch (e) {
+      return false;
+    }
+  }
+
+  if (!checkWebGL()) {
+    console.warn('[Three.js] WebGL context unavailable. Displaying static high-res fallback.');
+    container.innerHTML = '<div class="w-full h-full flex items-center justify-center text-slate-400 text-xs font-mono">3D Acceleration Unavailable</div>';
+    return;
+  }
+
   const isMobile = window.innerWidth < 768;
 
   // Scene, Camera, Renderer
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(38, container.clientWidth / container.clientHeight, 0.1, 1000);
+  const initW = container.clientWidth || 500;
+  const initH = container.clientHeight || 450;
+  const camera = new THREE.PerspectiveCamera(38, initW / Math.max(initH, 1), 0.1, 1000);
   
   function updateCameraDistance() {
     const width = window.innerWidth;
@@ -20,7 +38,9 @@
     } else {
       camera.position.set(0.1, 0.25, 6.8); // Desktop PC: cinematic perspective
     }
-    camera.aspect = container.clientWidth / container.clientHeight;
+    const curW = container.clientWidth || 500;
+    const curH = container.clientHeight || 450;
+    camera.aspect = curW / Math.max(curH, 1);
     camera.updateProjectionMatrix();
   }
   updateCameraDistance();
@@ -673,11 +693,31 @@
     passiveY = my * 0.08;
   }, { passive: true });
 
+  // IntersectionObserver: Pause 60 FPS WebGL render loop when scrolled off-screen to save battery & GPU
+  let isSceneVisible = true;
+  if ('IntersectionObserver' in window) {
+    const visibilityObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        isSceneVisible = entry.isIntersecting;
+      });
+    }, { threshold: 0.05 });
+    visibilityObserver.observe(container);
+  }
+
+  // Handle window blur/focus to prevent stuck drag states
+  window.addEventListener('blur', () => {
+    isDragging = false;
+    container.style.cursor = 'grab';
+    document.body.style.cursor = '';
+    document.body.classList.remove('select-none');
+  });
+
   // 60 FPS Render Loop with Silky Momentum & Out-of-Phase Levitation
   const clock = new THREE.Clock();
 
   function animate() {
     requestAnimationFrame(animate);
+    if (!isSceneVisible) return; // Save GPU/CPU when off-screen
     const elapsed = clock.getElapsedTime();
 
     if (!isDragging) {

@@ -215,6 +215,31 @@ document.addEventListener('DOMContentLoaded', () => {
   let selectedDate = upcomingDays.length > 1 ? upcomingDays[1] : upcomingDays[0]; // Default to tomorrow/next available day
   let selectedTime = '2:00 PM';
   let selectedTimezone = 'EST';
+  try {
+    const detectedTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    if (detectedTz) {
+      if (detectedTz.includes('London') || detectedTz.includes('Dublin') || detectedTz.includes('UTC')) {
+        selectedTimezone = 'GMT';
+      } else if (detectedTz.includes('Paris') || detectedTz.includes('Berlin') || detectedTz.includes('Amsterdam') || detectedTz.includes('Rome')) {
+        selectedTimezone = 'CET';
+      } else if (detectedTz.includes('Dubai') || detectedTz.includes('Gulf')) {
+        selectedTimezone = 'GST';
+      } else if (detectedTz.includes('Karachi') || detectedTz.includes('Pakistan')) {
+        selectedTimezone = 'PKT';
+      } else if (detectedTz.includes('Calcutta') || detectedTz.includes('India')) {
+        selectedTimezone = 'IST';
+      } else if (detectedTz.includes('Singapore') || detectedTz.includes('Hong_Kong')) {
+        selectedTimezone = 'SGT';
+      } else if (detectedTz.includes('Pacific') || detectedTz.includes('Los_Angeles')) {
+        selectedTimezone = 'PST';
+      } else if (detectedTz.includes('Chicago') || detectedTz.includes('Central')) {
+        selectedTimezone = 'CST';
+      } else if (detectedTz.includes('New_York') || detectedTz.includes('Eastern')) {
+        selectedTimezone = 'EST';
+      }
+      if (modalTimezoneSelect) modalTimezoneSelect.value = selectedTimezone;
+    }
+  } catch (e) {}
   let selectedPlatform = 'Google Meet';
 
   // Render Date Strip in Modal
@@ -439,7 +464,13 @@ document.addEventListener('DOMContentLoaded', () => {
       if (window.lucide) window.lucide.createIcons();
 
       if (focusSection === 'time' && modalTimeGrid) {
-        modalTimeGrid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => {
+          modalTimeGrid.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 120);
+      } else if (focusSection === 'date' && modalDateStrip) {
+        setTimeout(() => {
+          modalDateStrip.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 120);
       }
     }
   }
@@ -721,8 +752,8 @@ document.addEventListener('DOMContentLoaded', () => {
       formFeedback.className = 'text-xs p-3.5 rounded-xl border border-red-500/40 bg-red-950/30 text-red-300 flex items-center gap-2';
       formFeedback.innerHTML = `<i data-lucide="alert-circle" class="w-4 h-4 text-red-400 shrink-0"></i><span>${escapeHtml(msg)}</span>`;
     } else {
-      formFeedback.className = 'text-xs p-3.5 rounded-xl border border-gold-500/40 bg-gold-950/20 text-gold-300 flex items-center gap-2';
-      formFeedback.innerHTML = `<i data-lucide="check" class="w-4 h-4 text-gold-400 shrink-0"></i><span>${escapeHtml(msg)}</span>`;
+      formFeedback.className = 'text-xs p-3.5 rounded-xl border border-blue-200 bg-blue-50/80 text-[#0A66C2] flex items-center gap-2 font-medium';
+      formFeedback.innerHTML = `<i data-lucide="check-circle" class="w-4 h-4 text-[#0A66C2] shrink-0"></i><span>${escapeHtml(msg)}</span>`;
     }
     if (window.lucide) window.lucide.createIcons();
   }
