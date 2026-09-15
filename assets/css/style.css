@@ -233,6 +233,36 @@ body {
   box-shadow: 0 4px 14px -3px rgba(10, 102, 194, 0.2), inset 0 0 0 1px #0A66C2;
 }
 
+/* Haute Executive Obsidian & Sapphire Advisory Deck */
+.deck-card {
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.98) 0%, rgba(11, 17, 32, 0.98) 100%);
+  border: 1px solid rgba(51, 65, 85, 0.8);
+  box-shadow: 0 25px 60px -15px rgba(11, 17, 32, 0.3), 0 0 0 1px rgba(255, 255, 255, 0.06) inset;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+}
+
+.deck-slot-pill {
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  user-select: none;
+  background: rgba(15, 23, 42, 0.8);
+  border: 1px solid rgba(51, 65, 85, 0.8);
+  position: relative;
+}
+
+.deck-slot-pill:hover {
+  background: rgba(30, 41, 59, 0.9);
+  border-color: rgba(148, 163, 184, 0.6);
+  transform: translateY(-1px);
+}
+
+.deck-slot-pill.active {
+  background: rgba(10, 102, 194, 0.2) !important;
+  border-color: #0A66C2 !important;
+  box-shadow: 0 0 16px -2px rgba(10, 102, 194, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
 /* Glass Buttons */
 .glass-btn {
   position: relative;

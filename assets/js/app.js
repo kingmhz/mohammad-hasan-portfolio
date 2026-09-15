@@ -176,10 +176,10 @@ document.addEventListener('DOMContentLoaded', () => {
       pill.setAttribute('data-slot', s.full);
       pill.innerHTML = `
         <div class="flex items-center justify-between w-full">
-          <span class="text-[10px] uppercase font-mono-luxury ${idx === 0 ? 'text-[#0A66C2] font-bold' : 'text-slate-500 font-semibold'}">${s.day}</span>
-          ${idx === 0 ? '<span class="w-1.5 h-1.5 rounded-full bg-[#0A66C2] inline-block"></span>' : ''}
+          <span class="text-[10px] uppercase font-mono-luxury ${idx === 0 ? 'text-[#38BDF8] font-bold' : 'text-slate-400 font-semibold'}">${s.day}</span>
+          ${idx === 0 ? '<span class="w-1.5 h-1.5 rounded-full bg-[#38BDF8] inline-block"></span>' : ''}
         </div>
-        <span class="${idx === 0 ? 'text-slate-950 font-bold' : 'text-slate-700 font-medium'} text-xs sm:text-sm font-sans tracking-tight mt-1">${s.time}</span>
+        <span class="${idx === 0 ? 'text-white font-bold' : 'text-slate-200 font-medium'} text-xs sm:text-sm font-sans tracking-tight mt-1">${s.time}</span>
       `;
     });
     selectedSlot = liveSlots[0].full;
@@ -201,11 +201,11 @@ document.addEventListener('DOMContentLoaded', () => {
   platformToggles.forEach(toggle => {
     toggle.addEventListener('click', () => {
       platformToggles.forEach(t => {
-        t.classList.remove('active', 'bg-white', 'text-slate-950', 'shadow-xs', 'border-slate-200/80', 'font-semibold');
-        t.classList.add('text-slate-500', 'font-medium');
+        t.classList.remove('active', 'bg-[#0A66C2]', 'text-white', 'font-semibold');
+        t.classList.add('text-slate-400', 'font-medium');
       });
-      toggle.classList.add('active', 'bg-white', 'text-slate-950', 'shadow-xs', 'border-slate-200/80', 'font-semibold');
-      toggle.classList.remove('text-slate-500', 'font-medium');
+      toggle.classList.add('active', 'bg-[#0A66C2]', 'text-white', 'font-semibold');
+      toggle.classList.remove('text-slate-400', 'font-medium');
       selectedPlatform = toggle.getAttribute('data-platform') || 'Google Meet';
       updateHeroBtnLabel();
     });
@@ -219,12 +219,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const timeSpan = p.querySelector('span:last-child');
         const dotSpan = p.querySelector('.rounded-full');
         if (daySpan) {
-          daySpan.classList.remove('text-[#0A66C2]', 'font-bold');
-          daySpan.classList.add('text-slate-500', 'font-semibold');
+          daySpan.classList.remove('text-[#38BDF8]', 'font-bold');
+          daySpan.classList.add('text-slate-400', 'font-semibold');
         }
         if (timeSpan) {
-          timeSpan.classList.remove('text-slate-950', 'font-bold');
-          timeSpan.classList.add('text-slate-700', 'font-medium');
+          timeSpan.classList.remove('text-white', 'font-bold');
+          timeSpan.classList.add('text-slate-200', 'font-medium');
         }
         if (dotSpan) dotSpan.remove();
       });
@@ -234,17 +234,17 @@ document.addEventListener('DOMContentLoaded', () => {
       const activeDay = pill.querySelector('span:first-child');
       const activeTime = pill.querySelector('span:last-child');
       if (activeDay) {
-        activeDay.classList.add('text-[#0A66C2]', 'font-bold');
-        activeDay.classList.remove('text-slate-500');
+        activeDay.classList.add('text-[#38BDF8]', 'font-bold');
+        activeDay.classList.remove('text-slate-400');
       }
       if (topDiv && !topDiv.querySelector('.rounded-full')) {
         const dot = document.createElement('span');
-        dot.className = 'w-1.5 h-1.5 rounded-full bg-[#0A66C2] inline-block';
+        dot.className = 'w-1.5 h-1.5 rounded-full bg-[#38BDF8] inline-block';
         topDiv.appendChild(dot);
       }
       if (activeTime) {
-        activeTime.classList.add('text-slate-950', 'font-bold');
-        activeTime.classList.remove('text-slate-700');
+        activeTime.classList.add('text-white', 'font-bold');
+        activeTime.classList.remove('text-slate-200');
       }
 
       selectedSlot = pill.getAttribute('data-slot');
