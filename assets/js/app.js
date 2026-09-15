@@ -103,11 +103,9 @@ document.addEventListener('DOMContentLoaded', () => {
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       filterBtns.forEach(b => {
-        b.classList.remove('bg-gold-500/15', 'text-gold-400', 'border-gold-500/30');
-        b.classList.add('text-silver-400', 'border-transparent');
+        b.classList.remove('bg-[#0A66C2]', 'text-white', 'border-[#0A66C2]', 'shadow-sm'); b.classList.add('text-slate-600', 'border-transparent');
       });
-      btn.classList.add('bg-gold-500/15', 'text-gold-400', 'border-gold-500/30');
-      btn.classList.remove('text-silver-400', 'border-transparent');
+      btn.classList.add('bg-[#0A66C2]', 'text-white', 'border-[#0A66C2]', 'shadow-sm'); btn.classList.remove('text-slate-600', 'border-transparent');
 
       const filter = btn.getAttribute('data-filter');
 
@@ -177,8 +175,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const s = liveSlots[idx];
       pill.setAttribute('data-slot', s.full);
       pill.innerHTML = `
-        <span class="text-[10px] uppercase font-mono-luxury ${idx === 0 ? 'text-gold-400 font-bold' : 'text-silver-400 font-semibold'}">${s.day}</span>
-        <span class="${idx === 0 ? 'text-white font-bold' : 'text-silver-200 font-medium'} text-xs font-mono">${s.time}</span>
+        <span class="text-[10px] uppercase font-mono-luxury ${idx === 0 ? 'text-[#0A66C2] font-bold' : 'text-slate-500 font-semibold'}">${s.day}</span>
+        <span class="${idx === 0 ? 'text-slate-950 font-bold' : 'text-slate-700 font-medium'} text-xs font-mono">${s.time}</span>
       `;
     });
     selectedSlot = liveSlots[0].full;
@@ -200,11 +198,11 @@ document.addEventListener('DOMContentLoaded', () => {
   platformToggles.forEach(toggle => {
     toggle.addEventListener('click', () => {
       platformToggles.forEach(t => {
-        t.classList.remove('active', 'border-gold-400/40', 'bg-gold-500/15', 'text-gold-300', 'font-semibold');
-        t.classList.add('border-white/10', 'text-silver-400', 'font-medium');
+        t.classList.remove('active', 'border-[#0A66C2]', 'bg-blue-50/80', 'text-[#0A66C2]', 'font-semibold');
+        t.classList.add('border-slate-200', 'text-slate-600', 'font-medium');
       });
-      toggle.classList.add('active', 'border-gold-400/40', 'bg-gold-500/15', 'text-gold-300', 'font-semibold');
-      toggle.classList.remove('border-white/10', 'text-silver-400', 'font-medium');
+      toggle.classList.add('active', 'border-[#0A66C2]', 'bg-blue-50/80', 'text-[#0A66C2]', 'font-semibold');
+      toggle.classList.remove('border-slate-200', 'text-slate-600', 'font-medium');
       selectedPlatform = toggle.getAttribute('data-platform') || 'Google Meet';
       updateHeroBtnLabel();
     });
@@ -217,12 +215,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const daySpan = p.querySelector('span:first-child');
         const timeSpan = p.querySelector('span:last-child');
         if (daySpan) {
-          daySpan.classList.remove('text-gold-400', 'font-bold');
-          daySpan.classList.add('text-silver-400', 'font-semibold');
+          daySpan.classList.remove('text-[#0A66C2]', 'font-bold');
+          daySpan.classList.add('text-slate-500', 'font-semibold');
         }
         if (timeSpan) {
-          timeSpan.classList.remove('text-white', 'font-bold');
-          timeSpan.classList.add('text-silver-200', 'font-medium');
+          timeSpan.classList.remove('text-slate-950', 'font-bold');
+          timeSpan.classList.add('text-slate-700', 'font-medium');
         }
       });
 
@@ -230,12 +228,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const activeDay = pill.querySelector('span:first-child');
       const activeTime = pill.querySelector('span:last-child');
       if (activeDay) {
-        activeDay.classList.add('text-gold-400', 'font-bold');
-        activeDay.classList.remove('text-silver-400');
+        activeDay.classList.add('text-[#0A66C2]', 'font-bold');
+        activeDay.classList.remove('text-slate-500');
       }
       if (activeTime) {
-        activeTime.classList.add('text-white', 'font-bold');
-        activeTime.classList.remove('text-silver-200');
+        activeTime.classList.add('text-slate-950', 'font-bold');
+        activeTime.classList.remove('text-slate-700');
       }
 
       selectedSlot = pill.getAttribute('data-slot');
@@ -365,43 +363,43 @@ document.addEventListener('DOMContentLoaded', () => {
           const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Video Consultation: Mohammad Hasan & ' + payload.name)}&details=${encodeURIComponent(`15-Min Video Consultation with Mohammad Hasan (Lead Consultant).\\nAgenda: ${payload.projectType}\\nJoin Video Call: ${meetUrl}`)}&location=${encodeURIComponent(meetUrl)}`;
 
           meetingForm.innerHTML = `
-            <div class="p-5 sm:p-6 rounded-2xl bg-[#090B0F]/95 border border-gold-500/40 text-center space-y-4 shadow-2xl animate-fade-in">
-              <div class="w-12 h-12 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 mx-auto flex items-center justify-center">
+            <div class="p-5 sm:p-6 rounded-2xl bg-white border border-slate-200 text-center space-y-4 shadow-xl animate-fade-in">
+              <div class="w-12 h-12 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-600 mx-auto flex items-center justify-center">
                 <i data-lucide="video" class="w-6 h-6"></i>
               </div>
               <div class="space-y-1">
-                <div class="text-[10px] font-mono-luxury uppercase tracking-widest text-emerald-400 font-semibold">Video Call Scheduled · ${result.data ? result.data.reference : 'MH-EXEC'}</div>
-                <h3 class="text-xl sm:text-2xl font-luxury font-bold text-white">Private Video Room Ready</h3>
+                <div class="text-[10px] font-mono-luxury uppercase tracking-widest text-[#0A66C2] font-semibold">Video Call Scheduled · ${result.data ? result.data.reference : 'MH-EXEC'}</div>
+                <h3 class="text-xl sm:text-2xl font-luxury font-bold text-slate-950">Private Video Room Ready</h3>
               </div>
               
-              <div class="p-3.5 rounded-xl bg-black/60 border border-gold-500/30 text-xs font-mono space-y-1.5 text-left">
-                <div class="flex items-center justify-between text-silver-400 text-[10px]">
+              <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 text-xs font-mono space-y-1.5 text-left">
+                <div class="flex items-center justify-between text-slate-500 text-[10px]">
                   <span>DATE & TIME</span>
-                  <span class="text-emerald-400 font-semibold">CONFIRMED</span>
+                  <span class="text-emerald-600 font-semibold">CONFIRMED</span>
                 </div>
-                <div class="text-white font-bold text-xs">🗓️ ${escapeHtml(payload.meetingSlot)}</div>
-                <div class="text-silver-300 text-[11px] pt-1">Platform: <strong class="text-gold-300">${escapeHtml(payload.platform)}</strong></div>
-                <div class="text-silver-400 text-[10px] truncate pt-0.5">Link: <a href="${meetUrl}" target="_blank" class="text-gold-400 hover:underline">${meetUrl}</a></div>
+                <div class="text-slate-950 font-bold text-xs">🗓️ ${escapeHtml(payload.meetingSlot)}</div>
+                <div class="text-slate-700 text-[11px] pt-1">Platform: <strong class="text-[#0A66C2]">${escapeHtml(payload.platform)}</strong></div>
+                <div class="text-slate-500 text-[10px] truncate pt-0.5">Link: <a href="${meetUrl}" target="_blank" class="text-[#0A66C2] hover:underline">${meetUrl}</a></div>
               </div>
 
-              <p class="text-xs text-silver-300 font-light max-w-sm mx-auto leading-relaxed">
-                A calendar invite with your video room link has been dispatched to <strong class="text-white">${escapeHtml(payload.email)}</strong>. Mohammad Hasan has received your direct alert.
+              <p class="text-xs text-slate-600 font-light max-w-sm mx-auto leading-relaxed">
+                A calendar invite with your video room link has been dispatched to <strong class="text-slate-900">${escapeHtml(payload.email)}</strong>. Mohammad Hasan has received your direct alert.
               </p>
 
               <!-- Actions -->
               <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-2.5">
-                <a href="${meetUrl}" target="_blank" rel="noopener noreferrer" class="btn-catchy-gold w-full sm:w-auto px-4 py-2.5 rounded-xl text-xs uppercase tracking-wider font-bold inline-flex items-center justify-center gap-2">
-                  <i data-lucide="video" class="w-3.5 h-3.5 text-black"></i>
+                <a href="${meetUrl}" target="_blank" rel="noopener noreferrer" class="btn-catchy-blue w-full sm:w-auto px-4 py-2.5 rounded-xl text-xs uppercase tracking-wider font-bold inline-flex items-center justify-center gap-2 text-white">
+                  <i data-lucide="video" class="w-3.5 h-3.5 text-white"></i>
                   <span>Test Video Link</span>
                 </a>
-                <a href="${gCalUrl}" target="_blank" rel="noopener noreferrer" class="btn-silver w-full sm:w-auto px-4 py-2.5 rounded-xl text-xs uppercase tracking-wider font-semibold inline-flex items-center justify-center gap-2">
+                <a href="${gCalUrl}" target="_blank" rel="noopener noreferrer" class="btn-silver w-full sm:w-auto px-4 py-2.5 rounded-xl text-xs uppercase tracking-wider font-semibold inline-flex items-center justify-center gap-2 text-slate-800">
                   <i data-lucide="calendar-plus" class="w-3.5 h-3.5"></i>
                   <span>Add to Google Cal</span>
                 </a>
               </div>
 
               <div class="pt-1">
-                <button type="button" onclick="document.getElementById('meeting-modal').classList.add('hidden'); document.body.style.overflow='';" class="text-silver-400 hover:text-white text-xs font-mono uppercase tracking-wider">
+                <button type="button" onclick="document.getElementById('meeting-modal').classList.add('hidden'); document.body.style.overflow='';" class="text-slate-500 hover:text-slate-900 text-xs font-mono uppercase tracking-wider">
                   Dismiss Window
                 </button>
               </div>
@@ -497,19 +495,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (response.ok && result.success) {
           briefForm.innerHTML = `
-            <div class="p-6 sm:p-8 rounded-2xl bg-[#090B0F]/90 border border-gold-500/40 text-center space-y-4 shadow-2xl">
-              <div class="w-12 h-12 rounded-full bg-gold-500/15 border border-gold-500/30 text-gold-400 mx-auto flex items-center justify-center">
+            <div class="p-6 sm:p-8 rounded-2xl bg-white border border-slate-200 text-center space-y-4 shadow-xl">
+              <div class="w-12 h-12 rounded-full bg-blue-50 border border-blue-200 text-[#0A66C2] mx-auto flex items-center justify-center">
                 <i data-lucide="check" class="w-6 h-6"></i>
               </div>
               <div class="space-y-1">
-                <div class="text-[10px] font-mono-luxury uppercase tracking-widest text-gold-400">Brief Confirmed · Reference ${result.data ? result.data.reference : 'MH-EXEC'}</div>
-                <h3 class="text-xl sm:text-2xl font-luxury font-bold text-white">Transmission Successful</h3>
+                <div class="text-[10px] font-mono-luxury uppercase tracking-widest text-[#0A66C2] font-semibold">Brief Confirmed · Reference ${result.data ? result.data.reference : 'MH-EXEC'}</div>
+                <h3 class="text-xl sm:text-2xl font-luxury font-bold text-slate-950">Transmission Successful</h3>
               </div>
-              <p class="text-xs sm:text-sm text-silver-300 font-light max-w-md mx-auto leading-relaxed">
-                Thank you, <strong class="text-white">${escapeHtml(payload.name)}</strong>. Your technical brief has been encrypted and routed directly to Mohammad Hasan. Expect an architectural reply within 24 hours.
+              <p class="text-xs sm:text-sm text-slate-600 font-light max-w-md mx-auto leading-relaxed">
+                Thank you, <strong class="text-slate-900">${escapeHtml(payload.name)}</strong>. Your technical brief has been encrypted and routed directly to Mohammad Hasan. Expect an architectural reply within 24 hours.
               </p>
               <div class="pt-2">
-                <button type="button" onclick="window.location.reload()" class="btn-silver px-5 py-2 rounded-lg text-xs uppercase tracking-wider font-semibold">
+                <button type="button" onclick="window.location.reload()" class="btn-silver px-5 py-2 rounded-lg text-xs uppercase tracking-wider font-semibold text-slate-800">
                   Transmit Another Brief
                 </button>
               </div>

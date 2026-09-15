@@ -23,20 +23,15 @@
       theme: {
         extend: {
           colors: {
-            obsidian: '#040507',
-            surface: '#090B0F',
-            gold: {
-              300: '#FDF4DC',
-              400: '#F3E5AB',
-              500: '#D4AF37',
-              600: '#B89225'
+            linkedin: {
+              50: '#F0F7FD',
+              100: '#E0EFFB',
+              500: '#0A66C2',
+              600: '#0856A4',
+              700: '#004182'
             },
-            silver: {
-              100: '#FFFFFF',
-              200: '#F1F5F9',
-              300: '#E2E8F0',
-              400: '#CBD5E1',
-              500: '#94A3B8'
+            slate: {
+              950: '#0B1120'
             }
           }
         }
@@ -53,7 +48,7 @@
   <!-- Custom Luxury CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="bg-mesh min-h-screen text-silver-300 antialiased selection:bg-[#D4AF37] selection:text-black">
+<body class="bg-mesh min-h-screen text-slate-700 antialiased selection:bg-[#0A66C2] selection:text-white">
 
   <!-- ==================== HAUTE NAVIGATION BAR ==================== -->
   <nav class="fixed top-0 left-0 right-0 z-50 glass-nav px-5 sm:px-8 lg:px-12 py-3.5 transition-all duration-300">
@@ -61,57 +56,57 @@
       
       <!-- Minimalist Luxury Name (Smaller & Clean Left) -->
       <a href="#" class="group flex items-baseline gap-1 py-1 mr-6 sm:mr-10" aria-label="Mohammad Hasan - Home">
-        <span class="font-brand font-semibold text-[11px] sm:text-xs tracking-[0.22em] sm:tracking-[0.28em] text-white group-hover:text-gold-400 transition-colors duration-300 uppercase whitespace-nowrap">
+        <span class="font-brand font-semibold text-[11px] sm:text-xs tracking-[0.22em] sm:tracking-[0.28em] text-slate-900 group-hover:text-[#0A66C2] transition-colors duration-300 uppercase whitespace-nowrap">
           Mohammad Hasan
         </span>
-        <span class="w-1 h-1 rounded-full bg-gold-400 inline-block opacity-80 group-hover:opacity-100 group-hover:scale-125 transition-all duration-300 mb-0.5"></span>
+        <span class="w-1 h-1 rounded-full bg-[#0A66C2] inline-block opacity-80 group-hover:opacity-100 group-hover:scale-125 transition-all duration-300 mb-0.5"></span>
       </a>
 
       <!-- Desktop Nav Links -->
-      <div class="hidden md:flex items-center gap-8 lg:gap-10 text-xs tracking-[0.16em] uppercase font-medium text-silver-400">
-        <a href="#work" class="hover:text-gold-400 transition-colors duration-200">Selected Work</a>
-        <a href="#services" class="hover:text-gold-400 transition-colors duration-200">Capabilities</a>
-        <a href="#stack" class="hover:text-gold-400 transition-colors duration-200">Architecture</a>
-        <a href="#about" class="hover:text-gold-400 transition-colors duration-200">Philosophy</a>
+      <div class="hidden md:flex items-center gap-8 lg:gap-10 text-xs tracking-[0.16em] uppercase font-medium text-slate-600">
+        <a href="#work" class="hover:text-[#0A66C2] transition-colors duration-200">Selected Work</a>
+        <a href="#services" class="hover:text-[#0A66C2] transition-colors duration-200">Capabilities</a>
+        <a href="#stack" class="hover:text-[#0A66C2] transition-colors duration-200">Architecture</a>
+        <a href="#about" class="hover:text-[#0A66C2] transition-colors duration-200">Philosophy</a>
       </div>
 
       <!-- Right Side Header (Bespoke Luxury Video Call Trigger & Status) -->
       <div class="flex items-center gap-2.5 sm:gap-3 lg:gap-4">
         
         <!-- Live Status Pill (Desktop & Tablet) -->
-        <div class="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#090B0F]/90 border border-gold-500/25 text-gold-300 text-[10px] font-mono-luxury uppercase tracking-wider shadow-sm">
-          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-pulse"></span>
+        <div class="hidden lg:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/90 border border-slate-200 text-[#004182] text-[10px] font-mono-luxury uppercase tracking-wider shadow-sm">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse"></span>
           <span>Slots Open This Week</span>
         </div>
 
         <!-- Direct LinkedIn Button with User's Uploaded Logo -->
-        <a href="https://linkedin.com/in/mohammadhasantechie" target="_blank" rel="noopener noreferrer" class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#0A66C2]/10 hover:bg-[#0A66C2]/20 border border-[#0A66C2]/30 hover:border-[#0A66C2]/70 text-silver-300 hover:text-white transition-all group shadow-sm" title="Connect on LinkedIn" aria-label="LinkedIn Profile">
+        <a href="https://linkedin.com/in/mohammadhasantechie" target="_blank" rel="noopener noreferrer" class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-[#0A66C2]/10 hover:bg-[#0A66C2]/15 border border-[#0A66C2]/30 hover:border-[#0A66C2]/70 text-slate-800 hover:text-[#0A66C2] transition-all group shadow-sm" title="Connect on LinkedIn" aria-label="LinkedIn Profile">
           <img src="assets/images/linkedin.png" alt="LinkedIn Logo" class="w-4 h-4 rounded-[3px] shrink-0 object-contain group-hover:scale-110 transition-transform">
           <span class="text-[11px] font-mono-luxury font-medium hidden md:inline-block">LinkedIn</span>
         </a>
 
-        <!-- Liquid Platinum Silver Video Call Booking CTA Button -->
-        <button type="button" id="header-book-call-btn" class="btn-silver px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-[11px] sm:text-xs uppercase tracking-wider font-bold shadow-lg flex items-center gap-1.5 sm:gap-2 group cursor-pointer">
-          <i data-lucide="video" class="w-3.5 h-3.5 text-black"></i>
+        <!-- Executive Platinum Silver Video Call Booking CTA Button -->
+        <button type="button" id="header-book-call-btn" class="btn-silver px-3 sm:px-4 py-1.5 sm:py-2 rounded-lg text-[11px] sm:text-xs uppercase tracking-wider font-bold shadow-sm flex items-center gap-1.5 sm:gap-2 group cursor-pointer text-slate-800">
+          <i data-lucide="video" class="w-3.5 h-3.5 text-[#0A66C2]"></i>
           <span>Book Call</span>
-          <i data-lucide="arrow-up-right" class="w-3 h-3 text-black/70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform hidden sm:inline-block"></i>
+          <i data-lucide="arrow-up-right" class="w-3 h-3 text-slate-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform hidden sm:inline-block"></i>
         </button>
 
         <!-- Mobile Menu Hamburger -->
-        <button id="mobile-menu-btn" class="md:hidden text-silver-300 hover:text-white p-1.5 rounded-lg hover:bg-white/5 transition-colors focus:outline-none" aria-label="Toggle Navigation">
+        <button id="mobile-menu-btn" class="md:hidden text-slate-700 hover:text-slate-950 p-1.5 rounded-lg hover:bg-slate-100 transition-colors focus:outline-none" aria-label="Toggle Navigation">
           <i data-lucide="menu" class="w-5 h-5"></i>
         </button>
       </div>
     </div>
 
     <!-- Mobile Drawer Menu -->
-    <div id="mobile-menu" class="hidden md:hidden pt-4 pb-4 px-4 space-y-3 bg-[#040507]/95 border-b border-white/10 mt-3 rounded-xl text-xs tracking-widest uppercase">
-      <a href="#work" class="block py-2 text-silver-300 hover:text-gold-400">Selected Work</a>
-      <a href="#services" class="block py-2 text-silver-300 hover:text-gold-400">Capabilities</a>
-      <a href="#stack" class="block py-2 text-silver-300 hover:text-gold-400">Architecture</a>
-      <a href="#about" class="block py-2 text-silver-300 hover:text-gold-400">Philosophy</a>
-      <button type="button" id="mobile-book-call-btn" class="w-full py-2.5 text-center text-black btn-silver rounded-lg font-bold flex items-center justify-center gap-2">
-        <i data-lucide="video" class="w-4 h-4 text-black"></i>
+    <div id="mobile-menu" class="hidden md:hidden pt-4 pb-4 px-4 space-y-3 bg-white/95 border-b border-slate-200 mt-3 rounded-xl text-xs tracking-widest uppercase shadow-lg">
+      <a href="#work" class="block py-2 text-slate-700 hover:text-[#0A66C2]">Selected Work</a>
+      <a href="#services" class="block py-2 text-slate-700 hover:text-[#0A66C2]">Capabilities</a>
+      <a href="#stack" class="block py-2 text-slate-700 hover:text-[#0A66C2]">Architecture</a>
+      <a href="#about" class="block py-2 text-slate-700 hover:text-[#0A66C2]">Philosophy</a>
+      <button type="button" id="mobile-book-call-btn" class="w-full py-2.5 text-center btn-catchy-blue text-white rounded-lg font-bold flex items-center justify-center gap-2 shadow-md">
+        <i data-lucide="video" class="w-4 h-4 text-white"></i>
         <span>Schedule 1-on-1 Call</span>
       </button>
     </div>
@@ -125,44 +120,44 @@
       <div class="lg:col-span-7 space-y-6 sm:space-y-7 z-10">
         
         <!-- Live Availability Pill -->
-        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#090B0F] border border-gold-500/30 text-[11px] uppercase tracking-[0.22em] font-medium text-gold-300 shadow-sm">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse"></span>
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 text-[11px] uppercase tracking-[0.22em] font-medium text-[#004182] shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-emerald-500 inline-block animate-pulse"></span>
           <span>Private Advisory · 2 Direct Slots Open This Week</span>
         </div>
 
         <!-- Punchy, Haute Luxury Headline -->
-        <h1 class="text-3xl sm:text-5xl lg:text-[3.5rem] font-luxury font-bold tracking-tight leading-[1.12] text-white">
+        <h1 class="text-3xl sm:text-5xl lg:text-[3.5rem] font-luxury font-bold tracking-tight leading-[1.12] text-slate-950">
           Bespoke Engineering.<br>
-          <span class="text-gold">Direct Senior Execution.</span>
+          <span class="text-blue-gradient">Direct Senior Execution.</span>
         </h1>
 
         <!-- Crisp, Authoritative Subtext -->
-        <p class="text-sm sm:text-base text-silver-300 max-w-xl leading-relaxed font-light">
-          Partnering with international founders and studios across the US, UK, and Europe. Production-grade <strong class="text-white font-medium">Next.js</strong> platforms & <strong class="text-white font-medium">Flutter</strong> mobile apps engineered in 4–6 weeks. Zero agency overhead.
+        <p class="text-sm sm:text-base text-slate-600 max-w-xl leading-relaxed font-light">
+          Partnering with international founders and studios across the US, UK, and Europe. Production-grade <strong class="text-slate-900 font-semibold">Next.js</strong> platforms & <strong class="text-slate-900 font-semibold">Flutter</strong> mobile apps engineered in 4–6 weeks. Zero agency overhead.
         </p>
 
         <!-- ==================== DIRECT VIDEO CALL SCHEDULER CARD ==================== -->
-        <div class="p-5 sm:p-6 rounded-2xl bg-[#07090C]/90 border border-gold-500/35 shadow-[0_15px_45px_-10px_rgba(0,0,0,0.85)] backdrop-blur-xl space-y-4 max-w-xl">
+        <div class="p-5 sm:p-6 rounded-2xl glass-card border border-slate-200/80 shadow-[0_20px_50px_-15px_rgba(10,102,194,0.12)] space-y-4 max-w-xl">
           
           <div class="flex items-center justify-between text-xs">
-            <div class="flex items-center gap-2 font-mono-luxury uppercase tracking-wider text-gold-300 font-semibold text-[11px]">
-              <i data-lucide="video" class="w-4 h-4 text-gold-400"></i>
+            <div class="flex items-center gap-2 font-mono-luxury uppercase tracking-wider text-[#004182] font-semibold text-[11px]">
+              <i data-lucide="video" class="w-4 h-4 text-[#0A66C2]"></i>
               <span>Schedule Direct 1-on-1 Video Call</span>
             </div>
-            <div class="flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-gold-500/10 border border-gold-500/20 text-[10px] font-mono text-gold-400">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <div class="flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-blue-50 border border-blue-200 text-[10px] font-mono text-[#0A66C2]">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
               <span>Google Meet / Zoom</span>
             </div>
           </div>
 
           <!-- Video Platform Selector -->
           <div class="flex items-center gap-2 text-[11px] font-mono-luxury">
-            <span class="text-silver-400 text-[10px] uppercase">Platform:</span>
-            <button type="button" class="platform-toggle active px-3 py-1 rounded-lg border border-gold-400/40 bg-gold-500/15 text-gold-300 font-semibold flex items-center gap-1.5 transition-all" data-platform="Google Meet">
-              <i data-lucide="video" class="w-3 h-3 text-gold-400"></i>
+            <span class="text-slate-500 text-[10px] uppercase">Platform:</span>
+            <button type="button" class="platform-toggle active px-3 py-1 rounded-lg border border-[#0A66C2] bg-blue-50/80 text-[#0A66C2] font-semibold flex items-center gap-1.5 transition-all" data-platform="Google Meet">
+              <i data-lucide="video" class="w-3 h-3 text-[#0A66C2]"></i>
               <span>Google Meet</span>
             </button>
-            <button type="button" class="platform-toggle px-3 py-1 rounded-lg border border-white/10 text-silver-400 hover:text-white font-medium flex items-center gap-1.5 transition-all" data-platform="Zoom">
+            <button type="button" class="platform-toggle px-3 py-1 rounded-lg border border-slate-200 text-slate-600 hover:text-slate-900 font-medium flex items-center gap-1.5 transition-all" data-platform="Zoom">
               <i data-lucide="monitor" class="w-3 h-3"></i>
               <span>Zoom</span>
             </button>
@@ -170,85 +165,85 @@
 
           <!-- Interactive Quick Slots -->
           <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5" id="hero-slot-list">
-            <button type="button" class="slot-pill active p-2.5 rounded-xl border border-white/10 text-left flex flex-col justify-center text-xs" data-slot="Thu, Sep 17 · 2:00 PM EST">
-              <span class="text-[10px] uppercase font-mono-luxury text-gold-400 font-semibold">Thu, Sep 17</span>
-              <span class="text-white font-medium text-xs">2:00 PM EST</span>
+            <button type="button" class="slot-pill active p-2.5 rounded-xl border border-[#0A66C2] text-left flex flex-col justify-center text-xs" data-slot="Thu, Sep 17 · 2:00 PM EST">
+              <span class="text-[10px] uppercase font-mono-luxury text-[#0A66C2] font-bold">Thu, Sep 17</span>
+              <span class="text-slate-950 font-bold text-xs font-mono">2:00 PM EST</span>
             </button>
-            <button type="button" class="slot-pill p-2.5 rounded-xl border border-white/10 text-left flex flex-col justify-center text-xs" data-slot="Fri, Sep 18 · 10:30 AM EST">
-              <span class="text-[10px] uppercase font-mono-luxury text-silver-400 font-semibold">Fri, Sep 18</span>
-              <span class="text-silver-200 font-medium text-xs">10:30 AM EST</span>
+            <button type="button" class="slot-pill p-2.5 rounded-xl border border-slate-200 text-left flex flex-col justify-center text-xs" data-slot="Fri, Sep 18 · 10:30 AM EST">
+              <span class="text-[10px] uppercase font-mono-luxury text-slate-500 font-semibold">Fri, Sep 18</span>
+              <span class="text-slate-700 font-medium text-xs font-mono">10:30 AM EST</span>
             </button>
-            <button type="button" class="slot-pill p-2.5 rounded-xl border border-white/10 text-left flex flex-col justify-center text-xs col-span-2 sm:col-span-1" data-slot="Mon, Sep 21 · 4:00 PM EST">
-              <span class="text-[10px] uppercase font-mono-luxury text-silver-400 font-semibold">Mon, Sep 21</span>
-              <span class="text-silver-200 font-medium text-xs">4:00 PM EST</span>
+            <button type="button" class="slot-pill p-2.5 rounded-xl border border-slate-200 text-left flex flex-col justify-center text-xs col-span-2 sm:col-span-1" data-slot="Mon, Sep 21 · 4:00 PM EST">
+              <span class="text-[10px] uppercase font-mono-luxury text-slate-500 font-semibold">Mon, Sep 21</span>
+              <span class="text-slate-700 font-medium text-xs font-mono">4:00 PM EST</span>
             </button>
           </div>
 
-          <!-- THE ULTRA-CATCHY LUXURY VIDEO CALL CTA BUTTON -->
-          <button type="button" id="hero-book-meeting-btn" class="btn-catchy-gold w-full py-3.5 sm:py-4 px-5 sm:px-6 rounded-xl flex items-center justify-between group cursor-pointer shadow-2xl">
+          <!-- THE ULTRA-CATCHY EXECUTIVE BLUE VIDEO CALL CTA BUTTON -->
+          <button type="button" id="hero-book-meeting-btn" class="btn-catchy-blue w-full py-3.5 sm:py-4 px-5 sm:px-6 rounded-xl flex items-center justify-between group cursor-pointer shadow-xl text-white">
             <div class="flex items-center gap-3">
-              <div class="w-9 h-9 rounded-lg bg-black/10 border border-black/20 flex items-center justify-center text-black">
+              <div class="w-9 h-9 rounded-lg bg-white/15 border border-white/25 flex items-center justify-center text-white">
                 <i data-lucide="video" class="w-4 h-4"></i>
               </div>
               <div class="flex flex-col text-left">
-                <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-black leading-tight" id="hero-btn-title">Schedule Direct Video Call</span>
-                <span class="text-[10px] font-mono font-medium text-black/80" id="hero-btn-slot-label">Thu, Sep 17 · 2:00 PM EST (Google Meet)</span>
+                <span class="text-xs sm:text-sm font-bold uppercase tracking-wider text-white leading-tight" id="hero-btn-title">Schedule Direct Video Call</span>
+                <span class="text-[10px] font-mono font-medium text-white/90" id="hero-btn-slot-label">Thu, Sep 17 · 2:00 PM EST (Google Meet)</span>
               </div>
             </div>
             <div class="flex items-center gap-2">
-              <span class="text-[10px] font-mono-luxury uppercase tracking-widest text-black/80 hidden sm:inline-block font-bold">1-Click Reserve</span>
-              <i data-lucide="arrow-right" class="w-4 h-4 text-black group-hover:translate-x-1.5 transition-transform duration-300"></i>
+              <span class="text-[10px] font-mono-luxury uppercase tracking-widest text-white/90 hidden sm:inline-block font-bold">1-Click Reserve</span>
+              <i data-lucide="arrow-right" class="w-4 h-4 text-white group-hover:translate-x-1.5 transition-transform duration-300"></i>
             </div>
           </button>
 
           <!-- Micro Confidence Notes -->
-          <div class="flex items-center justify-between text-[10px] text-silver-400 font-mono pt-1">
+          <div class="flex items-center justify-between text-[10px] text-slate-500 font-mono pt-1">
             <span class="flex items-center gap-1.5">
-              <i data-lucide="shield" class="w-3 h-3 text-gold-400"></i>
+              <i data-lucide="shield" class="w-3 h-3 text-[#0A66C2]"></i>
               <span>Direct with Hasan</span>
             </span>
             <span>Auto Meet Link · NDA Ready</span>
-            <a href="#contact" class="text-gold-400 hover:underline">Written Brief ↗</a>
+            <a href="#contact" class="text-[#0A66C2] hover:underline font-semibold">Written Brief ↗</a>
           </div>
 
         </div>
 
         <!-- Hairline Metric Bar -->
-        <div class="pt-6 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-4 text-left max-w-xl">
+        <div class="pt-6 border-t border-slate-200 grid grid-cols-2 sm:grid-cols-4 gap-4 text-left max-w-xl">
           <div>
-            <div class="text-2xl font-luxury font-bold text-white">4–6 <span class="text-xs font-normal text-silver-400 font-mono-luxury">WKS</span></div>
-            <div class="text-[10px] text-silver-400 uppercase tracking-widest mt-0.5">Concept to MVP</div>
+            <div class="text-2xl font-luxury font-bold text-slate-950">4–6 <span class="text-xs font-normal text-slate-500 font-mono-luxury">WKS</span></div>
+            <div class="text-[10px] text-slate-500 uppercase tracking-widest mt-0.5">Concept to MVP</div>
           </div>
           <div>
-            <div class="text-2xl font-luxury font-bold text-gold-400">98+</div>
-            <div class="text-[10px] text-silver-400 uppercase tracking-widest mt-0.5">PageSpeed Standard</div>
+            <div class="text-2xl font-luxury font-bold text-[#0A66C2]">98+</div>
+            <div class="text-[10px] text-slate-500 uppercase tracking-widest mt-0.5">PageSpeed Standard</div>
           </div>
           <div>
-            <div class="text-2xl font-luxury font-bold text-white">100%</div>
-            <div class="text-[10px] text-silver-400 uppercase tracking-widest mt-0.5">Figma Fidelity</div>
+            <div class="text-2xl font-luxury font-bold text-slate-950">100%</div>
+            <div class="text-[10px] text-slate-500 uppercase tracking-widest mt-0.5">Figma Fidelity</div>
           </div>
           <div>
-            <div class="text-2xl font-luxury font-bold text-gold-400">Global</div>
-            <div class="text-[10px] text-silver-400 uppercase tracking-widest mt-0.5">US/UK/EU Hours</div>
+            <div class="text-2xl font-luxury font-bold text-[#0A66C2]">Global</div>
+            <div class="text-[10px] text-slate-500 uppercase tracking-widest mt-0.5">US/UK/EU Hours</div>
           </div>
         </div>
 
       </div>
 
-      <!-- Right Column: Interactive 3D Gold & Platinum Scene -->
+      <!-- Right Column: Interactive 3D Sapphire & Diamond Scene -->
       <div class="lg:col-span-5 relative flex items-center justify-center h-[340px] sm:h-[420px] lg:h-[480px] w-full">
         <!-- 3D Canvas Mount -->
         <div id="three-hero-container" class="absolute inset-0 w-full h-full cursor-grab active:cursor-grabbing"></div>
 
         <!-- Floating Minimal Badges -->
-        <div class="absolute -top-2 -right-1 glass-card px-4 py-2.5 rounded-xl border border-gold-500/25 shadow-2xl pointer-events-none hidden sm:block">
-          <div class="text-[10px] text-gold-400 tracking-widest uppercase font-mono-luxury">Next.js 14 & React</div>
-          <div class="text-xs text-white font-medium">Enterprise Web Scale</div>
+        <div class="absolute -top-2 -right-1 glass-card px-4 py-2.5 rounded-xl border border-slate-200/80 shadow-xl pointer-events-none hidden sm:block">
+          <div class="text-[10px] text-[#0A66C2] tracking-widest uppercase font-mono-luxury font-semibold">Next.js 14 & React</div>
+          <div class="text-xs text-slate-900 font-medium">Enterprise Web Scale</div>
         </div>
 
-        <div class="absolute -bottom-2 -left-1 glass-card px-4 py-2.5 rounded-xl border border-white/10 shadow-2xl pointer-events-none hidden sm:block">
-          <div class="text-[10px] text-silver-300 tracking-widest uppercase font-mono-luxury">Flutter Mobile</div>
-          <div class="text-xs text-white font-medium">iOS & Android 60fps</div>
+        <div class="absolute -bottom-2 -left-1 glass-card px-4 py-2.5 rounded-xl border border-slate-200/80 shadow-xl pointer-events-none hidden sm:block">
+          <div class="text-[10px] text-[#004182] tracking-widest uppercase font-mono-luxury font-semibold">Flutter Mobile</div>
+          <div class="text-xs text-slate-900 font-medium">iOS & Android 60fps</div>
         </div>
       </div>
 
@@ -257,38 +252,38 @@
 
   <!-- ==================== HAUTE LUXURY MEETING RESERVATION MODAL ==================== -->
   <div id="meeting-modal" class="fixed inset-0 z-[100] modal-backdrop hidden flex items-center justify-center p-4 transition-all duration-300">
-    <div class="relative w-full max-w-lg glass-card rounded-2xl p-6 sm:p-8 border border-gold-500/40 shadow-2xl text-left space-y-6 overflow-hidden">
+    <div class="relative w-full max-w-lg glass-card rounded-2xl p-6 sm:p-8 border border-slate-200 shadow-2xl bg-white/95 text-left space-y-6 overflow-hidden">
       
-      <!-- Subtle Gold Ambient Glow -->
-      <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-64 h-64 bg-gold-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <!-- Subtle Blue Ambient Glow -->
+      <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-64 h-64 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
 
       <!-- Modal Header -->
       <div class="flex items-start justify-between gap-4 relative z-10">
         <div>
-          <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-gold-500/10 border border-gold-500/25 text-[10px] font-mono-luxury uppercase text-gold-400 font-semibold tracking-wider mb-2">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-pulse"></span>
+          <div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-50 border border-blue-200 text-[10px] font-mono-luxury uppercase text-[#0A66C2] font-semibold tracking-wider mb-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse"></span>
             <span>Private Technical Discovery (15 Min)</span>
           </div>
-          <h3 class="text-xl sm:text-2xl font-luxury font-bold text-white">Reserve Consultation Slot</h3>
-          <p class="text-xs text-silver-400 font-light mt-1">Direct architectural sync with Mohammad Hasan over Google Meet or Zoom.</p>
+          <h3 class="text-xl sm:text-2xl font-luxury font-bold text-slate-950">Reserve Consultation Slot</h3>
+          <p class="text-xs text-slate-500 font-light mt-1">Direct architectural sync with Mohammad Hasan over Google Meet or Zoom.</p>
         </div>
-        <button type="button" id="close-modal-btn" class="text-silver-400 hover:text-white p-1 rounded-lg hover:bg-white/10 transition-colors" aria-label="Close Modal">
+        <button type="button" id="close-modal-btn" class="text-slate-400 hover:text-slate-700 p-1 rounded-lg hover:bg-slate-100 transition-colors" aria-label="Close Modal">
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
 
       <!-- Selected Slot Banner -->
-      <div class="p-3.5 rounded-xl bg-[#090B0F] border border-gold-500/30 flex items-center justify-between text-xs relative z-10">
+      <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center justify-between text-xs relative z-10">
         <div class="flex items-center gap-2.5">
-          <div class="w-7 h-7 rounded-lg bg-gold-500/15 text-gold-400 flex items-center justify-center">
+          <div class="w-7 h-7 rounded-lg bg-blue-50 text-[#0A66C2] flex items-center justify-center">
             <i data-lucide="clock" class="w-3.5 h-3.5"></i>
           </div>
           <div>
-            <div class="text-[10px] uppercase font-mono-luxury text-silver-400">Selected Slot</div>
-            <div class="text-white font-medium text-xs font-mono" id="modal-slot-display">Thu, Sep 17 · 2:00 PM EST</div>
+            <div class="text-[10px] uppercase font-mono-luxury text-slate-500">Selected Slot</div>
+            <div class="text-slate-950 font-bold text-xs font-mono" id="modal-slot-display">Thu, Sep 17 · 2:00 PM EST</div>
           </div>
         </div>
-        <a href="#hero-slot-list" id="modal-change-slot" class="text-[11px] text-gold-400 hover:underline uppercase font-mono-luxury">Change Slot</a>
+        <a href="#hero-slot-list" id="modal-change-slot" class="text-[11px] text-[#0A66C2] hover:underline uppercase font-mono-luxury font-semibold">Change Slot</a>
       </div>
 
       <!-- Reservation Form -->
@@ -298,8 +293,8 @@
         <input type="hidden" name="platform" id="modal-hidden-platform" value="Google Meet">
 
         <div class="space-y-1.5">
-          <label for="modal-name" class="block text-[11px] font-mono-luxury uppercase tracking-wider text-silver-400">
-            Your Name / Company <span class="text-gold-400">*</span>
+          <label for="modal-name" class="block text-[11px] font-mono-luxury uppercase tracking-wider text-slate-600 font-medium">
+            Your Name / Company <span class="text-[#0A66C2] font-bold">*</span>
           </label>
           <input 
             type="text" 
@@ -307,13 +302,13 @@
             name="name" 
             required 
             placeholder="e.g. Julian Vance, Founder"
-            class="w-full px-4 py-3 rounded-xl bg-[#07090C] border border-white/10 text-white placeholder:text-silver-500 text-xs font-light focus:outline-none focus:border-gold-500/60 focus:ring-1 focus:ring-gold-500/30 transition-all"
+            class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder:text-slate-400 text-xs font-light focus:bg-white focus:outline-none focus:border-[#0A66C2] focus:ring-1 focus:ring-[#0A66C2]/30 transition-all"
           >
         </div>
 
         <div class="space-y-1.5">
-          <label for="modal-email" class="block text-[11px] font-mono-luxury uppercase tracking-wider text-silver-400">
-            Work or Personal Email <span class="text-gold-400">*</span>
+          <label for="modal-email" class="block text-[11px] font-mono-luxury uppercase tracking-wider text-slate-600 font-medium">
+            Work or Personal Email <span class="text-[#0A66C2] font-bold">*</span>
           </label>
           <input 
             type="email" 
@@ -321,23 +316,23 @@
             name="email" 
             required 
             placeholder="julian@venture.com"
-            class="w-full px-4 py-3 rounded-xl bg-[#07090C] border border-white/10 text-white placeholder:text-silver-500 text-xs font-light focus:outline-none focus:border-gold-500/60 focus:ring-1 focus:ring-gold-500/30 transition-all"
+            class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder:text-slate-400 text-xs font-light focus:bg-white focus:outline-none focus:border-[#0A66C2] focus:ring-1 focus:ring-[#0A66C2]/30 transition-all"
           >
         </div>
 
         <div class="space-y-1.5">
-          <label for="modal-topic" class="block text-[11px] font-mono-luxury uppercase tracking-wider text-silver-400">
+          <label for="modal-topic" class="block text-[11px] font-mono-luxury uppercase tracking-wider text-slate-600 font-medium">
             Primary Agenda / Scope
           </label>
           <select 
             id="modal-topic" 
             name="projectType"
-            class="w-full px-4 py-3 rounded-xl bg-[#07090C] border border-white/10 text-silver-200 text-xs font-light focus:outline-none focus:border-gold-500/60 transition-all cursor-pointer"
+            class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs font-light focus:bg-white focus:outline-none focus:border-[#0A66C2] transition-all cursor-pointer"
           >
-            <option value="Next.js SaaS MVP / Web Architecture" class="bg-[#090B0F]">Next.js SaaS MVP / Web Architecture</option>
-            <option value="Cross-Platform Flutter Mobile Application" class="bg-[#090B0F]">Cross-Platform Flutter Mobile Application</option>
-            <option value="Bespoke Luxury 3D Web Experience" class="bg-[#090B0F]">Bespoke Luxury 3D Web Experience</option>
-            <option value="Technical Code Audit / Agency Partner" class="bg-[#090B0F]">Technical Code Audit / Agency Partner</option>
+            <option value="Next.js SaaS MVP / Web Architecture">Next.js SaaS MVP / Web Architecture</option>
+            <option value="Cross-Platform Flutter Mobile Application">Cross-Platform Flutter Mobile Application</option>
+            <option value="Bespoke Luxury 3D Web Experience">Bespoke Luxury 3D Web Experience</option>
+            <option value="Technical Code Audit / Agency Partner">Technical Code Audit / Agency Partner</option>
           </select>
         </div>
 
@@ -348,13 +343,13 @@
         <button 
           type="submit" 
           id="modal-submit-btn" 
-          class="btn-catchy-gold w-full py-3.5 rounded-xl text-xs uppercase tracking-wider font-bold flex items-center justify-center gap-2 cursor-pointer shadow-xl transition-all"
+          class="btn-catchy-blue w-full py-3.5 rounded-xl text-xs uppercase tracking-wider font-bold flex items-center justify-center gap-2 cursor-pointer shadow-xl transition-all text-white"
         >
           <span id="modal-btn-text">Confirm 15-Min Meeting</span>
-          <i data-lucide="check-circle" class="w-4 h-4 text-black"></i>
+          <i data-lucide="check-circle" class="w-4 h-4 text-white"></i>
         </button>
 
-        <div class="text-[10px] text-center text-silver-500 font-mono">
+        <div class="text-[10px] text-center text-slate-500 font-mono">
           Calendar invite + Google Meet link dispatched instantly upon submission.
         </div>
       </form>
@@ -362,23 +357,23 @@
   </div>
 
   <!-- ==================== SELECTED WORK / CASE STUDIES ==================== -->
-  <section id="work" class="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 relative z-10 border-t border-white/10">
+  <section id="work" class="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 relative z-10 border-t border-slate-200">
     <div class="max-w-7xl mx-auto space-y-12 sm:space-y-14">
       
       <!-- Section Header & Filter Tabs -->
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
         <div class="space-y-2">
-          <span class="text-[10px] font-mono-luxury tracking-[0.25em] text-gold-400 uppercase">Selected Portfolio</span>
-          <h2 class="text-2xl sm:text-4xl font-luxury font-bold text-white">Proven Architectural Delivery</h2>
-          <p class="text-silver-400 text-xs sm:text-sm max-w-xl font-light">Commercial outcomes across enterprise SaaS platforms, cross-platform mobile apps, and luxury editorial web.</p>
+          <span class="text-[10px] font-mono-luxury tracking-[0.25em] text-[#0A66C2] uppercase font-semibold">Selected Portfolio</span>
+          <h2 class="text-2xl sm:text-4xl font-luxury font-bold text-slate-950">Proven Architectural Delivery</h2>
+          <p class="text-slate-600 text-xs sm:text-sm max-w-xl font-light">Commercial outcomes across enterprise SaaS platforms, cross-platform mobile apps, and luxury editorial web.</p>
         </div>
 
         <!-- Category Filter Tabs -->
-        <div class="flex items-center gap-1.5 p-1 rounded-xl bg-[#090B0F] border border-white/10 self-start text-[11px] uppercase tracking-wider">
-          <button class="filter-btn px-3.5 py-1.5 rounded-lg font-medium transition-all bg-gold-500/15 text-gold-400 border border-gold-500/30" data-filter="all">All</button>
-          <button class="filter-btn px-3.5 py-1.5 rounded-lg font-medium text-silver-400 border border-transparent hover:text-white transition-all" data-filter="web">SaaS Web</button>
-          <button class="filter-btn px-3.5 py-1.5 rounded-lg font-medium text-silver-400 border border-transparent hover:text-white transition-all" data-filter="mobile">Mobile</button>
-          <button class="filter-btn px-3.5 py-1.5 rounded-lg font-medium text-silver-400 border border-transparent hover:text-white transition-all" data-filter="luxury">Luxury</button>
+        <div class="flex items-center gap-1.5 p-1 rounded-xl bg-slate-100 border border-slate-200 self-start text-[11px] uppercase tracking-wider shadow-sm">
+          <button class="filter-btn px-3.5 py-1.5 rounded-lg font-semibold transition-all bg-[#0A66C2] text-white border border-[#0A66C2] shadow-sm" data-filter="all">All</button>
+          <button class="filter-btn px-3.5 py-1.5 rounded-lg font-medium text-slate-600 border border-transparent hover:text-slate-950 transition-all" data-filter="web">SaaS Web</button>
+          <button class="filter-btn px-3.5 py-1.5 rounded-lg font-medium text-slate-600 border border-transparent hover:text-slate-950 transition-all" data-filter="mobile">Mobile</button>
+          <button class="filter-btn px-3.5 py-1.5 rounded-lg font-medium text-slate-600 border border-transparent hover:text-slate-950 transition-all" data-filter="luxury">Luxury</button>
         </div>
       </div>
 
@@ -386,45 +381,45 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         
         <!-- ==================== PROJECT 1: SaaS Web App ==================== -->
-        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between" data-category="web">
+        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between border border-slate-200/80 shadow-sm hover:shadow-xl transition-all" data-category="web">
           <div class="tilt-inner space-y-5">
             <!-- Header Badges (Larger & Luxury Clear) -->
             <div class="flex items-center justify-between gap-2">
-              <span class="px-3.5 py-1.5 rounded-lg text-xs font-mono-luxury tracking-wider text-gold-300 bg-gold-500/10 border border-gold-500/30 uppercase font-semibold shadow-sm">
+              <span class="px-3.5 py-1.5 rounded-lg text-xs font-mono-luxury tracking-wider text-[#004182] bg-blue-50 border border-blue-200 uppercase font-semibold shadow-sm">
                 Full-Stack SaaS Platform
               </span>
-              <span class="text-xs text-silver-400 font-mono-luxury uppercase font-medium">US Startup</span>
+              <span class="text-xs text-slate-400 font-mono-luxury uppercase font-medium">US Startup</span>
             </div>
 
-            <!-- THUMBNAIL: Simply replace 'src' below with your project screenshot (e.g. assets/images/your-image.jpg or https://image-url) -->
-            <div class="relative h-48 sm:h-52 w-full rounded-xl overflow-hidden bg-[#0C0E14] border border-white/10 group-hover:border-gold-500/40 transition-all duration-500">
-              <img src="assets/images/project1.svg" alt="Nexus SaaS Analytics" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out opacity-90 group-hover:opacity-100" loading="lazy">
-              <div class="absolute inset-0 bg-gradient-to-t from-[#090B0F]/90 via-transparent to-transparent pointer-events-none"></div>
-              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md border border-white/15 text-[11px] font-mono-luxury text-silver-300 flex items-center gap-1.5 shadow-lg">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <!-- THUMBNAIL: Simply replace 'src' below with your project screenshot -->
+            <div class="relative h-48 sm:h-52 w-full rounded-xl overflow-hidden bg-slate-100 border border-slate-200 group-hover:border-[#0A66C2]/40 transition-all duration-500 shadow-inner">
+              <img src="assets/images/project1.svg" alt="Nexus SaaS Analytics" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent pointer-events-none"></div>
+              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-md border border-slate-200 text-[11px] font-mono-luxury text-slate-800 flex items-center gap-1.5 shadow-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                 <span>Live Preview</span>
               </div>
             </div>
 
             <div>
-              <h3 class="text-lg sm:text-xl font-luxury font-bold text-white group-hover:text-gold-400 transition-colors">Nexus SaaS Analytics</h3>
-              <p class="text-silver-300 text-xs sm:text-sm mt-2 leading-relaxed font-light">
+              <h3 class="text-lg sm:text-xl font-luxury font-bold text-slate-950 group-hover:text-[#0A66C2] transition-colors">Nexus SaaS Analytics</h3>
+              <p class="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed font-light">
                 Enterprise workflow & revenue dashboard with Next.js App Router, Prisma, and Stripe recurring billing. Shaved 72% off server latency.
               </p>
             </div>
 
-            <!-- Technology Badges (Bigger, Clearer & Luxury) -->
+            <!-- Technology Badges -->
             <div class="flex flex-wrap gap-2 pt-1">
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Next.js 14</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">TypeScript</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">PostgreSQL</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Stripe</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Next.js 14</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">TypeScript</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">PostgreSQL</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Stripe</span>
             </div>
           </div>
 
-          <div class="pt-6 mt-4 border-t border-white/10 flex items-center justify-between">
-            <span class="text-xs text-silver-400 font-mono-luxury">Delivery: <strong class="text-white">4.5 Wks</strong></span>
-            <a href="https://ui.shadcn.com/examples/dashboard" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-gold-400 hover:text-gold-300 transition-colors uppercase tracking-wider">
+          <div class="pt-6 mt-4 border-t border-slate-200 flex items-center justify-between">
+            <span class="text-xs text-slate-500 font-mono-luxury">Delivery: <strong class="text-slate-900">4.5 Wks</strong></span>
+            <a href="https://ui.shadcn.com/examples/dashboard" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0A66C2] hover:text-[#004182] transition-colors uppercase tracking-wider">
               <span>View Build</span>
               <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
             </a>
@@ -432,43 +427,43 @@
         </div>
 
         <!-- ==================== PROJECT 2: Mobile App ==================== -->
-        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between" data-category="mobile">
+        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between border border-slate-200/80 shadow-sm hover:shadow-xl transition-all" data-category="mobile">
           <div class="tilt-inner space-y-5">
             <div class="flex items-center justify-between gap-2">
-              <span class="px-3.5 py-1.5 rounded-lg text-xs font-mono-luxury tracking-wider text-gold-300 bg-gold-500/10 border border-gold-500/30 uppercase font-semibold shadow-sm">
+              <span class="px-3.5 py-1.5 rounded-lg text-xs font-mono-luxury tracking-wider text-[#004182] bg-blue-50 border border-blue-200 uppercase font-semibold shadow-sm">
                 Cross-Platform Mobile App
               </span>
-              <span class="text-xs text-silver-400 font-mono-luxury uppercase font-medium">EU Brand</span>
+              <span class="text-xs text-slate-400 font-mono-luxury uppercase font-medium">EU Brand</span>
             </div>
 
-            <!-- THUMBNAIL: Simply replace 'src' below with your project screenshot -->
-            <div class="relative h-48 sm:h-52 w-full rounded-xl overflow-hidden bg-[#0C0E14] border border-white/10 group-hover:border-gold-500/40 transition-all duration-500">
-              <img src="assets/images/project2.svg" alt="Aura Pulse Mobile" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out opacity-90 group-hover:opacity-100" loading="lazy">
-              <div class="absolute inset-0 bg-gradient-to-t from-[#090B0F]/90 via-transparent to-transparent pointer-events-none"></div>
-              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md border border-white/15 text-[11px] font-mono-luxury text-silver-300 flex items-center gap-1.5 shadow-lg">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <!-- THUMBNAIL -->
+            <div class="relative h-48 sm:h-52 w-full rounded-xl overflow-hidden bg-slate-100 border border-slate-200 group-hover:border-[#0A66C2]/40 transition-all duration-500 shadow-inner">
+              <img src="assets/images/project2.svg" alt="Aura Pulse Mobile" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent pointer-events-none"></div>
+              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-md border border-slate-200 text-[11px] font-mono-luxury text-slate-800 flex items-center gap-1.5 shadow-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                 <span>iOS & Android</span>
               </div>
             </div>
 
             <div>
-              <h3 class="text-lg sm:text-xl font-luxury font-bold text-white group-hover:text-gold-400 transition-colors">Aura Pulse Health</h3>
-              <p class="text-silver-300 text-xs sm:text-sm mt-2 leading-relaxed font-light">
+              <h3 class="text-lg sm:text-xl font-luxury font-bold text-slate-950 group-hover:text-[#0A66C2] transition-colors">Aura Pulse Health</h3>
+              <p class="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed font-light">
                 Unified cross-platform fitness & wellness tracker in Flutter. Features 60fps animations, Supabase auth, and offline state persistence.
               </p>
             </div>
 
             <div class="flex flex-wrap gap-2 pt-1">
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Flutter</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Dart</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Supabase</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">BLoC</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Flutter</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Dart</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Supabase</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">BLoC</span>
             </div>
           </div>
 
-          <div class="pt-6 mt-4 border-t border-white/10 flex items-center justify-between">
-            <span class="text-xs text-silver-400 font-mono-luxury">Delivery: <strong class="text-white">6.0 Wks</strong></span>
-            <a href="https://wonderous.app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-gold-400 hover:text-gold-300 transition-colors uppercase tracking-wider">
+          <div class="pt-6 mt-4 border-t border-slate-200 flex items-center justify-between">
+            <span class="text-xs text-slate-500 font-mono-luxury">Delivery: <strong class="text-slate-900">6.0 Wks</strong></span>
+            <a href="https://wonderous.app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0A66C2] hover:text-[#004182] transition-colors uppercase tracking-wider">
               <span>View Build</span>
               <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
             </a>
@@ -476,43 +471,43 @@
         </div>
 
         <!-- ==================== PROJECT 3: Luxury Bespoke Web ==================== -->
-        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between" data-category="luxury">
+        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between border border-slate-200/80 shadow-sm hover:shadow-xl transition-all" data-category="luxury">
           <div class="tilt-inner space-y-5">
             <div class="flex items-center justify-between gap-2">
-              <span class="px-3.5 py-1.5 rounded-lg text-xs font-mono-luxury tracking-wider text-gold-300 bg-gold-500/10 border border-gold-500/30 uppercase font-semibold shadow-sm">
+              <span class="px-3.5 py-1.5 rounded-lg text-xs font-mono-luxury tracking-wider text-[#004182] bg-blue-50 border border-blue-200 uppercase font-semibold shadow-sm">
                 Haute Luxury Web
               </span>
-              <span class="text-xs text-silver-400 font-mono-luxury uppercase font-medium">UK / UAE Luxury</span>
+              <span class="text-xs text-slate-400 font-mono-luxury uppercase font-medium">UK / UAE Luxury</span>
             </div>
 
-            <!-- THUMBNAIL: Simply replace 'src' below with your project screenshot -->
-            <div class="relative h-48 sm:h-52 w-full rounded-xl overflow-hidden bg-[#0C0E14] border border-white/10 group-hover:border-gold-500/40 transition-all duration-500">
-              <img src="assets/images/project3.svg" alt="Maison Élan Luxury" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out opacity-90 group-hover:opacity-100" loading="lazy">
-              <div class="absolute inset-0 bg-gradient-to-t from-[#090B0F]/90 via-transparent to-transparent pointer-events-none"></div>
-              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md border border-white/15 text-[11px] font-mono-luxury text-silver-300 flex items-center gap-1.5 shadow-lg">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <!-- THUMBNAIL -->
+            <div class="relative h-48 sm:h-52 w-full rounded-xl overflow-hidden bg-slate-100 border border-slate-200 group-hover:border-[#0A66C2]/40 transition-all duration-500 shadow-inner">
+              <img src="assets/images/project3.svg" alt="Maison Élan Luxury" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent pointer-events-none"></div>
+              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-md border border-slate-200 text-[11px] font-mono-luxury text-slate-800 flex items-center gap-1.5 shadow-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                 <span>97/100 Speed</span>
               </div>
             </div>
 
             <div>
-              <h3 class="text-lg sm:text-xl font-luxury font-bold text-white group-hover:text-gold-400 transition-colors">Maison Élan Luxury</h3>
-              <p class="text-silver-300 text-xs sm:text-sm mt-2 leading-relaxed font-light">
+              <h3 class="text-lg sm:text-xl font-luxury font-bold text-slate-950 group-hover:text-[#0A66C2] transition-colors">Maison Élan Luxury</h3>
+              <p class="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed font-light">
                 Bespoke digital editorial platform with fluid micro-interactions, magnetic cursors, and instant drawer checkouts. Increased mobile conversion by 28%.
               </p>
             </div>
 
             <div class="flex flex-wrap gap-2 pt-1">
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Next.js</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Tailwind</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">GSAP</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Framer Motion</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Next.js</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Tailwind</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">GSAP</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Framer Motion</span>
             </div>
           </div>
 
-          <div class="pt-6 mt-4 border-t border-white/10 flex items-center justify-between">
-            <span class="text-xs text-silver-400 font-mono-luxury">Timeline: <strong class="text-white">3.5 Wks</strong></span>
-            <a href="https://demo.vercel.store" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-gold-400 hover:text-gold-300 transition-colors uppercase tracking-wider">
+          <div class="pt-6 mt-4 border-t border-slate-200 flex items-center justify-between">
+            <span class="text-xs text-slate-500 font-mono-luxury">Timeline: <strong class="text-slate-900">3.5 Wks</strong></span>
+            <a href="https://demo.vercel.store" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0A66C2] hover:text-[#004182] transition-colors uppercase tracking-wider">
               <span>View Build</span>
               <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
             </a>
@@ -520,43 +515,43 @@
         </div>
 
         <!-- ==================== PROJECT 4: AI SaaS Platform ==================== -->
-        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between" data-category="web">
+        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between border border-slate-200/80 shadow-sm hover:shadow-xl transition-all" data-category="web">
           <div class="tilt-inner space-y-5">
             <div class="flex items-center justify-between gap-2">
-              <span class="px-3.5 py-1.5 rounded-lg text-xs font-mono-luxury tracking-wider text-gold-300 bg-gold-500/10 border border-gold-500/30 uppercase font-semibold shadow-sm">
+              <span class="px-3.5 py-1.5 rounded-lg text-xs font-mono-luxury tracking-wider text-[#004182] bg-blue-50 border border-blue-200 uppercase font-semibold shadow-sm">
                 AI Intelligence Platform
               </span>
-              <span class="text-xs text-silver-400 font-mono-luxury uppercase font-medium">Silicon Valley AI</span>
+              <span class="text-xs text-slate-400 font-mono-luxury uppercase font-medium">Silicon Valley AI</span>
             </div>
 
-            <!-- THUMBNAIL: Simply replace 'src' below with your project screenshot -->
-            <div class="relative h-48 sm:h-52 w-full rounded-xl overflow-hidden bg-[#0C0E14] border border-white/10 group-hover:border-gold-500/40 transition-all duration-500">
-              <img src="assets/images/project4.svg" alt="Krypton AI Intelligence" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out opacity-90 group-hover:opacity-100" loading="lazy">
-              <div class="absolute inset-0 bg-gradient-to-t from-[#090B0F]/90 via-transparent to-transparent pointer-events-none"></div>
-              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md border border-white/15 text-[11px] font-mono-luxury text-silver-300 flex items-center gap-1.5 shadow-lg">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <!-- THUMBNAIL -->
+            <div class="relative h-48 sm:h-52 w-full rounded-xl overflow-hidden bg-slate-100 border border-slate-200 group-hover:border-[#0A66C2]/40 transition-all duration-500 shadow-inner">
+              <img src="assets/images/project4.svg" alt="Krypton AI Intelligence" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent pointer-events-none"></div>
+              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-md border border-slate-200 text-[11px] font-mono-luxury text-slate-800 flex items-center gap-1.5 shadow-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                 <span>FastAPI + Streaming</span>
               </div>
             </div>
 
             <div>
-              <h3 class="text-lg sm:text-xl font-luxury font-bold text-white group-hover:text-gold-400 transition-colors">Krypton AI Copilot</h3>
-              <p class="text-silver-300 text-xs sm:text-sm mt-2 leading-relaxed font-light">
+              <h3 class="text-lg sm:text-xl font-luxury font-bold text-slate-950 group-hover:text-[#0A66C2] transition-colors">Krypton AI Copilot</h3>
+              <p class="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed font-light">
                 Autonomous LLM workflow dashboard built with Next.js 14 and Python FastAPI. Features real-time token streaming and vector search caching.
               </p>
             </div>
 
             <div class="flex flex-wrap gap-2 pt-1">
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Next.js 14</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Python</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">FastAPI</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Vector DB</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Next.js 14</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Python</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">FastAPI</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Vector DB</span>
             </div>
           </div>
 
-          <div class="pt-6 mt-4 border-t border-white/10 flex items-center justify-between">
-            <span class="text-xs text-silver-400 font-mono-luxury">Timeline: <strong class="text-white">5.0 Wks</strong></span>
-            <a href="https://linear.app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-gold-400 hover:text-gold-300 transition-colors uppercase tracking-wider">
+          <div class="pt-6 mt-4 border-t border-slate-200 flex items-center justify-between">
+            <span class="text-xs text-slate-500 font-mono-luxury">Timeline: <strong class="text-slate-900">5.0 Wks</strong></span>
+            <a href="https://linear.app" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0A66C2] hover:text-[#004182] transition-colors uppercase tracking-wider">
               <span>View Build</span>
               <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
             </a>
@@ -564,43 +559,43 @@
         </div>
 
         <!-- ==================== PROJECT 5: FinTech Mobile App ==================== -->
-        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between" data-category="mobile">
+        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between border border-slate-200/80 shadow-sm hover:shadow-xl transition-all" data-category="mobile">
           <div class="tilt-inner space-y-5">
             <div class="flex items-center justify-between gap-2">
-              <span class="px-3.5 py-1.5 rounded-lg text-xs font-mono-luxury tracking-wider text-gold-300 bg-gold-500/10 border border-gold-500/30 uppercase font-semibold shadow-sm">
+              <span class="px-3.5 py-1.5 rounded-lg text-xs font-mono-luxury tracking-wider text-[#004182] bg-blue-50 border border-blue-200 uppercase font-semibold shadow-sm">
                 FinTech Mobile App
               </span>
-              <span class="text-xs text-silver-400 font-mono-luxury uppercase font-medium">Global Banking</span>
+              <span class="text-xs text-slate-400 font-mono-luxury uppercase font-medium">Global Banking</span>
             </div>
 
-            <!-- THUMBNAIL: Simply replace 'src' below with your project screenshot -->
-            <div class="relative h-48 sm:h-52 w-full rounded-xl overflow-hidden bg-[#0C0E14] border border-white/10 group-hover:border-gold-500/40 transition-all duration-500">
-              <img src="assets/images/project5.svg" alt="Apex Global NeoBank" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out opacity-90 group-hover:opacity-100" loading="lazy">
-              <div class="absolute inset-0 bg-gradient-to-t from-[#090B0F]/90 via-transparent to-transparent pointer-events-none"></div>
-              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md border border-white/15 text-[11px] font-mono-luxury text-silver-300 flex items-center gap-1.5 shadow-lg">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <!-- THUMBNAIL -->
+            <div class="relative h-48 sm:h-52 w-full rounded-xl overflow-hidden bg-slate-100 border border-slate-200 group-hover:border-[#0A66C2]/40 transition-all duration-500 shadow-inner">
+              <img src="assets/images/project5.svg" alt="Apex Global NeoBank" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent pointer-events-none"></div>
+              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-md border border-slate-200 text-[11px] font-mono-luxury text-slate-800 flex items-center gap-1.5 shadow-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                 <span>256-Bit Encrypted</span>
               </div>
             </div>
 
             <div>
-              <h3 class="text-lg sm:text-xl font-luxury font-bold text-white group-hover:text-gold-400 transition-colors">Apex Global NeoBank</h3>
-              <p class="text-silver-300 text-xs sm:text-sm mt-2 leading-relaxed font-light">
+              <h3 class="text-lg sm:text-xl font-luxury font-bold text-slate-950 group-hover:text-[#0A66C2] transition-colors">Apex Global NeoBank</h3>
+              <p class="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed font-light">
                 High-security international banking & multi-currency wallet application in Flutter. Integrated biometric authentication and real-time wire transfers.
               </p>
             </div>
 
             <div class="flex flex-wrap gap-2 pt-1">
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Flutter</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Dart</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Firebase</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Stripe SDK</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Flutter</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Dart</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Firebase</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Stripe SDK</span>
             </div>
           </div>
 
-          <div class="pt-6 mt-4 border-t border-white/10 flex items-center justify-between">
-            <span class="text-xs text-silver-400 font-mono-luxury">Timeline: <strong class="text-white">6.5 Wks</strong></span>
-            <a href="https://gallery.flutter.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-gold-400 hover:text-gold-300 transition-colors uppercase tracking-wider">
+          <div class="pt-6 mt-4 border-t border-slate-200 flex items-center justify-between">
+            <span class="text-xs text-slate-500 font-mono-luxury">Timeline: <strong class="text-slate-900">6.5 Wks</strong></span>
+            <a href="https://gallery.flutter.dev" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0A66C2] hover:text-[#004182] transition-colors uppercase tracking-wider">
               <span>View Build</span>
               <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
             </a>
@@ -608,43 +603,43 @@
         </div>
 
         <!-- ==================== PROJECT 6: 3D Interactive Web ==================== -->
-        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between" data-category="luxury">
+        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between border border-slate-200/80 shadow-sm hover:shadow-xl transition-all" data-category="luxury">
           <div class="tilt-inner space-y-5">
             <div class="flex items-center justify-between gap-2">
-              <span class="px-3.5 py-1.5 rounded-lg text-xs font-mono-luxury tracking-wider text-gold-300 bg-gold-500/10 border border-gold-500/30 uppercase font-semibold shadow-sm">
+              <span class="px-3.5 py-1.5 rounded-lg text-xs font-mono-luxury tracking-wider text-[#004182] bg-blue-50 border border-blue-200 uppercase font-semibold shadow-sm">
                 Interactive 3D Web
               </span>
-              <span class="text-xs text-silver-400 font-mono-luxury uppercase font-medium">Bespoke Architecture</span>
+              <span class="text-xs text-slate-400 font-mono-luxury uppercase font-medium">Bespoke Architecture</span>
             </div>
 
-            <!-- THUMBNAIL: Simply replace 'src' below with your project screenshot -->
-            <div class="relative h-48 sm:h-52 w-full rounded-xl overflow-hidden bg-[#0C0E14] border border-white/10 group-hover:border-gold-500/40 transition-all duration-500">
-              <img src="assets/images/project6.svg" alt="Atelier Noir 3D Studio" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out opacity-90 group-hover:opacity-100" loading="lazy">
-              <div class="absolute inset-0 bg-gradient-to-t from-[#090B0F]/90 via-transparent to-transparent pointer-events-none"></div>
-              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-black/75 backdrop-blur-md border border-white/15 text-[11px] font-mono-luxury text-silver-300 flex items-center gap-1.5 shadow-lg">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <!-- THUMBNAIL -->
+            <div class="relative h-48 sm:h-52 w-full rounded-xl overflow-hidden bg-slate-100 border border-slate-200 group-hover:border-[#0A66C2]/40 transition-all duration-500 shadow-inner">
+              <img src="assets/images/project6.svg" alt="Atelier Noir 3D Studio" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-white/40 via-transparent to-transparent pointer-events-none"></div>
+              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-md bg-white/90 backdrop-blur-md border border-slate-200 text-[11px] font-mono-luxury text-slate-800 flex items-center gap-1.5 shadow-sm">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
                 <span>WebGL 60 FPS</span>
               </div>
             </div>
 
             <div>
-              <h3 class="text-lg sm:text-xl font-luxury font-bold text-white group-hover:text-gold-400 transition-colors">Atelier Noir 3D Studio</h3>
-              <p class="text-silver-300 text-xs sm:text-sm mt-2 leading-relaxed font-light">
+              <h3 class="text-lg sm:text-xl font-luxury font-bold text-slate-950 group-hover:text-[#0A66C2] transition-colors">Atelier Noir 3D Studio</h3>
+              <p class="text-slate-600 text-xs sm:text-sm mt-2 leading-relaxed font-light">
                 Haute couture architectural visualization platform featuring real-time Three.js WebGL lighting and smooth Lenis momentum scroll physics.
               </p>
             </div>
 
             <div class="flex flex-wrap gap-2 pt-1">
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Three.js</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">WebGL</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Next.js</span>
-              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-[#0C0E14] border border-white/10 hover:border-gold-500/40 text-silver-200 font-medium tracking-wide shadow-sm transition-all">Lenis</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Three.js</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">WebGL</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Next.js</span>
+              <span class="px-3 py-1.5 rounded-lg text-xs font-mono-luxury bg-slate-50 border border-slate-200 hover:border-[#0A66C2]/40 text-slate-700 font-medium tracking-wide shadow-sm transition-all">Lenis</span>
             </div>
           </div>
 
-          <div class="pt-6 mt-4 border-t border-white/10 flex items-center justify-between">
-            <span class="text-xs text-silver-400 font-mono-luxury">Timeline: <strong class="text-white">4.0 Wks</strong></span>
-            <a href="https://cuberto.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-gold-400 hover:text-gold-300 transition-colors uppercase tracking-wider">
+          <div class="pt-6 mt-4 border-t border-slate-200 flex items-center justify-between">
+            <span class="text-xs text-slate-500 font-mono-luxury">Timeline: <strong class="text-slate-900">4.0 Wks</strong></span>
+            <a href="https://cuberto.com" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0A66C2] hover:text-[#004182] transition-colors uppercase tracking-wider">
               <span>View Build</span>
               <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
             </a>
@@ -657,57 +652,57 @@
   </section>
 
   <!-- ==================== CAPABILITIES & SERVICES ==================== -->
-  <section id="services" class="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 relative z-10 border-t border-white/10 bg-[#07090C]/50">
+  <section id="services" class="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 relative z-10 border-t border-slate-200 bg-[#F8FAFC]">
     <div class="max-w-7xl mx-auto space-y-14">
       
       <div class="text-center max-w-2xl mx-auto space-y-2">
-        <span class="text-[10px] font-mono-luxury tracking-[0.25em] text-gold-400 uppercase">Consulting Capabilities</span>
-        <h2 class="text-2xl sm:text-4xl font-luxury font-bold text-white">How I Partner with Clients</h2>
-        <p class="text-silver-400 text-xs sm:text-sm font-light">Eliminating junior subcontractor code and agency overhead with direct, senior-level architectural execution.</p>
+        <span class="text-[10px] font-mono-luxury tracking-[0.25em] text-[#0A66C2] uppercase font-semibold">Consulting Capabilities</span>
+        <h2 class="text-2xl sm:text-4xl font-luxury font-bold text-slate-950">How I Partner with Clients</h2>
+        <p class="text-slate-600 text-xs sm:text-sm font-light">Eliminating junior subcontractor code and agency overhead with direct, senior-level architectural execution.</p>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         
         <!-- Service 1 -->
-        <div class="glass-card p-6 sm:p-7 rounded-xl space-y-4 hover:-translate-y-1 transition-all">
-          <div class="w-10 h-10 rounded-lg bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400">
+        <div class="glass-card p-6 sm:p-7 rounded-xl space-y-4 hover:-translate-y-1 transition-all border border-slate-200/80 shadow-sm hover:shadow-md bg-white">
+          <div class="w-10 h-10 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center text-[#0A66C2]">
             <i data-lucide="layout" class="w-5 h-5"></i>
           </div>
-          <h3 class="text-base sm:text-lg font-luxury font-bold text-white">Full-Stack Web Apps</h3>
-          <p class="text-silver-400 text-xs sm:text-sm leading-relaxed font-light">
+          <h3 class="text-base sm:text-lg font-luxury font-bold text-slate-950">Full-Stack Web Apps</h3>
+          <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light">
             Scalable Next.js & React architectures with Node.js/Python backends. Real-time data caching, multi-tenant auth, and high-frequency APIs.
           </p>
         </div>
 
         <!-- Service 2 -->
-        <div class="glass-card p-6 sm:p-7 rounded-xl space-y-4 hover:-translate-y-1 transition-all">
-          <div class="w-10 h-10 rounded-lg bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400">
+        <div class="glass-card p-6 sm:p-7 rounded-xl space-y-4 hover:-translate-y-1 transition-all border border-slate-200/80 shadow-sm hover:shadow-md bg-white">
+          <div class="w-10 h-10 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center text-[#0A66C2]">
             <i data-lucide="smartphone" class="w-5 h-5"></i>
           </div>
-          <h3 class="text-base sm:text-lg font-luxury font-bold text-white">Cross-Platform Mobile</h3>
-          <p class="text-silver-400 text-xs sm:text-sm leading-relaxed font-light">
+          <h3 class="text-base sm:text-lg font-luxury font-bold text-slate-950">Cross-Platform Mobile</h3>
+          <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light">
             High-performance Flutter applications deployed natively to App Store & Google Play Store from a single clean codebase.
           </p>
         </div>
 
         <!-- Service 3 -->
-        <div class="glass-card p-6 sm:p-7 rounded-xl space-y-4 hover:-translate-y-1 transition-all">
-          <div class="w-10 h-10 rounded-lg bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400">
+        <div class="glass-card p-6 sm:p-7 rounded-xl space-y-4 hover:-translate-y-1 transition-all border border-slate-200/80 shadow-sm hover:shadow-md bg-white">
+          <div class="w-10 h-10 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center text-[#0A66C2]">
             <i data-lucide="sparkles" class="w-5 h-5"></i>
           </div>
-          <h3 class="text-base sm:text-lg font-luxury font-bold text-white">Luxury Bespoke Web</h3>
-          <p class="text-silver-400 text-xs sm:text-sm leading-relaxed font-light">
+          <h3 class="text-base sm:text-lg font-luxury font-bold text-slate-950">Luxury Bespoke Web</h3>
+          <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light">
             Ultra-slick interactive platforms with GSAP scroll mechanics and refined micro-interactions designed to convert high-net-worth buyers.
           </p>
         </div>
 
         <!-- Service 4 -->
-        <div class="glass-card p-6 sm:p-7 rounded-xl space-y-4 hover:-translate-y-1 transition-all">
-          <div class="w-10 h-10 rounded-lg bg-gold-500/10 border border-gold-500/20 flex items-center justify-center text-gold-400">
+        <div class="glass-card p-6 sm:p-7 rounded-xl space-y-4 hover:-translate-y-1 transition-all border border-slate-200/80 shadow-sm hover:shadow-md bg-white">
+          <div class="w-10 h-10 rounded-lg bg-blue-50 border border-blue-200 flex items-center justify-center text-[#0A66C2]">
             <i data-lucide="users" class="w-5 h-5"></i>
           </div>
-          <h3 class="text-base sm:text-lg font-luxury font-bold text-white">White-Label Partner</h3>
-          <p class="text-silver-400 text-xs sm:text-sm leading-relaxed font-light">
+          <h3 class="text-base sm:text-lg font-luxury font-bold text-slate-950">White-Label Partner</h3>
+          <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light">
             Invisible engineering execution for design studios and agencies. Coding complex Figma designs with 100% fidelity and zero hand-holding.
           </p>
         </div>
@@ -718,42 +713,42 @@
   </section>
 
   <!-- ==================== ARCHITECTURE / TECH STACK ==================== -->
-  <section id="stack" class="py-20 px-4 sm:px-6 lg:px-8 relative z-10 border-t border-white/10">
+  <section id="stack" class="py-20 px-4 sm:px-6 lg:px-8 relative z-10 border-t border-slate-200">
     <div class="max-w-7xl mx-auto space-y-10">
       
       <div class="text-center max-w-xl mx-auto space-y-2">
-        <span class="text-[10px] font-mono-luxury tracking-[0.25em] text-gold-400 uppercase">Architecture</span>
-        <h2 class="text-2xl sm:text-3xl font-luxury font-bold text-white">Core Technology Stack</h2>
-        <p class="text-silver-400 text-xs font-light">Selected for raw execution speed, security, and developer ergonomics.</p>
+        <span class="text-[10px] font-mono-luxury tracking-[0.25em] text-[#0A66C2] uppercase font-semibold">Architecture</span>
+        <h2 class="text-2xl sm:text-3xl font-luxury font-bold text-slate-950">Core Technology Stack</h2>
+        <p class="text-slate-600 text-xs font-light">Selected for raw execution speed, security, and developer ergonomics.</p>
       </div>
 
       <div class="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3 max-w-4xl mx-auto">
-        <span class="px-4 py-2 rounded-lg bg-[#090B0F] border border-white/10 hover:border-gold-500/40 text-xs sm:text-sm font-mono-luxury text-silver-300 flex items-center gap-2 transition-all">
-          <strong class="text-gold-400 font-semibold">Next.js 14</strong> (App Router)
+        <span class="px-4 py-2 rounded-lg bg-white border border-slate-200 hover:border-[#0A66C2]/40 text-xs sm:text-sm font-mono-luxury text-slate-700 flex items-center gap-2 transition-all shadow-sm">
+          <strong class="text-[#0A66C2] font-semibold">Next.js 14</strong> (App Router)
         </span>
-        <span class="px-4 py-2 rounded-lg bg-[#090B0F] border border-white/10 hover:border-gold-500/40 text-xs sm:text-sm font-mono-luxury text-silver-300 flex items-center gap-2 transition-all">
-          <strong class="text-white font-semibold">React.js</strong>
+        <span class="px-4 py-2 rounded-lg bg-white border border-slate-200 hover:border-[#0A66C2]/40 text-xs sm:text-sm font-mono-luxury text-slate-700 flex items-center gap-2 transition-all shadow-sm">
+          <strong class="text-slate-950 font-semibold">React.js</strong>
         </span>
-        <span class="px-4 py-2 rounded-lg bg-[#090B0F] border border-white/10 hover:border-gold-500/40 text-xs sm:text-sm font-mono-luxury text-silver-300 flex items-center gap-2 transition-all">
-          <strong class="text-gold-400 font-semibold">Flutter & Dart</strong>
+        <span class="px-4 py-2 rounded-lg bg-white border border-slate-200 hover:border-[#0A66C2]/40 text-xs sm:text-sm font-mono-luxury text-slate-700 flex items-center gap-2 transition-all shadow-sm">
+          <strong class="text-[#0A66C2] font-semibold">Flutter & Dart</strong>
         </span>
-        <span class="px-4 py-2 rounded-lg bg-[#090B0F] border border-white/10 hover:border-gold-500/40 text-xs sm:text-sm font-mono-luxury text-silver-300 flex items-center gap-2 transition-all">
-          <strong class="text-silver-300 font-semibold">TypeScript</strong>
+        <span class="px-4 py-2 rounded-lg bg-white border border-slate-200 hover:border-[#0A66C2]/40 text-xs sm:text-sm font-mono-luxury text-slate-700 flex items-center gap-2 transition-all shadow-sm">
+          <strong class="text-slate-800 font-semibold">TypeScript</strong>
         </span>
-        <span class="px-4 py-2 rounded-lg bg-[#090B0F] border border-white/10 hover:border-gold-500/40 text-xs sm:text-sm font-mono-luxury text-silver-300 flex items-center gap-2 transition-all">
-          <strong class="text-white font-semibold">Node.js</strong>
+        <span class="px-4 py-2 rounded-lg bg-white border border-slate-200 hover:border-[#0A66C2]/40 text-xs sm:text-sm font-mono-luxury text-slate-700 flex items-center gap-2 transition-all shadow-sm">
+          <strong class="text-slate-950 font-semibold">Node.js</strong>
         </span>
-        <span class="px-4 py-2 rounded-lg bg-[#090B0F] border border-white/10 hover:border-gold-500/40 text-xs sm:text-sm font-mono-luxury text-silver-300 flex items-center gap-2 transition-all">
-          <strong class="text-gold-400 font-semibold">PostgreSQL</strong>
+        <span class="px-4 py-2 rounded-lg bg-white border border-slate-200 hover:border-[#0A66C2]/40 text-xs sm:text-sm font-mono-luxury text-slate-700 flex items-center gap-2 transition-all shadow-sm">
+          <strong class="text-[#0A66C2] font-semibold">PostgreSQL</strong>
         </span>
-        <span class="px-4 py-2 rounded-lg bg-[#090B0F] border border-white/10 hover:border-gold-500/40 text-xs sm:text-sm font-mono-luxury text-silver-300 flex items-center gap-2 transition-all">
-          <strong class="text-white font-semibold">Supabase</strong>
+        <span class="px-4 py-2 rounded-lg bg-white border border-slate-200 hover:border-[#0A66C2]/40 text-xs sm:text-sm font-mono-luxury text-slate-700 flex items-center gap-2 transition-all shadow-sm">
+          <strong class="text-slate-950 font-semibold">Supabase</strong>
         </span>
-        <span class="px-4 py-2 rounded-lg bg-[#090B0F] border border-white/10 hover:border-gold-500/40 text-xs sm:text-sm font-mono-luxury text-silver-300 flex items-center gap-2 transition-all">
-          <strong class="text-gold-400 font-semibold">Tailwind CSS</strong>
+        <span class="px-4 py-2 rounded-lg bg-white border border-slate-200 hover:border-[#0A66C2]/40 text-xs sm:text-sm font-mono-luxury text-slate-700 flex items-center gap-2 transition-all shadow-sm">
+          <strong class="text-[#0A66C2] font-semibold">Tailwind CSS</strong>
         </span>
-        <span class="px-4 py-2 rounded-lg bg-[#090B0F] border border-white/10 hover:border-gold-500/40 text-xs sm:text-sm font-mono-luxury text-silver-300 flex items-center gap-2 transition-all">
-          <strong class="text-white font-semibold">GSAP & Three.js</strong>
+        <span class="px-4 py-2 rounded-lg bg-white border border-slate-200 hover:border-[#0A66C2]/40 text-xs sm:text-sm font-mono-luxury text-slate-700 flex items-center gap-2 transition-all shadow-sm">
+          <strong class="text-slate-950 font-semibold">GSAP & Three.js</strong>
         </span>
       </div>
 
@@ -761,71 +756,71 @@
   </section>
 
   <!-- ==================== PHILOSOPHY & ADVANTAGE ==================== -->
-  <section id="about" class="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 relative z-10 border-t border-white/10 bg-[#07090C]/50">
+  <section id="about" class="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 relative z-10 border-t border-slate-200 bg-[#F8FAFC]">
     <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
       
       <div class="lg:col-span-6 space-y-6">
-        <span class="text-[10px] font-mono-luxury tracking-[0.25em] text-gold-400 uppercase">Consultant Standard</span>
-        <h2 class="text-2xl sm:text-4xl font-luxury font-bold text-white">Why International Teams Partner With Me</h2>
-        <p class="text-silver-300 text-xs sm:text-sm leading-relaxed font-light">
+        <span class="text-[10px] font-mono-luxury tracking-[0.25em] text-[#0A66C2] uppercase font-semibold">Consultant Standard</span>
+        <h2 class="text-2xl sm:text-4xl font-luxury font-bold text-slate-950">Why International Teams Partner With Me</h2>
+        <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light">
           Traditional agencies involve bloated management layers, junior developers, and bureaucracy. Working with me gives you direct senior architectural ownership, transparent weekly milestones, and uncompromising design execution.
         </p>
 
         <div class="space-y-4 pt-2">
           <div class="flex items-start gap-4">
-            <div class="w-8 h-8 rounded-lg bg-gold-500/10 border border-gold-500/20 text-gold-400 flex items-center justify-center shrink-0 mt-0.5">
+            <div class="w-8 h-8 rounded-lg bg-blue-50 border border-blue-200 text-[#0A66C2] flex items-center justify-center shrink-0 mt-0.5">
               <i data-lucide="clock" class="w-4 h-4"></i>
             </div>
             <div>
-              <h4 class="text-xs sm:text-sm uppercase tracking-wider font-bold text-white">Daily Time Zone Overlap</h4>
-              <p class="text-xs text-silver-400 mt-0.5 font-light">4–5 hours daily overlap with US EST/PST, UK GMT, and European CET for real-time Slack/Teams sync.</p>
+              <h4 class="text-xs sm:text-sm uppercase tracking-wider font-bold text-slate-950">Daily Time Zone Overlap</h4>
+              <p class="text-xs text-slate-600 mt-0.5 font-light">4–5 hours daily overlap with US EST/PST, UK GMT, and European CET for real-time Slack/Teams sync.</p>
             </div>
           </div>
 
           <div class="flex items-start gap-4">
-            <div class="w-8 h-8 rounded-lg bg-gold-500/10 border border-gold-500/20 text-gold-400 flex items-center justify-center shrink-0 mt-0.5">
+            <div class="w-8 h-8 rounded-lg bg-blue-50 border border-blue-200 text-[#0A66C2] flex items-center justify-center shrink-0 mt-0.5">
               <i data-lucide="check-circle" class="w-4 h-4"></i>
             </div>
             <div>
-              <h4 class="text-xs sm:text-sm uppercase tracking-wider font-bold text-white">Weekly Staging Demos</h4>
-              <p class="text-xs text-silver-400 mt-0.5 font-light">Transparent sprint cadences. You test live production staging URLs every single week.</p>
+              <h4 class="text-xs sm:text-sm uppercase tracking-wider font-bold text-slate-950">Weekly Staging Demos</h4>
+              <p class="text-xs text-slate-600 mt-0.5 font-light">Transparent sprint cadences. You test live production staging URLs every single week.</p>
             </div>
           </div>
 
           <div class="flex items-start gap-4">
-            <div class="w-8 h-8 rounded-lg bg-gold-500/10 border border-gold-500/20 text-gold-400 flex items-center justify-center shrink-0 mt-0.5">
+            <div class="w-8 h-8 rounded-lg bg-blue-50 border border-blue-200 text-[#0A66C2] flex items-center justify-center shrink-0 mt-0.5">
               <i data-lucide="shield-check" class="w-4 h-4"></i>
             </div>
             <div>
-              <h4 class="text-xs sm:text-sm uppercase tracking-wider font-bold text-white">100% IP Code Ownership</h4>
-              <p class="text-xs text-silver-400 mt-0.5 font-light">Complete source code ownership and Git history transferred upon milestone completion.</p>
+              <h4 class="text-xs sm:text-sm uppercase tracking-wider font-bold text-slate-950">100% IP Code Ownership</h4>
+              <p class="text-xs text-slate-600 mt-0.5 font-light">Complete source code ownership and Git history transferred upon milestone completion.</p>
             </div>
           </div>
         </div>
       </div>
 
       <!-- Right Column: Minimalist Executive Card -->
-      <div class="lg:col-span-6 glass-card p-6 sm:p-8 rounded-2xl border border-white/10 relative space-y-6">
+      <div class="lg:col-span-6 glass-card p-6 sm:p-8 rounded-2xl border border-slate-200 bg-white shadow-xl relative space-y-6">
         <div class="flex items-center gap-4">
-          <div class="w-14 h-14 rounded-xl bg-gradient-to-tr from-[#D4AF37] to-[#AA820A] p-[1px]">
-            <div class="w-full h-full bg-[#040507] rounded-[11px] flex items-center justify-center font-brand font-bold text-base text-white">
+          <div class="w-14 h-14 rounded-xl bg-gradient-to-tr from-[#0A66C2] to-[#004182] p-[1px] shadow-sm">
+            <div class="w-full h-full bg-[#F8FAFC] rounded-[11px] flex items-center justify-center font-brand font-bold text-base text-[#004182]">
               MH
             </div>
           </div>
           <div>
-            <h3 class="text-base sm:text-lg font-luxury font-bold text-white">Mohammad Hasan</h3>
-            <div class="text-xs text-gold-400 font-mono-luxury">Lead Full-Stack & Mobile Consultant</div>
-            <div class="text-[10px] text-silver-400 uppercase tracking-wider mt-0.5">Serving US, UK, EU & UAE Clients</div>
+            <h3 class="text-base sm:text-lg font-luxury font-bold text-slate-950">Mohammad Hasan</h3>
+            <div class="text-xs text-[#0A66C2] font-mono-luxury font-semibold">Lead Full-Stack & Mobile Consultant</div>
+            <div class="text-[10px] text-slate-500 uppercase tracking-wider mt-0.5">Serving US, UK, EU & UAE Clients</div>
           </div>
         </div>
 
-        <p class="text-xs sm:text-sm text-silver-200 leading-relaxed italic border-l border-gold-500/40 pl-4 font-light">
+        <p class="text-xs sm:text-sm text-slate-700 leading-relaxed italic border-l-2 border-[#0A66C2] pl-4 font-light">
           "Software should be engineered with the same precision and aesthetic restraint as haute horlogerie: silent performance, flawless geometry, and zero wasted motion."
         </p>
 
-        <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-silver-400">
-          <span>LinkedIn Verified: <strong class="text-gold-400 font-mono">mohammadhasantechie</strong></span>
-          <a href="https://linkedin.com/in/mohammadhasantechie" target="_blank" rel="noopener noreferrer" class="text-white hover:text-gold-400 font-medium inline-flex items-center gap-1 uppercase text-[10px] tracking-wider">
+        <div class="pt-4 border-t border-slate-200 flex items-center justify-between text-xs text-slate-500">
+          <span>LinkedIn Verified: <strong class="text-[#0A66C2] font-mono">mohammadhasantechie</strong></span>
+          <a href="https://linkedin.com/in/mohammadhasantechie" target="_blank" rel="noopener noreferrer" class="text-slate-950 hover:text-[#0A66C2] font-semibold inline-flex items-center gap-1 uppercase text-[10px] tracking-wider transition-colors">
             <span>Connect ↗</span>
           </a>
         </div>
@@ -835,21 +830,21 @@
   </section>
 
   <!-- ==================== CALL TO ACTION / CONTACT ==================== -->
-  <section id="contact" class="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 relative z-10 border-t border-white/10">
-    <div class="max-w-3xl mx-auto glass-card rounded-2xl p-6 sm:p-12 relative overflow-hidden">
+  <section id="contact" class="py-20 sm:py-28 px-4 sm:px-6 lg:px-8 relative z-10 border-t border-slate-200">
+    <div class="max-w-3xl mx-auto glass-card rounded-2xl p-6 sm:p-12 relative overflow-hidden bg-white border border-slate-200 shadow-xl">
       
-      <!-- Subtle Gold Ambient Flare -->
-      <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-gold-500/5 rounded-full blur-3xl pointer-events-none"></div>
+      <!-- Subtle Blue Ambient Flare -->
+      <div class="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl pointer-events-none"></div>
 
       <div class="text-center space-y-3 relative z-10 mb-8 sm:mb-10">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold-500/5 border border-gold-500/20 text-gold-400 text-[10px] font-mono-luxury uppercase tracking-[0.2em]">
-          <span class="w-1.5 h-1.5 rounded-full bg-gold-400"></span>
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-[#0A66C2] text-[10px] font-mono-luxury uppercase tracking-[0.2em] font-semibold">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#0A66C2]"></span>
           <span>Initiate Project Engagement</span>
         </div>
-        <h2 class="text-2xl sm:text-4xl font-luxury font-bold text-white tracking-tight">
-          Ready to Build Something <span class="text-gold">Exceptional?</span>
+        <h2 class="text-2xl sm:text-4xl font-luxury font-bold text-slate-950 tracking-tight">
+          Ready to Build Something <span class="text-blue-gradient">Exceptional?</span>
         </h2>
-        <p class="text-silver-300 text-xs sm:text-sm max-w-lg mx-auto font-light leading-relaxed">
+        <p class="text-slate-600 text-xs sm:text-sm max-w-lg mx-auto font-light leading-relaxed">
           Transmitting your technical requirements directly routes to Mohammad Hasan’s executive inbox. Guaranteed architectural response within 24 hours.
         </p>
       </div>
@@ -862,8 +857,8 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <!-- Client Name / Company -->
           <div class="space-y-1.5">
-            <label for="client-name" class="block text-[11px] font-mono-luxury uppercase tracking-wider text-silver-400">
-              Your Name / Organization <span class="text-gold-400">*</span>
+            <label for="client-name" class="block text-[11px] font-mono-luxury uppercase tracking-wider text-slate-600 font-medium">
+              Your Name / Organization <span class="text-[#0A66C2] font-bold">*</span>
             </label>
             <input 
               type="text" 
@@ -871,14 +866,14 @@
               name="name" 
               required 
               placeholder="e.g. Julian Vance, Founder"
-              class="w-full px-4 py-3 rounded-xl bg-[#07090C] border border-white/10 text-white placeholder:text-silver-500 text-xs font-light focus:outline-none focus:border-gold-500/60 focus:ring-1 focus:ring-gold-500/30 transition-all"
+              class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder:text-slate-400 text-xs font-light focus:bg-white focus:outline-none focus:border-[#0A66C2] focus:ring-1 focus:ring-[#0A66C2]/30 transition-all"
             >
           </div>
 
           <!-- Client Work Email -->
           <div class="space-y-1.5">
-            <label for="client-email" class="block text-[11px] font-mono-luxury uppercase tracking-wider text-silver-400">
-              Work or Personal Email <span class="text-gold-400">*</span>
+            <label for="client-email" class="block text-[11px] font-mono-luxury uppercase tracking-wider text-slate-600 font-medium">
+              Work or Personal Email <span class="text-[#0A66C2] font-bold">*</span>
             </label>
             <input 
               type="email" 
@@ -886,7 +881,7 @@
               name="email" 
               required 
               placeholder="julian@venture.com"
-              class="w-full px-4 py-3 rounded-xl bg-[#07090C] border border-white/10 text-white placeholder:text-silver-500 text-xs font-light focus:outline-none focus:border-gold-500/60 focus:ring-1 focus:ring-gold-500/30 transition-all"
+              class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder:text-slate-400 text-xs font-light focus:bg-white focus:outline-none focus:border-[#0A66C2] focus:ring-1 focus:ring-[#0A66C2]/30 transition-all"
             >
           </div>
         </div>
@@ -894,44 +889,44 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <!-- Project Category -->
           <div class="space-y-1.5">
-            <label for="project-type" class="block text-[11px] font-mono-luxury uppercase tracking-wider text-silver-400">
+            <label for="project-type" class="block text-[11px] font-mono-luxury uppercase tracking-wider text-slate-600 font-medium">
               Project Domain
             </label>
             <select 
               id="project-type" 
               name="projectType"
-              class="w-full px-4 py-3 rounded-xl bg-[#07090C] border border-white/10 text-silver-200 text-xs font-light focus:outline-none focus:border-gold-500/60 focus:ring-1 focus:ring-gold-500/30 transition-all cursor-pointer"
+              class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs font-light focus:bg-white focus:outline-none focus:border-[#0A66C2] focus:ring-1 focus:ring-[#0A66C2]/30 transition-all cursor-pointer"
             >
-              <option value="Next.js Full-Stack SaaS Platform" class="bg-[#090B0F]">Next.js Full-Stack SaaS Platform</option>
-              <option value="Cross-Platform Mobile App (Flutter)" class="bg-[#090B0F]">Cross-Platform Mobile App (Flutter)</option>
-              <option value="Luxury Bespoke 3D Web Experience" class="bg-[#090B0F]">Luxury Bespoke 3D Web Experience</option>
-              <option value="Senior Architectural Advisory / Audit" class="bg-[#090B0F]">Senior Architectural Advisory / Audit</option>
-              <option value="Agency White-Label Partner" class="bg-[#090B0F]">Agency White-Label Partner</option>
+              <option value="Next.js Full-Stack SaaS Platform">Next.js Full-Stack SaaS Platform</option>
+              <option value="Cross-Platform Mobile App (Flutter)">Cross-Platform Mobile App (Flutter)</option>
+              <option value="Luxury Bespoke 3D Web Experience">Luxury Bespoke 3D Web Experience</option>
+              <option value="Senior Architectural Advisory / Audit">Senior Architectural Advisory / Audit</option>
+              <option value="Agency White-Label Partner">Agency White-Label Partner</option>
             </select>
           </div>
 
           <!-- Target Budget -->
           <div class="space-y-1.5">
-            <label for="budget" class="block text-[11px] font-mono-luxury uppercase tracking-wider text-silver-400">
+            <label for="budget" class="block text-[11px] font-mono-luxury uppercase tracking-wider text-slate-600 font-medium">
               Estimated Budget Tier
             </label>
             <select 
               id="budget" 
               name="budget"
-              class="w-full px-4 py-3 rounded-xl bg-[#07090C] border border-white/10 text-silver-200 text-xs font-light focus:outline-none focus:border-gold-500/60 focus:ring-1 focus:ring-gold-500/30 transition-all cursor-pointer"
+              class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 text-xs font-light focus:bg-white focus:outline-none focus:border-[#0A66C2] focus:ring-1 focus:ring-[#0A66C2]/30 transition-all cursor-pointer"
             >
-              <option value="$3,000 – $5,000 USD (Sprint / MVP)" class="bg-[#090B0F]">$3,000 – $5,000 USD (Sprint / MVP)</option>
-              <option value="$5,000 – $10,000 USD (Core Product)" class="bg-[#090B0F]">$5,000 – $10,000 USD (Core Product)</option>
-              <option value="$10,000 – $25,000 USD (Enterprise / High Scale)" class="bg-[#090B0F]">$10,000 – $25,000 USD (Enterprise / High Scale)</option>
-              <option value="$25,000+ USD (Custom Architecture / Retainer)" class="bg-[#090B0F]">$25,000+ USD (Custom Architecture / Retainer)</option>
+              <option value="$3,000 – $5,000 USD (Sprint / MVP)">$3,000 – $5,000 USD (Sprint / MVP)</option>
+              <option value="$5,000 – $10,000 USD (Core Product)">$5,000 – $10,000 USD (Core Product)</option>
+              <option value="$10,000 – $25,000 USD (Enterprise / High Scale)">$10,000 – $25,000 USD (Enterprise / High Scale)</option>
+              <option value="$25,000+ USD (Custom Architecture / Retainer)">$25,000+ USD (Custom Architecture / Retainer)</option>
             </select>
           </div>
         </div>
 
         <!-- Project Overview / Specifications -->
         <div class="space-y-1.5">
-          <label for="client-message" class="block text-[11px] font-mono-luxury uppercase tracking-wider text-silver-400">
-            Technical Scope & Key Goals <span class="text-gold-400">*</span>
+          <label for="client-message" class="block text-[11px] font-mono-luxury uppercase tracking-wider text-slate-600 font-medium">
+            Technical Scope & Key Goals <span class="text-[#0A66C2] font-bold">*</span>
           </label>
           <textarea 
             id="client-message" 
@@ -939,7 +934,7 @@
             rows="3" 
             required 
             placeholder="Outline your target deliverable, tech stack preferences, current blockers, and timeline goals..."
-            class="w-full px-4 py-3 rounded-xl bg-[#07090C] border border-white/10 text-white placeholder:text-silver-500 text-xs font-light focus:outline-none focus:border-gold-500/60 focus:ring-1 focus:ring-gold-500/30 transition-all leading-relaxed resize-none"
+            class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder:text-slate-400 text-xs font-light focus:bg-white focus:outline-none focus:border-[#0A66C2] focus:ring-1 focus:ring-[#0A66C2]/30 transition-all leading-relaxed resize-none"
           ></textarea>
         </div>
 
@@ -950,15 +945,15 @@
         <button 
           type="submit" 
           id="brief-submit-btn" 
-          class="btn-schedule-luxury w-full py-3.5 sm:py-4 rounded-xl text-xs uppercase tracking-wider font-semibold flex items-center justify-center gap-2.5 group shadow-xl transition-all"
+          class="btn-catchy-blue w-full py-3.5 sm:py-4 rounded-xl text-xs uppercase tracking-wider font-bold flex items-center justify-center gap-2.5 group shadow-xl transition-all text-white cursor-pointer"
         >
           <span id="btn-text">Transmit Project Brief</span>
-          <i data-lucide="send" id="btn-icon" class="w-3.5 h-3.5 text-gold-400 group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform"></i>
+          <i data-lucide="send" id="btn-icon" class="w-3.5 h-3.5 text-white group-hover:translate-x-1 group-hover:-translate-y-0.5 transition-transform"></i>
         </button>
 
-        <div class="flex items-center justify-between text-[10px] text-silver-500 font-mono-luxury pt-1">
+        <div class="flex items-center justify-between text-[10px] text-slate-500 font-mono-luxury pt-1">
           <span class="flex items-center gap-1.5">
-            <i data-lucide="lock" class="w-3 h-3 text-gold-400/70"></i>
+            <i data-lucide="lock" class="w-3 h-3 text-[#0A66C2]"></i>
             <span>Encrypted Transmission</span>
           </span>
           <span>NDA Executed Prior to Kickoff</span>
@@ -966,25 +961,25 @@
       </form>
 
       <!-- ==================== ALTERNATIVE QUICK CHANNELS ==================== -->
-      <div class="mt-10 pt-8 border-t border-white/10 space-y-4 relative z-10 text-center">
-        <div class="text-[10px] uppercase font-mono-luxury tracking-widest text-silver-400">Or Direct Communication Channels</div>
+      <div class="mt-10 pt-8 border-t border-slate-200 space-y-4 relative z-10 text-center">
+        <div class="text-[10px] uppercase font-mono-luxury tracking-widest text-slate-500 font-semibold">Or Direct Communication Channels</div>
         
         <div class="flex flex-wrap items-center justify-center gap-3">
-          <a href="https://linkedin.com/in/mohammadhasantechie" target="_blank" rel="noopener noreferrer" class="glass-btn glass-btn-gold px-5 py-2.5 rounded-xl text-[11px] uppercase tracking-wider font-semibold flex items-center gap-2.5 group">
+          <a href="https://linkedin.com/in/mohammadhasantechie" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl text-[11px] uppercase tracking-wider font-semibold flex items-center gap-2.5 bg-[#0A66C2] hover:bg-[#0856A4] text-white shadow-sm transition-all group">
             <img src="assets/images/linkedin.png" alt="LinkedIn Logo" class="w-4 h-4 rounded-[3px] shrink-0 object-contain group-hover:scale-110 transition-transform">
             <span>LinkedIn Message</span>
           </a>
 
           <!-- Copy Email Button -->
-          <button id="copy-email-btn" data-email="hasanisbest786@gmail.com" class="glass-btn glass-btn-silver px-5 py-2.5 rounded-xl text-[11px] uppercase tracking-wider font-medium flex items-center gap-2 relative group">
-            <i data-lucide="copy" class="w-3.5 h-3.5 text-gold-400 group-hover:scale-110 transition-transform"></i>
+          <button id="copy-email-btn" data-email="hasanisbest786@gmail.com" class="btn-silver px-5 py-2.5 rounded-xl text-[11px] uppercase tracking-wider font-semibold flex items-center gap-2 relative group text-slate-800 cursor-pointer">
+            <i data-lucide="copy" class="w-3.5 h-3.5 text-[#0A66C2] group-hover:scale-110 transition-transform"></i>
             <span>Copy Email</span>
-            <span id="copy-feedback" class="absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-[#D4AF37] text-black text-[9px] font-bold rounded opacity-0 transition-opacity pointer-events-none">Copied!</span>
+            <span id="copy-feedback" class="absolute -top-7 left-1/2 -translate-x-1/2 px-2 py-0.5 bg-[#0A66C2] text-white text-[9px] font-bold rounded opacity-0 transition-opacity pointer-events-none shadow-sm">Copied!</span>
           </button>
         </div>
 
-        <div class="text-[11px] text-silver-400 font-mono">
-          Direct Email: <span class="text-silver-200">hasanisbest786@gmail.com</span> · Mon–Sat (US/UK/EU Hours)
+        <div class="text-[11px] text-slate-500 font-mono">
+          Direct Email: <span class="text-slate-900 font-semibold">hasanisbest786@gmail.com</span> · Mon–Sat (US/UK/EU Hours)
         </div>
       </div>
 
@@ -992,15 +987,15 @@
   </section>
 
   <!-- ==================== FOOTER ==================== -->
-  <footer class="py-8 px-4 sm:px-6 lg:px-8 border-t border-white/10 text-center text-xs text-silver-500">
+  <footer class="py-8 px-4 sm:px-6 lg:px-8 border-t border-slate-200 text-center text-xs text-slate-500 bg-white">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="text-[11px] tracking-wider uppercase text-silver-400">
+      <div class="text-[11px] tracking-wider uppercase text-slate-500">
         © 2026 Mohammad Hasan · Haute Digital Engineering
       </div>
-      <div class="flex items-center gap-6 text-[11px] uppercase tracking-wider text-silver-400">
-        <a href="https://linkedin.com/in/mohammadhasantechie" target="_blank" rel="noopener noreferrer" class="hover:text-gold-400 transition-colors">LinkedIn</a>
-        <a href="#work" class="hover:text-gold-400 transition-colors">Selected Work</a>
-        <a href="#contact" class="hover:text-gold-400 transition-colors">Contact</a>
+      <div class="flex items-center gap-6 text-[11px] uppercase tracking-wider text-slate-600">
+        <a href="https://linkedin.com/in/mohammadhasantechie" target="_blank" rel="noopener noreferrer" class="hover:text-[#0A66C2] transition-colors">LinkedIn</a>
+        <a href="#work" class="hover:text-[#0A66C2] transition-colors">Selected Work</a>
+        <a href="#contact" class="hover:text-[#0A66C2] transition-colors">Contact</a>
       </div>
     </div>
   </footer>

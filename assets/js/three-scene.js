@@ -1,4 +1,4 @@
-// Haute Horlogerie & Luxury 3D Scene: Pure Gold & Liquid Silver Polyhedron
+﻿// Haute Executive Luxury 3D Scene: Royal Sapphire & Liquid Platinum Polyhedron
 // Optimized for Ultra-Fluid Performance on Mobile, Tablet & Desktop PC
 
 (function() {
@@ -28,43 +28,43 @@
 
   const renderer = new THREE.WebGLRenderer({ 
     alpha: true, 
-    antialias: !isMobile, // Disable heavy antialiasing on low-end mobile to preserve battery
+    antialias: !isMobile,
     powerPreference: 'high-performance' 
   });
   renderer.setSize(container.clientWidth, container.clientHeight);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); // Limit to 2x on high-DPI retina screens
-  renderer.domElement.style.touchAction = 'pan-y'; // Allows seamless vertical mobile touch scrolling
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.domElement.style.touchAction = 'pan-y';
   container.appendChild(renderer.domElement);
 
   // Group to rotate together
   const mainGroup = new THREE.Group();
   scene.add(mainGroup);
 
-  // 1. Inner Core: Haute Champagne Gold Metal
+  // 1. Inner Core: Royal Cobalt Sapphire Metal Crystal
   const innerGeo = new THREE.IcosahedronGeometry(1.6, 0);
   const innerMat = new THREE.MeshStandardMaterial({
-    color: 0x181510,
+    color: 0x0A66C2,
     roughness: 0.12,
-    metalness: 0.96,
+    metalness: 0.92,
     flatShading: true,
     wireframe: false
   });
   const innerCore = new THREE.Mesh(innerGeo, innerMat);
   mainGroup.add(innerCore);
 
-  // 2. Outer Wireframe: Platinum Silver Lattice
+  // 2. Outer Wireframe: Midnight Sapphire & Liquid Silver Lattice
   const wireGeo = new THREE.IcosahedronGeometry(2.05, 1);
   const wireMat = new THREE.MeshBasicMaterial({
-    color: 0xD4AF37,
+    color: 0x004182,
     wireframe: true,
     transparent: true,
-    opacity: 0.42
+    opacity: 0.55
   });
   const outerWire = new THREE.Mesh(wireGeo, wireMat);
   mainGroup.add(outerWire);
 
-  // 3. Floating Gold Tech Nodes
-  const nodeCount = isMobile ? 30 : 50;
+  // 3. Floating Electric Blue Tech Nodes
+  const nodeCount = isMobile ? 28 : 46;
   const nodeGeo = new THREE.BufferGeometry();
   const nodePos = new Float32Array(nodeCount * 3);
   for (let i = 0; i < nodeCount * 3; i += 3) {
@@ -77,16 +77,16 @@
   }
   nodeGeo.setAttribute('position', new THREE.BufferAttribute(nodePos, 3));
   const nodeMat = new THREE.PointsMaterial({
-    color: 0xF3E5AB,
-    size: isMobile ? 0.09 : 0.08,
+    color: 0x2563EB,
+    size: isMobile ? 0.08 : 0.07,
     transparent: true,
-    opacity: 0.9
+    opacity: 0.85
   });
   const techNodes = new THREE.Points(nodeGeo, nodeMat);
   mainGroup.add(techNodes);
 
-  // 4. Diamond Silver & Gold Particle Nebula
-  const starCount = isMobile ? 220 : 380;
+  // 4. Subtle Diamond Cyan & Sapphire Stardust
+  const starCount = isMobile ? 180 : 280;
   const starGeo = new THREE.BufferGeometry();
   const starPos = new Float32Array(starCount * 3);
   for (let i = 0; i < starCount * 3; i += 3) {
@@ -96,29 +96,29 @@
   }
   starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
   const starMat = new THREE.PointsMaterial({
-    color: 0xE2E8F0,
-    size: 0.035,
+    color: 0x0A66C2,
+    size: 0.032,
     transparent: true,
-    opacity: 0.6
+    opacity: 0.4
   });
   const starDust = new THREE.Points(starGeo, starMat);
   scene.add(starDust);
 
-  // 5. Luxury Studio Lighting (Warm Champagne Gold + Cool Platinum Silver)
-  const ambientLight = new THREE.AmbientLight(0xffffff, 0.35);
+  // 5. Clean Daylight Studio Lighting
+  const ambientLight = new THREE.AmbientLight(0xffffff, 0.88);
   scene.add(ambientLight);
 
-  const pointLightGold = new THREE.PointLight(0xD4AF37, 5, 16);
-  pointLightGold.position.set(4, 3, 3);
-  scene.add(pointLightGold);
+  const pointLightSapphire = new THREE.PointLight(0x0A66C2, 4.2, 16);
+  pointLightSapphire.position.set(4, 3, 3);
+  scene.add(pointLightSapphire);
 
-  const pointLightSilver = new THREE.PointLight(0xF8FAFC, 3.8, 16);
-  pointLightSilver.position.set(-4, -3, 2);
-  scene.add(pointLightSilver);
+  const pointLightCyan = new THREE.PointLight(0x38BDF8, 3.2, 16);
+  pointLightCyan.position.set(-4, -3, 2);
+  scene.add(pointLightCyan);
 
-  const pointLightWarm = new THREE.PointLight(0xC5A059, 2, 12);
-  pointLightWarm.position.set(0, 4, -2);
-  scene.add(pointLightWarm);
+  const pointLightKey = new THREE.PointLight(0xFFFFFF, 2.5, 14);
+  pointLightKey.position.set(0, 5, 2);
+  scene.add(pointLightKey);
 
   // Cursor & Touch Tracking
   let targetX = 0;
@@ -144,10 +144,9 @@
 
   // Render Animation Loop (60 FPS)
   const clock = new THREE.Clock();
-  let animationId;
 
   function animate() {
-    animationId = requestAnimationFrame(animate);
+    requestAnimationFrame(animate);
     const elapsedTime = clock.getElapsedTime();
 
     currentX += (targetX - currentX) * 0.045;

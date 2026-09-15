@@ -1,21 +1,24 @@
-/* ==========================================================================
-   Haute Minimalist Luxury Design System: Pure Obsidian, Platinum & Gold
+﻿/* ==========================================================================
+   Haute Minimalist Luxury White & Blue Architecture (LinkedIn Executive Aesthetic)
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 
 :root {
-  --bg-pure: #040507;
-  --bg-surface: #090B0F;
-  --bg-card: rgba(10, 12, 17, 0.72);
-  --gold-primary: #D4AF37;
-  --gold-champagne: #F3E5AB;
-  --gold-dim: rgba(212, 175, 55, 0.12);
-  --silver-bright: #FFFFFF;
-  --silver-body: #E2E8F0;
-  --silver-muted: #94A3B8;
-  --border-subtle: rgba(255, 255, 255, 0.08);
-  --border-gold: rgba(212, 175, 55, 0.28);
+  --bg-pure: #FFFFFF;
+  --bg-surface: #F8FAFC;
+  --bg-card: rgba(255, 255, 255, 0.94);
+  --blue-primary: #0A66C2;
+  --blue-midnight: #004182;
+  --blue-deep: #002D62;
+  --blue-electric: #2563EB;
+  --blue-soft: #EBF3FA;
+  --blue-dim: rgba(10, 102, 194, 0.08);
+  --text-primary: #0F172A;
+  --text-secondary: #334155;
+  --text-muted: #64748B;
+  --border-subtle: rgba(226, 232, 240, 0.9);
+  --border-blue: rgba(10, 102, 194, 0.28);
 }
 
 html {
@@ -27,7 +30,7 @@ html {
 body {
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   background-color: var(--bg-pure);
-  color: var(--silver-body);
+  color: var(--text-secondary);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -43,26 +46,26 @@ body {
 
 .font-luxury {
   font-family: 'Cinzel', serif;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
 }
 
 .font-mono-luxury {
   font-family: 'Space Grotesk', monospace, sans-serif;
 }
 
-/* Minimalist Scrollbar */
+/* Minimalist Light Scrollbar */
 ::-webkit-scrollbar {
   width: 5px;
 }
 ::-webkit-scrollbar-track {
-  background: #040507;
+  background: #F8FAFC;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1C2028;
+  background: #CBD5E1;
   border-radius: 3px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #D4AF37;
+  background: #0A66C2;
 }
 
 /* Touch-safe Canvas Container */
@@ -76,25 +79,27 @@ body {
   outline: none;
 }
 
-/* Luxury Glassmorphism */
+/* Frosted Glassmorphic Navigation */
 .glass-nav {
-  background: rgba(4, 5, 7, 0.85);
+  background: rgba(255, 255, 255, 0.88);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(226, 232, 240, 0.85);
 }
 
+/* Pure Porcelain Cards */
 .glass-card {
   background: var(--bg-card);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid var(--border-subtle);
+  box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.05), 0 1px 3px rgba(0, 0, 0, 0.02);
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .glass-card:hover {
-  border-color: var(--border-gold);
-  box-shadow: 0 20px 45px -15px rgba(0, 0, 0, 0.85), 0 0 35px -5px rgba(212, 175, 55, 0.1);
+  border-color: var(--border-blue);
+  box-shadow: 0 24px 50px -15px rgba(10, 102, 194, 0.12), 0 0 20px -2px rgba(10, 102, 194, 0.06);
 }
 
 /* 3D Perspective Card Tilt */
@@ -105,275 +110,171 @@ body {
 }
 
 .tilt-inner {
-  transform: translateZ(24px);
+  transform: translateZ(20px);
 }
 
-/* Ambient Radial Lighting */
+/* Architectural Ambient Diffusion */
 .bg-mesh {
+  background-color: #FFFFFF;
   background-image: 
-    radial-gradient(circle at 50% 0%, rgba(212, 175, 55, 0.05) 0%, transparent 55%),
-    radial-gradient(circle at 85% 20%, rgba(255, 255, 255, 0.02) 0%, transparent 45%),
-    radial-gradient(circle at 15% 75%, rgba(212, 175, 55, 0.03) 0%, transparent 45%);
+    radial-gradient(circle at 50% -5%, rgba(10, 102, 194, 0.06) 0%, transparent 55%),
+    radial-gradient(circle at 90% 25%, rgba(37, 99, 235, 0.035) 0%, transparent 45%),
+    radial-gradient(circle at 10% 75%, rgba(10, 102, 194, 0.04) 0%, transparent 50%);
 }
 
-/* Typography Gradients */
-.text-gold {
-  background: linear-gradient(135deg, #FFF6E0 0%, #D4AF37 50%, #B89225 100%);
+/* Executive Gradient Typography */
+.text-blue-gradient {
+  background: linear-gradient(135deg, #0A66C2 0%, #004182 60%, #002D62 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-.text-silver {
-  background: linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 60%, #CBD5E1 100%);
+.text-dark-gradient {
+  background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 /* Liquid Platinum Silver Metallic Button */
 .btn-silver {
-  background: linear-gradient(135deg, #FFFFFF 0%, #E2E8F0 50%, #CBD5E1 100%);
-  color: #040507;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.9), 0 4px 18px rgba(0, 0, 0, 0.4);
+  background: linear-gradient(135deg, #FFFFFF 0%, #F8FAFC 50%, #EDF2F7 100%);
+  color: #0F172A;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  border: 1px solid rgba(203, 213, 225, 0.85);
+  box-shadow: inset 0 1px 1px 0 #FFFFFF, 0 4px 15px rgba(15, 23, 42, 0.06);
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .btn-silver:hover {
   background: #FFFFFF;
-  box-shadow: inset 0 1px 1px 0 #FFFFFF, 0 0 25px rgba(255, 255, 255, 0.45);
+  border-color: #0A66C2;
+  color: #0A66C2;
+  box-shadow: inset 0 1px 1px 0 #FFFFFF, 0 8px 24px rgba(10, 102, 194, 0.15);
   transform: translateY(-1px);
 }
 
-/* Floating Luxury Glass Buttons */
-.glass-btn {
-  position: relative;
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.2), 0 12px 28px -6px rgba(0, 0, 0, 0.6);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  overflow: hidden;
-}
-
-.glass-btn::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
-  transition: 0.6s;
-  pointer-events: none;
-}
-
-.glass-btn:hover::before {
-  left: 100%;
-}
-
-.glass-btn-gold {
-  border-color: rgba(212, 175, 55, 0.4);
-  background: rgba(212, 175, 55, 0.08);
-  color: #FFF4DB;
-  box-shadow: inset 0 1px 1px 0 rgba(243, 229, 171, 0.35), 0 12px 28px -6px rgba(212, 175, 55, 0.2);
-}
-
-.glass-btn-gold:hover {
-  border-color: #D4AF37;
-  background: rgba(212, 175, 55, 0.16);
-  transform: translateY(-3px);
-  box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.45), 0 18px 36px -6px rgba(212, 175, 55, 0.35);
-}
-
-.glass-btn-silver {
-  border-color: rgba(255, 255, 255, 0.16);
-  background: rgba(255, 255, 255, 0.04);
-  color: #FFFFFF;
-  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.25), 0 12px 28px -6px rgba(0, 0, 0, 0.7);
-}
-
-.glass-btn-silver:hover {
-  border-color: rgba(255, 255, 255, 0.45);
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateY(-3px);
-  box-shadow: inset 0 1px 2px 0 rgba(255, 255, 255, 0.45), 0 18px 36px -6px rgba(255, 255, 255, 0.15);
-}
-
 /* ==========================================================================
-   High-Converting Haute Luxury Schedule / Booking Button
-   ========================================================================== */
-.btn-schedule-luxury {
-  position: relative;
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.18) 0%, rgba(14, 17, 23, 0.95) 100%);
-  backdrop-filter: blur(24px);
-  -webkit-backdrop-filter: blur(24px);
-  border: 1px solid rgba(212, 175, 55, 0.48);
-  color: #FFFDF7;
-  box-shadow: 
-    inset 0 1px 1px 0 rgba(255, 255, 255, 0.4),
-    0 10px 30px -5px rgba(212, 175, 55, 0.3),
-    0 0 25px 0 rgba(212, 175, 55, 0.15);
-  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  overflow: hidden;
-}
-
-.btn-schedule-luxury::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -150%;
-  width: 150%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-  animation: shine-sweep 3.8s infinite;
-  pointer-events: none;
-}
-
-@keyframes shine-sweep {
-  0% { left: -150%; }
-  35% { left: 150%; }
-  100% { left: 150%; }
-}
-
-.btn-schedule-luxury:hover {
-  transform: translateY(-3px) scale(1.02);
-  border-color: #FDF4DC;
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.28) 0%, rgba(18, 22, 30, 0.98) 100%);
-  box-shadow: 
-    inset 0 1px 2px 0 rgba(255, 255, 255, 0.6),
-    0 20px 42px -6px rgba(212, 175, 55, 0.5),
-    0 0 35px 2px rgba(212, 175, 55, 0.35);
-  color: #FFFFFF;
-}
-
-/* Subtle Floating Bob Animation */
-@keyframes float-gentle {
-  0%, 100% {
-    transform: translateY(0px);
-  }
-  50% {
-    transform: translateY(-4px);
-  }
-}
-
-.animate-float {
-  animation: float-gentle 4.5s ease-in-out infinite;
-}
-
-.animate-float-delayed {
-  animation: float-gentle 4.5s ease-in-out infinite 2.25s;
-}
-
-/* Status Pulse */
-.status-gold {
-  box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
-  animation: pulse-gold 2.5s infinite;
-}
-
-@keyframes pulse-gold {
-  0% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.6);
-  }
-  70% {
-    transform: scale(1);
-    box-shadow: 0 0 0 7px rgba(212, 175, 55, 0);
-  }
-  100% {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
-  }
-}
-
-/* ==========================================================================
-   Ultra-Catchy Haute Luxury Meeting CTA Button & Slot Selector
+   Ultra-Catchy Executive Royal Blue CTA Button & Slot Selector
    ========================================================================== */
 
-/* Radiant Ambient Halo for Primary Meeting CTA */
-@keyframes pulse-luxury-halo {
+@keyframes pulse-blue-halo {
   0%, 100% {
     box-shadow: 
-      0 0 25px -4px rgba(212, 175, 55, 0.5),
-      0 8px 30px rgba(0, 0, 0, 0.7),
-      inset 0 1px 2px rgba(255, 255, 255, 0.8);
+      0 0 25px -2px rgba(10, 102, 194, 0.45),
+      0 8px 25px rgba(10, 102, 194, 0.3),
+      inset 0 1px 2px rgba(255, 255, 255, 0.4);
   }
   50% {
     box-shadow: 
-      0 0 45px 4px rgba(212, 175, 55, 0.75),
-      0 12px 36px rgba(0, 0, 0, 0.8),
-      inset 0 1px 3px rgba(255, 255, 255, 0.95);
+      0 0 40px 6px rgba(10, 102, 194, 0.65),
+      0 12px 32px rgba(10, 102, 194, 0.4),
+      inset 0 1px 3px rgba(255, 255, 255, 0.6);
   }
 }
 
-.btn-catchy-gold {
+.btn-catchy-gold, .btn-catchy-blue {
   position: relative;
-  background: linear-gradient(135deg, #FFF9EB 0%, #F5E6B3 25%, #D4AF37 65%, #B89225 100%);
-  color: #040507 !important;
+  background: linear-gradient(135deg, #0A66C2 0%, #0056B3 50%, #004182 100%);
+  color: #FFFFFF !important;
   font-weight: 700;
-  border: 1px solid #FFFFFF;
-  animation: pulse-luxury-halo 3.2s ease-in-out infinite;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  animation: pulse-blue-halo 3.2s ease-in-out infinite;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   overflow: hidden;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.4);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
 }
 
-.btn-catchy-gold::before {
+.btn-catchy-gold::before, .btn-catchy-blue::before {
   content: '';
   position: absolute;
   top: 0;
   left: -120%;
   width: 120%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
-  animation: shine-sweep-catchy 2.8s infinite cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+  animation: shine-sweep-blue 2.8s infinite cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
 }
 
-@keyframes shine-sweep-catchy {
+@keyframes shine-sweep-blue {
   0% { left: -120%; }
   45% { left: 140%; }
   100% { left: 140%; }
 }
 
-.btn-catchy-gold:hover {
+.btn-catchy-gold:hover, .btn-catchy-blue:hover {
   transform: translateY(-2.5px) scale(1.02);
-  background: linear-gradient(135deg, #FFFFFF 0%, #FFF2CC 25%, #DEC057 65%, #C29B2E 100%);
+  background: linear-gradient(135deg, #1075DC 0%, #0A66C2 50%, #004E9C 100%);
   box-shadow: 
-    0 0 55px 8px rgba(212, 175, 55, 0.85),
-    0 16px 40px rgba(0, 0, 0, 0.9),
-    inset 0 1px 3px rgba(255, 255, 255, 1);
+    0 0 50px 8px rgba(10, 102, 194, 0.75),
+    0 16px 36px rgba(10, 102, 194, 0.4),
+    inset 0 1px 3px rgba(255, 255, 255, 0.6);
 }
 
-.btn-catchy-gold:active {
+.btn-catchy-gold:active, .btn-catchy-blue:active {
   transform: translateY(0px) scale(0.99);
 }
 
-/* Quick Slot Pills */
+/* Quick Slot Pills (White & Blue) */
 .slot-pill {
   transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
   cursor: pointer;
   user-select: none;
+  background: #FFFFFF;
 }
 
 .slot-pill:hover {
-  border-color: rgba(212, 175, 55, 0.5);
-  background-color: rgba(212, 175, 55, 0.08);
+  border-color: rgba(10, 102, 194, 0.5);
+  background-color: rgba(10, 102, 194, 0.04);
   transform: translateY(-1px);
 }
 
 .slot-pill.active {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.2) 0%, rgba(14, 17, 23, 0.95) 100%);
-  border-color: #D4AF37 !important;
-  color: #FFF4DB !important;
-  box-shadow: 0 0 20px -3px rgba(212, 175, 55, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.25);
+  background: rgba(10, 102, 194, 0.08) !important;
+  border-color: #0A66C2 !important;
+  box-shadow: 0 0 16px -2px rgba(10, 102, 194, 0.25), inset 0 1px 1px rgba(255, 255, 255, 0.8);
 }
 
-/* Meeting Modal Backdrop */
+/* Glass Buttons */
+.glass-btn {
+  position: relative;
+  background: #FFFFFF;
+  border: 1px solid rgba(226, 232, 240, 0.9);
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.04);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.glass-btn-gold, .glass-btn-blue {
+  background: #0A66C2;
+  color: #FFFFFF;
+  border-color: #0A66C2;
+  box-shadow: 0 6px 20px -3px rgba(10, 102, 194, 0.35);
+}
+
+.glass-btn-gold:hover, .glass-btn-blue:hover {
+  background: #0052A3;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px -4px rgba(10, 102, 194, 0.45);
+}
+
+.glass-btn-silver {
+  background: #FFFFFF;
+  color: #0F172A;
+  border-color: rgba(203, 213, 225, 0.8);
+}
+
+.glass-btn-silver:hover {
+  border-color: #0A66C2;
+  color: #0A66C2;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px -4px rgba(10, 102, 194, 0.15);
+}
+
+/* Meeting Modal Transition */
 .modal-backdrop {
-  background: rgba(4, 5, 7, 0.88);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
