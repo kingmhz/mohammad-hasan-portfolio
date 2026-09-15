@@ -15,15 +15,17 @@
   
   function updateCameraDistance() {
     const width = window.innerWidth;
-    if (width < 640) {
-      camera.position.set(0, 0.35, 8.5); // Mobile view: perfectly centered & sized
+    if (width < 420) {
+      camera.position.set(0, 0.35, 9.2); // Compact mobile screens (prevents edge clipping)
+    } else if (width < 640) {
+      camera.position.set(0, 0.35, 8.5); // Standard mobile view
     } else if (width < 1024) {
       camera.position.set(0, 0.3, 7.6);  // Tablet
     } else {
-      camera.position.set(0.1, 0.25, 6.8); // Desktop PC: cinematic perspective
+      camera.position.set(0.1, 0.25, 6.8); // Desktop PC
     }
-    const curW = container.clientWidth || 500;
-    const curH = container.clientHeight || 450;
+    const curW = container.clientWidth || window.innerWidth || 360;
+    const curH = container.clientHeight || 340;
     camera.aspect = curW / Math.max(curH, 1);
     camera.updateProjectionMatrix();
   }
@@ -34,8 +36,10 @@
     antialias: true,
     powerPreference: 'high-performance' 
   });
-  renderer.setSize(container.clientWidth, container.clientHeight);
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  const curW = container.clientWidth || window.innerWidth || 360;
+  const curH = container.clientHeight || 340;
+  renderer.setSize(curW, curH);
+  renderer.setPixelRatio(isMobile ? Math.min(window.devicePixelRatio, 1.5) : Math.min(window.devicePixelRatio, 2));
   renderer.domElement.style.touchAction = 'pan-y';
   container.innerHTML = '';
   container.appendChild(renderer.domElement);
@@ -827,10 +831,11 @@
 
   const dragHint = document.getElementById('drag-360-hint');
   const canvasElement = renderer.domElement;
-  canvasElement.style.touchAction = 'none'; // Enables 360 touch drag without scrolling page
+  canvasElement.style.touchAction = 'pan-y'; // Allows natural page scroll on mobile while supporting horizontal 360 drag
 
   // Pointer Down (Mouse Click or Touch Hold)
   function onPointerDown(e) {
+    if (e.pointerType === 'mouse' && e.button !== 0) return;
     isDragging = true;
     prevPointerX = e.clientX;
     prevPointerY = e.clientY;
@@ -841,9 +846,12 @@
     document.body.style.cursor = 'grabbing';
     document.body.classList.add('select-none');
 
-    try {
-      canvasElement.setPointerCapture(e.pointerId);
-    } catch (err) {}
+    // Only capture pointer for mouse to avoid capturing touch scrolling
+    if (e.pointerType !== 'touch') {
+      try {
+        canvasElement.setPointerCapture(e.pointerId);
+      } catch (err) {}
+    }
 
     if (dragHint) {
       dragHint.style.opacity = '0.35';
@@ -860,11 +868,15 @@
     // Direct 360° rotational sensitivity
     const rotSpeed = 0.007;
     targetRotY += deltaX * rotSpeed;
-    targetRotX += deltaY * rotSpeed;
+    
+    // On touch devices, allow pitch adjustment when horizontal drag is dominant
+    if (e.pointerType !== 'touch' || Math.abs(deltaX) > Math.abs(deltaY)) {
+      targetRotX += deltaY * rotSpeed;
+    }
 
     // Track instant velocity for smooth flick momentum/inertia
     velocityX = deltaX * rotSpeed;
-    velocityY = deltaY * rotSpeed;
+    velocityY = (e.pointerType !== 'touch') ? (deltaY * rotSpeed) : 0;
 
     // Clamp pitch (X-axis) between -80° and +80° so devices stay upright
     targetRotX = Math.max(-Math.PI * 0.44, Math.min(Math.PI * 0.44, targetRotX));
