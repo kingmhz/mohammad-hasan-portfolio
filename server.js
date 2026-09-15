@@ -1,4 +1,4 @@
-﻿const http = require('http');
+const http = require('http');
 const fs = require('fs');
 const path = require('path');
 const net = require('net');
@@ -69,6 +69,7 @@ const server = http.createServer((req, res) => {
         }
       }
       try {
+        delete require.cache[require.resolve('./api/contact.js')];
         const handler = require('./api/contact.js');
         await handler(req, res);
       } catch (err) {

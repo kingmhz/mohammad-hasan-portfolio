@@ -131,7 +131,259 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 5. Interactive Luxury Brief Form Submission
+  // 5. Dynamic Meeting Slot Calculation & Selection (Hero Section)
+  const slotPills = document.querySelectorAll('.slot-pill');
+  const heroBtnSlotLabel = document.getElementById('hero-btn-slot-label');
+  const heroBookBtn = document.getElementById('hero-book-meeting-btn');
+  const meetingModal = document.getElementById('meeting-modal');
+  const closeModalBtn = document.getElementById('close-modal-btn');
+  const modalSlotDisplay = document.getElementById('modal-slot-display');
+  const modalHiddenSlot = document.getElementById('modal-hidden-slot');
+  const modalChangeSlot = document.getElementById('modal-change-slot');
+
+  let selectedSlot = 'Thu, Sep 17 · 2:00 PM EST';
+
+  // Compute realistic upcoming business day slots
+  function generateUpcomingSlots() {
+    const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    const times = ['2:00 PM EST', '10:30 AM EST', '4:00 PM EST'];
+    
+    let current = new Date();
+    let slotData = [];
+    let added = 0;
+    
+    for (let i = 1; i <= 10 && added < 3; i++) {
+      let d = new Date();
+      d.setDate(current.getDate() + i);
+      let dayOfWeek = d.getDay();
+      if (dayOfWeek !== 0 && dayOfWeek !== 6) { // Skip weekends
+        let formatted = `${days[dayOfWeek]}, ${months[d.getMonth()]} ${d.getDate()} · ${times[added]}`;
+        slotData.push({
+          day: `${days[dayOfWeek]}, ${months[d.getMonth()]} ${d.getDate()}`,
+          time: times[added],
+          full: formatted
+        });
+        added++;
+      }
+    }
+    return slotData;
+  }
+
+  const liveSlots = generateUpcomingSlots();
+  if (slotPills && slotPills.length >= 3 && liveSlots.length >= 3) {
+    slotPills.forEach((pill, idx) => {
+      const s = liveSlots[idx];
+      pill.setAttribute('data-slot', s.full);
+      pill.innerHTML = `
+        <span class="text-[10px] uppercase font-mono-luxury ${idx === 0 ? 'text-gold-400 font-bold' : 'text-silver-400 font-semibold'}">${s.day}</span>
+        <span class="${idx === 0 ? 'text-white font-bold' : 'text-silver-200 font-medium'} text-xs font-mono">${s.time}</span>
+      `;
+    });
+    selectedSlot = liveSlots[0].full;
+    if (heroBtnSlotLabel) heroBtnSlotLabel.textContent = selectedSlot;
+    if (modalSlotDisplay) modalSlotDisplay.textContent = selectedSlot;
+    if (modalHiddenSlot) modalHiddenSlot.value = selectedSlot;
+  }
+
+  slotPills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      slotPills.forEach(p => {
+        p.classList.remove('active');
+        const daySpan = p.querySelector('span:first-child');
+        const timeSpan = p.querySelector('span:last-child');
+        if (daySpan) {
+          daySpan.classList.remove('text-gold-400', 'font-bold');
+          daySpan.classList.add('text-silver-400', 'font-semibold');
+        }
+        if (timeSpan) {
+          timeSpan.classList.remove('text-white', 'font-bold');
+          timeSpan.classList.add('text-silver-200', 'font-medium');
+        }
+      });
+
+      pill.classList.add('active');
+      const activeDay = pill.querySelector('span:first-child');
+      const activeTime = pill.querySelector('span:last-child');
+      if (activeDay) {
+        activeDay.classList.add('text-gold-400', 'font-bold');
+        activeDay.classList.remove('text-silver-400');
+      }
+      if (activeTime) {
+        activeTime.classList.add('text-white', 'font-bold');
+        activeTime.classList.remove('text-silver-200');
+      }
+
+      selectedSlot = pill.getAttribute('data-slot');
+      if (heroBtnSlotLabel) heroBtnSlotLabel.textContent = selectedSlot;
+      if (modalSlotDisplay) modalSlotDisplay.textContent = selectedSlot;
+      if (modalHiddenSlot) modalHiddenSlot.value = selectedSlot;
+
+      // Direct trigger: open booking modal on slot click
+      openModal();
+    });
+  });
+
+  function openModal() {
+    if (meetingModal) {
+      meetingModal.classList.remove('hidden');
+      document.body.style.overflow = 'hidden';
+      if (window.lucide) window.lucide.createIcons();
+    }
+  }
+
+  function closeModal() {
+    if (meetingModal) {
+      meetingModal.classList.add('hidden');
+      document.body.style.overflow = '';
+    }
+  }
+
+  if (heroBookBtn) {
+    heroBookBtn.addEventListener('click', openModal);
+  }
+
+  if (closeModalBtn) {
+    closeModalBtn.addEventListener('click', closeModal);
+  }
+
+  if (modalChangeSlot) {
+    modalChangeSlot.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeModal();
+      const slotContainer = document.getElementById('hero-slot-list');
+      if (slotContainer) {
+        slotContainer.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+  }
+
+  if (meetingModal) {
+    meetingModal.addEventListener('click', (e) => {
+      if (e.target === meetingModal) {
+        closeModal();
+      }
+    });
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && meetingModal && !meetingModal.classList.contains('hidden')) {
+      closeModal();
+    }
+  });
+
+  // 6. Meeting Reservation Form Submission
+  const meetingForm = document.getElementById('meeting-form');
+  const modalSubmitBtn = document.getElementById('modal-submit-btn');
+  const modalBtnText = document.getElementById('modal-btn-text');
+  const modalFeedback = document.getElementById('modal-feedback');
+
+  if (meetingForm) {
+    meetingForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      if (modalFeedback) {
+        modalFeedback.className = 'hidden text-xs p-3 rounded-xl transition-all';
+        modalFeedback.innerHTML = '';
+      }
+
+      const formData = new FormData(meetingForm);
+      const payload = {
+        name: formData.get('name') ? formData.get('name').trim() : '',
+        email: formData.get('email') ? formData.get('email').trim() : '',
+        projectType: formData.get('projectType') || '15-Min Technical Discovery',
+        meetingSlot: formData.get('meetingSlot') || selectedSlot,
+        _gotcha: formData.get('_gotcha')
+      };
+
+      if (!payload.name || payload.name.length < 2) {
+        showModalFeedback('Please enter your name or company.', 'error');
+        return;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!payload.email || !emailRegex.test(payload.email)) {
+        showModalFeedback('Please enter a valid work or personal email address.', 'error');
+        return;
+      }
+
+      if (modalSubmitBtn) {
+        modalSubmitBtn.disabled = true;
+        modalSubmitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+      }
+      if (modalBtnText) modalBtnText.textContent = 'Locking In Reservation...';
+
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+          const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Discovery Call with Mohammad Hasan')}&details=${encodeURIComponent(`15-Min Technical Architecture Discovery with Mohammad Hasan. Agenda: ${payload.projectType}`)}&location=${encodeURIComponent('Google Meet / Zoom (Link in invite)')}`;
+
+          meetingForm.innerHTML = `
+            <div class="p-5 sm:p-6 rounded-2xl bg-[#090B0F]/95 border border-gold-500/40 text-center space-y-4 shadow-2xl animate-fade-in">
+              <div class="w-12 h-12 rounded-full bg-gold-500/15 border border-gold-500/30 text-gold-400 mx-auto flex items-center justify-center">
+                <i data-lucide="calendar-check" class="w-6 h-6"></i>
+              </div>
+              <div class="space-y-1">
+                <div class="text-[10px] font-mono-luxury uppercase tracking-widest text-gold-400">Reservation Confirmed · ${result.data ? result.data.reference : 'MH-EXEC'}</div>
+                <h3 class="text-xl sm:text-2xl font-luxury font-bold text-white">Consultation Reserved</h3>
+              </div>
+              <div class="p-3 rounded-xl bg-black/50 border border-white/10 text-xs font-mono text-gold-300">
+                🗓️ ${escapeHtml(payload.meetingSlot)}
+              </div>
+              <p class="text-xs sm:text-sm text-silver-300 font-light max-w-sm mx-auto leading-relaxed">
+                Thank you, <strong class="text-white">${escapeHtml(payload.name)}</strong>. A calendar invite and Google Meet link have been dispatched to <strong class="text-white">${escapeHtml(payload.email)}</strong>.
+              </p>
+              <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-2.5">
+                <a href="${gCalUrl}" target="_blank" rel="noopener noreferrer" class="btn-catchy-gold px-4 py-2.5 rounded-xl text-xs uppercase tracking-wider font-bold inline-flex items-center gap-2">
+                  <i data-lucide="plus" class="w-3.5 h-3.5 text-black"></i>
+                  <span>Add to Google Calendar</span>
+                </a>
+                <button type="button" onclick="document.getElementById('meeting-modal').classList.add('hidden'); document.body.style.overflow='';" class="btn-silver px-4 py-2.5 rounded-xl text-xs uppercase tracking-wider font-semibold">
+                  Close Window
+                </button>
+              </div>
+            </div>
+          `;
+          if (window.lucide) window.lucide.createIcons();
+        } else {
+          showModalFeedback(result.error || 'Unable to reserve slot. Please retry or contact directly via hasanisbest786@gmail.com.', 'error');
+          resetModalSubmitBtn();
+        }
+      } catch (err) {
+        console.error('Booking error:', err);
+        showModalFeedback('Connection error. Please email hasanisbest786@gmail.com directly.', 'error');
+        resetModalSubmitBtn();
+      }
+    });
+  }
+
+  function showModalFeedback(msg, type) {
+    if (!modalFeedback) return;
+    modalFeedback.classList.remove('hidden');
+    modalFeedback.className = 'text-xs p-3 rounded-xl border border-red-500/40 bg-red-950/30 text-red-300 flex items-center gap-2';
+    modalFeedback.innerHTML = `<i data-lucide="alert-circle" class="w-4 h-4 text-red-400 shrink-0"></i><span>${escapeHtml(msg)}</span>`;
+    if (window.lucide) window.lucide.createIcons();
+  }
+
+  function resetModalSubmitBtn() {
+    if (modalSubmitBtn) {
+      modalSubmitBtn.disabled = false;
+      modalSubmitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
+    }
+    if (modalBtnText) modalBtnText.textContent = 'Confirm 15-Min Meeting';
+  }
+
+  // 7. Interactive Luxury Brief Form Submission (Footer Section)
   const briefForm = document.getElementById('brief-form');
   const briefSubmitBtn = document.getElementById('brief-submit-btn');
   const btnText = document.getElementById('btn-text');
@@ -141,8 +393,10 @@ document.addEventListener('DOMContentLoaded', () => {
     briefForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
-      formFeedback.className = 'hidden text-xs p-3.5 rounded-xl transition-all';
-      formFeedback.innerHTML = '';
+      if (formFeedback) {
+        formFeedback.className = 'hidden text-xs p-3.5 rounded-xl transition-all';
+        formFeedback.innerHTML = '';
+      }
 
       const formData = new FormData(briefForm);
       const payload = {
@@ -170,8 +424,10 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      briefSubmitBtn.disabled = true;
-      briefSubmitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+      if (briefSubmitBtn) {
+        briefSubmitBtn.disabled = true;
+        briefSubmitBtn.classList.add('opacity-75', 'cursor-not-allowed');
+      }
       if (btnText) btnText.textContent = 'Transmitting Specifications...';
 
       try {
@@ -220,6 +476,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function showFeedback(msg, type) {
+    if (!formFeedback) return;
     formFeedback.classList.remove('hidden');
     if (type === 'error') {
       formFeedback.className = 'text-xs p-3.5 rounded-xl border border-red-500/40 bg-red-950/30 text-red-300 flex items-center gap-2';
@@ -250,7 +507,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }[tag] || tag));
   }
 
-  // 6. Initialize Lucide Icons
+  // 8. Initialize Lucide Icons
   if (window.lucide) {
     window.lucide.createIcons();
   }

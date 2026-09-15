@@ -29,14 +29,13 @@ module.exports = async (req, res) => {
       }
     }
 
-    const { name, email, projectType, budget, timeline, message, _gotcha } = body || {};
+    const { name, email, projectType, budget, timeline, message, meetingSlot, _gotcha } = body || {};
 
     // 1. Honeypot Anti-Spam Check
     if (_gotcha && _gotcha.trim().length > 0) {
-      // Silently accept bot traffic to waste their time without sending
       return res.status(200).json({
         success: true,
-        message: 'Your brief has been registered.'
+        message: 'Your request has been registered.'
       });
     }
 
@@ -56,24 +55,29 @@ module.exports = async (req, res) => {
       });
     }
 
-    if (!message || typeof message !== 'string' || message.trim().length < 10) {
+    const finalMessage = message && message.trim().length > 0 
+      ? message.trim() 
+      : (meetingSlot ? `Reserved Discovery Call Slot: ${meetingSlot}` : '');
+
+    if (!finalMessage || finalMessage.length < 5) {
       return res.status(400).json({
         success: false,
-        error: 'Please provide brief details about your technical requirements (minimum 10 characters).'
+        error: 'Please provide brief details about your technical requirements.'
       });
     }
 
     const sanitizedData = {
       name: name.trim().substring(0, 100),
       email: email.trim().toLowerCase().substring(0, 120),
-      projectType: (projectType || 'General Consultation').trim().substring(0, 80),
+      projectType: (projectType || (meetingSlot ? '15-Min Discovery Call' : 'General Consultation')).trim().substring(0, 80),
       budget: (budget || 'Not Specified').trim().substring(0, 50),
-      timeline: (timeline || 'Flexible').trim().substring(0, 50),
-      message: message.trim().substring(0, 3000),
+      timeline: (timeline || (meetingSlot ? meetingSlot : 'Flexible')).trim().substring(0, 80),
+      meetingSlot: meetingSlot ? meetingSlot.trim().substring(0, 80) : null,
+      message: finalMessage.substring(0, 3000),
       receivedAt: new Date().toISOString()
     };
 
-    console.log('[INQUIRY RECEIVED]', JSON.stringify(sanitizedData, null, 2));
+    console.log('[INQUIRY / MEETING RESERVATION RECEIVED]', JSON.stringify(sanitizedData, null, 2));
 
     // 3. Optional Resend Email Forwarding Integration
     if (process.env.RESEND_API_KEY) {
@@ -96,9 +100,12 @@ module.exports = async (req, res) => {
     // Return polished luxury response
     return res.status(200).json({
       success: true,
-      message: 'Brief successfully transmitted. Mohammad Hasan will review your specifications and reply within 24 hours.',
+      message: meetingSlot 
+        ? `Meeting slot confirmed for ${sanitizedData.meetingSlot}. A private calendar invite will be sent to ${sanitizedData.email}.`
+        : 'Brief successfully transmitted. Mohammad Hasan will review your specifications and reply within 24 hours.',
       data: {
         reference: 'MH-' + Math.random().toString(36).substring(2, 9).toUpperCase(),
+        meetingSlot: sanitizedData.meetingSlot,
         timestamp: sanitizedData.receivedAt
       }
     });
@@ -107,7 +114,7 @@ module.exports = async (req, res) => {
     console.error('[API_ERROR]', error);
     return res.status(500).json({
       success: false,
-      error: 'An unexpected error occurred while processing your brief. Please email hasanisbest786@gmail.com directly.'
+      error: 'An unexpected error occurred. Please email hasanisbest786@gmail.com directly.'
     });
   }
 };
@@ -115,20 +122,23 @@ module.exports = async (req, res) => {
 // Helper: Forward via Resend API
 function forwardViaResend(data) {
   return new Promise((resolve, reject) => {
+    const isMeeting = !!data.meetingSlot;
     const postData = JSON.stringify({
       from: 'Portfolio Inquiries <onboarding@resend.dev>',
       to: [process.env.NOTIFICATION_EMAIL || 'hasanisbest786@gmail.com'],
-      subject: `[New Client Brief] ${data.name} — ${data.projectType} (${data.budget})`,
+      subject: isMeeting 
+        ? `📅 [NEW MEETING RESERVED] ${data.name} — ${data.meetingSlot}`
+        : `[New Client Brief] ${data.name} — ${data.projectType} (${data.budget})`,
       html: `
         <div style="font-family: Arial, sans-serif; background: #040507; color: #E2E8F0; padding: 24px; border-radius: 8px;">
-          <h2 style="color: #D4AF37; margin-top: 0;">New Project Brief Received</h2>
+          <h2 style="color: #D4AF37; margin-top: 0;">${isMeeting ? 'New Meeting Slot Reserved' : 'New Project Brief Received'}</h2>
           <p><strong>Client Name:</strong> ${data.name}</p>
           <p><strong>Email:</strong> <a href="mailto:${data.email}" style="color: #F3E5AB;">${data.email}</a></p>
+          ${isMeeting ? `<p><strong>Confirmed Slot:</strong> <span style="color: #D4AF37; font-weight: bold;">${data.meetingSlot}</span></p>` : ''}
           <p><strong>Project Category:</strong> ${data.projectType}</p>
           <p><strong>Budget Tier:</strong> ${data.budget}</p>
-          <p><strong>Target Timeline:</strong> ${data.timeline}</p>
           <hr style="border: 1px solid #1C2028; margin: 20px 0;">
-          <h4 style="color: #D4AF37;">Project Overview & Specifications:</h4>
+          <h4 style="color: #D4AF37;">Notes & Specifications:</h4>
           <p style="white-space: pre-wrap; line-height: 1.6;">${data.message}</p>
           <div style="margin-top: 24px; font-size: 11px; color: #94A3B8;">
             Transmitted via mohammad-hasan-portfolio at ${data.receivedAt}
@@ -171,8 +181,11 @@ function forwardViaResend(data) {
 function forwardViaWebhook(url, data) {
   return new Promise((resolve, reject) => {
     const parsed = new URL(url);
+    const isMeeting = !!data.meetingSlot;
     const postData = JSON.stringify({
-      content: `🔔 **New Project Brief from ${data.name}**\n**Email:** ${data.email}\n**Scope:** ${data.projectType}\n**Budget:** ${data.budget}\n**Message:**\n${data.message}`
+      content: isMeeting
+        ? `🔥 **NEW MEETING RESERVED!**\n**Client:** ${data.name}\n**Email:** ${data.email}\n**Slot:** ${data.meetingSlot}\n**Scope:** ${data.projectType}`
+        : `🔔 **New Project Brief from ${data.name}**\n**Email:** ${data.email}\n**Scope:** ${data.projectType}\n**Budget:** ${data.budget}\n**Message:**\n${data.message}`
     });
 
     const options = {
