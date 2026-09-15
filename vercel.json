@@ -42,5 +42,6 @@
       "source": "/api/health",
       "destination": "/api/health.js"
     }
-  ]
+  ],
+  "framework": null
 }

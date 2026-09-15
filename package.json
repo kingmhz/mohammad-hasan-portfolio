@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Haute Digital Engineering Portfolio — Senior Web & Mobile Consultant",
   "scripts": {
-    "start": "node server.js",
-    "dev": "node server.js"
+    "start": "node dev-server.js",
+    "dev": "node dev-server.js"
   },
   "keywords": [
     "portfolio",
