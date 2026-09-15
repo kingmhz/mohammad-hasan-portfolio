@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    Haute Minimalist Luxury White & Blue Architecture (LinkedIn Executive Aesthetic)
    ========================================================================== */
 
@@ -79,12 +79,13 @@ body {
   outline: none;
 }
 
-/* Frosted Glassmorphic Navigation */
+/* Frosted Glassmorphic Navigation - Executive Sleek Black */
 .glass-nav {
-  background: rgba(255, 255, 255, 0.88);
+  background: rgba(11, 15, 25, 0.94);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  border-bottom: 1px solid rgba(226, 232, 240, 0.85);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.35);
 }
 
 /* Pure Porcelain Cards */
