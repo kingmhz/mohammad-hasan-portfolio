@@ -1,6 +1,5 @@
-// Haute Executive Luxury 3D Dual-Device Rig: MacBook Pro + iPhone Pro
-// Showcasing Next.js SaaS Web Architecture & Flutter Mobile Engineering
-// Precision WebGL 60 FPS with Dynamic Canvas UI Textures & Cursor Parallax
+// Haute Executive 3D Dual-Device Rig: Separated & Realistic MacBook Pro + iPhone 15 Pro
+// Engineered with Extruded Rounded Bevels, Dynamic Retina Canvas UI, and 60 FPS Parallax Physics
 
 (function() {
   const container = document.getElementById('three-hero-container');
@@ -10,16 +9,16 @@
 
   // Scene, Camera, Renderer
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(40, container.clientWidth / container.clientHeight, 0.1, 1000);
+  const camera = new THREE.PerspectiveCamera(38, container.clientWidth / container.clientHeight, 0.1, 1000);
   
   function updateCameraDistance() {
     const width = window.innerWidth;
     if (width < 640) {
-      camera.position.set(0, 0.2, 8.4); // Mobile view
+      camera.position.set(0, 0.35, 8.5); // Mobile view: perfectly centered & sized
     } else if (width < 1024) {
-      camera.position.set(0, 0.25, 7.6); // Tablet
+      camera.position.set(0, 0.3, 7.6);  // Tablet
     } else {
-      camera.position.set(0, 0.25, 6.9); // Desktop PC
+      camera.position.set(0.1, 0.25, 6.8); // Desktop PC: cinematic perspective
     }
     camera.aspect = container.clientWidth / container.clientHeight;
     camera.updateProjectionMatrix();
@@ -37,312 +36,314 @@
   container.innerHTML = '';
   container.appendChild(renderer.domElement);
 
-  // Main Rig Group
-  const rigGroup = new THREE.Group();
-  rigGroup.position.set(-0.35, -0.2, 0);
-  rigGroup.rotation.set(0.18, -0.28, 0.02);
-  scene.add(rigGroup);
+  // Master Rig Group
+  const masterRig = new THREE.Group();
+  masterRig.position.set(-0.15, -0.05, 0);
+  masterRig.rotation.set(0.14, -0.22, 0);
+  scene.add(masterRig);
+
+  // Helper to create rounded rectangle shape for realistic device chassis
+  function createRoundedRectShape(width, height, radius) {
+    const shape = new THREE.Shape();
+    const x = -width / 2;
+    const y = -height / 2;
+    shape.moveTo(x, y + radius);
+    shape.lineTo(x, y + height - radius);
+    shape.quadraticCurveTo(x, y + height, x + radius, y + height);
+    shape.lineTo(x + width - radius, y + height);
+    shape.quadraticCurveTo(x + width, y + height, x + width, y + height - radius);
+    shape.lineTo(x + width, y + radius);
+    shape.quadraticCurveTo(x + width, y, x + width - radius, y);
+    shape.lineTo(x + radius, y);
+    shape.quadraticCurveTo(x, y, x, y + radius);
+    return shape;
+  }
 
   // =========================================================================
-  // 1. GENERATE DYNAMIC 2D CANVAS TEXTURES FOR LAPTOP & PHONE SCREENS
+  // 1. DYNAMIC RETINA CANVAS TEXTURES (Next.js SaaS Web & Flutter Mobile)
   // =========================================================================
 
-  // A. Next.js SaaS Web Dashboard Texture (1024 x 640)
-  function createLaptopScreenTexture() {
+  // A. Next.js SaaS Web Dashboard (1024 x 640)
+  function createMacScreenTexture() {
     const canvas = document.createElement('canvas');
     canvas.width = 1024;
     canvas.height = 640;
     const ctx = canvas.getContext('2d');
 
-    // Background: Deep Sleek Executive Obsidian
+    // Canvas Background
     ctx.fillStyle = '#0B1120';
     ctx.fillRect(0, 0, 1024, 640);
 
-    // Top macOS Header Bar
+    // macOS Title Bar
     ctx.fillStyle = '#0F172A';
-    ctx.fillRect(0, 0, 1024, 48);
+    ctx.fillRect(0, 0, 1024, 44);
 
-    // Window Dots
+    // macOS Window Controls
     ctx.fillStyle = '#EF4444';
-    ctx.beginPath(); ctx.arc(26, 24, 6.5, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(24, 22, 6, 0, Math.PI * 2); ctx.fill();
     ctx.fillStyle = '#F59E0B';
-    ctx.beginPath(); ctx.arc(46, 24, 6.5, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(44, 22, 6, 0, Math.PI * 2); ctx.fill();
     ctx.fillStyle = '#10B981';
-    ctx.beginPath(); ctx.arc(66, 24, 6.5, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(64, 22, 6, 0, Math.PI * 2); ctx.fill();
 
-    // App Title
+    // App Branding
     ctx.fillStyle = '#FFFFFF';
-    ctx.font = 'bold 15px -apple-system, BlinkMacSystemFont, sans-serif';
-    ctx.fillText('NEXUS SAAS ANALYTICS', 100, 29);
+    ctx.font = 'bold 15px -apple-system, sans-serif';
+    ctx.fillText('NEXUS ARCHITECTURE', 96, 27);
 
     ctx.fillStyle = '#0A66C2';
     ctx.font = 'bold 12px monospace';
-    ctx.fillText('NEXT.JS 14 APP ROUTER', 310, 28);
+    ctx.fillText('NEXT.JS 14 · APP ROUTER', 300, 26);
 
-    // Production Pill Badge
+    // Top Right Production Badge
     ctx.fillStyle = 'rgba(16, 185, 129, 0.15)';
     ctx.strokeStyle = 'rgba(16, 185, 129, 0.4)';
     ctx.lineWidth = 1;
     ctx.beginPath();
-    ctx.roundRect(840, 12, 160, 24, 12);
+    ctx.roundRect(830, 10, 170, 24, 12);
     ctx.fill(); ctx.stroke();
 
     ctx.fillStyle = '#10B981';
-    ctx.beginPath(); ctx.arc(855, 24, 4, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(846, 22, 4, 0, Math.PI * 2); ctx.fill();
     ctx.font = 'bold 11px monospace';
-    ctx.fillText('PRODUCTION 99/100', 868, 28);
+    ctx.fillText('PRODUCTION 99/100', 858, 26);
 
-    // Left Navigation Mini Sidebar
+    // Sidebar
     ctx.fillStyle = '#080D1A';
-    ctx.fillRect(0, 48, 64, 592);
-
-    const icons = ['📊', '⚡', '👥', '💳', '⚙️'];
-    ctx.font = '18px sans-serif';
-    icons.forEach((ic, i) => {
+    ctx.fillRect(0, 44, 60, 596);
+    const navIcons = ['📊', '⚡', '👥', '💳', '⚙️'];
+    ctx.font = '16px sans-serif';
+    navIcons.forEach((icon, i) => {
       ctx.fillStyle = i === 0 ? '#0A66C2' : '#475569';
-      if (i === 0) {
-        ctx.fillRect(0, 68 + i * 50, 4, 32);
-      }
-      ctx.fillText(ic, 22, 90 + i * 50);
+      if (i === 0) ctx.fillRect(0, 60 + i * 46, 4, 28);
+      ctx.fillText(icon, 20, 80 + i * 46);
     });
 
-    // 3 Executive Metric Cards
-    const metrics = [
-      { label: 'ANNUAL RUN RATE', val: '$284,500', change: '+34.2% MoM', color: '#10B981' },
-      { label: 'SERVER LATENCY (P99)', val: '14.2 ms', change: 'Edge Caching Active', color: '#0A66C2' },
-      { label: 'FIGMA FIDELITY', val: '100.0%', change: 'Pixel Perfect Code', color: '#38BDF8' }
+    // 3 Stat Cards
+    const stats = [
+      { label: 'ANNUAL RUN RATE', val: '$284,500', note: '+34.2% MoM', col: '#10B981' },
+      { label: 'P99 LATENCY', val: '14.2 ms', note: 'Edge Caching Active', col: '#0A66C2' },
+      { label: 'FIDELITY SCORE', val: '100.0%', note: 'Pixel Perfect Code', col: '#38BDF8' }
     ];
 
-    metrics.forEach((m, idx) => {
-      const cardX = 88 + idx * 304;
+    stats.forEach((s, i) => {
+      const sx = 80 + i * 308;
       ctx.fillStyle = '#0F172A';
       ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
       ctx.lineWidth = 1;
       ctx.beginPath();
-      ctx.roundRect(cardX, 68, 288, 100, 10);
+      ctx.roundRect(sx, 60, 292, 92, 10);
       ctx.fill(); ctx.stroke();
 
       ctx.fillStyle = '#94A3B8';
       ctx.font = '10px monospace';
-      ctx.fillText(m.label, cardX + 16, 92);
+      ctx.fillText(s.label, sx + 16, 82);
 
       ctx.fillStyle = '#FFFFFF';
-      ctx.font = 'bold 26px -apple-system, sans-serif';
-      ctx.fillText(m.val, cardX + 16, 126);
+      ctx.font = 'bold 24px -apple-system, sans-serif';
+      ctx.fillText(s.val, sx + 16, 114);
 
-      ctx.fillStyle = m.color;
+      ctx.fillStyle = s.col;
       ctx.font = 'bold 11px monospace';
-      ctx.fillText(m.change, cardX + 16, 150);
+      ctx.fillText(s.note, sx + 16, 136);
     });
 
-    // Main Chart Box
+    // Main Line Chart Box
     ctx.fillStyle = '#0F172A';
     ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
     ctx.beginPath();
-    ctx.roundRect(88, 184, 896, 340, 12);
+    ctx.roundRect(80, 168, 920, 350, 12);
     ctx.fill(); ctx.stroke();
 
-    // Chart Header
     ctx.fillStyle = '#FFFFFF';
     ctx.font = 'bold 15px sans-serif';
-    ctx.fillText('Live Revenue & User Velocity', 108, 216);
+    ctx.fillText('Live Revenue & Realtime Hydration', 100, 198);
 
     ctx.fillStyle = '#64748B';
-    ctx.font = '11px monospace';
-    ctx.fillText('30-DAY ROLLING AUDIT · SUPABASE REALTIME', 108, 234);
+    ctx.font = '10px monospace';
+    ctx.fillText('SUPABASE REALTIME ENGINE · ZERO CLIENT HYDRATION LAG', 100, 215);
 
-    // Chart Grid Lines
+    // Chart Lines
     ctx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
-    for (let y = 260; y <= 470; y += 45) {
+    for (let gy = 240; gy <= 470; gy += 45) {
       ctx.beginPath();
-      ctx.moveTo(108, y);
-      ctx.lineTo(964, y);
+      ctx.moveTo(100, gy);
+      ctx.lineTo(980, gy);
       ctx.stroke();
     }
 
-    // Chart Area Gradient
-    const grad = ctx.createLinearGradient(0, 240, 0, 480);
-    grad.addColorStop(0, 'rgba(10, 102, 194, 0.45)');
-    grad.addColorStop(1, 'rgba(10, 102, 194, 0.0)');
+    // Chart Gradient Area
+    const chartGrad = ctx.createLinearGradient(0, 240, 0, 480);
+    chartGrad.addColorStop(0, 'rgba(10, 102, 194, 0.5)');
+    chartGrad.addColorStop(1, 'rgba(10, 102, 194, 0.0)');
 
-    const points = [
-      {x: 120, y: 440}, {x: 220, y: 410}, {x: 320, y: 430}, 
-      {x: 420, y: 360}, {x: 520, y: 380}, {x: 620, y: 310}, 
-      {x: 720, y: 330}, {x: 820, y: 265}, {x: 950, y: 250}
+    const chartPts = [
+      {x: 110, y: 440}, {x: 210, y: 410}, {x: 310, y: 430}, 
+      {x: 410, y: 355}, {x: 520, y: 375}, {x: 630, y: 300}, 
+      {x: 740, y: 320}, {x: 850, y: 255}, {x: 970, y: 240}
     ];
 
-    ctx.fillStyle = grad;
+    ctx.fillStyle = chartGrad;
     ctx.beginPath();
-    ctx.moveTo(points[0].x, 480);
-    points.forEach(p => ctx.lineTo(p.x, p.y));
-    ctx.lineTo(points[points.length - 1].x, 480);
+    ctx.moveTo(chartPts[0].x, 480);
+    chartPts.forEach(p => ctx.lineTo(p.x, p.y));
+    ctx.lineTo(chartPts[chartPts.length - 1].x, 480);
     ctx.closePath();
     ctx.fill();
 
-    // Chart Line
     ctx.strokeStyle = '#0A66C2';
     ctx.lineWidth = 3.5;
     ctx.beginPath();
-    points.forEach((p, idx) => {
+    chartPts.forEach((p, idx) => {
       if (idx === 0) ctx.moveTo(p.x, p.y);
       else ctx.lineTo(p.x, p.y);
     });
     ctx.stroke();
 
-    // Chart Dots
-    points.forEach(p => {
+    chartPts.forEach(p => {
       ctx.fillStyle = '#38BDF8';
-      ctx.beginPath(); ctx.arc(p.x, p.y, 4.5, 0, Math.PI * 2); ctx.fill();
-      ctx.fillStyle = '#FFFFFF';
-      ctx.beginPath(); ctx.arc(p.x, p.y, 2, 0, Math.PI * 2); ctx.fill();
+      ctx.beginPath(); ctx.arc(p.x, p.y, 4, 0, Math.PI * 2); ctx.fill();
     });
 
-    // Bottom Status Bar
+    // Bottom Terminal Bar
     ctx.fillStyle = '#080D1A';
-    ctx.fillRect(88, 540, 896, 68);
+    ctx.fillRect(80, 532, 920, 84);
+
     ctx.fillStyle = '#10B981';
     ctx.font = 'bold 12px monospace';
-    ctx.fillText('● FASTAPI & PRISMA BACKEND CONNECTED', 108, 580);
+    ctx.fillText('● CLOUD RUN & POSTGRES READY', 100, 565);
 
     ctx.fillStyle = '#94A3B8';
     ctx.font = '11px monospace';
-    ctx.fillText('0 ERROR REPORTS · 60 FPS SMOOTH SCROLL', 620, 580);
+    ctx.fillText('ACTIVE SPRINT CADENCE · 100% IP OWNERSHIP TRANSFERRED', 100, 592);
 
     const texture = new THREE.CanvasTexture(canvas);
     texture.anisotropy = 4;
     return texture;
   }
 
-  // B. Flutter Mobile App Texture (512 x 1024)
-  function createPhoneScreenTexture() {
+  // B. Flutter Mobile App Screen (512 x 1024)
+  function createIPhoneScreenTexture() {
     const canvas = document.createElement('canvas');
     canvas.width = 512;
     canvas.height = 1024;
     const ctx = canvas.getContext('2d');
 
-    // Background: High-tech Dark Obsidian
+    // Dark Obsidian
     ctx.fillStyle = '#090D16';
     ctx.fillRect(0, 0, 512, 1024);
 
     // Dynamic Island
     ctx.fillStyle = '#000000';
     ctx.beginPath();
-    ctx.roundRect(176, 20, 160, 36, 18);
+    ctx.roundRect(176, 18, 160, 36, 18);
     ctx.fill();
 
-    // Camera dot
+    // Camera Lens Dot
     ctx.fillStyle = '#1E293B';
-    ctx.beginPath(); ctx.arc(310, 38, 5, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath(); ctx.arc(310, 36, 5, 0, Math.PI * 2); ctx.fill();
 
-    // App Header Bar
+    // App Header
     ctx.fillStyle = '#FFFFFF';
     ctx.font = 'bold 22px -apple-system, sans-serif';
-    ctx.fillText('AURA PULSE', 36, 105);
+    ctx.fillText('AURA PULSE', 36, 100);
 
-    // Flutter 60 FPS Badge
+    // 60 FPS Badge
     ctx.fillStyle = 'rgba(10, 102, 194, 0.2)';
     ctx.strokeStyle = '#0A66C2';
     ctx.lineWidth = 1.5;
     ctx.beginPath();
-    ctx.roundRect(324, 82, 152, 34, 17);
+    ctx.roundRect(330, 78, 146, 32, 16);
     ctx.fill(); ctx.stroke();
 
     ctx.fillStyle = '#38BDF8';
     ctx.font = 'bold 12px monospace';
-    ctx.fillText('FLUTTER 60 FPS', 342, 104);
+    ctx.fillText('FLUTTER 60 FPS', 346, 99);
 
-    // Subtitle
     ctx.fillStyle = '#94A3B8';
     ctx.font = '14px sans-serif';
-    ctx.fillText('Unified iOS & Android Client', 36, 134);
+    ctx.fillText('Unified iOS & Android Client', 36, 126);
 
-    // Activity Circular Gauges (Apple Fitness Ring Style)
-    const centerX = 256;
-    const centerY = 310;
+    // Activity Rings
+    const cx = 256;
+    const cy = 290;
 
-    // Outer Ring: Blue
+    // Ring 1 (Royal Blue)
     ctx.strokeStyle = 'rgba(10, 102, 194, 0.25)';
     ctx.lineWidth = 18;
-    ctx.beginPath(); ctx.arc(centerX, centerY, 100, 0, Math.PI * 2); ctx.stroke();
-
+    ctx.beginPath(); ctx.arc(cx, cy, 96, 0, Math.PI * 2); ctx.stroke();
     ctx.strokeStyle = '#0A66C2';
-    ctx.lineWidth = 18;
     ctx.lineCap = 'round';
-    ctx.beginPath(); ctx.arc(centerX, centerY, 100, -Math.PI / 2, Math.PI * 0.9); ctx.stroke();
+    ctx.beginPath(); ctx.arc(cx, cy, 96, -Math.PI / 2, Math.PI * 0.95); ctx.stroke();
 
-    // Middle Ring: Cyan
+    // Ring 2 (Cyan)
     ctx.strokeStyle = 'rgba(56, 189, 248, 0.2)';
     ctx.lineWidth = 16;
-    ctx.beginPath(); ctx.arc(centerX, centerY, 76, 0, Math.PI * 2); ctx.stroke();
-
+    ctx.beginPath(); ctx.arc(cx, cy, 74, 0, Math.PI * 2); ctx.stroke();
     ctx.strokeStyle = '#38BDF8';
-    ctx.lineWidth = 16;
     ctx.lineCap = 'round';
-    ctx.beginPath(); ctx.arc(centerX, centerY, 76, -Math.PI / 2, Math.PI * 0.7); ctx.stroke();
+    ctx.beginPath(); ctx.arc(cx, cy, 74, -Math.PI / 2, Math.PI * 0.7); ctx.stroke();
 
-    // Inner Ring: Mint
+    // Ring 3 (Mint)
     ctx.strokeStyle = 'rgba(16, 185, 129, 0.2)';
     ctx.lineWidth = 14;
-    ctx.beginPath(); ctx.arc(centerX, centerY, 54, 0, Math.PI * 2); ctx.stroke();
-
+    ctx.beginPath(); ctx.arc(cx, cy, 54, 0, Math.PI * 2); ctx.stroke();
     ctx.strokeStyle = '#10B981';
-    ctx.lineWidth = 14;
     ctx.lineCap = 'round';
-    ctx.beginPath(); ctx.arc(centerX, centerY, 54, -Math.PI / 2, Math.PI * 1.1); ctx.stroke();
+    ctx.beginPath(); ctx.arc(cx, cy, 54, -Math.PI / 2, Math.PI * 1.05); ctx.stroke();
 
-    // Metric In Ring Center
     ctx.fillStyle = '#FFFFFF';
     ctx.font = 'bold 28px sans-serif';
     ctx.textAlign = 'center';
-    ctx.fillText('98.4%', centerX, 308);
+    ctx.fillText('98.4%', cx, 288);
+
     ctx.fillStyle = '#64748B';
     ctx.font = '11px monospace';
-    ctx.fillText('HEALTH SYNC', centerX, 328);
+    ctx.fillText('ENGINE SYNC', cx, 308);
     ctx.textAlign = 'left';
 
-    // Stat Cards
+    // Feature Cards
     const cards = [
       { title: 'Global Multi-Currency Wallet', val: '$18,450.00 USD', icon: '💳', sub: 'Biometric 256-Bit Encrypted' },
       { title: 'Offline-First Cloud Sync', val: 'Synchronized', icon: '⚡', sub: 'Supabase Realtime Engine' },
-      { title: 'App Store & Google Play', val: 'Ready for Release', icon: '🚀', sub: 'Single Codebase Architecture' }
+      { title: 'App Store & Google Play', val: 'Release Ready', icon: '🚀', sub: 'Single Codebase Architecture' }
     ];
 
     cards.forEach((c, idx) => {
-      const cy = 470 + idx * 140;
+      const cardY = 440 + idx * 145;
       ctx.fillStyle = '#111827';
       ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
       ctx.lineWidth = 1;
       ctx.beginPath();
-      ctx.roundRect(36, cy, 440, 120, 16);
+      ctx.roundRect(32, cardY, 448, 125, 16);
       ctx.fill(); ctx.stroke();
 
       ctx.font = '24px sans-serif';
-      ctx.fillText(c.icon, 56, cy + 45);
+      ctx.fillText(c.icon, 52, cardY + 45);
 
       ctx.fillStyle = '#FFFFFF';
-      ctx.font = 'bold 17px sans-serif';
-      ctx.fillText(c.val, 96, cy + 45);
+      ctx.font = 'bold 18px sans-serif';
+      ctx.fillText(c.val, 92, cardY + 45);
 
       ctx.fillStyle = '#94A3B8';
       ctx.font = '13px sans-serif';
-      ctx.fillText(c.title, 56, cy + 80);
+      ctx.fillText(c.title, 52, cardY + 82);
 
       ctx.fillStyle = '#38BDF8';
       ctx.font = '11px monospace';
-      ctx.fillText(c.sub, 56, cy + 102);
+      ctx.fillText(c.sub, 52, cardY + 104);
     });
 
-    // Bottom Navigation Bar
+    // Bottom Bar
     ctx.fillStyle = '#060A10';
     ctx.fillRect(0, 930, 512, 94);
-
     const bIcons = ['🏠', '📈', '🔔', '👤'];
     bIcons.forEach((bi, i) => {
       ctx.font = '20px sans-serif';
       ctx.fillText(bi, 60 + i * 115, 970);
     });
 
-    // Home Indicator Bar
+    // Home Bar
     ctx.fillStyle = '#FFFFFF';
     ctx.beginPath();
     ctx.roundRect(176, 1004, 160, 6, 3);
@@ -354,142 +355,196 @@
   }
 
   // =========================================================================
-  // 2. CONSTRUCT 3D MACBOOK PRO MODEL
+  // 2. CONSTRUCT REALISTIC MACBOOK PRO (LEFT SIDE)
   // =========================================================================
-  const laptopGroup = new THREE.Group();
-  rigGroup.add(laptopGroup);
+  const macGroup = new THREE.Group();
+  // Distinct position separated from the phone:
+  macGroup.position.set(-0.7, -0.15, -0.2);
+  masterRig.add(macGroup);
 
-  // Aluminum Metallic Materials
-  const aluminumMat = new THREE.MeshStandardMaterial({
-    color: 0xDCE3EB,
-    metalness: 0.88,
-    roughness: 0.25
+  // Precision Apple Brushed Aluminum Material
+  const macAluminumMat = new THREE.MeshStandardMaterial({
+    color: 0xCBD5E1,
+    metalness: 0.85,
+    roughness: 0.28
   });
 
-  const darkMetalMat = new THREE.MeshStandardMaterial({
+  const macKeyboardMat = new THREE.MeshStandardMaterial({
     color: 0x0F172A,
-    metalness: 0.7,
-    roughness: 0.4
+    metalness: 0.5,
+    roughness: 0.45
   });
 
-  // Base Chassis
-  const baseGeo = new THREE.BoxGeometry(3.6, 0.1, 2.38);
-  const baseMesh = new THREE.Mesh(baseGeo, aluminumMat);
-  laptopGroup.add(baseMesh);
+  const macTrackpadMat = new THREE.MeshStandardMaterial({
+    color: 0xE2E8F0,
+    metalness: 0.65,
+    roughness: 0.32
+  });
 
-  // Keyboard Well
-  const kbWellGeo = new THREE.BoxGeometry(3.2, 0.015, 1.25);
-  const kbWellMesh = new THREE.Mesh(kbWellGeo, darkMetalMat);
-  kbWellMesh.position.set(0, 0.051, -0.38);
-  laptopGroup.add(kbWellMesh);
+  // Base Chassis (Curved unibody extrusion)
+  const baseShape = createRoundedRectShape(2.8, 1.85, 0.08);
+  const baseGeo = new THREE.ExtrudeGeometry(baseShape, {
+    depth: 0.06,
+    bevelEnabled: true,
+    bevelSegments: 2,
+    steps: 1,
+    bevelSize: 0.015,
+    bevelThickness: 0.015
+  });
+  const baseMesh = new THREE.Mesh(baseGeo, macAluminumMat);
+  baseMesh.rotation.x = Math.PI / 2;
+  baseMesh.position.set(0, 0, 0);
+  macGroup.add(baseMesh);
+
+  // Keyboard Bed
+  const kbGeo = new THREE.BoxGeometry(2.4, 0.008, 0.95);
+  const kbMesh = new THREE.Mesh(kbGeo, macKeyboardMat);
+  kbMesh.position.set(0, 0.045, -0.25);
+  macGroup.add(kbMesh);
 
   // Trackpad
-  const tpGeo = new THREE.BoxGeometry(1.25, 0.012, 0.82);
-  const tpMat = new THREE.MeshStandardMaterial({
-    color: 0xCBD5E1,
-    metalness: 0.6,
-    roughness: 0.35
-  });
-  const tpMesh = new THREE.Mesh(tpGeo, tpMat);
-  tpMesh.position.set(0, 0.051, 0.65);
-  laptopGroup.add(tpMesh);
+  const tpGeo = new THREE.BoxGeometry(0.95, 0.006, 0.6);
+  const tpMesh = new THREE.Mesh(tpGeo, macTrackpadMat);
+  tpMesh.position.set(0, 0.045, 0.5);
+  macGroup.add(tpMesh);
 
-  // Display Screen Lid (Hinged at rear)
+  // Hinge Cylinder
+  const hingeGeo = new THREE.CylinderGeometry(0.025, 0.025, 2.4, 16);
+  const hingeMesh = new THREE.Mesh(hingeGeo, macAluminumMat);
+  hingeMesh.rotation.z = Math.PI / 2;
+  hingeMesh.position.set(0, 0.04, -0.92);
+  macGroup.add(hingeMesh);
+
+  // Display Lid Group (Hinged at rear, angled upright to face viewer)
   const lidGroup = new THREE.Group();
-  lidGroup.position.set(0, 0.05, -1.18);
-  // Opened at ~106 degrees backwards
-  lidGroup.rotation.x = -Math.PI * 0.59;
-  laptopGroup.add(lidGroup);
+  lidGroup.position.set(0, 0.04, -0.92);
+  // Opened at ~104° backwards so screen faces directly forward into camera
+  lidGroup.rotation.x = -Math.PI / 2 + 0.26;
+  macGroup.add(lidGroup);
 
-  // Lid Back Cover
-  const lidGeo = new THREE.BoxGeometry(3.6, 2.32, 0.05);
-  const lidMesh = new THREE.Mesh(lidGeo, aluminumMat);
-  lidMesh.position.set(0, 1.16, 0);
+  // Lid Aluminum Back
+  const lidShape = createRoundedRectShape(2.8, 1.82, 0.08);
+  const lidGeo = new THREE.ExtrudeGeometry(lidShape, {
+    depth: 0.035,
+    bevelEnabled: true,
+    bevelSegments: 2,
+    steps: 1,
+    bevelSize: 0.012,
+    bevelThickness: 0.012
+  });
+  const lidMesh = new THREE.Mesh(lidGeo, macAluminumMat);
+  lidMesh.position.set(0, 0.91, 0);
   lidGroup.add(lidMesh);
 
-  // Screen Front Glass Face
-  const laptopTexture = createLaptopScreenTexture();
-  const screenFaceGeo = new THREE.PlaneGeometry(3.46, 2.18);
-  const screenFaceMat = new THREE.MeshBasicMaterial({ map: laptopTexture });
+  // Screen Bezel (Front Black Border)
+  const bezelMat = new THREE.MeshBasicMaterial({ color: 0x050810 });
+  const bezelGeo = new THREE.PlaneGeometry(2.74, 1.76);
+  const bezelMesh = new THREE.Mesh(bezelGeo, bezelMat);
+  bezelMesh.position.set(0, 0.91, 0.024);
+  lidGroup.add(bezelMesh);
+
+  // Live Screen Texture Face
+  const macTexture = createMacScreenTexture();
+  const screenFaceGeo = new THREE.PlaneGeometry(2.62, 1.64);
+  const screenFaceMat = new THREE.MeshBasicMaterial({ map: macTexture });
   const screenFaceMesh = new THREE.Mesh(screenFaceGeo, screenFaceMat);
-  screenFaceMesh.position.set(0, 1.16, 0.026);
+  screenFaceMesh.position.set(0, 0.91, 0.026);
   lidGroup.add(screenFaceMesh);
 
   // =========================================================================
-  // 3. CONSTRUCT 3D IPHONE PRO MODEL (FLOATING RIGHT & FORWARD)
+  // 3. CONSTRUCT REALISTIC IPHONE 15 PRO (SEPARATED RIGHT & IN FRONT)
   // =========================================================================
   const phoneGroup = new THREE.Group();
-  phoneGroup.position.set(1.68, -0.15, 0.85);
-  phoneGroup.rotation.set(0.1, -0.22, 0.05);
-  rigGroup.add(phoneGroup);
+  // Generous separation from laptop (Laptop right edge is at ~0.7, phone center is at 1.42):
+  phoneGroup.position.set(1.42, -0.12, 0.65);
+  // Slightly tilted toward camera
+  phoneGroup.rotation.set(0.08, -0.22, 0.04);
+  masterRig.add(phoneGroup);
 
-  // Phone Titanium Frame (Sapphire Blue Tint)
+  // Polished Sapphire Titanium Frame
   const titaniumMat = new THREE.MeshStandardMaterial({
     color: 0x0A66C2,
-    metalness: 0.92,
+    metalness: 0.94,
     roughness: 0.16
   });
 
-  const phoneGeo = new THREE.BoxGeometry(1.22, 2.48, 0.1);
+  // iPhone Chassis with Extruded Rounded Corners
+  const phoneShape = createRoundedRectShape(1.02, 2.12, 0.14);
+  const phoneGeo = new THREE.ExtrudeGeometry(phoneShape, {
+    depth: 0.065,
+    bevelEnabled: true,
+    bevelSegments: 3,
+    steps: 1,
+    bevelSize: 0.015,
+    bevelThickness: 0.015
+  });
   const phoneMesh = new THREE.Mesh(phoneGeo, titaniumMat);
+  phoneMesh.position.set(0, 0, 0);
   phoneGroup.add(phoneMesh);
 
-  // Camera Island on Rear
-  const camBumpGeo = new THREE.BoxGeometry(0.5, 0.5, 0.04);
-  const camBumpMesh = new THREE.Mesh(camBumpGeo, titaniumMat);
-  camBumpMesh.position.set(-0.25, 0.85, -0.07);
-  phoneGroup.add(camBumpMesh);
+  // Camera Island on Back
+  const camShape = createRoundedRectShape(0.42, 0.42, 0.08);
+  const camGeo = new THREE.ExtrudeGeometry(camShape, {
+    depth: 0.025,
+    bevelEnabled: true,
+    bevelSegments: 2,
+    steps: 1,
+    bevelSize: 0.01,
+    bevelThickness: 0.01
+  });
+  const camMesh = new THREE.Mesh(camGeo, titaniumMat);
+  camMesh.position.set(-0.22, 0.72, -0.045);
+  phoneGroup.add(camMesh);
 
-  // Phone Front Display Screen
-  const phoneTexture = createPhoneScreenTexture();
-  const phoneScreenGeo = new THREE.PlaneGeometry(1.15, 2.4);
+  // 3 Camera Lenses
+  const lensGeo = new THREE.CylinderGeometry(0.065, 0.065, 0.02, 16);
+  const lensMat = new THREE.MeshStandardMaterial({ color: 0x050810, metalness: 0.95, roughness: 0.1 });
+  const l1 = new THREE.Mesh(lensGeo, lensMat);
+  l1.rotation.x = Math.PI / 2;
+  l1.position.set(-0.29, 0.82, -0.065);
+  phoneGroup.add(l1);
+
+  const l2 = new THREE.Mesh(lensGeo, lensMat);
+  l2.rotation.x = Math.PI / 2;
+  l2.position.set(-0.29, 0.62, -0.065);
+  phoneGroup.add(l2);
+
+  const l3 = new THREE.Mesh(lensGeo, lensMat);
+  l3.rotation.x = Math.PI / 2;
+  l3.position.set(-0.14, 0.72, -0.065);
+  phoneGroup.add(l3);
+
+  // iPhone Display Screen Face
+  const phoneTexture = createIPhoneScreenTexture();
+  const phoneScreenGeo = new THREE.PlaneGeometry(0.96, 2.05);
   const phoneScreenMat = new THREE.MeshBasicMaterial({ map: phoneTexture });
   const phoneScreenMesh = new THREE.Mesh(phoneScreenGeo, phoneScreenMat);
-  phoneScreenMesh.position.set(0, 0, 0.051);
+  phoneScreenMesh.position.set(0, 0, 0.048);
   phoneGroup.add(phoneScreenMesh);
 
   // =========================================================================
   // 4. STUDIO LIGHTING & AMBIENT GLOW
   // =========================================================================
-  const ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.95);
+  const ambientLight = new THREE.AmbientLight(0xFFFFFF, 0.96);
   scene.add(ambientLight);
 
   // Key Specular Light (Top-Right)
-  const keyLight = new THREE.DirectionalLight(0xFFFFFF, 1.8);
-  keyLight.position.set(5, 7, 6);
+  const keyLight = new THREE.DirectionalLight(0xFFFFFF, 1.9);
+  keyLight.position.set(4, 7, 5);
   scene.add(keyLight);
 
-  // Executive Sapphire Rim Light (Back-Left)
-  const sapphireRim = new THREE.PointLight(0x0A66C2, 3.8, 14);
-  sapphireRim.position.set(-4, -2, 3);
+  // Sapphire Rim Light (Back-Left)
+  const sapphireRim = new THREE.PointLight(0x0A66C2, 3.2, 12);
+  sapphireRim.position.set(-4, -1, 3);
   scene.add(sapphireRim);
 
-  // Cyan Front Fill
-  const cyanFill = new THREE.PointLight(0x38BDF8, 1.8, 12);
-  cyanFill.position.set(3, -3, 4);
+  // Cyan Front Specular
+  const cyanFill = new THREE.PointLight(0x38BDF8, 1.4, 10);
+  cyanFill.position.set(3, -2, 4);
   scene.add(cyanFill);
 
-  // Subtle Orbiting Diamond Stardust (60 Particles)
-  const starCount = 60;
-  const starGeo = new THREE.BufferGeometry();
-  const starPos = new Float32Array(starCount * 3);
-  for (let i = 0; i < starCount * 3; i += 3) {
-    starPos[i] = (Math.random() - 0.5) * 12;
-    starPos[i + 1] = (Math.random() - 0.5) * 10;
-    starPos[i + 2] = (Math.random() - 0.5) * 8;
-  }
-  starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
-  const starMat = new THREE.PointsMaterial({
-    color: 0x0A66C2,
-    size: 0.04,
-    transparent: true,
-    opacity: 0.5
-  });
-  const stardust = new THREE.Points(starGeo, starMat);
-  scene.add(stardust);
-
   // =========================================================================
-  // 5. INTERACTION & PARALLAX SMOOTHING
+  // 5. MOUSE PARALLAX & SMOOTH FLOATING ANIMATION
   // =========================================================================
   let targetX = 0;
   let targetY = 0;
@@ -499,52 +554,48 @@
   window.addEventListener('mousemove', (e) => {
     const mouseX = (e.clientX / window.innerWidth) * 2 - 1;
     const mouseY = -(e.clientY / window.innerHeight) * 2 + 1;
-    targetX = mouseX * 0.25;
-    targetY = mouseY * 0.25;
+    targetX = mouseX * 0.22;
+    targetY = mouseY * 0.22;
   }, { passive: true });
 
   window.addEventListener('touchmove', (e) => {
     if (e.touches && e.touches.length > 0) {
       const touchX = (e.touches[0].clientX / window.innerWidth) * 2 - 1;
       const touchY = -(e.touches[0].clientY / window.innerHeight) * 2 + 1;
-      targetX = touchX * 0.15;
-      targetY = touchY * 0.15;
+      targetX = touchX * 0.12;
+      targetY = touchY * 0.12;
     }
   }, { passive: true });
 
-  // 60 FPS Render Loop with Floating Levitation
   const clock = new THREE.Clock();
 
   function animate() {
     requestAnimationFrame(animate);
-    const elapsedTime = clock.getElapsedTime();
+    const elapsed = clock.getElapsedTime();
 
-    // Parallax Interpolation
+    // Smooth Weighted Parallax
     currentX += (targetX - currentX) * 0.045;
     currentY += (targetY - currentY) * 0.045;
 
-    // Rig Master Parallax
-    rigGroup.rotation.y = -0.28 + currentX;
-    rigGroup.rotation.x = 0.18 - currentY;
+    masterRig.rotation.y = -0.22 + currentX;
+    masterRig.rotation.x = 0.14 - currentY;
 
-    // Gentle Floating Breathing (Out-of-phase levitation)
-    laptopGroup.position.y = Math.sin(elapsedTime * 1.1) * 0.06;
-    laptopGroup.rotation.z = Math.sin(elapsedTime * 0.7) * 0.012;
+    // Gentle Independent Floating Breathing (Never intersecting!)
+    macGroup.position.y = -0.15 + Math.sin(elapsed * 1.0) * 0.045;
+    macGroup.rotation.z = Math.sin(elapsed * 0.7) * 0.01;
 
-    phoneGroup.position.y = -0.15 + Math.sin(elapsedTime * 1.1 + 1.2) * 0.08;
-    phoneGroup.rotation.z = 0.05 + Math.cos(elapsedTime * 0.8) * 0.02;
-
-    stardust.rotation.y = elapsedTime * 0.02;
+    phoneGroup.position.y = -0.12 + Math.sin(elapsed * 1.0 + 1.4) * 0.055;
+    phoneGroup.rotation.z = 0.04 + Math.cos(elapsed * 0.8) * 0.015;
 
     renderer.render(scene, camera);
   }
   animate();
 
-  // Responsive Resize
-  let resizeTimeout;
+  // Resize Handler with Debouncing
+  let resizeTimer;
   window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
       if (!container) return;
       updateCameraDistance();
       renderer.setSize(container.clientWidth, container.clientHeight);
