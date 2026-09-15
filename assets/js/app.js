@@ -1,4 +1,4 @@
-﻿// Main Application Interactions: 3D Tilt, Project Filtering, Modals & Copy Actions
+﻿// Main Application Interactions: 3D Tilt, Project Filtering, Modals & Direct Video Call Scheduler
 // Optimized for Mobile Touch, Tablet, and Desktop PC
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -44,14 +44,12 @@ document.addEventListener('DOMContentLoaded', () => {
       mobileMenu.classList.toggle('hidden');
     });
     
-    // Close mobile menu when clicking any nav link
     mobileMenu.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         mobileMenu.classList.add('hidden');
       });
     });
 
-    // Close mobile menu when tapping anywhere outside
     document.addEventListener('click', (e) => {
       if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
         mobileMenu.classList.add('hidden');
@@ -131,17 +129,20 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 5. Dynamic Meeting Slot Calculation & Selection (Hero Section)
+  // 5. Direct Video Call Scheduler (Google Meet / Zoom)
   const slotPills = document.querySelectorAll('.slot-pill');
+  const platformToggles = document.querySelectorAll('.platform-toggle');
   const heroBtnSlotLabel = document.getElementById('hero-btn-slot-label');
   const heroBookBtn = document.getElementById('hero-book-meeting-btn');
   const meetingModal = document.getElementById('meeting-modal');
   const closeModalBtn = document.getElementById('close-modal-btn');
   const modalSlotDisplay = document.getElementById('modal-slot-display');
   const modalHiddenSlot = document.getElementById('modal-hidden-slot');
+  const modalHiddenPlatform = document.getElementById('modal-hidden-platform');
   const modalChangeSlot = document.getElementById('modal-change-slot');
 
   let selectedSlot = 'Thu, Sep 17 · 2:00 PM EST';
+  let selectedPlatform = 'Google Meet';
 
   // Compute realistic upcoming business day slots
   function generateUpcomingSlots() {
@@ -181,10 +182,33 @@ document.addEventListener('DOMContentLoaded', () => {
       `;
     });
     selectedSlot = liveSlots[0].full;
-    if (heroBtnSlotLabel) heroBtnSlotLabel.textContent = selectedSlot;
-    if (modalSlotDisplay) modalSlotDisplay.textContent = selectedSlot;
-    if (modalHiddenSlot) modalHiddenSlot.value = selectedSlot;
+    updateHeroBtnLabel();
   }
+
+  function updateHeroBtnLabel() {
+    if (heroBtnSlotLabel) {
+      heroBtnSlotLabel.textContent = `${selectedSlot} (${selectedPlatform})`;
+    }
+    if (modalSlotDisplay) {
+      modalSlotDisplay.textContent = `${selectedSlot} · ${selectedPlatform}`;
+    }
+    if (modalHiddenSlot) modalHiddenSlot.value = selectedSlot;
+    if (modalHiddenPlatform) modalHiddenPlatform.value = selectedPlatform;
+  }
+
+  // Handle Platform Toggle (Google Meet vs Zoom)
+  platformToggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      platformToggles.forEach(t => {
+        t.classList.remove('active', 'border-gold-400/40', 'bg-gold-500/15', 'text-gold-300', 'font-semibold');
+        t.classList.add('border-white/10', 'text-silver-400', 'font-medium');
+      });
+      toggle.classList.add('active', 'border-gold-400/40', 'bg-gold-500/15', 'text-gold-300', 'font-semibold');
+      toggle.classList.remove('border-white/10', 'text-silver-400', 'font-medium');
+      selectedPlatform = toggle.getAttribute('data-platform') || 'Google Meet';
+      updateHeroBtnLabel();
+    });
+  });
 
   slotPills.forEach(pill => {
     pill.addEventListener('click', () => {
@@ -215,11 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       selectedSlot = pill.getAttribute('data-slot');
-      if (heroBtnSlotLabel) heroBtnSlotLabel.textContent = selectedSlot;
-      if (modalSlotDisplay) modalSlotDisplay.textContent = selectedSlot;
-      if (modalHiddenSlot) modalHiddenSlot.value = selectedSlot;
-
-      // Direct trigger: open booking modal on slot click
+      updateHeroBtnLabel();
       openModal();
     });
   });
@@ -272,7 +292,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // 6. Meeting Reservation Form Submission
+  // 6. Direct Video Call Form Submission
   const meetingForm = document.getElementById('meeting-form');
   const modalSubmitBtn = document.getElementById('modal-submit-btn');
   const modalBtnText = document.getElementById('modal-btn-text');
@@ -293,6 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
         email: formData.get('email') ? formData.get('email').trim() : '',
         projectType: formData.get('projectType') || '15-Min Technical Discovery',
         meetingSlot: formData.get('meetingSlot') || selectedSlot,
+        platform: formData.get('platform') || selectedPlatform,
         _gotcha: formData.get('_gotcha')
       };
 
@@ -311,7 +332,7 @@ document.addEventListener('DOMContentLoaded', () => {
         modalSubmitBtn.disabled = true;
         modalSubmitBtn.classList.add('opacity-75', 'cursor-not-allowed');
       }
-      if (modalBtnText) modalBtnText.textContent = 'Locking In Reservation...';
+      if (modalBtnText) modalBtnText.textContent = 'Locking In Video Call Slot...';
 
       try {
         const response = await fetch('/api/contact', {
@@ -326,37 +347,55 @@ document.addEventListener('DOMContentLoaded', () => {
         const result = await response.json();
 
         if (response.ok && result.success) {
-          const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Discovery Call with Mohammad Hasan')}&details=${encodeURIComponent(`15-Min Technical Architecture Discovery with Mohammad Hasan. Agenda: ${payload.projectType}`)}&location=${encodeURIComponent('Google Meet / Zoom (Link in invite)')}`;
+          const meetUrl = result.data?.meetingLink || 'https://meet.google.com/new';
+          const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent('Video Consultation: Mohammad Hasan & ' + payload.name)}&details=${encodeURIComponent(`15-Min Video Consultation with Mohammad Hasan (Lead Consultant).\\nAgenda: ${payload.projectType}\\nJoin Video Call: ${meetUrl}`)}&location=${encodeURIComponent(meetUrl)}`;
 
           meetingForm.innerHTML = `
             <div class="p-5 sm:p-6 rounded-2xl bg-[#090B0F]/95 border border-gold-500/40 text-center space-y-4 shadow-2xl animate-fade-in">
-              <div class="w-12 h-12 rounded-full bg-gold-500/15 border border-gold-500/30 text-gold-400 mx-auto flex items-center justify-center">
-                <i data-lucide="calendar-check" class="w-6 h-6"></i>
+              <div class="w-12 h-12 rounded-full bg-emerald-500/15 border border-emerald-500/30 text-emerald-400 mx-auto flex items-center justify-center">
+                <i data-lucide="video" class="w-6 h-6"></i>
               </div>
               <div class="space-y-1">
-                <div class="text-[10px] font-mono-luxury uppercase tracking-widest text-gold-400">Reservation Confirmed · ${result.data ? result.data.reference : 'MH-EXEC'}</div>
-                <h3 class="text-xl sm:text-2xl font-luxury font-bold text-white">Consultation Reserved</h3>
+                <div class="text-[10px] font-mono-luxury uppercase tracking-widest text-emerald-400 font-semibold">Video Call Scheduled · ${result.data ? result.data.reference : 'MH-EXEC'}</div>
+                <h3 class="text-xl sm:text-2xl font-luxury font-bold text-white">Private Video Room Ready</h3>
               </div>
-              <div class="p-3 rounded-xl bg-black/50 border border-white/10 text-xs font-mono text-gold-300">
-                🗓️ ${escapeHtml(payload.meetingSlot)}
+              
+              <div class="p-3.5 rounded-xl bg-black/60 border border-gold-500/30 text-xs font-mono space-y-1.5 text-left">
+                <div class="flex items-center justify-between text-silver-400 text-[10px]">
+                  <span>DATE & TIME</span>
+                  <span class="text-emerald-400 font-semibold">CONFIRMED</span>
+                </div>
+                <div class="text-white font-bold text-xs">🗓️ ${escapeHtml(payload.meetingSlot)}</div>
+                <div class="text-silver-300 text-[11px] pt-1">Platform: <strong class="text-gold-300">${escapeHtml(payload.platform)}</strong></div>
+                <div class="text-silver-400 text-[10px] truncate pt-0.5">Link: <a href="${meetUrl}" target="_blank" class="text-gold-400 hover:underline">${meetUrl}</a></div>
               </div>
-              <p class="text-xs sm:text-sm text-silver-300 font-light max-w-sm mx-auto leading-relaxed">
-                Thank you, <strong class="text-white">${escapeHtml(payload.name)}</strong>. A calendar invite and Google Meet link have been dispatched to <strong class="text-white">${escapeHtml(payload.email)}</strong>.
+
+              <p class="text-xs text-silver-300 font-light max-w-sm mx-auto leading-relaxed">
+                A calendar invite with your video room link has been dispatched to <strong class="text-white">${escapeHtml(payload.email)}</strong>. Mohammad Hasan has received your direct alert.
               </p>
+
+              <!-- Actions -->
               <div class="pt-2 flex flex-col sm:flex-row items-center justify-center gap-2.5">
-                <a href="${gCalUrl}" target="_blank" rel="noopener noreferrer" class="btn-catchy-gold px-4 py-2.5 rounded-xl text-xs uppercase tracking-wider font-bold inline-flex items-center gap-2">
-                  <i data-lucide="plus" class="w-3.5 h-3.5 text-black"></i>
-                  <span>Add to Google Calendar</span>
+                <a href="${meetUrl}" target="_blank" rel="noopener noreferrer" class="btn-catchy-gold w-full sm:w-auto px-4 py-2.5 rounded-xl text-xs uppercase tracking-wider font-bold inline-flex items-center justify-center gap-2">
+                  <i data-lucide="video" class="w-3.5 h-3.5 text-black"></i>
+                  <span>Test Video Link</span>
                 </a>
-                <button type="button" onclick="document.getElementById('meeting-modal').classList.add('hidden'); document.body.style.overflow='';" class="btn-silver px-4 py-2.5 rounded-xl text-xs uppercase tracking-wider font-semibold">
-                  Close Window
+                <a href="${gCalUrl}" target="_blank" rel="noopener noreferrer" class="btn-silver w-full sm:w-auto px-4 py-2.5 rounded-xl text-xs uppercase tracking-wider font-semibold inline-flex items-center justify-center gap-2">
+                  <i data-lucide="calendar-plus" class="w-3.5 h-3.5"></i>
+                  <span>Add to Google Cal</span>
+                </a>
+              </div>
+
+              <div class="pt-1">
+                <button type="button" onclick="document.getElementById('meeting-modal').classList.add('hidden'); document.body.style.overflow='';" class="text-silver-400 hover:text-white text-xs font-mono uppercase tracking-wider">
+                  Dismiss Window
                 </button>
               </div>
             </div>
           `;
           if (window.lucide) window.lucide.createIcons();
         } else {
-          showModalFeedback(result.error || 'Unable to reserve slot. Please retry or contact directly via hasanisbest786@gmail.com.', 'error');
+          showModalFeedback(result.error || 'Unable to schedule video call. Please retry or email hasanisbest786@gmail.com.', 'error');
           resetModalSubmitBtn();
         }
       } catch (err) {
@@ -380,7 +419,7 @@ document.addEventListener('DOMContentLoaded', () => {
       modalSubmitBtn.disabled = false;
       modalSubmitBtn.classList.remove('opacity-75', 'cursor-not-allowed');
     }
-    if (modalBtnText) modalBtnText.textContent = 'Confirm 15-Min Meeting';
+    if (modalBtnText) modalBtnText.textContent = 'Confirm Video Call Slot';
   }
 
   // 7. Interactive Luxury Brief Form Submission (Footer Section)
