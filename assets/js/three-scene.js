@@ -27,8 +27,10 @@ function initThreeHeroScene() {
       camera.position.set(0, 0.15, 8.8); // Standard mobile view
     } else if (width < 1024) {
       camera.position.set(0, 0.15, 7.8);  // Tablet
+    } else if (width < 1366) {
+      camera.position.set(0, 0.12, 7.0);  // Standard laptop & 1024-1366 screens
     } else {
-      camera.position.set(0.1, 0.1, 6.9); // Desktop PC
+      camera.position.set(0, 0.12, 6.8); // Large Desktop 1440p / 1080p
     }
     const curW = container.clientWidth || window.innerWidth || 360;
     const curH = container.clientHeight || 340;

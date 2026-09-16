@@ -63,6 +63,12 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenu.classList.add('hidden');
       }
     });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 1024 && !mobileMenu.classList.contains('hidden')) {
+        mobileMenu.classList.add('hidden');
+      }
+    });
   }
 
   // 3. Reliable Copy Email with Cross-Device Fallback
