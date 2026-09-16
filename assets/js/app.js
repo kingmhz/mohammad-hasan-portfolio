@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       card.addEventListener('mouseenter', () => {
         rect = card.getBoundingClientRect(); // Cached once on enter to avoid layout thrashing!
-        card.style.transition = 'transform 0.1s ease-out';
+        card.style.transition = 'transform 0.15s ease-out';
       }, { passive: true });
 
       card.addEventListener('mousemove', (e) => {
@@ -26,9 +26,10 @@ document.addEventListener('DOMContentLoaded', () => {
           const y = e.clientY - rect.top;
           const centerX = rect.width / 2;
           const centerY = rect.height / 2;
-          const maxTilt = 6;
+          const maxTilt = 5.5;
           const rotateX = ((y - centerY) / centerY) * -maxTilt;
           const rotateY = ((x - centerX) / centerX) * maxTilt;
+          card.style.transition = 'none'; // Instant 1:1 cursor track without micro-stutter
           card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.012, 1.012, 1.012)`;
         });
       }, { passive: true });
@@ -36,8 +37,8 @@ document.addEventListener('DOMContentLoaded', () => {
       card.addEventListener('mouseleave', () => {
         if (rafId) cancelAnimationFrame(rafId);
         rect = null;
+        card.style.transition = 'transform 0.35s cubic-bezier(0.16, 1, 0.3, 1)';
         card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-        card.style.transition = 'transform 0.4s ease';
       }, { passive: true });
     });
   }
@@ -468,19 +469,38 @@ document.addEventListener('DOMContentLoaded', () => {
   renderTimeSlots();
   updateAllDisplays();
 
+  // Layout Shift Prevention & Smooth Modal Scroll Locking
+  let modalOpenCount = 0;
+
+  function lockScroll() {
+    modalOpenCount++;
+    if (modalOpenCount === 1) {
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+      if (scrollbarWidth > 0) {
+        document.body.style.paddingRight = `${scrollbarWidth}px`;
+        const glassNav = document.querySelector('.glass-nav');
+        if (glassNav) glassNav.style.paddingRight = `${scrollbarWidth}px`;
+      }
+      document.body.classList.add('overflow-hidden');
+    }
+  }
+
+  function unlockScroll() {
+    modalOpenCount = Math.max(0, modalOpenCount - 1);
+    if (modalOpenCount === 0) {
+      document.body.classList.remove('overflow-hidden');
+      document.body.style.paddingRight = '';
+      const glassNav = document.querySelector('.glass-nav');
+      if (glassNav) glassNav.style.paddingRight = '';
+    }
+  }
+
   // Modal Open & Close Functions
-  let savedScrollY = 0;
   function openModal(focusSection) {
     if (meetingModal) {
       meetingModal.classList.remove('hidden');
       meetingModal.classList.add('flex');
-      // iOS-safe scroll lock: save position and fix body
-      savedScrollY = window.scrollY;
-      document.body.style.position = 'fixed';
-      document.body.style.top = `-${savedScrollY}px`;
-      document.body.style.left = '0';
-      document.body.style.right = '0';
-      document.body.style.overflow = 'hidden';
+      lockScroll();
       if (window.lucide) window.lucide.createIcons();
 
       if (focusSection === 'time' && modalTimeGrid) {
@@ -499,13 +519,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (meetingModal) {
       meetingModal.classList.add('hidden');
       meetingModal.classList.remove('flex');
-      // iOS-safe scroll restore
-      document.body.style.position = '';
-      document.body.style.top = '';
-      document.body.style.left = '';
-      document.body.style.right = '';
-      document.body.style.overflow = '';
-      window.scrollTo(0, savedScrollY);
+      unlockScroll();
     }
   }
 
@@ -1007,7 +1021,7 @@ document.addEventListener('DOMContentLoaded', () => {
       caseStudyModal.classList.remove('opacity-0');
       caseStudyModal.classList.add('opacity-100');
     });
-    document.body.classList.add('overflow-hidden');
+    lockScroll();
 
     if (window.lucide && window.lucide.createIcons) {
       window.lucide.createIcons();
@@ -1018,9 +1032,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!caseStudyModal) return;
     caseStudyModal.classList.remove('opacity-100');
     caseStudyModal.classList.add('opacity-0');
+    unlockScroll();
     setTimeout(() => {
       caseStudyModal.classList.add('hidden');
-      document.body.classList.remove('overflow-hidden');
     }, 250);
   }
 
@@ -1079,6 +1093,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (e.key === 'Escape') {
       if (caseStudyModal && !caseStudyModal.classList.contains('hidden')) {
         closeCaseStudy();
+      }
+      if (meetingModal && !meetingModal.classList.contains('hidden')) {
+        closeModal();
       }
     }
   });

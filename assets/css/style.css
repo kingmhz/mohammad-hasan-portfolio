@@ -22,6 +22,7 @@
 html {
   font-size: 16px;
   scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
   background-color: var(--bg-pure);
 }
 
@@ -106,6 +107,8 @@ body {
   transform-style: preserve-3d;
   perspective: 1000px;
   will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .tilt-inner {
@@ -324,27 +327,32 @@ body {
   to { opacity: 1; transform: scale(1); }
 }
 
-#meeting-modal > div {
+#meeting-modal > div,
+#case-study-modal > div {
   animation: modal-fade-in 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 /* Modal Inner Smooth Scrollbar */
 #modal-time-grid::-webkit-scrollbar,
-#meeting-modal div::-webkit-scrollbar {
+#meeting-modal div::-webkit-scrollbar,
+#case-study-modal div::-webkit-scrollbar {
   width: 4px;
 }
 #modal-time-grid::-webkit-scrollbar-track,
-#meeting-modal div::-webkit-scrollbar-track {
-  background: #F1F5F9;
+#meeting-modal div::-webkit-scrollbar-track,
+#case-study-modal div::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.6);
   border-radius: 4px;
 }
 #modal-time-grid::-webkit-scrollbar-thumb,
-#meeting-modal div::-webkit-scrollbar-thumb {
-  background: #CBD5E1;
+#meeting-modal div::-webkit-scrollbar-thumb,
+#case-study-modal div::-webkit-scrollbar-thumb {
+  background: #334155;
   border-radius: 4px;
 }
 #modal-time-grid::-webkit-scrollbar-thumb:hover,
-#meeting-modal div::-webkit-scrollbar-thumb:hover {
+#meeting-modal div::-webkit-scrollbar-thumb:hover,
+#case-study-modal div::-webkit-scrollbar-thumb:hover {
   background: #0284C7;
 }
 

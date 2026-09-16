@@ -1105,10 +1105,17 @@ function initThreeHeroScene() {
 
   // High performance render flag with IntersectionObserver
   let isSceneVisible = true;
+  let isAnimationRunning = false;
+
   if ('IntersectionObserver' in window && container) {
     const heroObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
+        const wasVisible = isSceneVisible;
         isSceneVisible = entry.isIntersecting;
+        if (isSceneVisible && (!isAnimationRunning || !wasVisible)) {
+          if (typeof clock.getDelta === 'function') clock.getDelta();
+          animate();
+        }
       });
     }, { threshold: 0.05 });
     heroObserver.observe(container);
@@ -1137,6 +1144,7 @@ function initThreeHeroScene() {
     isContextLost = false;
     console.info('[ThreeScene] WebGL context restored.');
     handleResize();
+    if (isSceneVisible && !isAnimationRunning) animate();
   }, false);
 
   // Cross-Device High-Refresh Render Loop (Delta Normalized for 60Hz / 90Hz / 120Hz Displays)
@@ -1144,9 +1152,18 @@ function initThreeHeroScene() {
   let wasHidden = false;
 
   function animate() {
+    if (!isSceneVisible || isContextLost) {
+      isAnimationRunning = false;
+      wasHidden = true;
+      return; // Fully pauses RAF loop when off-screen to preserve 100% GPU/CPU for buttery scrolling!
+    }
+    isAnimationRunning = true;
     requestAnimationFrame(animate);
-    if (!isSceneVisible || isContextLost) { wasHidden = true; return; } // Pause GPU cycles when scrolled away or context lost!
-    if (wasHidden) { clock.getDelta(); wasHidden = false; return; } // Discard accumulated delta on first visible frame
+    if (wasHidden) {
+      if (typeof clock.getDelta === 'function') clock.getDelta();
+      wasHidden = false;
+      return; // Discard accumulated delta on first visible frame
+    }
 
     const delta = typeof clock.getDelta === 'function' ? Math.min(clock.getDelta(), 0.05) : 0.016;
     const elapsed = clock.getElapsedTime();
