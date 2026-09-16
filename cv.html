@@ -1,0 +1,539 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mohammad Hasan — Curriculum Vitae | Senior Full-Stack & Mobile Architect</title>
+  <meta name="description" content="Curriculum Vitae for Mohammad Hasan — Lead Full-Stack Engineer, Next.js, Flutter, and 3D WebGL Architect.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --text-sub: #64748b;
+      --accent: #0284c7;
+      --accent-dim: #f0f9ff;
+      --border: #e2e8f0;
+      --card-bg: #ffffff;
+      --page-bg: #f8fafc;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-main);
+      background-color: var(--page-bg);
+      line-height: 1.55;
+      font-size: 13px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .cv-container {
+      max-width: 880px;
+      margin: 32px auto;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      box-shadow: 0 10px 30px -10px rgba(15, 23, 42, 0.08);
+      padding: 44px 48px;
+    }
+    .font-mono {
+      font-family: 'Space Grotesk', monospace, sans-serif;
+    }
+    header {
+      border-bottom: 1.5px solid var(--border);
+      padding-bottom: 24px;
+      margin-bottom: 26px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 20px;
+    }
+    .header-left h1 {
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #0284c7;
+      text-transform: uppercase;
+      line-height: 1.1;
+    }
+    .header-left .subtitle {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-main);
+      margin-top: 6px;
+    }
+    .header-left .tags {
+      font-size: 11.5px;
+      color: var(--text-sub);
+      margin-top: 4px;
+      font-family: 'Space Grotesk', monospace;
+    }
+    .header-right {
+      text-align: right;
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+    .header-right a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .header-right a:hover {
+      text-decoration: underline;
+    }
+    .toolbar {
+      position: sticky;
+      top: 16px;
+      z-index: 100;
+      max-width: 880px;
+      margin: 0 auto 12px auto;
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: #0284c7;
+      color: #ffffff;
+      border: 1px solid #0284c7;
+      box-shadow: 0 2px 6px rgba(2, 132, 199, 0.25);
+    }
+    .btn-primary:hover {
+      background: #0369a1;
+    }
+    .btn-outline {
+      background: #ffffff;
+      color: #334155;
+      border: 1px solid var(--border);
+    }
+    .btn-outline:hover {
+      background: #f1f5f9;
+      color: #0f172a;
+    }
+    section {
+      margin-bottom: 26px;
+    }
+    .section-title {
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: #0284c7;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 5px;
+      margin-bottom: 14px;
+      font-family: 'Space Grotesk', monospace;
+    }
+    p.summary {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px 24px;
+    }
+    .skill-category {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 14px;
+    }
+    .skill-category h4 {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #0f172a;
+      margin-bottom: 4px;
+      font-family: 'Space Grotesk', monospace;
+    }
+    .skill-category p {
+      font-size: 12px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .exp-item {
+      margin-bottom: 18px;
+    }
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 4px;
+    }
+    .exp-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .exp-company {
+      color: #0284c7;
+      font-weight: 600;
+    }
+    .exp-date {
+      font-size: 11px;
+      font-family: 'Space Grotesk', monospace;
+      color: var(--text-sub);
+    }
+    .exp-bullets {
+      list-style-type: none;
+      padding-left: 0;
+      margin-top: 6px;
+    }
+    .exp-bullets li {
+      position: relative;
+      padding-left: 16px;
+      margin-bottom: 6px;
+      font-size: 12.5px;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+    .exp-bullets li::before {
+      content: "▪";
+      position: absolute;
+      left: 0;
+      color: #0284c7;
+      font-size: 14px;
+      line-height: 1;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+    .project-card {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px;
+      background: #ffffff;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      break-inside: avoid;
+    }
+    .project-card:hover {
+      border-color: #0284c7;
+    }
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 6px;
+    }
+    .project-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .project-tag {
+      font-size: 9.5px;
+      font-family: 'Space Grotesk', monospace;
+      text-transform: uppercase;
+      padding: 2px 6px;
+      border-radius: 4px;
+      background: #f0f9ff;
+      color: #0284c7;
+      border: 1px solid rgba(2, 132, 199, 0.2);
+      font-weight: 600;
+    }
+    .project-desc {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 8px;
+    }
+    .project-stack {
+      font-size: 10.5px;
+      font-family: 'Space Grotesk', monospace;
+      color: #334155;
+      background: #f8fafc;
+      padding: 4px 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      border: 1px solid #edf2f7;
+    }
+    .project-metrics {
+      display: flex;
+      gap: 8px;
+      border-top: 1px dashed var(--border);
+      padding-top: 6px;
+      font-size: 10.5px;
+    }
+    .metric-pill {
+      font-family: 'Space Grotesk', monospace;
+      font-weight: 700;
+      color: #0284c7;
+    }
+    .metric-label {
+      color: var(--text-sub);
+      font-size: 9.5px;
+    }
+    footer {
+      border-top: 1px solid var(--border);
+      padding-top: 14px;
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--text-sub);
+      font-family: 'Space Grotesk', monospace;
+    }
+
+    /* Print Optimizations */
+    @media print {
+      body {
+        background: #ffffff;
+        font-size: 11.5px;
+      }
+      .toolbar {
+        display: none !important;
+      }
+      .cv-container {
+        margin: 0;
+        padding: 0;
+        border: none;
+        box-shadow: none;
+        max-width: 100%;
+      }
+      a {
+        text-decoration: none !important;
+        color: inherit !important;
+      }
+      .project-card, .exp-item, .skill-category {
+        break-inside: avoid;
+      }
+      @page {
+        margin: 12mm 15mm;
+        size: A4 portrait;
+      }
+    }
+    @media (max-width: 700px) {
+      .cv-container {
+        padding: 24px 20px;
+        margin: 12px;
+      }
+      header {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .header-right {
+        text-align: left;
+      }
+      .skills-grid, .projects-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Floating Print Toolbar (Hidden on Print) -->
+  <div class="toolbar">
+    <a href="index.html" class="btn btn-outline">← Back to Portfolio</a>
+    <button onclick="window.print()" class="btn btn-primary">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7"></path><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+      Print / Save as PDF
+    </button>
+  </div>
+
+  <main class="cv-container">
+    <!-- Header -->
+    <header>
+      <div class="header-left">
+        <h1>Mohammad Hasan</h1>
+        <div class="subtitle">Lead Full-Stack Engineer & Mobile Architect</div>
+        <div class="tags">Next.js 14 · Flutter 3 · Python / FastAPI · 3D WebGL · Distributed Systems</div>
+      </div>
+      <div class="header-right">
+        <div><strong>Portfolio:</strong> <a href="https://mohammadhasanportfolio.vercel.app/" target="_blank">mohammadhasanportfolio.vercel.app</a></div>
+        <div><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/mohammadhasantechie" target="_blank">linkedin.com/in/mohammadhasantechie</a></div>
+        <div><strong>Email:</strong> <a href="mailto:hasanisbest786@gmail.com">hasanisbest786@gmail.com</a></div>
+        <div><strong>Availability:</strong> Remote · US/UK/EU Hours Overlap</div>
+      </div>
+    </header>
+
+    <!-- Professional Summary -->
+    <section>
+      <div class="section-title">Professional Summary</div>
+      <p class="summary">
+        Senior Software Architect and Full-Stack Consultant with deep technical expertise in architecting and shipping production-grade web platforms and cross-platform mobile clients. Direct engineering partner to international founders, startups, and luxury enterprises across the US, UK, and Europe, delivering complex MVPs to market in rapid 4–6 week agile sprints. Specializes in sub-second latency Next.js 14 platforms (99+ PageSpeed standard), locked 60 FPS Flutter mobile apps, multi-agent AI orchestration with vector similarity search, and interactive 3D WebGL experiences with 100% Figma fidelity.
+      </p>
+    </section>
+
+    <!-- Technical Skills Matrix -->
+    <section>
+      <div class="section-title">Technical Competencies Matrix</div>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h4>Frontend & Web</h4>
+          <p>Next.js 14 (App Router, Server Actions), React.js, TypeScript, Tailwind CSS, Three.js, GSAP, HTML5, PostCSS, Turbopack, Vite</p>
+        </div>
+        <div class="skill-category">
+          <h4>Mobile Architecture</h4>
+          <p>Flutter 3.24, Dart, BLoC / Provider Pattern, SQLite Local Sync, Apple HealthKit, Google Health Connect, Native Bridges, Skia Shaders</p>
+        </div>
+        <div class="skill-category">
+          <h4>Backend & APIs</h4>
+          <p>Python 3.12 (FastAPI), Node.js, Express, Go, RESTful APIs, Server-Sent Events (SSE), WebSockets, Microservices, Task Workers</p>
+        </div>
+        <div class="skill-category">
+          <h4>Databases & Cloud</h4>
+          <p>PostgreSQL, pgvector, Supabase, Redis (In-Memory Cache & Pub/Sub), ClickHouse, Docker, Vercel Edge, AWS, GitHub Actions CI/CD</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Professional Experience -->
+    <section>
+      <div class="section-title">Professional Experience</div>
+      
+      <div class="exp-item">
+        <div class="exp-header">
+          <div>
+            <span class="exp-title">Lead Full-Stack & Mobile Engineer / Technical Consultant</span> · 
+            <span class="exp-company">Independent Practice</span>
+          </div>
+          <div class="exp-date">2022 – PRESENT</div>
+        </div>
+        <ul class="exp-bullets">
+          <li>Architected and launched 15+ production web and cross-platform mobile applications for venture-backed startups and luxury brands across the US, UK, EU, and UAE, shortening delivery timelines by up to 50%.</li>
+          <li>Engineered enterprise Next.js 14 web platforms featuring server components, edge routing, dynamic currency conversion, and static generation, consistently achieving 98–100 PageSpeed scores.</li>
+          <li>Constructed production cross-platform Flutter applications on iOS and Android featuring locked 60 FPS telemetry charts, offline SQLite synchronization, and biometric session security for 48,000+ daily active users.</li>
+          <li>Built autonomous multi-agent AI orchestration backends using Python FastAPI, hierarchical <code>pgvector</code> similarity search, and SSE token streaming, sustaining sub-18ms time-to-first-token (TTFT).</li>
+          <li>Enforced senior engineering standards with 100% intellectual property transfer, automated CI/CD pipelines, containerized Docker deployments, and weekly staging review demos.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Flagship Projects & Case Studies -->
+    <section>
+      <div class="section-title">Flagship Architectural Case Studies & Live Deployments</div>
+      <div class="projects-grid">
+        
+        <div class="project-card">
+          <div>
+            <div class="project-top">
+              <span class="project-name">PetBhar Humanitarian Initiative</span>
+              <span class="project-tag">Live Production</span>
+            </div>
+            <p class="project-desc">Zero-latency bilingual civic relief platform with instant QR UPI payment gateway, dynamic meal impact computation, and English/Hindi localization.</p>
+            <div class="project-stack">Next.js 14 · Tailwind · UPI Gateway · Vercel Edge</div>
+          </div>
+          <div class="project-metrics">
+            <div><span class="metric-pill">&lt; 2.4s</span> <span class="metric-label">Donation Latency</span></div>
+            <div><span class="metric-pill">-38%</span> <span class="metric-label">Bounce Rate</span></div>
+            <div><span class="metric-pill">100%</span> <span class="metric-label">Direct Relief</span></div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div>
+            <div class="project-top">
+              <span class="project-name">JADE International Luxury</span>
+              <span class="project-tag">Live Production</span>
+            </div>
+            <p class="project-desc">Natural untreated gemstone atelier & export platform featuring dynamic multi-currency pricing (USD/EUR/GBP/INR) and GIA provenance reports.</p>
+            <div class="project-stack">Next.js 14 · Dynamic FX · GIA API · Editorial UI</div>
+          </div>
+          <div class="project-metrics">
+            <div><span class="metric-pill">99/100</span> <span class="metric-label">PageSpeed</span></div>
+            <div><span class="metric-pill">18</span> <span class="metric-label">Export Countries</span></div>
+            <div><span class="metric-pill">+46%</span> <span class="metric-label">VIP Concierge</span></div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div>
+            <div class="project-top">
+              <span class="project-name">Krypton AI Cognitive Copilot</span>
+              <span class="project-tag">AI Multi-Agent</span>
+            </div>
+            <p class="project-desc">Autonomous multi-agent LLM task planner querying massive vector embeddings across 1.2M technical documents with real-time SSE token streaming.</p>
+            <div class="project-stack">FastAPI · Python 3.12 · pgvector · Redis · Docker</div>
+          </div>
+          <div class="project-metrics">
+            <div><span class="metric-pill">&lt; 18ms</span> <span class="metric-label">First Token (TTFT)</span></div>
+            <div><span class="metric-pill">142 tok/s</span> <span class="metric-label">Stream Speed</span></div>
+            <div><span class="metric-pill">1.2M</span> <span class="metric-label">Chunks</span></div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div>
+            <div class="project-top">
+              <span class="project-name">Aura Pulse Biometric Telemetry</span>
+              <span class="project-tag">Cross-Platform Mobile</span>
+            </div>
+            <p class="project-desc">Unified cross-platform fitness & telemetry client rendering continuous ECG waveforms and multi-ring activity metrics without frame drops.</p>
+            <div class="project-stack">Flutter 3.24 · Dart · BLoC · SQLite · Skia Shaders</div>
+          </div>
+          <div class="project-metrics">
+            <div><span class="metric-pill">60.0 FPS</span> <span class="metric-label">Locked Refresh</span></div>
+            <div><span class="metric-pill">4.9 ★</span> <span class="metric-label">App Store</span></div>
+            <div><span class="metric-pill">48K+</span> <span class="metric-label">Daily Users</span></div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div>
+            <div class="project-top">
+              <span class="project-name">Apex International Private Bank</span>
+              <span class="project-tag">FinTech Neobank</span>
+            </div>
+            <p class="project-desc">Tier-1 private neobanking application with AES-256 field encryption, automated FaceID session tokenization, and real-time SWIFT tracking.</p>
+            <div class="project-stack">Flutter 3 · Plaid API · AES-256 · Firebase Auth</div>
+          </div>
+          <div class="project-metrics">
+            <div><span class="metric-pill">+/mo</span> <span class="metric-label">Volume</span></div>
+            <div><span class="metric-pill">4.2s</span> <span class="metric-label">Settlement</span></div>
+            <div><span class="metric-pill">SOC2 & PCI</span> <span class="metric-label">Compliant</span></div>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div>
+            <div class="project-top">
+              <span class="project-name">Atelier Noir 3D Horlogerie</span>
+              <span class="project-tag">3D WebGL Viewport</span>
+            </div>
+            <p class="project-desc">Spatial 3D watch atelier featuring mechanical tourbillon skeleton movement, real-time PBR shaders, and sub-800KB asset bundle packaging.</p>
+            <div class="project-stack">Three.js · WebGL 2.0 · Custom GLSL · Next.js</div>
+          </div>
+          <div class="project-metrics">
+            <div><span class="metric-pill">60.0 FPS</span> <span class="metric-label">WebGL Viewport</span></div>
+            <div><span class="metric-pill">&lt; 800 KB</span> <span class="metric-label">Bundle Weight</span></div>
+            <div><span class="metric-pill">+42%</span> <span class="metric-label">Engagement</span></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer Standards -->
+    <footer>
+      <div>© 2026 Mohammad Hasan · Haute Digital Engineering</div>
+      <div>Direct Senior Execution · US/UK/EU Overlap · 100% IP Code Ownership</div>
+    </footer>
+  </main>
+
+</body>
+</html>
