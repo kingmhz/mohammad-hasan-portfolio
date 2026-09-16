@@ -864,8 +864,9 @@ function initThreeHeroScene() {
   // 3.5. MOHAMMAD HASAN 3D EXECUTIVE AVATAR & NEON BADGES (LINKEDIN BANNER)
   // =========================================================================
   const avatarGroup = new THREE.Group();
-  avatarGroup.position.set(-0.88, 0.08, -0.05);
-  masterRig.add(avatarGroup);
+  // Anchored directly to scene with natural 3D depth behind foreground devices
+  avatarGroup.position.set(-1.12, 0.06, -0.15);
+  scene.add(avatarGroup);
 
   // Soft Radiant Sky-Blue Rim Glow Disc (Directly behind avatar head/shoulders)
   const glowCanvas = document.createElement('canvas');
@@ -889,6 +890,7 @@ function initThreeHeroScene() {
     transparent: true,
     opacity: 0.72,
     depthWrite: false,
+    side: THREE.DoubleSide,
     blending: THREE.AdditiveBlending
   });
   const glowMesh = new THREE.Mesh(glowGeo, glowMat);
@@ -905,7 +907,7 @@ function initThreeHeroScene() {
   const avatarMat = new THREE.MeshBasicMaterial({
     transparent: true,
     alphaTest: 0.02,
-    side: THREE.FrontSide
+    side: THREE.DoubleSide
   });
   const avatarMesh = new THREE.Mesh(avatarGeo, avatarMat);
   avatarMesh.position.set(0, 0, 0);
@@ -931,7 +933,8 @@ function initThreeHeroScene() {
     new THREE.MeshBasicMaterial({
       map: createNeonBadgeTexture('React', '#38BDF8', 'rgba(56, 189, 248, 0.85)'),
       transparent: true,
-      depthWrite: false
+      depthWrite: false,
+      side: THREE.DoubleSide
     })
   );
   badgeReact.position.set(0.78, 1.34, 0.28);
@@ -942,7 +945,8 @@ function initThreeHeroScene() {
     new THREE.MeshBasicMaterial({
       map: createNeonBadgeTexture('Next.js', '#C084FC', 'rgba(192, 132, 252, 0.85)'),
       transparent: true,
-      depthWrite: false
+      depthWrite: false,
+      side: THREE.DoubleSide
     })
   );
   badgeNext.position.set(1.78, 1.08, 0.05);
@@ -953,7 +957,8 @@ function initThreeHeroScene() {
     new THREE.MeshBasicMaterial({
       map: createNeonBadgeTexture('Flutter', '#0284C7', 'rgba(2, 132, 199, 0.85)'),
       transparent: true,
-      depthWrite: false
+      depthWrite: false,
+      side: THREE.DoubleSide
     })
   );
   badgeFlutter.position.set(1.68, 0.44, 0.48);
@@ -964,7 +969,8 @@ function initThreeHeroScene() {
     new THREE.MeshBasicMaterial({
       map: createNeonBadgeTexture('TypeScript', '#38BDF8', 'rgba(56, 189, 248, 0.85)'),
       transparent: true,
-      depthWrite: false
+      depthWrite: false,
+      side: THREE.DoubleSide
     })
   );
   badgeTS.position.set(0.14, -0.95, 0.52);
@@ -1054,20 +1060,21 @@ function initThreeHeroScene() {
     const deltaY = e.clientY - prevPointerY;
 
     // Direct 360° rotational sensitivity
-    const rotSpeed = 0.007;
+    const rotSpeed = 0.006;
     targetRotY += deltaX * rotSpeed;
     
-    // On touch devices, allow pitch adjustment when horizontal drag is dominant
+    // Smooth natural pitch sensitivity
+    const pitchSpeed = 0.003;
     if (e.pointerType !== 'touch' || Math.abs(deltaX) > Math.abs(deltaY)) {
-      targetRotX += deltaY * rotSpeed;
+      targetRotX += deltaY * pitchSpeed;
     }
 
     // Track instant velocity for smooth flick momentum/inertia
     velocityX = deltaX * rotSpeed;
-    velocityY = (e.pointerType !== 'touch') ? (deltaY * rotSpeed) : 0;
+    velocityY = (e.pointerType !== 'touch') ? (deltaY * pitchSpeed) : 0;
 
-    // Clamp pitch (X-axis) between -80° and +80° so devices stay upright
-    targetRotX = Math.max(-Math.PI * 0.44, Math.min(Math.PI * 0.44, targetRotX));
+    // Clamp pitch (X-axis) so devices stay upright and readable without flipping
+    targetRotX = Math.max(-0.22, Math.min(0.32, targetRotX));
 
     prevPointerX = e.clientX;
     prevPointerY = e.clientY;
@@ -1184,13 +1191,20 @@ function initThreeHeroScene() {
       if (Math.abs(velocityX) < 0.0001 && Math.abs(velocityY) < 0.0001) {
         const idleSway = isMotionReduced ? 0 : Math.sin(elapsed * 0.55) * 0.06;
         const returnSpeed = 1.0 - Math.pow(0.975, timeScale);
-        targetRotY += (BASE_ROT_Y + idleSway - targetRotY) * returnSpeed;
-        targetRotX += (BASE_ROT_X - targetRotX) * returnSpeed;
+
+        // Shortest-arc modular angular return (prevents multi-turn reverse spinning)
+        let diffY = (BASE_ROT_Y + idleSway - targetRotY) % (Math.PI * 2);
+        if (diffY > Math.PI) diffY -= Math.PI * 2;
+        if (diffY < -Math.PI) diffY += Math.PI * 2;
+        targetRotY += diffY * returnSpeed;
+
+        let diffX = (BASE_ROT_X - targetRotX);
+        targetRotX += diffX * returnSpeed;
       }
     }
 
     // Keep pitch within comfortable viewing bounds
-    targetRotX = Math.max(-Math.PI * 0.44, Math.min(Math.PI * 0.44, targetRotX));
+    targetRotX = Math.max(-0.22, Math.min(0.32, targetRotX));
 
     // Smooth exponential lerp normalized across 60Hz, 120Hz ProMotion, and 144Hz displays
     const lerpFactor = 1.0 - Math.pow(0.08, delta);
@@ -1208,10 +1222,11 @@ function initThreeHeroScene() {
     phoneGroup.position.y = 0.04 + Math.sin(elapsed * 1.0 + 1.4) * 0.055 * motionScale;
     phoneGroup.rotation.z = 0.04 + Math.cos(elapsed * 0.8) * 0.015 * motionScale;
 
-    // Mohammad Hasan 3D Avatar Dynamic Gaze & Damped Parallax (Keeps portrait facing forward)
-    avatarGroup.position.y = 0.08 + Math.sin(elapsed * 0.85) * 0.03 * motionScale;
-    avatarGroup.rotation.y = -masterRig.rotation.y * 0.72;
-    avatarGroup.rotation.x = -masterRig.rotation.x * 0.45;
+    // Mohammad Hasan 3D Executive Avatar: Anchored depth parallax (Never rotates away or disappears)
+    avatarGroup.position.y = 0.06 + Math.sin(elapsed * 0.85) * 0.03 * motionScale;
+    avatarGroup.position.x = -1.12 + Math.sin(currentRotY * 0.2) * 0.08 * motionScale;
+    avatarGroup.rotation.y = Math.sin(currentRotY * 0.15) * 0.08 * motionScale;
+    avatarGroup.rotation.x = Math.max(-0.06, Math.min(0.06, currentRotX * 0.15)) * motionScale;
 
     // Floating Neon Badges Levitation
     badgeReact.position.y = 1.34 + Math.sin(elapsed * 1.2) * 0.035 * motionScale;
