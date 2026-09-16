@@ -16,13 +16,13 @@
   function updateCameraDistance() {
     const width = window.innerWidth;
     if (width < 420) {
-      camera.position.set(0, 0.35, 9.2); // Compact mobile screens (prevents edge clipping)
+      camera.position.set(0, 0.15, 9.6); // Compact mobile view (avatar + dual devices fit comfortably)
     } else if (width < 640) {
-      camera.position.set(0, 0.35, 8.5); // Standard mobile view
+      camera.position.set(0, 0.15, 8.8); // Standard mobile view
     } else if (width < 1024) {
-      camera.position.set(0, 0.3, 7.6);  // Tablet
+      camera.position.set(0, 0.15, 7.8);  // Tablet
     } else {
-      camera.position.set(0.1, 0.25, 6.8); // Desktop PC
+      camera.position.set(0.1, 0.1, 6.9); // Desktop PC
     }
     const curW = container.clientWidth || window.innerWidth || 360;
     const curH = container.clientHeight || 340;
@@ -46,7 +46,7 @@
 
   // Master Rig Group
   const masterRig = new THREE.Group();
-  masterRig.position.set(-0.15, -0.05, 0);
+  masterRig.position.set(-0.25, -0.02, 0);
   masterRig.rotation.set(0.14, -0.22, 0);
   scene.add(masterRig);
 
@@ -552,12 +552,68 @@
     return texture;
   }
 
+
+  // =========================================================================
+  // 1.5. FLOATING NEON BADGE TEXTURE GENERATOR (LINKEDIN BANNER STYLE)
+  // =========================================================================
+  function createNeonBadgeTexture(label, brandColor, glowColor) {
+    const canvas = document.createElement('canvas');
+    canvas.width = 280;
+    canvas.height = 76;
+    const ctx = canvas.getContext('2d');
+
+    // Outer dark translucent glass pill
+    ctx.fillStyle = 'rgba(11, 17, 32, 0.92)';
+    drawCanvasRoundedRect(ctx, 4, 4, 272, 68, 34);
+    ctx.fill();
+
+    // Luminous Neon Glow Stroke
+    ctx.save();
+    ctx.shadowColor = glowColor;
+    ctx.shadowBlur = 14;
+    ctx.strokeStyle = brandColor;
+    ctx.lineWidth = 3;
+    drawCanvasRoundedRect(ctx, 4, 4, 272, 68, 34);
+    ctx.stroke();
+    ctx.restore();
+
+    // Inner subtle hairline
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.18)';
+    ctx.lineWidth = 1;
+    drawCanvasRoundedRect(ctx, 7, 7, 266, 62, 31);
+    ctx.stroke();
+
+    // Brand Dot Glow Indicator
+    ctx.save();
+    ctx.shadowColor = glowColor;
+    ctx.shadowBlur = 8;
+    ctx.fillStyle = brandColor;
+    ctx.beginPath();
+    ctx.arc(42, 38, 7.5, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+
+    // Brand Label Text
+    ctx.fillStyle = '#FFFFFF';
+    ctx.font = 'bold 24px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif';
+    ctx.textAlign = 'left';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(label, 68, 38);
+
+    const texture = new THREE.CanvasTexture(canvas);
+    texture.generateMipmaps = false;
+    texture.minFilter = THREE.LinearFilter;
+    texture.magFilter = THREE.LinearFilter;
+    return texture;
+  }
+
   // =========================================================================
   // 2. CONSTRUCT ULTRA-REFINED MACBOOK PRO 16" (LEFT SIDE)
   // =========================================================================
   const macGroup = new THREE.Group();
   // Guaranteed generous separation from phone (phone is at x: 1.42):
-  macGroup.position.set(-0.7, -0.15, -0.2);
+  macGroup.position.set(0.72, -0.28, -0.38);
+  macGroup.scale.set(0.86, 0.86, 0.86);
   masterRig.add(macGroup);
 
   // Precision Apple Space Gray / Silver Anodized Aluminum
@@ -713,7 +769,8 @@
   // =========================================================================
   const phoneGroup = new THREE.Group();
   // Generous separation from laptop (Laptop right edge is at ~0.7, phone center is at 1.42):
-  phoneGroup.position.set(1.42, -0.12, 0.65);
+  phoneGroup.position.set(1.52, -0.12, 0.62);
+  phoneGroup.scale.set(0.92, 0.92, 0.92);
   // Slightly tilted toward camera
   phoneGroup.rotation.set(0.08, -0.22, 0.04);
   masterRig.add(phoneGroup);
@@ -792,6 +849,115 @@
   const phoneScreenMesh = new THREE.Mesh(phoneScreenGeo, phoneScreenMat);
   phoneScreenMesh.position.set(0, 0, 0.048);
   phoneGroup.add(phoneScreenMesh);
+
+
+  // =========================================================================
+  // 3.5. MOHAMMAD HASAN 3D EXECUTIVE AVATAR & NEON BADGES (LINKEDIN BANNER)
+  // =========================================================================
+  const avatarGroup = new THREE.Group();
+  avatarGroup.position.set(-0.88, 0.08, -0.05);
+  masterRig.add(avatarGroup);
+
+  // Soft Radiant Sky-Blue Rim Glow Disc (Directly behind avatar head/shoulders)
+  const glowCanvas = document.createElement('canvas');
+  glowCanvas.width = 256;
+  glowCanvas.height = 256;
+  const glowCtx = glowCanvas.getContext('2d');
+  const radGrad = glowCtx.createRadialGradient(128, 128, 15, 128, 128, 128);
+  radGrad.addColorStop(0, 'rgba(14, 165, 233, 0.85)');
+  radGrad.addColorStop(0.35, 'rgba(2, 132, 199, 0.5)');
+  radGrad.addColorStop(0.7, 'rgba(2, 132, 199, 0.15)');
+  radGrad.addColorStop(1, 'rgba(2, 132, 199, 0)');
+  glowCtx.fillStyle = radGrad;
+  glowCtx.fillRect(0, 0, 256, 256);
+
+  const glowTex = new THREE.CanvasTexture(glowCanvas);
+  glowTex.generateMipmaps = false;
+  glowTex.minFilter = THREE.LinearFilter;
+  const glowGeo = new THREE.PlaneGeometry(3.6, 3.6);
+  const glowMat = new THREE.MeshBasicMaterial({
+    map: glowTex,
+    transparent: true,
+    opacity: 0.72,
+    depthWrite: false,
+    blending: THREE.AdditiveBlending
+  });
+  const glowMesh = new THREE.Mesh(glowGeo, glowMat);
+  glowMesh.position.set(0, 0.35, -0.18);
+  avatarGroup.add(glowMesh);
+
+  // Dedicated Sky-Blue Back Rim Point Light
+  const avatarBackLight = new THREE.PointLight(0x0EA5E9, 3.4, 10);
+  avatarBackLight.position.set(0, 0.45, -0.28);
+  avatarGroup.add(avatarBackLight);
+
+  // 3D Avatar Plane (Aspect ratio 3:4 from 768x1024)
+  const texLoader = new THREE.TextureLoader();
+  const avatarTexture = texLoader.load('assets/images/hasan-3d-avatar.webp', undefined, undefined, () => {
+    avatarTexture.image.src = 'assets/images/hasan-3d-avatar.png';
+  });
+  avatarTexture.generateMipmaps = false;
+  avatarTexture.minFilter = THREE.LinearFilter;
+  avatarTexture.magFilter = THREE.LinearFilter;
+
+  const avatarGeo = new THREE.PlaneGeometry(2.35, 3.14);
+  const avatarMat = new THREE.MeshBasicMaterial({
+    map: avatarTexture,
+    transparent: true,
+    alphaTest: 0.02,
+    side: THREE.FrontSide
+  });
+  const avatarMesh = new THREE.Mesh(avatarGeo, avatarMat);
+  avatarMesh.position.set(0, 0, 0);
+  avatarGroup.add(avatarMesh);
+
+  // FLOATING NEON TECH BADGES (Matching LinkedIn Banner Composition)
+  const badgesGroup = new THREE.Group();
+  masterRig.add(badgesGroup);
+
+  const badgeReact = new THREE.Mesh(
+    new THREE.PlaneGeometry(0.92, 0.25),
+    new THREE.MeshBasicMaterial({
+      map: createNeonBadgeTexture('React', '#38BDF8', 'rgba(56, 189, 248, 0.85)'),
+      transparent: true,
+      depthWrite: false
+    })
+  );
+  badgeReact.position.set(1.15, 1.28, 0.15);
+  badgesGroup.add(badgeReact);
+
+  const badgeNext = new THREE.Mesh(
+    new THREE.PlaneGeometry(0.92, 0.25),
+    new THREE.MeshBasicMaterial({
+      map: createNeonBadgeTexture('Next.js', '#C084FC', 'rgba(192, 132, 252, 0.85)'),
+      transparent: true,
+      depthWrite: false
+    })
+  );
+  badgeNext.position.set(1.98, 0.98, -0.15);
+  badgesGroup.add(badgeNext);
+
+  const badgeFlutter = new THREE.Mesh(
+    new THREE.PlaneGeometry(0.92, 0.25),
+    new THREE.MeshBasicMaterial({
+      map: createNeonBadgeTexture('Flutter', '#0284C7', 'rgba(2, 132, 199, 0.85)'),
+      transparent: true,
+      depthWrite: false
+    })
+  );
+  badgeFlutter.position.set(1.72, 0.48, 0.42);
+  badgesGroup.add(badgeFlutter);
+
+  const badgeTS = new THREE.Mesh(
+    new THREE.PlaneGeometry(1.08, 0.25),
+    new THREE.MeshBasicMaterial({
+      map: createNeonBadgeTexture('TypeScript', '#38BDF8', 'rgba(56, 189, 248, 0.85)'),
+      transparent: true,
+      depthWrite: false
+    })
+  );
+  badgeTS.position.set(0.42, -0.98, 0.48);
+  badgesGroup.add(badgeTS);
 
   // =========================================================================
   // 4. STUDIO LIGHTING & AMBIENT GLOW
@@ -987,11 +1153,22 @@
     masterRig.rotation.x = currentRotX;
 
     // Gentle Independent Floating Levitation
-    macGroup.position.y = -0.15 + Math.sin(elapsed * 1.0) * 0.045;
+    macGroup.position.y = -0.28 + Math.sin(elapsed * 1.0) * 0.045;
     macGroup.rotation.z = Math.sin(elapsed * 0.7) * 0.01;
 
     phoneGroup.position.y = -0.12 + Math.sin(elapsed * 1.0 + 1.4) * 0.055;
     phoneGroup.rotation.z = 0.04 + Math.cos(elapsed * 0.8) * 0.015;
+
+    // Mohammad Hasan 3D Avatar Dynamic Gaze & Damped Parallax (Keeps portrait facing forward)
+    avatarGroup.position.y = 0.08 + Math.sin(elapsed * 0.85) * 0.03;
+    avatarGroup.rotation.y = -masterRig.rotation.y * 0.72;
+    avatarGroup.rotation.x = -masterRig.rotation.x * 0.45;
+
+    // Floating Neon Badges Levitation
+    badgeReact.position.y = 1.28 + Math.sin(elapsed * 1.2) * 0.035;
+    badgeNext.position.y = 0.98 + Math.sin(elapsed * 1.1 + 1.0) * 0.04;
+    badgeFlutter.position.y = 0.48 + Math.sin(elapsed * 1.3 + 2.0) * 0.035;
+    badgeTS.position.y = -0.98 + Math.sin(elapsed * 1.0 + 3.0) * 0.03;
 
     renderer.render(scene, camera);
   }
