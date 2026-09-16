@@ -1,44 +1,130 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="600" height="380">
-    <defs>
-      <linearGradient id="bg_project5.svg" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#FFFFFF" />
-        <stop offset="100%" stop-color="#F1F5F9" />
-      </linearGradient>
-      <radialGradient id="glow_project5.svg" cx="80%" cy="20%" r="60%">
-        <stop offset="0%" stop-color="#0A66C2" stop-opacity="0.12" />
-        <stop offset="100%" stop-color="#0A66C2" stop-opacity="0" />
-      </radialGradient>
-    </defs>
-    <rect width="600" height="380" fill="url(#bg_project5.svg)" />
-    <rect width="600" height="380" fill="url(#glow_project5.svg)" />
+  <defs>
+    <linearGradient id="bg5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090E17" />
+      <stop offset="50%" stop-color="#0B1322" />
+      <stop offset="100%" stop-color="#020408" />
+    </linearGradient>
+    <radialGradient id="glow5" cx="60%" cy="40%" r="65%">
+      <stop offset="0%" stop-color="#0284C7" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#0284C7" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="metalCard" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#334155" />
+      <stop offset="25%" stop-color="#1E293B" />
+      <stop offset="75%" stop-color="#0F172A" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <linearGradient id="goldAcc" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#FCD34D" />
+      <stop offset="100%" stop-color="#F59E0B" />
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="380" fill="url(#bg5)" />
+  <rect width="600" height="380" fill="url(#glow5)" />
+
+  <!-- Fine Guilloche Luxury Matrix -->
+  <g stroke="#1E293B" stroke-width="0.7" stroke-opacity="0.4">
+    <circle cx="300" cy="190" r="140" fill="none" />
+    <circle cx="300" cy="190" r="90" fill="none" stroke-dasharray="4,4" />
+  </g>
+
+  <!-- Left Side: Titanium Luxury Black Card Floating -->
+  <g transform="translate(35, 60)">
+    <!-- Card Shadow -->
+    <rect x="8" y="10" width="240" height="152" rx="14" fill="#000000" opacity="0.6" filter="blur(8px)" />
+    <!-- Card Body -->
+    <rect x="0" y="0" width="240" height="152" rx="14" fill="url(#metalCard)" stroke="#475569" stroke-width="1.2" />
     
-    <!-- Fine Grid Lines -->
-    <g stroke="rgba(10,102,194,0.06)" stroke-width="1">
-      <line x1="0" y1="95" x2="600" y2="95" />
-      <line x1="0" y1="190" x2="600" y2="190" />
-      <line x1="0" y1="285" x2="600" y2="285" />
-      <line x1="150" y1="0" x2="150" y2="380" />
-      <line x1="300" y1="0" x2="300" y2="380" />
-      <line x1="450" y1="0" x2="450" y2="380" />
+    <!-- Brushed Texture Subtle Lines -->
+    <line x1="20" y1="25" x2="220" y2="25" stroke="#FFFFFF" stroke-opacity="0.05" />
+    <line x1="20" y1="75" x2="220" y2="75" stroke="#FFFFFF" stroke-opacity="0.05" />
+
+    <!-- EMV Metal Chip -->
+    <rect x="22" y="24" width="34" height="26" rx="5" fill="url(#goldAcc)" stroke="#D97706" stroke-width="0.8" />
+    <line x1="22" y1="37" x2="56" y2="37" stroke="#78350F" stroke-width="0.8" />
+    <line x1="39" y1="24" x2="39" y2="50" stroke="#78350F" stroke-width="0.8" />
+
+    <!-- Contactless Logo -->
+    <path d="M72,30 A12,12 0 0,1 72,44 M76,27 A16,16 0 0,1 76,47 M80,24 A20,20 0 0,1 80,50" fill="none" stroke="#94A3B8" stroke-width="1.2" />
+
+    <!-- Bank Logo -->
+    <text x="218" y="38" text-anchor="end" fill="#F8FAFC" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="700" letter-spacing="2">APEX NOIR</text>
+
+    <!-- Card Number &amp; Details -->
+    <text x="22" y="98" fill="#F8FAFC" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="14" font-weight="600" letter-spacing="3">•••• 8829</text>
+    
+    <text x="22" y="128" fill="#94A3B8" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="7.5" font-weight="600">CARDHOLDER</text>
+    <text x="22" y="140" fill="#E2E8F0" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9" font-weight="700">M. HASAN · PRIVATE</text>
+
+    <text x="160" y="128" fill="#94A3B8" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="7.5" font-weight="600">VALID THRU</text>
+    <text x="160" y="140" fill="#E2E8F0" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9" font-weight="700">09 / 29</text>
+  </g>
+
+  <!-- Left Bottom: Compliance Badges -->
+  <g transform="translate(35, 230)">
+    <rect x="0" y="0" width="240" height="90" rx="10" fill="#0F172A" stroke="#1E293B" stroke-width="1" />
+    <g transform="translate(14, 16)">
+      <circle cx="10" cy="10" r="8" fill="#10B981" fill-opacity="0.2" />
+      <path d="M7,10 L9,12 L13,8" fill="none" stroke="#10B981" stroke-width="1.5" />
+      <text x="26" y="14" fill="#F8FAFC" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700">PCI-DSS Level 1 &amp; SOC2</text>
+    </g>
+    <text x="14" y="52" fill="#94A3B8" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5">Encrypted Biometric Auth</text>
+    <text x="14" y="68" fill="#38BDF8" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5">$12M+ Transacted / Mo</text>
+  </g>
+
+  <!-- Right Side: Treasury &amp; Balance Ledger HUD -->
+  <g transform="translate(295, 45)">
+    <!-- HUD Outer Box -->
+    <rect x="0" y="0" width="270" height="290" rx="14" fill="#0B1322" stroke="#334155" stroke-width="1.2" />
+    
+    <!-- Top Account Status -->
+    <g transform="translate(18, 20)">
+      <text x="0" y="12" fill="#94A3B8" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">TOTAL TREASURY BALANCE</text>
+      <rect x="185" y="2" width="50" height="16" rx="8" fill="#0369A1" fill-opacity="0.3" stroke="#0284C7" stroke-width="0.8" />
+      <text x="210" y="13" text-anchor="middle" fill="#38BDF8" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8">USD/EUR</text>
+
+      <text x="0" y="44" fill="#F8FAFC" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="800">$1,480,250<tspan fill="#64748B" font-size="16">.00</tspan></text>
+      <text x="0" y="62" fill="#10B981" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5">▲ +$42,800.00 (+3.2% 30d yield)</text>
     </g>
 
-    <!-- Header Pill -->
-    <rect x="40" y="40" width="190" height="30" rx="6" fill="rgba(10,102,194,0.08)" stroke="#0A66C2" stroke-opacity="0.35" />
-    <text x="52" y="59" fill="#0A66C2" font-family="monospace" font-size="11" font-weight="700" letter-spacing="1">FinTech Mobile App</text>
+    <line x1="18" y1="120" x2="252" y2="120" stroke="#1E293B" stroke-width="1" />
 
-    <!-- Main Title -->
-    <text x="40" y="145" fill="#0F172A" font-family="'Cinzel', serif, sans-serif" font-size="27" font-weight="700" letter-spacing="1">Apex Global NeoBank</text>
-    
-    <!-- Accent Bar -->
-    <rect x="40" y="165" width="80" height="3" rx="1.5" fill="#0A66C2" />
+    <!-- Multi-Currency Wallets -->
+    <g transform="translate(18, 132)">
+      <text x="0" y="12" fill="#64748B" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9" font-weight="700">MULTI-CURRENCY ACCOUNTS</text>
+      
+      <!-- USD Row -->
+      <g transform="translate(0, 24)">
+        <circle cx="10" cy="10" r="10" fill="#1E293B" />
+        <text x="10" y="14" text-anchor="middle" fill="#38BDF8" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9" font-weight="700">$</text>
+        <text x="28" y="13" fill="#E2E8F0" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">US Dollar Checking</text>
+        <text x="234" y="13" text-anchor="end" fill="#F8FAFC" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10" font-weight="700">$942,000</text>
+      </g>
 
-    <!-- Metric Tag -->
-    <rect x="40" y="300" width="230" height="34" rx="8" fill="#FFFFFF" stroke="rgba(10,102,194,0.2)" />
-    <circle cx="56" cy="317" r="4" fill="#0A66C2" />
-    <text x="70" y="321" fill="#334155" font-family="monospace" font-size="11" font-weight="600">BANK-GRADE AUTH · STRIPE</text>
+      <!-- EUR Row -->
+      <g transform="translate(0, 52)">
+        <circle cx="10" cy="10" r="10" fill="#1E293B" />
+        <text x="10" y="14" text-anchor="middle" fill="#F59E0B" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9" font-weight="700">€</text>
+        <text x="28" y="13" fill="#E2E8F0" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">Euro Vault Reserve</text>
+        <text x="234" y="13" text-anchor="end" fill="#F8FAFC" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10" font-weight="700">€492,150</text>
+      </g>
 
-    <!-- Geometric Accent Outline -->
-    <circle cx="480" cy="200" r="100" fill="none" stroke="#0A66C2" stroke-opacity="0.15" stroke-width="1.5" />
-    <circle cx="480" cy="200" r="65" fill="none" stroke="#2563EB" stroke-opacity="0.2" stroke-width="1.5" stroke-dasharray="6,6" />
-    <circle cx="480" cy="200" r="30" fill="#0A66C2" fill-opacity="0.08" />
-  </svg>
+      <!-- GBP Row -->
+      <g transform="translate(0, 80)">
+        <circle cx="10" cy="10" r="10" fill="#1E293B" />
+        <text x="10" y="14" text-anchor="middle" fill="#10B981" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9" font-weight="700">£</text>
+        <text x="28" y="13" fill="#E2E8F0" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">British Pound Escrow</text>
+        <text x="234" y="13" text-anchor="end" fill="#F8FAFC" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10" font-weight="700">£38,100</text>
+      </g>
+    </g>
+
+    <!-- Swift Wire Status Pill -->
+    <g transform="translate(18, 246)">
+      <rect x="0" y="0" width="234" height="28" rx="6" fill="#0F172A" stroke="#334155" stroke-width="0.8" />
+      <circle cx="14" cy="14" r="3.5" fill="#10B981" />
+      <text x="24" y="18" fill="#F1F5F9" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9">SWIFT GPI Wire: <tspan fill="#34D399" font-weight="700">SETTLED IN 4.2s</tspan></text>
+    </g>
+  </g>
+</svg>

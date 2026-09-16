@@ -804,6 +804,285 @@ document.addEventListener('DOMContentLoaded', () => {
     }[tag] || tag));
   }
 
+  
+  // 9. Executive Architectural Case Study Modal System
+  const caseStudyModal = document.getElementById('case-study-modal');
+  const closeCaseStudyBtn = document.getElementById('close-case-study-btn');
+  const caseStudyTag = document.getElementById('case-study-tag');
+  const caseStudyRegion = document.getElementById('case-study-region');
+  const caseStudyTitle = document.getElementById('case-study-title');
+  const caseStudySubtitle = document.getElementById('case-study-subtitle');
+  const caseStudyImg = document.getElementById('case-study-img');
+  const caseStudyChallenge = document.getElementById('case-study-challenge');
+  const caseStudySolution = document.getElementById('case-study-solution');
+  const caseStudyStack = document.getElementById('case-study-stack');
+  const caseStudyMetrics = document.getElementById('case-study-metrics');
+  const caseStudyBookBtn = document.getElementById('case-study-book-btn');
+  const caseStudyBriefBtn = document.getElementById('case-study-brief-btn');
+
+  const caseStudies = {
+    'petbhar': {
+      title: 'PetBhar Humanitarian Initiative',
+      subtitle: 'Social Impact Food Security Platform & Direct Relief Engine',
+      tag: 'Social Impact / Civic Tech',
+      region: 'Live Production Platform',
+      image: 'assets/images/petbhar-ui.jpg',
+      challenge: 'Traditional non-profit portals suffered from severe user drop-off on slow multi-step payment gateways during emergency food distribution drives, along with language barriers for regional Hindi donors.',
+      solution: 'Engineered an ultra-lightweight Next.js platform with zero-latency static rendering, instant QR UPI gateway integration, real-time dynamic meal impact calculations, and instantaneous bilingual English/Hindi localization.',
+      stack: ['Next.js 14', 'Turbopack', 'Tailwind CSS', 'UPI Gateway', 'Bilingual i18n', 'Vercel Edge'],
+      metrics: [
+        { label: 'DONATION LATENCY', value: '< 2.4s' },
+        { label: 'BOUNCE REDUCTION', value: '-38%' },
+        { label: 'DIRECT RELIEF', value: '100%' }
+      ]
+    },
+    'aura-pulse': {
+      title: 'Aura Pulse Biometric Health',
+      subtitle: 'Unified Cross-Platform Biometric Telemetry & Fitness Client',
+      tag: 'Cross-Platform Mobile',
+      region: 'EU Health Scale-Up',
+      image: 'assets/images/project2.svg',
+      challenge: 'Wearable sensor telemetry caused severe device battery drain and jittery frame rates when rendering continuous heart-rate ECG waveforms and multi-ring activity metrics simultaneously.',
+      solution: 'Architected a custom Flutter 3 rendering engine utilizing hardware-accelerated Skia shaders for locked 60 FPS charts, coupled with bi-directional SQLite offline sync and native Apple HealthKit / Google Health Connect bridges.',
+      stack: ['Flutter 3.24', 'Dart', 'BLoC Pattern', 'SQLite Sync', 'HealthKit', 'Skia Shaders'],
+      metrics: [
+        { label: 'FRAME RATE', value: '60.0 FPS' },
+        { label: 'APP STORE', value: '4.9 ★' },
+        { label: 'ACTIVE DAU', value: '48,000+' }
+      ]
+    },
+    'jade': {
+      title: 'JADE International Haute Luxury',
+      subtitle: 'Natural Untreated Gemstone Atelier & Global Private Export Platform',
+      tag: 'Haute Luxury / Commerce',
+      region: 'Global Export Atelier',
+      image: 'assets/images/jade-ui.jpg',
+      challenge: 'High-net-worth international gemstone collectors required discreet VIP appraisal requests, certified GIA report provenance verification, and real-time multi-currency conversions without monolithic CMS lag.',
+      solution: 'Developed a bespoke Next.js 14 editorial luxury atelier featuring real-time multi-currency pricing (USD/EUR/GBP/INR), zero-layout-shift typography hierarchy, secure private viewing booking, and instant encrypted VIP concierge channels.',
+      stack: ['Next.js 14', 'Tailwind CSS', 'Multi-Currency', 'GIA Provenance', 'Vercel CDN', 'Editorial UI'],
+      metrics: [
+        { label: 'LIGHTHOUSE PERF', value: '99/100' },
+        { label: 'GLOBAL EXPORT', value: '18 Countries' },
+        { label: 'VIP CONCIERGE', value: '+46%' }
+      ]
+    },
+    'krypton': {
+      title: 'Krypton AI Cognitive Copilot',
+      subtitle: 'Autonomous Multi-Agent LLM Orchestration & Real-Time Token Streamer',
+      tag: 'Autonomous AI Engine',
+      region: 'Silicon Valley AI Scale-Up',
+      image: 'assets/images/project4.svg',
+      challenge: 'Enterprise users faced sluggish 2.5s+ time-to-first-token (TTFT) delays, token stalling, and hallucinated citations when querying massive vector embeddings across 1M+ technical documents.',
+      solution: 'Engineered an asynchronous multi-agent task planner in Python FastAPI with hierarchical pgvector cosine similarity indexing, Redis edge caching, and server-sent event (SSE) token streaming achieving sub-18ms edge latency.',
+      stack: ['Next.js 14', 'FastAPI', 'Python 3.12', 'pgvector', 'Redis', 'SSE Streaming', 'Docker'],
+      metrics: [
+        { label: 'FIRST TOKEN', value: '< 18 ms' },
+        { label: 'STREAM SPEED', value: '142 tok/s' },
+        { label: 'INDEX SIZE', value: '1.2M Chunks' }
+      ]
+    },
+    'apex-bank': {
+      title: 'Apex International Private Bank',
+      subtitle: 'Tier-1 FinTech Neobanking & Multi-Currency Cross-Border Treasury',
+      tag: 'FinTech Neobanking',
+      region: 'Zurich & London Private Treasury',
+      image: 'assets/images/project5.svg',
+      challenge: 'Ultra-high-net-worth family offices demanded sub-second multi-currency treasury monitoring and instant SWIFT wire tracking under stringent SOC2 Type II and PCI-DSS Level 1 regulatory security.',
+      solution: 'Engineered a titanium-grade Flutter client featuring end-to-end 256-bit AES field encryption, automated FaceID biometric session tokenization, Plaid institutional banking integration, and real-time wire clearing telemetry.',
+      stack: ['Flutter 3', 'Dart', 'Plaid API', 'Firebase Auth', 'AES-256 GCM', 'Stripe Issuing'],
+      metrics: [
+        { label: 'VOLUME', value: '$12M+/Mo' },
+        { label: 'SWIFT SETTLE', value: '4.2s Avg' },
+        { label: 'COMPLIANCE', value: 'SOC2 & PCI-1' }
+      ]
+    },
+    'atelier-noir': {
+      title: 'Atelier Noir 3D Horlogerie',
+      subtitle: 'Interactive Spatial 3D Swiss Watch Configurator & PBR Shaders',
+      tag: 'Spatial 3D / WebGL',
+      region: 'Swiss Haute Horlogerie',
+      image: 'assets/images/project6.svg',
+      challenge: 'Pre-rendered video showcases lacked interactive engagement, while heavy 3D CAD models caused severe GPU frame-rate drops on mobile devices and drained battery life.',
+      solution: 'Created a customized Three.js WebGL pipeline utilizing physically-based materials (PBR), procedural studio HDRI reflections, Draco mesh compression, and adaptive resolution scaling for locked 60 FPS rendering.',
+      stack: ['Three.js r128', 'WebGL 2.0', 'GLSL Shaders', 'Draco Mesh', 'PBR Materials', 'Lenis Scroll'],
+      metrics: [
+        { label: 'FRAME RATE', value: '60.0 FPS' },
+        { label: 'TOTAL ASSETS', value: '< 1.4 MB' },
+        { label: 'USER DWELL', value: '+3.4x Time' }
+      ]
+    },
+    'sentinel-guard': {
+      title: 'Sentinel Cloud Guard',
+      subtitle: 'Distributed Cloud Observability & Kernel-Level eBPF SecOps Telemetry',
+      tag: 'Cloud SecOps Telemetry',
+      region: 'Enterprise SecOps',
+      image: 'assets/images/project7.svg',
+      challenge: 'Traditional daemon security agents added 8–12% CPU overhead in production Kubernetes nodes, making real-time intrusion monitoring prohibitively expensive at scale.',
+      solution: 'Built a lightweight eBPF kernel tracing engine in Golang operating at under 0.4% CPU overhead, backed by a ClickHouse columnar database capable of ingesting 4.2M events/sec and executing analytical queries in sub-8ms.',
+      stack: ['Golang', 'eBPF', 'ClickHouse', 'Next.js 14', 'Kubernetes', 'Tailwind CSS'],
+      metrics: [
+        { label: 'INGEST RATE', value: '4.2M evt/s' },
+        { label: 'QUERY SPEED', value: '< 8 ms' },
+        { label: 'UPTIME SLA', value: '99.99%' }
+      ]
+    },
+    'chronos-dispatch': {
+      title: 'Chronos Global Dispatch',
+      subtitle: 'IoT Geospatial Logistics & Cold-Chain Telematics HUD',
+      tag: 'Geospatial Telematics',
+      region: 'EU Cold-Chain Logistics',
+      image: 'assets/images/project8.svg',
+      challenge: 'Pharmaceutical temperature-sensitive cold-chain logistics required instantaneous anomaly alerting and rerouting across spotty cellular coverage in transit corridors.',
+      solution: 'Delivered an interactive React 18 dashboard integrated with Mapbox GL vector tiles, bi-directional WebSocket telemetry, offline SQLite driver reconciliation, and automated temperature deviation alarms.',
+      stack: ['React 18', 'TypeScript', 'Mapbox GL', 'WebSockets', 'Node.js', 'PostGIS'],
+      metrics: [
+        { label: 'FLEET SIZE', value: '12,000+' },
+        { label: 'FUEL BURN', value: '-18.4%' },
+        { label: 'UPDATE RATE', value: '< 250ms' }
+      ]
+    },
+    'veloce-3d': {
+      title: 'Veloce Hypercar 3D Studio',
+      subtitle: 'Photorealistic WebGL Bespoke Automotive Studio & Aerodynamic Telemetry',
+      tag: '3D WebGL Configurator',
+      region: 'German Performance Studio',
+      image: 'assets/images/project9.svg',
+      challenge: 'High-performance automotive clients required micro-accurate carbon fiber weave and clear-coat metallic flake rendering without massive multi-hundred megabyte download barriers.',
+      solution: 'Programmed custom GLSL fragment shaders calculating carbon weave specular reflections and aerodynamic downforce kinematics in real-time, coupled with instant lightweight GLTF specification exports.',
+      stack: ['Three.js', 'WebGL', 'Custom GLSL', 'Next.js', 'Tailwind CSS', 'GLTF Pipeline'],
+      metrics: [
+        { label: 'RENDER SPEED', value: '60.0 FPS' },
+        { label: 'BUNDLE WEIGHT', value: '< 800 KB' },
+        { label: 'ENGAGEMENT', value: '+42%' }
+      ]
+    }
+  };
+
+  let currentCaseStudy = null;
+
+  function openCaseStudy(key) {
+    const data = caseStudies[key];
+    if (!data || !caseStudyModal) return;
+    currentCaseStudy = data;
+
+    if (caseStudyTag) caseStudyTag.textContent = data.tag;
+    if (caseStudyRegion) caseStudyRegion.textContent = data.region;
+    if (caseStudyTitle) caseStudyTitle.textContent = data.title;
+    if (caseStudySubtitle) caseStudySubtitle.textContent = data.subtitle;
+    if (caseStudyImg) {
+      caseStudyImg.src = data.image;
+      caseStudyImg.alt = data.title + ' Architecture';
+    }
+    if (caseStudyChallenge) caseStudyChallenge.textContent = data.challenge;
+    if (caseStudySolution) caseStudySolution.textContent = data.solution;
+
+    // Render stack badges
+    if (caseStudyStack) {
+      caseStudyStack.innerHTML = '';
+      data.stack.forEach(tech => {
+        const span = document.createElement('span');
+        span.className = 'px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-900 border border-slate-700/80 text-slate-300 font-medium';
+        span.textContent = tech;
+        caseStudyStack.appendChild(span);
+      });
+    }
+
+    // Render metrics
+    if (caseStudyMetrics) {
+      caseStudyMetrics.innerHTML = '';
+      data.metrics.forEach(m => {
+        const box = document.createElement('div');
+        box.className = 'p-3 rounded-xl bg-slate-950/80 border border-slate-800 text-center';
+        box.innerHTML = `
+          <div class="text-[9px] uppercase font-mono-luxury text-slate-400 font-semibold tracking-wider">${m.label}</div>
+          <div class="text-base sm:text-lg font-bold font-mono text-sky-400 mt-1">${m.value}</div>
+        `;
+        caseStudyMetrics.appendChild(box);
+      });
+    }
+
+    // Show modal with fade
+    caseStudyModal.classList.remove('hidden');
+    requestAnimationFrame(() => {
+      caseStudyModal.classList.remove('opacity-0');
+      caseStudyModal.classList.add('opacity-100');
+    });
+    document.body.classList.add('overflow-hidden');
+
+    if (window.lucide && window.lucide.createIcons) {
+      window.lucide.createIcons();
+    }
+  }
+
+  function closeCaseStudy() {
+    if (!caseStudyModal) return;
+    caseStudyModal.classList.remove('opacity-100');
+    caseStudyModal.classList.add('opacity-0');
+    setTimeout(() => {
+      caseStudyModal.classList.add('hidden');
+      document.body.classList.remove('overflow-hidden');
+    }, 250);
+  }
+
+  // Bind Open Buttons (Event Delegation)
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.btn-open-case-study');
+    if (btn) {
+      e.preventDefault();
+      const studyKey = btn.getAttribute('data-case-study');
+      if (studyKey) openCaseStudy(studyKey);
+    }
+  });
+
+  if (closeCaseStudyBtn) {
+    closeCaseStudyBtn.addEventListener('click', closeCaseStudy);
+  }
+
+  if (caseStudyModal) {
+    caseStudyModal.addEventListener('click', (e) => {
+      if (e.target === caseStudyModal) closeCaseStudy();
+    });
+  }
+
+  // Connect Case Study Action Buttons
+  if (caseStudyBookBtn) {
+    caseStudyBookBtn.addEventListener('click', () => {
+      closeCaseStudy();
+      const bookCallBtn = document.getElementById('hero-book-meeting-btn') || document.getElementById('header-book-call-btn');
+      if (bookCallBtn) {
+        setTimeout(() => bookCallBtn.click(), 300);
+      }
+    });
+  }
+
+  if (caseStudyBriefBtn) {
+    caseStudyBriefBtn.addEventListener('click', () => {
+      closeCaseStudy();
+      const contactSec = document.getElementById('contact');
+      if (contactSec) {
+        setTimeout(() => {
+          contactSec.scrollIntoView({ behavior: 'smooth' });
+          const scopeSelect = document.getElementById('brief-scope');
+          if (scopeSelect && currentCaseStudy) {
+            // Select appropriate scope if possible
+            if (currentCaseStudy.tag.includes('Mobile')) scopeSelect.value = 'mobile';
+            else if (currentCaseStudy.tag.includes('AI')) scopeSelect.value = 'web';
+            else if (currentCaseStudy.tag.includes('3D')) scopeSelect.value = 'fullstack';
+          }
+        }, 300);
+      }
+    });
+  }
+
+  // Handle ESC key for both modals
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (caseStudyModal && !caseStudyModal.classList.contains('hidden')) {
+        closeCaseStudy();
+      }
+    }
+  });
+
   // 8. Initialize Lucide Icons
   if (window.lucide) {
     window.lucide.createIcons();

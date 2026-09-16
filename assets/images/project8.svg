@@ -1,38 +1,59 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="600" height="380">
   <defs>
-    <linearGradient id="bg_project8" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FFFFFF" />
-      <stop offset="100%" stop-color="#F1F5F9" />
+    <linearGradient id="bg8" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080E1A" />
+      <stop offset="50%" stop-color="#050912" />
+      <stop offset="100%" stop-color="#020408" />
     </linearGradient>
-    <radialGradient id="glow_project8" cx="80%" cy="20%" r="60%">
-      <stop offset="0%" stop-color="#0284C7" stop-opacity="0.12" />
-      <stop offset="100%" stop-color="#0284C7" stop-opacity="0" />
-    </radialGradient>
   </defs>
-  <rect width="600" height="380" fill="url(#bg_project8)" />
-  <rect width="600" height="380" fill="url(#glow_project8)" />
-  
-  <g stroke="rgba(2,132,199,0.06)" stroke-width="1">
-    <line x1="0" y1="95" x2="600" y2="95" />
-    <line x1="0" y1="190" x2="600" y2="190" />
-    <line x1="0" y1="285" x2="600" y2="285" />
-    <line x1="150" y1="0" x2="150" y2="380" />
-    <line x1="300" y1="0" x2="300" y2="380" />
-    <line x1="450" y1="0" x2="450" y2="380" />
+
+  <rect width="600" height="380" fill="url(#bg8)" />
+
+  <!-- Vector Map Grid &amp; Roads -->
+  <g stroke="#1E293B" stroke-width="0.8" stroke-opacity="0.5">
+    <path d="M0,120 Q180,90 320,160 T600,140" fill="none" stroke="#334155" stroke-width="2" />
+    <path d="M80,380 Q240,240 380,260 T600,220" fill="none" stroke="#1E293B" stroke-width="2" />
+    <line x1="200" y1="0" x2="280" y2="380" stroke="#1E293B" stroke-width="1.5" />
+    <line x1="420" y1="0" x2="360" y2="380" stroke="#1E293B" stroke-width="1.5" />
   </g>
 
-  <rect x="40" y="40" width="220" height="30" rx="6" fill="rgba(2,132,199,0.08)" stroke="#0284C7" stroke-opacity="0.35" />
-  <text x="52" y="59" fill="#0284C7" font-family="monospace" font-size="11" font-weight="700" letter-spacing="1">IoT Fleet Telematics</text>
+  <!-- Active Route Path with Glow -->
+  <path d="M70,280 C180,220 250,110 480,100" fill="none" stroke="#0284C7" stroke-width="3.5" stroke-linecap="round" />
+  <path d="M70,280 C180,220 250,110 480,100" fill="none" stroke="#38BDF8" stroke-width="1.5" stroke-dasharray="6,4" />
 
-  <text x="40" y="145" fill="#0F172A" font-family="'Cinzel', serif, sans-serif" font-size="26" font-weight="700" letter-spacing="1">Chronos Global Dispatch</text>
-  
-  <rect x="40" y="165" width="80" height="3" rx="1.5" fill="#0284C7" />
+  <!-- Waypoint Origin -->
+  <circle cx="70" cy="280" r="7" fill="#0284C7" />
+  <circle cx="70" cy="280" r="3" fill="#FFFFFF" />
+  <text x="84" y="284" fill="#F8FAFC" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10" font-weight="700">ROTTERDAM HUB</text>
 
-  <rect x="40" y="300" width="245" height="34" rx="8" fill="#FFFFFF" stroke="rgba(2,132,199,0.2)" />
-  <circle cx="56" cy="317" r="4" fill="#0284C7" />
-  <text x="70" y="321" fill="#334155" font-family="monospace" font-size="11" font-weight="600">12,000+ VEHICLES · MAPBOX</text>
+  <!-- Waypoint Destination -->
+  <circle cx="480" cy="100" r="7" fill="#10B981" />
+  <circle cx="480" cy="100" r="3" fill="#FFFFFF" />
+  <text x="495" y="104" fill="#F8FAFC" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10" font-weight="700">MILAN TERMINAL</text>
 
-  <circle cx="480" cy="200" r="100" fill="none" stroke="#0284C7" stroke-opacity="0.15" stroke-width="1.5" />
-  <circle cx="480" cy="200" r="65" fill="none" stroke="#0284C7" stroke-opacity="0.25" stroke-width="1.5" stroke-dasharray="6,6" />
-  <circle cx="480" cy="200" r="30" fill="#0284C7" fill-opacity="0.08" />
+  <!-- Live Vehicle In-Transit Marker -->
+  <g transform="translate(235, 160)">
+    <circle cx="0" cy="0" r="14" fill="#0284C7" fill-opacity="0.3" />
+    <circle cx="0" cy="0" r="6" fill="#38BDF8" />
+    <rect x="15" y="-18" width="120" height="36" rx="6" fill="#0F172A" stroke="#334155" stroke-width="1" />
+    <text x="24" y="-4" fill="#F8FAFC" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9" font-weight="700">FLEET #408 [LIVE]</text>
+    <text x="24" y="9" fill="#10B981" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8">Temp: -18.2°C (Optimal)</text>
+  </g>
+
+  <!-- Top Dispatch Stats Bar -->
+  <g transform="translate(25, 20)">
+    <rect x="0" y="0" width="550" height="34" rx="8" fill="#0F172A" fill-opacity="0.9" stroke="#334155" stroke-width="1" />
+    <circle cx="16" cy="17" r="3.5" fill="#10B981" />
+    <text x="28" y="21" fill="#F8FAFC" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10" font-weight="700">CHRONOS FLEET DISPATCH :: MAPBOX GL ENGINE</text>
+    <text x="390" y="21" fill="#38BDF8" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="600">12,000+ VEHICLES TRACKED</text>
+  </g>
+
+  <!-- Bottom Right Telemetry Box -->
+  <g transform="translate(340, 240)">
+    <rect x="0" y="0" width="235" height="105" rx="10" fill="#0B1120" stroke="#1E293B" stroke-width="1" />
+    <text x="14" y="22" fill="#64748B" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">COLD-CHAIN ROUTE METRIC</text>
+    <text x="14" y="44" fill="#34D399" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="14" font-weight="700">-18.4% Transit Fuel</text>
+    <text x="14" y="64" fill="#94A3B8" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9">Dynamic Traffic Rerouting</text>
+    <text x="14" y="82" fill="#38BDF8" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9">Driver Offline SQLite Sync</text>
+  </g>
 </svg>

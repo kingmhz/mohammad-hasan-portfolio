@@ -1,38 +1,93 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="600" height="380">
   <defs>
-    <linearGradient id="bg_project7" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#FFFFFF" />
-      <stop offset="100%" stop-color="#F1F5F9" />
+    <linearGradient id="bg7" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070C18" />
+      <stop offset="60%" stop-color="#050812" />
+      <stop offset="100%" stop-color="#020409" />
     </linearGradient>
-    <radialGradient id="glow_project7" cx="80%" cy="20%" r="60%">
-      <stop offset="0%" stop-color="#0284C7" stop-opacity="0.12" />
-      <stop offset="100%" stop-color="#0284C7" stop-opacity="0" />
-    </radialGradient>
   </defs>
-  <rect width="600" height="380" fill="url(#bg_project7)" />
-  <rect width="600" height="380" fill="url(#glow_project7)" />
-  
-  <g stroke="rgba(2,132,199,0.06)" stroke-width="1">
-    <line x1="0" y1="95" x2="600" y2="95" />
-    <line x1="0" y1="190" x2="600" y2="190" />
-    <line x1="0" y1="285" x2="600" y2="285" />
-    <line x1="150" y1="0" x2="150" y2="380" />
-    <line x1="300" y1="0" x2="300" y2="380" />
-    <line x1="450" y1="0" x2="450" y2="380" />
+
+  <rect width="600" height="380" fill="url(#bg7)" />
+
+  <!-- SecOps Telemetry HUD Header -->
+  <g transform="translate(25, 20)">
+    <rect x="0" y="0" width="550" height="36" rx="8" fill="#0F172A" stroke="#334155" stroke-width="1" />
+    <circle cx="18" cy="18" r="4.5" fill="#10B981" />
+    <text x="32" y="22" fill="#F8FAFC" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11" font-weight="700">SENTINEL SecOps :: eBPF KERNEL TELEMETRY</text>
+    
+    <rect x="380" y="8" width="155" height="20" rx="4" fill="#042F2E" stroke="#0D9488" stroke-width="0.8" />
+    <text x="390" y="21" fill="#2DD4BF" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700">4.2M EVENTS / SEC INGEST</text>
   </g>
 
-  <rect x="40" y="40" width="200" height="30" rx="6" fill="rgba(2,132,199,0.08)" stroke="#0284C7" stroke-opacity="0.35" />
-  <text x="52" y="59" fill="#0284C7" font-family="monospace" font-size="11" font-weight="700" letter-spacing="1">Cloud SecOps · eBPF</text>
+  <!-- Left: eBPF System Call Stream -->
+  <g transform="translate(25, 68)">
+    <rect x="0" y="0" width="280" height="280" rx="10" fill="#0B1120" stroke="#1E293B" stroke-width="1" />
+    <text x="16" y="24" fill="#64748B" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700" letter-spacing="1">KERNEL SYSCALL AUDIT STREAM</text>
 
-  <text x="40" y="145" fill="#0F172A" font-family="'Cinzel', serif, sans-serif" font-size="26" font-weight="700" letter-spacing="1">Sentinel Cloud Guard</text>
-  
-  <rect x="40" y="165" width="80" height="3" rx="1.5" fill="#0284C7" />
+    <!-- Syscall Item 1 -->
+    <g transform="translate(16, 40)">
+      <rect x="0" y="0" width="248" height="38" rx="6" fill="#1E293B" fill-opacity="0.6" stroke="#10B981" stroke-width="0.8" />
+      <circle cx="14" cy="19" r="3.5" fill="#10B981" />
+      <text x="26" y="16" fill="#F8FAFC" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="600">sys_enter_connect()</text>
+      <text x="26" y="29" fill="#94A3B8" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8">pid=1942 · k8s-ingress-prod · 0.02ms</text>
+    </g>
 
-  <rect x="40" y="300" width="235" height="34" rx="8" fill="#FFFFFF" stroke="rgba(2,132,199,0.2)" />
-  <circle cx="56" cy="317" r="4" fill="#0284C7" />
-  <text x="70" y="321" fill="#334155" font-family="monospace" font-size="11" font-weight="600">4.2M EVENTS/SEC · eBPF</text>
+    <!-- Syscall Item 2 -->
+    <g transform="translate(16, 86)">
+      <rect x="0" y="0" width="248" height="38" rx="6" fill="#1E293B" fill-opacity="0.6" stroke="#EF4444" stroke-width="0.8" />
+      <circle cx="14" cy="19" r="3.5" fill="#EF4444" />
+      <text x="26" y="16" fill="#F8FAFC" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="600">unauthorized_execve() :: DROPPED</text>
+      <text x="26" y="29" fill="#F87171" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8">sig=0x498 · Zero-Trust Rule #14</text>
+    </g>
 
-  <circle cx="480" cy="200" r="100" fill="none" stroke="#0284C7" stroke-opacity="0.15" stroke-width="1.5" />
-  <polygon points="480,110 540,150 540,230 480,270 420,230 420,150" fill="none" stroke="#0284C7" stroke-opacity="0.25" stroke-width="1.5" stroke-dasharray="5,5" />
-  <circle cx="480" cy="200" r="28" fill="#0284C7" fill-opacity="0.08" />
+    <!-- Syscall Item 3 -->
+    <g transform="translate(16, 132)">
+      <rect x="0" y="0" width="248" height="38" rx="6" fill="#1E293B" fill-opacity="0.6" stroke="#38BDF8" stroke-width="0.8" />
+      <circle cx="14" cy="19" r="3.5" fill="#38BDF8" />
+      <text x="26" y="16" fill="#F8FAFC" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="600">bpf_probe_read_kernel()</text>
+      <text x="26" y="29" fill="#94A3B8" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8">tcp_v4_rcv · socket buffer verified</text>
+    </g>
+
+    <!-- Syscall Item 4 -->
+    <g transform="translate(16, 178)">
+      <rect x="0" y="0" width="248" height="38" rx="6" fill="#1E293B" fill-opacity="0.6" stroke="#10B981" stroke-width="0.8" />
+      <circle cx="14" cy="19" r="3.5" fill="#10B981" />
+      <text x="26" y="16" fill="#F8FAFC" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="600">sys_enter_epoll_wait()</text>
+      <text x="26" y="29" fill="#94A3B8" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8">Golang runtime thread #12 healthy</text>
+    </g>
+
+    <text x="16" y="254" fill="#38BDF8" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9">eBPF Overhead: &lt;0.4% CPU Baseline</text>
+  </g>
+
+  <!-- Right: ClickHouse Aggregations &amp; Query Latency -->
+  <g transform="translate(320, 68)">
+    <rect x="0" y="0" width="255" height="135" rx="10" fill="#0B1120" stroke="#1E293B" stroke-width="1" />
+    <text x="16" y="24" fill="#64748B" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700">CLICKHOUSE ANALYTICS ENGINE</text>
+    
+    <text x="16" y="52" fill="#F8FAFC" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="20" font-weight="800">6.8 ms</text>
+    <text x="96" y="50" fill="#34D399" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5">Avg Query Latency</text>
+
+    <!-- Query Bar Chart -->
+    <g transform="translate(16, 70)">
+      <rect x="0" y="30" width="24" height="20" rx="3" fill="#0284C7" />
+      <rect x="32" y="15" width="24" height="35" rx="3" fill="#0284C7" />
+      <rect x="64" y="22" width="24" height="28" rx="3" fill="#0284C7" />
+      <rect x="96" y="8" width="24" height="42" rx="3" fill="#38BDF8" />
+      <rect x="128" y="18" width="24" height="32" rx="3" fill="#0284C7" />
+      <rect x="160" y="12" width="24" height="38" rx="3" fill="#0284C7" />
+      <rect x="192" y="25" width="24" height="25" rx="3" fill="#0284C7" />
+    </g>
+  </g>
+
+  <!-- Right Bottom: SLA &amp; Infrastructure Resilience -->
+  <g transform="translate(320, 215)">
+    <rect x="0" y="0" width="255" height="133" rx="10" fill="#0B1120" stroke="#1E293B" stroke-width="1" />
+    <text x="16" y="24" fill="#64748B" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700">INFRASTRUCTURE SLA</text>
+    
+    <text x="16" y="58" fill="#F8FAFC" font-family="system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="26" font-weight="800">99.99%</text>
+    <text x="125" y="54" fill="#10B981" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10" font-weight="700">Zero Downtime</text>
+
+    <text x="16" y="86" fill="#94A3B8" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5">Multi-Region AWS + Bare Metal</text>
+    <text x="16" y="104" fill="#38BDF8" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5">Automated BGP Failover</text>
+  </g>
 </svg>

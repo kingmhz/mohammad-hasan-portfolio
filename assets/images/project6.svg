@@ -1,44 +1,111 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 380" width="600" height="380">
-    <defs>
-      <linearGradient id="bg_project6.svg" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#FFFFFF" />
-        <stop offset="100%" stop-color="#F1F5F9" />
-      </linearGradient>
-      <radialGradient id="glow_project6.svg" cx="80%" cy="20%" r="60%">
-        <stop offset="0%" stop-color="#0A66C2" stop-opacity="0.12" />
-        <stop offset="100%" stop-color="#0A66C2" stop-opacity="0" />
-      </radialGradient>
-    </defs>
-    <rect width="600" height="380" fill="url(#bg_project6.svg)" />
-    <rect width="600" height="380" fill="url(#glow_project6.svg)" />
+  <defs>
+    <linearGradient id="bg6" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0A0C14" />
+      <stop offset="50%" stop-color="#04060A" />
+      <stop offset="100%" stop-color="#000000" />
+    </linearGradient>
+    <radialGradient id="watchGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="goldGear" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE68A" />
+      <stop offset="50%" stop-color="#D97706" />
+      <stop offset="100%" stop-color="#78350F" />
+    </linearGradient>
+  </defs>
+
+  <rect width="600" height="380" fill="url(#bg6)" />
+  <rect width="600" height="380" fill="url(#watchGlow)" />
+
+  <!-- 3D Studio Grid Viewport -->
+  <g stroke="#1E293B" stroke-width="0.6" stroke-opacity="0.6">
+    <ellipse cx="300" cy="260" rx="220" ry="60" fill="none" stroke="#334155" />
+    <ellipse cx="300" cy="260" rx="160" ry="42" fill="none" stroke="#1E293B" />
+  </g>
+
+  <!-- Central Tourbillon Luxury Watch 3D Mockup -->
+  <g transform="translate(300, 190)">
+    <!-- Watch Case Outer Ring -->
+    <circle cx="0" cy="0" r="105" fill="#0B1120" stroke="#475569" stroke-width="4" />
+    <circle cx="0" cy="0" r="98" fill="#020617" stroke="#1E293B" stroke-width="1.5" />
     
-    <!-- Fine Grid Lines -->
-    <g stroke="rgba(10,102,194,0.06)" stroke-width="1">
-      <line x1="0" y1="95" x2="600" y2="95" />
-      <line x1="0" y1="190" x2="600" y2="190" />
-      <line x1="0" y1="285" x2="600" y2="285" />
-      <line x1="150" y1="0" x2="150" y2="380" />
-      <line x1="300" y1="0" x2="300" y2="380" />
-      <line x1="450" y1="0" x2="450" y2="380" />
+    <!-- Hour Markers (Brushed Titanium &amp; Sapphire) -->
+    <g stroke="#94A3B8" stroke-width="2" stroke-linecap="round">
+      <line x1="0" y1="-90" x2="0" y2="-80" stroke="#38BDF8" stroke-width="3" />
+      <line x1="0" y1="90" x2="0" y2="80" />
+      <line x1="-90" y1="0" x2="-80" y2="0" />
+      <line x1="90" y1="0" x2="80" y2="0" />
+      <line x1="-63" y1="-63" x2="-56" y2="-56" />
+      <line x1="63" y1="-63" x2="56" y2="-56" />
+      <line x1="-63" y1="63" x2="-56" y2="56" />
+      <line x1="63" y1="63" x2="56" y2="56" />
     </g>
 
-    <!-- Header Pill -->
-    <rect x="40" y="40" width="190" height="30" rx="6" fill="rgba(10,102,194,0.08)" stroke="#0A66C2" stroke-opacity="0.35" />
-    <text x="52" y="59" fill="#0A66C2" font-family="monospace" font-size="11" font-weight="700" letter-spacing="1">Interactive 3D Studio</text>
+    <!-- Tourbillon Mechanical Movement Open-Work -->
+    <g transform="translate(0, 32)">
+      <circle cx="0" cy="0" r="36" fill="#0F172A" stroke="#64748B" stroke-width="1" />
+      <circle cx="0" cy="0" r="28" fill="none" stroke="url(#goldGear)" stroke-width="3" stroke-dasharray="8,4" />
+      <circle cx="0" cy="0" r="16" fill="none" stroke="#38BDF8" stroke-width="1.5" />
+      <circle cx="0" cy="0" r="4" fill="#F43F5E" /> <!-- Ruby Jewel Pivot -->
+    </g>
 
-    <!-- Main Title -->
-    <text x="40" y="145" fill="#0F172A" font-family="'Cinzel', serif, sans-serif" font-size="27" font-weight="700" letter-spacing="1">Atelier Noir 3D</text>
+    <!-- Watch Hands -->
+    <g>
+      <!-- Hour Hand -->
+      <polygon points="-3,10 0,-50 3,10" fill="#E2E8F0" stroke="#0F172A" stroke-width="1" transform="rotate(-40)" />
+      <!-- Minute Hand -->
+      <polygon points="-2.5,12 0,-76 2.5,12" fill="#38BDF8" stroke="#0F172A" stroke-width="1" transform="rotate(75)" />
+      <!-- Center Pivot -->
+      <circle cx="0" cy="0" r="6" fill="#475569" stroke="#94A3B8" stroke-width="1" />
+      <circle cx="0" cy="0" r="2" fill="#0284C7" />
+    </g>
+
+    <text x="0" y="-45" text-anchor="middle" fill="#94A3B8" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8" font-weight="700" letter-spacing="2">ATELIER NOIR</text>
+    <text x="0" y="-34" text-anchor="middle" fill="#64748B" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="6.5">GENÈVE · 60 FPS PBR</text>
+  </g>
+
+  <!-- Top Studio HUD -->
+  <g transform="translate(25, 20)">
+    <rect x="0" y="0" width="550" height="32" rx="8" fill="#0F172A" fill-opacity="0.8" stroke="#334155" stroke-width="1" />
+    <circle cx="16" cy="16" r="3.5" fill="#10B981" />
+    <text x="26" y="20" fill="#34D399" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="700">WebGL 2.0 :: THREE.JS R128 ACTIVE</text>
+
+    <text x="320" y="20" fill="#94A3B8" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9">FPS: <tspan fill="#38BDF8" font-weight="700">60.0 LOCKED</tspan></text>
+    <text x="440" y="20" fill="#94A3B8" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9">Polygons: <tspan fill="#F8FAFC" font-weight="700">142,800</tspan></text>
+  </g>
+
+  <!-- Left Inspector: PBR Materials -->
+  <g transform="translate(25, 68)">
+    <rect x="0" y="0" width="130" height="150" rx="8" fill="#0F172A" fill-opacity="0.85" stroke="#1E293B" stroke-width="1" />
+    <text x="12" y="20" fill="#64748B" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">PBR SHADER</text>
     
-    <!-- Accent Bar -->
-    <rect x="40" y="165" width="80" height="3" rx="1.5" fill="#0A66C2" />
+    <text x="12" y="42" fill="#E2E8F0" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9">Roughness: 0.18</text>
+    <rect x="12" y="48" width="106" height="4" rx="2" fill="#1E293B" />
+    <rect x="12" y="48" width="25" height="4" rx="2" fill="#38BDF8" />
 
-    <!-- Metric Tag -->
-    <rect x="40" y="300" width="230" height="34" rx="8" fill="#FFFFFF" stroke="rgba(10,102,194,0.2)" />
-    <circle cx="56" cy="317" r="4" fill="#0A66C2" />
-    <text x="70" y="321" fill="#334155" font-family="monospace" font-size="11" font-weight="600">FWA TIER · WEBGL 60FPS</text>
+    <text x="12" y="72" fill="#E2E8F0" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9">Metalness: 0.95</text>
+    <rect x="12" y="78" width="106" height="4" rx="2" fill="#1E293B" />
+    <rect x="12" y="78" width="98" height="4" rx="2" fill="#38BDF8" />
 
-    <!-- Geometric Accent Outline -->
-    <circle cx="480" cy="200" r="100" fill="none" stroke="#0A66C2" stroke-opacity="0.15" stroke-width="1.5" />
-    <circle cx="480" cy="200" r="65" fill="none" stroke="#2563EB" stroke-opacity="0.2" stroke-width="1.5" stroke-dasharray="6,6" />
-    <circle cx="480" cy="200" r="30" fill="#0A66C2" fill-opacity="0.08" />
-  </svg>
+    <text x="12" y="102" fill="#E2E8F0" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9">Transmission: 0.92</text>
+    <rect x="12" y="108" width="106" height="4" rx="2" fill="#1E293B" />
+    <rect x="12" y="108" width="92" height="4" rx="2" fill="#10B981" />
+
+    <text x="12" y="132" fill="#94A3B8" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5">IOR: 1.77 Sapphire</text>
+  </g>
+
+  <!-- Right Inspector: Lighting Rig Controls -->
+  <g transform="translate(445, 68)">
+    <rect x="0" y="0" width="130" height="150" rx="8" fill="#0F172A" fill-opacity="0.85" stroke="#1E293B" stroke-width="1" />
+    <text x="12" y="20" fill="#64748B" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5" font-weight="700">LIGHTING RIG</text>
+    <text x="12" y="42" fill="#F8FAFC" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="600">Key Light: 4.2k</text>
+    <text x="12" y="60" fill="#38BDF8" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5">HDRI Studio Map</text>
+    
+    <text x="12" y="86" fill="#F8FAFC" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="600">Fill Light: 1.8k</text>
+    <text x="12" y="104" fill="#38BDF8" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5">Soft Rim Accent</text>
+
+    <text x="12" y="132" fill="#10B981" font-family="'Space Grotesk', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9">✓ Zero GPU Drop</text>
+  </g>
+</svg>
