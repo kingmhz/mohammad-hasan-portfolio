@@ -1,8 +1,10 @@
-﻿# Mohammad Hasan — Haute Digital Engineering Portfolio
+# Mohammad Hasan — Haute Digital Engineering Portfolio
 
 An ultra-minimalist, haute-luxury 3D portfolio and digital acquisition system engineered with **Three.js WebGL**, **Tailwind CSS**, **GSAP mechanics**, and **Vercel Serverless Backend Architecture**.
 
 Designed for senior-level international client engagements across the US, UK, Europe, and UAE.
+
+- **Live Production URL:** [https://mohammadhasanportfolio.vercel.app](https://mohammadhasanportfolio.vercel.app)
 
 ---
 

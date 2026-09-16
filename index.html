@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#0B0F19">
+  <link rel="canonical" href="https://mohammadhasanportfolio.vercel.app/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap">
@@ -15,13 +16,14 @@
 
   <!-- Open Graph & Social Metadata -->
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://mohammadhasanportfolio.vercel.app/">
   <meta property="og:title" content="Mohammad Hasan — Haute Digital Engineering | Web & Mobile Consultant">
   <meta property="og:description" content="Senior software consultant engineering production-grade Next.js web applications, cross-platform Flutter mobile apps, and bespoke luxury digital experiences.">
-  <meta property="og:image" content="assets/images/banner.jpg">
+  <meta property="og:image" content="https://mohammadhasanportfolio.vercel.app/assets/images/banner.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Mohammad Hasan — Haute Digital Engineering">
   <meta name="twitter:description" content="Senior software consultant engineering Next.js web platforms and Flutter mobile apps.">
-  <meta name="twitter:image" content="assets/images/banner.jpg">
+  <meta name="twitter:image" content="https://mohammadhasanportfolio.vercel.app/assets/images/banner.jpg">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
@@ -50,14 +52,16 @@
   <!-- Three.js (WebGL 3D Engine) -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-  <!-- JSON-LD Structured Data Schema (Domain-agnostic) -->
+  <!-- JSON-LD Structured Data Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Person",
+        "@id": "https://mohammadhasanportfolio.vercel.app/#person",
         "name": "Mohammad Hasan",
+        "url": "https://mohammadhasanportfolio.vercel.app/",
         "jobTitle": "Lead Full-Stack & Mobile Software Consultant",
         "description": "Senior software consultant engineering production-grade Next.js web applications and cross-platform Flutter mobile apps.",
         "sameAs": [
@@ -76,7 +80,12 @@
       },
       {
         "@type": "ProfessionalService",
+        "@id": "https://mohammadhasanportfolio.vercel.app/#service",
         "name": "Mohammad Hasan — Haute Digital Engineering",
+        "url": "https://mohammadhasanportfolio.vercel.app/",
+        "founder": {
+          "@id": "https://mohammadhasanportfolio.vercel.app/#person"
+        },
         "description": "Bespoke engineering and senior architectural execution for Next.js web platforms and Flutter mobile apps.",
         "priceRange": "$$$$"
       }
