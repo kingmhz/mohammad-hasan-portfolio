@@ -647,11 +647,11 @@
   hingeMesh.position.set(0, 0.022, -0.84);
   macGroup.add(hingeMesh);
 
-  // Display Lid Assembly (Hinged at rear, angled upright facing camera)
+  // Display Lid Assembly (Hinged at rear, angled upright facing camera at ~103°)
   const lidGroup = new THREE.Group();
   lidGroup.position.set(0, 0.022, -0.84);
-  // Opened at ~104° backwards so screen faces directly forward into camera view
-  lidGroup.rotation.x = -Math.PI / 2 + 0.25;
+  // Upright angle at ~103° so Liquid Retina display faces directly into camera view
+  lidGroup.rotation.x = -0.22;
   macGroup.add(lidGroup);
 
   // Slim Aluminum Display Lid Back
@@ -823,11 +823,13 @@
   let velocityX = 0;
   let velocityY = 0;
 
-  // Base rotation angles
-  let targetRotY = -0.22;
-  let targetRotX = 0.14;
-  let currentRotY = -0.22;
-  let currentRotX = 0.14;
+  // Base rotation angles (Perfect three-quarter perspective facing viewer)
+  const BASE_ROT_Y = -0.22;
+  const BASE_ROT_X = 0.14;
+  let targetRotY = BASE_ROT_Y;
+  let targetRotX = BASE_ROT_X;
+  let currentRotY = BASE_ROT_Y;
+  let currentRotX = BASE_ROT_X;
 
   const dragHint = document.getElementById('drag-360-hint');
   const canvasElement = renderer.domElement;
@@ -943,9 +945,11 @@
       velocityX *= 0.935;
       velocityY *= 0.935;
 
-      // Gentle ambient 360° drift when at rest
+      // Gentle floating sway facing forward when idle (always keeps screens facing viewer)
       if (Math.abs(velocityX) < 0.0001 && Math.abs(velocityY) < 0.0001) {
-        targetRotY += 0.0012;
+        const idleSway = Math.sin(elapsed * 0.55) * 0.06;
+        targetRotY += (BASE_ROT_Y + idleSway - targetRotY) * 0.02;
+        targetRotX += (BASE_ROT_X - targetRotX) * 0.02;
       }
     }
 
