@@ -2,12 +2,15 @@
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#0B0F19">
+  <link rel="canonical" href="https://mohammad-hasan-portfolio.vercel.app">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap">
   <title>Mohammad Hasan — Haute Digital Engineering | Web & App Consultant</title>
   <meta name="description" content="Senior software consultant engineering production-grade Next.js web applications, cross-platform Flutter mobile apps, and bespoke luxury digital experiences.">
+  <meta name="keywords" content="Mohammad Hasan, Software Consultant, Next.js, React, Flutter, Web Development, Mobile Development, Three.js, Haute Digital Engineering">
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="assets/images/favicon.svg">
 
@@ -42,11 +45,52 @@
     }
   </script>
 
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Lucide Icons (pinned to stable version) -->
+  <script defer src="https://unpkg.com/lucide@0.460.0"></script>
 
   <!-- Three.js (WebGL 3D Engine) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- JSON-LD Structured Data Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://mohammad-hasan-portfolio.vercel.app/#person",
+        "name": "Mohammad Hasan",
+        "url": "https://mohammad-hasan-portfolio.vercel.app",
+        "jobTitle": "Lead Full-Stack & Mobile Software Consultant",
+        "description": "Senior software consultant engineering production-grade Next.js web applications and cross-platform Flutter mobile apps.",
+        "sameAs": [
+          "https://linkedin.com/in/mohammadhasantechie"
+        ],
+        "knowsAbout": [
+          "Next.js",
+          "React",
+          "Flutter",
+          "TypeScript",
+          "Node.js",
+          "PostgreSQL",
+          "Three.js",
+          "Software Architecture"
+        ]
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://mohammad-hasan-portfolio.vercel.app/#service",
+        "name": "Mohammad Hasan — Haute Digital Engineering",
+        "url": "https://mohammad-hasan-portfolio.vercel.app",
+        "founder": {
+          "@id": "https://mohammad-hasan-portfolio.vercel.app/#person"
+        },
+        "description": "Bespoke engineering and senior architectural execution for Next.js web platforms and Flutter mobile apps.",
+        "priceRange": "$$$$"
+      }
+    ]
+  }
+  </script>
 
   <!-- Custom Luxury CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
@@ -67,10 +111,10 @@
 
       <!-- Desktop Nav Links (Haute Minimalist Luxury Style) -->
       <div class="hidden md:flex items-center gap-7 lg:gap-9 text-[10.5px] font-mono-luxury tracking-[0.24em] uppercase font-medium text-slate-300">
-        <a href="#work" class="hover:text-white hover:text-sky-300 transition-all duration-200 py-1">Selected Work</a>
-        <a href="#services" class="hover:text-white hover:text-sky-300 transition-all duration-200 py-1">Capabilities</a>
-        <a href="#stack" class="hover:text-white hover:text-sky-300 transition-all duration-200 py-1">Architecture</a>
-        <a href="#about" class="hover:text-white hover:text-sky-300 transition-all duration-200 py-1">Philosophy</a>
+        <a href="#work" class="hover:text-sky-300 transition-all duration-200 py-1">Selected Work</a>
+        <a href="#services" class="hover:text-sky-300 transition-all duration-200 py-1">Capabilities</a>
+        <a href="#stack" class="hover:text-sky-300 transition-all duration-200 py-1">Architecture</a>
+        <a href="#about" class="hover:text-sky-300 transition-all duration-200 py-1">Philosophy</a>
       </div>
 
       <!-- Right Side Header (Bespoke Luxury Video Call Trigger & Status) -->
@@ -291,7 +335,7 @@
   </section>
 
   <!-- ==================== HAUTE LUXURY MEETING RESERVATION MODAL ==================== -->
-  <div id="meeting-modal" class="fixed inset-0 z-[100] modal-backdrop hidden flex items-center justify-center p-3 sm:p-4 transition-all duration-300">
+  <div id="meeting-modal" class="fixed inset-0 z-[100] modal-backdrop hidden items-center justify-center p-3 sm:p-4 transition-all duration-300" role="dialog" aria-modal="true" aria-labelledby="modal-heading">
     <div class="relative w-full max-w-2xl max-h-[92vh] flex flex-col glass-card rounded-2xl border border-slate-200 shadow-2xl bg-white text-left overflow-hidden">
       
       <!-- Subtle Blue Ambient Glow -->
@@ -304,7 +348,7 @@
             <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse"></span>
             <span>Direct 1-on-1 Consultation · 15 Min</span>
           </div>
-          <h3 class="text-xl sm:text-2xl font-luxury font-bold text-slate-950">Schedule at Your Convenience</h3>
+          <h3 id="modal-heading" class="text-xl sm:text-2xl font-luxury font-bold text-slate-950">Schedule at Your Convenience</h3>
           <p class="text-xs text-slate-500 font-light mt-0.5">Pick any date and convenient time slot between 12:00 PM (Midday) and 12:00 AM (Midnight).</p>
         </div>
         <button type="button" id="close-modal-btn" class="text-slate-400 hover:text-slate-700 p-2 rounded-xl hover:bg-slate-100 transition-colors cursor-pointer shrink-0" aria-label="Close Modal">
@@ -443,6 +487,8 @@
                 id="modal-name" 
                 name="name" 
                 required 
+                autocomplete="name"
+                autocapitalize="words"
                 placeholder="e.g. Julian Vance, Founder"
                 class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder:text-slate-400 text-xs font-light focus:bg-white focus:outline-none focus:border-[#0284C7] focus:ring-1 focus:ring-[#0284C7]/30 transition-all"
               >
@@ -457,6 +503,8 @@
                 id="modal-email" 
                 name="email" 
                 required 
+                autocomplete="email"
+                inputmode="email"
                 placeholder="julian@venture.com"
                 class="w-full px-3.5 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder:text-slate-400 text-xs font-light focus:bg-white focus:outline-none focus:border-[#0284C7] focus:ring-1 focus:ring-[#0284C7]/30 transition-all"
               >
@@ -545,7 +593,7 @@
             <!-- Premium Display Tags Header -->
             <div class="flex items-center justify-between gap-2">
               <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono-luxury tracking-wider text-[#0284C7] bg-blue-50/90 border border-blue-200/80 uppercase font-bold shadow-xs">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#0284C7] animate-pulse"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-[#0284C7]"></span>
                 <span>Full-Stack SaaS Platform</span>
               </span>
               <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-mono-luxury text-slate-600 bg-slate-100 border border-slate-200 uppercase font-semibold">
@@ -610,7 +658,7 @@
             <!-- Premium Display Tags Header -->
             <div class="flex items-center justify-between gap-2">
               <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono-luxury tracking-wider text-[#0284C7] bg-blue-50/90 border border-blue-200/80 uppercase font-bold shadow-xs">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#0284C7] animate-pulse"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-[#0284C7]"></span>
                 <span>Cross-Platform Mobile</span>
               </span>
               <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-mono-luxury text-slate-600 bg-slate-100 border border-slate-200 uppercase font-semibold">
@@ -671,7 +719,7 @@
             <!-- Premium Display Tags Header -->
             <div class="flex items-center justify-between gap-2">
               <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono-luxury tracking-wider text-[#0284C7] bg-blue-50/90 border border-blue-200/80 uppercase font-bold shadow-xs">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#0284C7] animate-pulse"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-[#0284C7]"></span>
                 <span>Haute Luxury Commerce</span>
               </span>
               <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-mono-luxury text-slate-600 bg-slate-100 border border-slate-200 uppercase font-semibold">
@@ -732,7 +780,7 @@
             <!-- Premium Display Tags Header -->
             <div class="flex items-center justify-between gap-2">
               <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono-luxury tracking-wider text-[#0284C7] bg-blue-50/90 border border-blue-200/80 uppercase font-bold shadow-xs">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#0284C7] animate-pulse"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-[#0284C7]"></span>
                 <span>Autonomous AI Engine</span>
               </span>
               <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-mono-luxury text-slate-600 bg-slate-100 border border-slate-200 uppercase font-semibold">
@@ -793,7 +841,7 @@
             <!-- Premium Display Tags Header -->
             <div class="flex items-center justify-between gap-2">
               <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono-luxury tracking-wider text-[#0284C7] bg-blue-50/90 border border-blue-200/80 uppercase font-bold shadow-xs">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#0284C7] animate-pulse"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-[#0284C7]"></span>
                 <span>Tier-1 FinTech Neobank</span>
               </span>
               <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-mono-luxury text-slate-600 bg-slate-100 border border-slate-200 uppercase font-semibold">
@@ -854,7 +902,7 @@
             <!-- Premium Display Tags Header -->
             <div class="flex items-center justify-between gap-2">
               <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono-luxury tracking-wider text-[#0284C7] bg-blue-50/90 border border-blue-200/80 uppercase font-bold shadow-xs">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#0284C7] animate-pulse"></span>
+                <span class="w-1.5 h-1.5 rounded-full bg-[#0284C7]"></span>
                 <span>Spatial 3D Visualization</span>
               </span>
               <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-mono-luxury text-slate-600 bg-slate-100 border border-slate-200 uppercase font-semibold">
@@ -1126,6 +1174,8 @@
               id="client-name" 
               name="name" 
               required 
+              autocomplete="name"
+              autocapitalize="words"
               placeholder="e.g. Julian Vance, Founder"
               class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder:text-slate-400 text-xs font-light focus:bg-white focus:outline-none focus:border-[#0284C7] focus:ring-1 focus:ring-[#0284C7]/30 transition-all"
             >
@@ -1141,6 +1191,8 @@
               id="client-email" 
               name="email" 
               required 
+              autocomplete="email"
+              inputmode="email"
               placeholder="julian@venture.com"
               class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder:text-slate-400 text-xs font-light focus:bg-white focus:outline-none focus:border-[#0284C7] focus:ring-1 focus:ring-[#0284C7]/30 transition-all"
             >
@@ -1194,6 +1246,7 @@
             name="message" 
             rows="3" 
             required 
+            spellcheck="true"
             placeholder="Outline your target deliverable, tech stack preferences, current blockers, and timeline goals..."
             class="w-full px-4 py-3 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 placeholder:text-slate-400 text-xs font-light focus:bg-white focus:outline-none focus:border-[#0284C7] focus:ring-1 focus:ring-[#0284C7]/30 transition-all leading-relaxed resize-none"
           ></textarea>

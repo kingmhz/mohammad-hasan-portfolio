@@ -2,8 +2,6 @@
    Haute Minimalist Luxury White & Blue Architecture (LinkedIn Executive Aesthetic)
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
-
 :root {
   --bg-pure: #FFFFFF;
   --bg-surface: #F8FAFC;
@@ -127,13 +125,17 @@ body {
 .text-blue-gradient {
   background: linear-gradient(135deg, #0EA5E9 0%, #0284C7 60%, #0369A1 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 .text-dark-gradient {
   background: linear-gradient(135deg, #0F172A 0%, #1E293B 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
+  color: transparent;
 }
 
 /* Liquid Platinum Silver Metallic Button */
@@ -306,6 +308,26 @@ body {
   -webkit-backdrop-filter: blur(18px);
 }
 
+/* iOS-safe modal scroll containment */
+#meeting-modal {
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+#meeting-modal > div {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Smooth modal open/close transitions */
+@keyframes modal-fade-in {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+#meeting-modal > div {
+  animation: modal-fade-in 0.25s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
 /* Modal Inner Smooth Scrollbar */
 #modal-time-grid::-webkit-scrollbar,
 #meeting-modal div::-webkit-scrollbar {
@@ -344,11 +366,39 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
    ========================================================================== */
 #work, #services, #stack, #about, #contact {
   content-visibility: auto;
-  contain-intrinsic-size: 800px;
+  contain-intrinsic-size: auto none 800px;
 }
 
 .glass-card, .tilt-card {
   transform: translateZ(0);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+}
+
+/* ==========================================================================
+   Accessibility & Reduced Motion Preferences
+   ========================================================================== */
+:focus-visible {
+  outline: 2px solid #0284C7;
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .btn-catchy-gold::before,
+  .btn-catchy-blue::before {
+    display: none !important;
+  }
+
+  .tilt-card {
+    transform: none !important;
+  }
 }

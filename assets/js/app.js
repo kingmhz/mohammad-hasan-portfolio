@@ -2,7 +2,7 @@
 // Optimized for Mobile Touch, Tablet, and Desktop PC
 
 document.addEventListener('DOMContentLoaded', () => {
-  const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (window.innerWidth < 768);
+  const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
 
   // 1. Interactive 3D Card Tilt Effect (Optimized with RAF & cached bounding rects)
   const tiltCards = document.querySelectorAll('.tilt-card');
@@ -107,8 +107,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const filterBtns = document.querySelectorAll('.filter-btn');
   const projectCards = document.querySelectorAll('.project-item');
 
+  let filterTimers = [];
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
+      // Cancel any pending filter animations
+      filterTimers.forEach(t => clearTimeout(t));
+      filterTimers = [];
+
       filterBtns.forEach(b => {
         b.classList.remove('bg-[#0284C7]', 'text-white', 'border-[#0284C7]', 'shadow-sm'); b.classList.add('text-slate-600', 'border-transparent');
       });
@@ -119,16 +124,16 @@ document.addEventListener('DOMContentLoaded', () => {
       projectCards.forEach(card => {
         if (filter === 'all' || card.getAttribute('data-category') === filter) {
           card.style.display = 'flex';
-          setTimeout(() => {
+          filterTimers.push(setTimeout(() => {
             card.style.opacity = '1';
             card.style.transform = 'scale(1)';
-          }, 10);
+          }, 10));
         } else {
           card.style.opacity = '0';
           card.style.transform = 'scale(0.97)';
-          setTimeout(() => {
+          filterTimers.push(setTimeout(() => {
             card.style.display = 'none';
-          }, 250);
+          }, 250));
         }
       });
     });
@@ -464,9 +469,17 @@ document.addEventListener('DOMContentLoaded', () => {
   updateAllDisplays();
 
   // Modal Open & Close Functions
+  let savedScrollY = 0;
   function openModal(focusSection) {
     if (meetingModal) {
       meetingModal.classList.remove('hidden');
+      meetingModal.classList.add('flex');
+      // iOS-safe scroll lock: save position and fix body
+      savedScrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${savedScrollY}px`;
+      document.body.style.left = '0';
+      document.body.style.right = '0';
       document.body.style.overflow = 'hidden';
       if (window.lucide) window.lucide.createIcons();
 
@@ -485,7 +498,14 @@ document.addEventListener('DOMContentLoaded', () => {
   function closeModal() {
     if (meetingModal) {
       meetingModal.classList.add('hidden');
+      meetingModal.classList.remove('flex');
+      // iOS-safe scroll restore
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.left = '';
+      document.body.style.right = '';
       document.body.style.overflow = '';
+      window.scrollTo(0, savedScrollY);
     }
   }
 
@@ -647,8 +667,8 @@ document.addEventListener('DOMContentLoaded', () => {
   function showModalFeedback(msg, type) {
     if (!modalFeedback) return;
     modalFeedback.classList.remove('hidden');
-    modalFeedback.className = 'text-xs p-3 rounded-xl border border-red-500/40 bg-red-950/30 text-red-300 flex items-center gap-2';
-    modalFeedback.innerHTML = `<i data-lucide="alert-circle" class="w-4 h-4 text-red-400 shrink-0"></i><span>${escapeHtml(msg)}</span>`;
+    modalFeedback.className = 'text-xs p-3 rounded-xl border border-red-300 bg-red-50 text-red-700 flex items-center gap-2';
+    modalFeedback.innerHTML = `<i data-lucide="alert-circle" class="w-4 h-4 text-red-500 shrink-0"></i><span>${escapeHtml(msg)}</span>`;
     if (window.lucide) window.lucide.createIcons();
   }
 
@@ -756,8 +776,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!formFeedback) return;
     formFeedback.classList.remove('hidden');
     if (type === 'error') {
-      formFeedback.className = 'text-xs p-3.5 rounded-xl border border-red-500/40 bg-red-950/30 text-red-300 flex items-center gap-2';
-      formFeedback.innerHTML = `<i data-lucide="alert-circle" class="w-4 h-4 text-red-400 shrink-0"></i><span>${escapeHtml(msg)}</span>`;
+      formFeedback.className = 'text-xs p-3.5 rounded-xl border border-red-300 bg-red-50 text-red-700 flex items-center gap-2';
+      formFeedback.innerHTML = `<i data-lucide="alert-circle" class="w-4 h-4 text-red-500 shrink-0"></i><span>${escapeHtml(msg)}</span>`;
     } else {
       formFeedback.className = 'text-xs p-3.5 rounded-xl border border-blue-200 bg-blue-50/80 text-[#0284C7] flex items-center gap-2 font-medium';
       formFeedback.innerHTML = `<i data-lucide="check-circle" class="w-4 h-4 text-[#0284C7] shrink-0"></i><span>${escapeHtml(msg)}</span>`;

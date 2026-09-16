@@ -510,7 +510,7 @@
       ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
       ctx.lineWidth = 1;
       ctx.beginPath();
-      ctx.roundRect(32, cardY, 448, 125, 16);
+      drawCanvasRoundedRect(ctx, 32, cardY, 448, 125, 16);
       ctx.fill(); ctx.stroke();
 
       ctx.font = '24px sans-serif';
@@ -895,17 +895,8 @@
   avatarGroup.add(avatarBackLight);
 
   // 3D Avatar Plane (Aspect ratio 3:4 from 768x1024)
-  const texLoader = new THREE.TextureLoader();
-  const avatarTexture = texLoader.load('assets/images/hasan-3d-avatar.webp', undefined, undefined, () => {
-    avatarTexture.image.src = 'assets/images/hasan-3d-avatar.png';
-  });
-  avatarTexture.generateMipmaps = false;
-  avatarTexture.minFilter = THREE.LinearFilter;
-  avatarTexture.magFilter = THREE.LinearFilter;
-
   const avatarGeo = new THREE.PlaneGeometry(2.35, 3.14);
   const avatarMat = new THREE.MeshBasicMaterial({
-    map: avatarTexture,
     transparent: true,
     alphaTest: 0.02,
     side: THREE.FrontSide
@@ -913,6 +904,19 @@
   const avatarMesh = new THREE.Mesh(avatarGeo, avatarMat);
   avatarMesh.position.set(0, 0, 0);
   avatarGroup.add(avatarMesh);
+
+  // Load avatar texture with WebP→PNG fallback
+  const texLoader = new THREE.TextureLoader();
+  function applyAvatarTexture(tex) {
+    tex.generateMipmaps = false;
+    tex.minFilter = THREE.LinearFilter;
+    tex.magFilter = THREE.LinearFilter;
+    avatarMat.map = tex;
+    avatarMat.needsUpdate = true;
+  }
+  texLoader.load('assets/images/hasan-3d-avatar.webp', applyAvatarTexture, undefined, () => {
+    texLoader.load('assets/images/hasan-3d-avatar.png', applyAvatarTexture);
+  });
 
   // FLOATING NEON TECH BADGES (Matching LinkedIn Banner Composition)
   const badgesGroup = new THREE.Group();
@@ -1114,16 +1118,36 @@
     document.body.classList.remove('select-none');
   });
 
+  // Accessibility & Battery: Detect reduced motion preference
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  // WebGL Context Loss & Restoration Handling (Prevents crashes on mobile tab suspension)
+  let isContextLost = false;
+  canvasElement.addEventListener('webglcontextlost', (e) => {
+    e.preventDefault();
+    isContextLost = true;
+    console.warn('[ThreeScene] WebGL context lost. Rendering paused.');
+  }, false);
+
+  canvasElement.addEventListener('webglcontextrestored', () => {
+    isContextLost = false;
+    console.info('[ThreeScene] WebGL context restored.');
+    handleResize();
+  }, false);
+
   // Cross-Device High-Refresh Render Loop (Delta Normalized for 60Hz / 90Hz / 120Hz Displays)
   const clock = new THREE.Clock();
+  let wasHidden = false;
 
   function animate() {
     requestAnimationFrame(animate);
-    if (!isSceneVisible) return; // Completely pause GPU cycles when scrolled away!
+    if (!isSceneVisible || isContextLost) { wasHidden = true; return; } // Pause GPU cycles when scrolled away or context lost!
+    if (wasHidden) { clock.getDelta(); wasHidden = false; return; } // Discard accumulated delta on first visible frame
 
     const delta = typeof clock.getDelta === 'function' ? Math.min(clock.getDelta(), 0.05) : 0.016;
     const elapsed = clock.getElapsedTime();
     const timeScale = delta / 0.0166; // Normalized to 60 FPS baseline
+    const isMotionReduced = prefersReducedMotion.matches;
 
     if (!isDragging) {
       // Apply flick inertia / momentum scaled to delta time
@@ -1135,9 +1159,9 @@
       velocityX *= friction;
       velocityY *= friction;
 
-      // Gentle floating sway facing forward when idle (always keeps screens facing viewer)
+      // Gentle floating sway facing forward when idle (damped if reduced motion requested)
       if (Math.abs(velocityX) < 0.0001 && Math.abs(velocityY) < 0.0001) {
-        const idleSway = Math.sin(elapsed * 0.55) * 0.06;
+        const idleSway = isMotionReduced ? 0 : Math.sin(elapsed * 0.55) * 0.06;
         const returnSpeed = 1.0 - Math.pow(0.975, timeScale);
         targetRotY += (BASE_ROT_Y + idleSway - targetRotY) * returnSpeed;
         targetRotX += (BASE_ROT_X - targetRotX) * returnSpeed;
@@ -1155,23 +1179,24 @@
     masterRig.rotation.y = currentRotY;
     masterRig.rotation.x = currentRotX;
 
-    // Gentle Independent Floating Levitation
-    macGroup.position.y = -0.18 + Math.sin(elapsed * 1.0) * 0.045;
-    macGroup.rotation.z = Math.sin(elapsed * 0.7) * 0.01;
+    // Gentle Independent Floating Levitation (scale motion down if reduced motion requested)
+    const motionScale = isMotionReduced ? 0.15 : 1.0;
+    macGroup.position.y = -0.18 + Math.sin(elapsed * 1.0) * 0.045 * motionScale;
+    macGroup.rotation.z = Math.sin(elapsed * 0.7) * 0.01 * motionScale;
 
-    phoneGroup.position.y = 0.04 + Math.sin(elapsed * 1.0 + 1.4) * 0.055;
-    phoneGroup.rotation.z = 0.04 + Math.cos(elapsed * 0.8) * 0.015;
+    phoneGroup.position.y = 0.04 + Math.sin(elapsed * 1.0 + 1.4) * 0.055 * motionScale;
+    phoneGroup.rotation.z = 0.04 + Math.cos(elapsed * 0.8) * 0.015 * motionScale;
 
     // Mohammad Hasan 3D Avatar Dynamic Gaze & Damped Parallax (Keeps portrait facing forward)
-    avatarGroup.position.y = 0.08 + Math.sin(elapsed * 0.85) * 0.03;
+    avatarGroup.position.y = 0.08 + Math.sin(elapsed * 0.85) * 0.03 * motionScale;
     avatarGroup.rotation.y = -masterRig.rotation.y * 0.72;
     avatarGroup.rotation.x = -masterRig.rotation.x * 0.45;
 
     // Floating Neon Badges Levitation
-    badgeReact.position.y = 1.34 + Math.sin(elapsed * 1.2) * 0.035;
-    badgeNext.position.y = 1.08 + Math.sin(elapsed * 1.1 + 1.0) * 0.04;
-    badgeFlutter.position.y = 0.44 + Math.sin(elapsed * 1.3 + 2.0) * 0.035;
-    badgeTS.position.y = -0.95 + Math.sin(elapsed * 1.0 + 3.0) * 0.03;
+    badgeReact.position.y = 1.34 + Math.sin(elapsed * 1.2) * 0.035 * motionScale;
+    badgeNext.position.y = 1.08 + Math.sin(elapsed * 1.1 + 1.0) * 0.04 * motionScale;
+    badgeFlutter.position.y = 0.44 + Math.sin(elapsed * 1.3 + 2.0) * 0.035 * motionScale;
+    badgeTS.position.y = -0.95 + Math.sin(elapsed * 1.0 + 3.0) * 0.03 * motionScale;
 
     renderer.render(scene, camera);
   }
@@ -1184,6 +1209,8 @@
     updateCameraDistance();
     const w = container.clientWidth || 500;
     const h = container.clientHeight || 450;
+    const mobile = window.innerWidth < 768;
+    renderer.setPixelRatio(mobile ? Math.min(window.devicePixelRatio, 1.5) : Math.min(window.devicePixelRatio, 2));
     renderer.setSize(w, h);
   }
 
