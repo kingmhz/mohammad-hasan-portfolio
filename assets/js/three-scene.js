@@ -612,8 +612,9 @@
   // =========================================================================
   const macGroup = new THREE.Group();
   // Guaranteed generous separation from phone (phone is at x: 1.42):
-  macGroup.position.set(0.72, -0.28, -0.38);
-  macGroup.scale.set(0.86, 0.86, 0.86);
+  macGroup.position.set(1.58, -0.18, -0.22);
+  macGroup.scale.set(0.78, 0.78, 0.78);
+  macGroup.rotation.set(0.12, -0.32, 0.04);
   masterRig.add(macGroup);
 
   // Precision Apple Space Gray / Silver Anodized Aluminum
@@ -753,7 +754,7 @@
   const bezelMat = new THREE.MeshBasicMaterial({ color: 0x050810 });
   const bezelGeo = new THREE.PlaneGeometry(lidW - 0.04, lidH - 0.04);
   const bezelMesh = new THREE.Mesh(bezelGeo, bezelMat);
-  bezelMesh.position.set(0, lidH / 2, 0.015);
+  bezelMesh.position.set(0, lidH / 2, 0.036);
   lidGroup.add(bezelMesh);
 
   // Live Screen Texture Face with Liquid Retina Camera Notch
@@ -761,7 +762,8 @@
   const screenFaceGeo = new THREE.PlaneGeometry(lidW - 0.09, lidH - 0.09);
   const screenFaceMat = new THREE.MeshBasicMaterial({ map: macTexture });
   const screenFaceMesh = new THREE.Mesh(screenFaceGeo, screenFaceMat);
-  screenFaceMesh.position.set(0, lidH / 2, 0.017);
+  screenFaceMesh.position.set(0, lidH / 2, 0.038);
+  screenFaceMat.side = THREE.DoubleSide;
   lidGroup.add(screenFaceMesh);
 
   // =========================================================================
@@ -769,17 +771,17 @@
   // =========================================================================
   const phoneGroup = new THREE.Group();
   // Generous separation from laptop (Laptop right edge is at ~0.7, phone center is at 1.42):
-  phoneGroup.position.set(1.52, -0.12, 0.62);
-  phoneGroup.scale.set(0.92, 0.92, 0.92);
+  phoneGroup.position.set(0.56, 0.04, 0.46);
+  phoneGroup.scale.set(0.88, 0.88, 0.88);
   // Slightly tilted toward camera
-  phoneGroup.rotation.set(0.08, -0.22, 0.04);
+  phoneGroup.rotation.set(0.06, -0.26, 0.03);
   masterRig.add(phoneGroup);
 
   // Polished Sapphire Titanium Frame
   const titaniumMat = new THREE.MeshStandardMaterial({
-    color: 0x0EA5E9,
-    metalness: 0.94,
-    roughness: 0.16
+    color: 0x1E293B,
+    metalness: 0.88,
+    roughness: 0.25
   });
 
   // iPhone Chassis with Extruded Rounded Corners
@@ -847,7 +849,8 @@
   const phoneScreenGeo = new THREE.PlaneGeometry(0.96, 2.05);
   const phoneScreenMat = new THREE.MeshBasicMaterial({ map: phoneTexture });
   const phoneScreenMesh = new THREE.Mesh(phoneScreenGeo, phoneScreenMat);
-  phoneScreenMesh.position.set(0, 0, 0.048);
+  phoneScreenMesh.position.set(0, 0, 0.082);
+  phoneScreenMat.side = THREE.DoubleSide;
   phoneGroup.add(phoneScreenMesh);
 
 
@@ -923,7 +926,7 @@
       depthWrite: false
     })
   );
-  badgeReact.position.set(1.15, 1.28, 0.15);
+  badgeReact.position.set(0.78, 1.34, 0.28);
   badgesGroup.add(badgeReact);
 
   const badgeNext = new THREE.Mesh(
@@ -934,7 +937,7 @@
       depthWrite: false
     })
   );
-  badgeNext.position.set(1.98, 0.98, -0.15);
+  badgeNext.position.set(1.78, 1.08, 0.05);
   badgesGroup.add(badgeNext);
 
   const badgeFlutter = new THREE.Mesh(
@@ -945,7 +948,7 @@
       depthWrite: false
     })
   );
-  badgeFlutter.position.set(1.72, 0.48, 0.42);
+  badgeFlutter.position.set(1.68, 0.44, 0.48);
   badgesGroup.add(badgeFlutter);
 
   const badgeTS = new THREE.Mesh(
@@ -956,7 +959,7 @@
       depthWrite: false
     })
   );
-  badgeTS.position.set(0.42, -0.98, 0.48);
+  badgeTS.position.set(0.14, -0.95, 0.52);
   badgesGroup.add(badgeTS);
 
   // =========================================================================
@@ -1153,10 +1156,10 @@
     masterRig.rotation.x = currentRotX;
 
     // Gentle Independent Floating Levitation
-    macGroup.position.y = -0.28 + Math.sin(elapsed * 1.0) * 0.045;
+    macGroup.position.y = -0.18 + Math.sin(elapsed * 1.0) * 0.045;
     macGroup.rotation.z = Math.sin(elapsed * 0.7) * 0.01;
 
-    phoneGroup.position.y = -0.12 + Math.sin(elapsed * 1.0 + 1.4) * 0.055;
+    phoneGroup.position.y = 0.04 + Math.sin(elapsed * 1.0 + 1.4) * 0.055;
     phoneGroup.rotation.z = 0.04 + Math.cos(elapsed * 0.8) * 0.015;
 
     // Mohammad Hasan 3D Avatar Dynamic Gaze & Damped Parallax (Keeps portrait facing forward)
@@ -1165,10 +1168,10 @@
     avatarGroup.rotation.x = -masterRig.rotation.x * 0.45;
 
     // Floating Neon Badges Levitation
-    badgeReact.position.y = 1.28 + Math.sin(elapsed * 1.2) * 0.035;
-    badgeNext.position.y = 0.98 + Math.sin(elapsed * 1.1 + 1.0) * 0.04;
-    badgeFlutter.position.y = 0.48 + Math.sin(elapsed * 1.3 + 2.0) * 0.035;
-    badgeTS.position.y = -0.98 + Math.sin(elapsed * 1.0 + 3.0) * 0.03;
+    badgeReact.position.y = 1.34 + Math.sin(elapsed * 1.2) * 0.035;
+    badgeNext.position.y = 1.08 + Math.sin(elapsed * 1.1 + 1.0) * 0.04;
+    badgeFlutter.position.y = 0.44 + Math.sin(elapsed * 1.3 + 2.0) * 0.035;
+    badgeTS.position.y = -0.95 + Math.sin(elapsed * 1.0 + 3.0) * 0.03;
 
     renderer.render(scene, camera);
   }
