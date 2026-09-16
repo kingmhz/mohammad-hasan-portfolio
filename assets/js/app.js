@@ -4,34 +4,41 @@
 document.addEventListener('DOMContentLoaded', () => {
   const isTouchDevice = ('ontouchstart' in window) || (navigator.maxTouchPoints > 0) || (window.innerWidth < 768);
 
-  // 1. Interactive 3D Card Tilt Effect (Active on Desktop PC with Mouse)
+  // 1. Interactive 3D Card Tilt Effect (Optimized with RAF & cached bounding rects)
   const tiltCards = document.querySelectorAll('.tilt-card');
 
   if (!isTouchDevice) {
     tiltCards.forEach(card => {
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        
-        const maxTilt = 7;
-        const rotateX = ((y - centerY) / centerY) * -maxTilt;
-        const rotateY = ((x - centerX) / centerX) * maxTilt;
-        
-        card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.015, 1.015, 1.015)`;
-      });
-
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
-        card.style.transition = 'transform 0.4s ease';
-      });
+      let rect = null;
+      let rafId = null;
 
       card.addEventListener('mouseenter', () => {
-        card.style.transition = 'transform 0.08s ease';
-      });
+        rect = card.getBoundingClientRect(); // Cached once on enter to avoid layout thrashing!
+        card.style.transition = 'transform 0.1s ease-out';
+      }, { passive: true });
+
+      card.addEventListener('mousemove', (e) => {
+        if (!rect) rect = card.getBoundingClientRect();
+        if (rafId) cancelAnimationFrame(rafId);
+
+        rafId = requestAnimationFrame(() => {
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const maxTilt = 6;
+          const rotateX = ((y - centerY) / centerY) * -maxTilt;
+          const rotateY = ((x - centerX) / centerX) * maxTilt;
+          card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.012, 1.012, 1.012)`;
+        });
+      }, { passive: true });
+
+      card.addEventListener('mouseleave', () => {
+        if (rafId) cancelAnimationFrame(rafId);
+        rect = null;
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
+        card.style.transition = 'transform 0.4s ease';
+      }, { passive: true });
     });
   }
 

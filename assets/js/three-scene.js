@@ -257,6 +257,9 @@
     ctx.fillText('ACTIVE SPRINT CADENCE · 100% IP OWNERSHIP TRANSFERRED', 100, 592);
 
     const texture = new THREE.CanvasTexture(canvas);
+  texture.generateMipmaps = false;
+  texture.minFilter = THREE.LinearFilter;
+  texture.magFilter = THREE.LinearFilter;
     texture.anisotropy = 4;
     return texture;
   }
@@ -406,6 +409,9 @@
     ctx.fill();
 
     const texture = new THREE.CanvasTexture(canvas);
+  texture.generateMipmaps = false;
+  texture.minFilter = THREE.LinearFilter;
+  texture.magFilter = THREE.LinearFilter;
     texture.anisotropy = 4;
     return texture;
   }
@@ -539,6 +545,9 @@
     ctx.fill();
 
     const texture = new THREE.CanvasTexture(canvas);
+  texture.generateMipmaps = false;
+  texture.minFilter = THREE.LinearFilter;
+  texture.magFilter = THREE.LinearFilter;
     texture.anisotropy = 4;
     return texture;
   }
@@ -917,8 +926,16 @@
     passiveY = my * 0.08;
   }, { passive: true });
 
-  // High performance render flag
+  // High performance render flag with IntersectionObserver
   let isSceneVisible = true;
+  if ('IntersectionObserver' in window && container) {
+    const heroObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        isSceneVisible = entry.isIntersecting;
+      });
+    }, { threshold: 0.05 });
+    heroObserver.observe(container);
+  }
 
   // Handle window blur/focus to prevent stuck drag states
   window.addEventListener('blur', () => {
@@ -928,42 +945,48 @@
     document.body.classList.remove('select-none');
   });
 
-  // 60 FPS Render Loop with Silky Momentum & Out-of-Phase Levitation
+  // Cross-Device High-Refresh Render Loop (Delta Normalized for 60Hz / 90Hz / 120Hz Displays)
   const clock = new THREE.Clock();
 
   function animate() {
     requestAnimationFrame(animate);
-    // Active frame render
+    if (!isSceneVisible) return; // Completely pause GPU cycles when scrolled away!
+
+    const delta = typeof clock.getDelta === 'function' ? Math.min(clock.getDelta(), 0.05) : 0.016;
     const elapsed = clock.getElapsedTime();
+    const timeScale = delta / 0.0166; // Normalized to 60 FPS baseline
 
     if (!isDragging) {
-      // Apply flick inertia / momentum
-      targetRotY += velocityX;
-      targetRotX += velocityY;
+      // Apply flick inertia / momentum scaled to delta time
+      targetRotY += velocityX * timeScale;
+      targetRotX += velocityY * timeScale;
 
-      // Friction damping deceleration
-      velocityX *= 0.935;
-      velocityY *= 0.935;
+      // Frame-rate independent friction damping
+      const friction = Math.pow(0.935, timeScale);
+      velocityX *= friction;
+      velocityY *= friction;
 
       // Gentle floating sway facing forward when idle (always keeps screens facing viewer)
       if (Math.abs(velocityX) < 0.0001 && Math.abs(velocityY) < 0.0001) {
         const idleSway = Math.sin(elapsed * 0.55) * 0.06;
-        targetRotY += (BASE_ROT_Y + idleSway - targetRotY) * 0.02;
-        targetRotX += (BASE_ROT_X - targetRotX) * 0.02;
+        const returnSpeed = 1.0 - Math.pow(0.975, timeScale);
+        targetRotY += (BASE_ROT_Y + idleSway - targetRotY) * returnSpeed;
+        targetRotX += (BASE_ROT_X - targetRotX) * returnSpeed;
       }
     }
 
     // Keep pitch within comfortable viewing bounds
     targetRotX = Math.max(-Math.PI * 0.44, Math.min(Math.PI * 0.44, targetRotX));
 
-    // Smooth weighted interpolation (lerp)
-    currentRotY += (targetRotY + (!isDragging ? passiveX : 0) - currentRotY) * 0.085;
-    currentRotX += (targetRotX + (!isDragging ? -passiveY : 0) - currentRotX) * 0.085;
+    // Smooth exponential lerp normalized across 60Hz, 120Hz ProMotion, and 144Hz displays
+    const lerpFactor = 1.0 - Math.pow(0.08, delta);
+    currentRotY += (targetRotY + (!isDragging ? passiveX : 0) - currentRotY) * lerpFactor;
+    currentRotX += (targetRotX + (!isDragging ? -passiveY : 0) - currentRotX) * lerpFactor;
 
     masterRig.rotation.y = currentRotY;
     masterRig.rotation.x = currentRotX;
 
-    // Gentle Independent Floating Levitation (Always perfectly separated!)
+    // Gentle Independent Floating Levitation
     macGroup.position.y = -0.15 + Math.sin(elapsed * 1.0) * 0.045;
     macGroup.rotation.z = Math.sin(elapsed * 0.7) * 0.01;
 

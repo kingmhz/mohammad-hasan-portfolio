@@ -338,3 +338,17 @@ input[type="time"]::-webkit-calendar-picker-indicator:hover {
   opacity: 1;
 }
 
+
+/* ==========================================================================
+   High-Performance GPU Acceleration & Off-Screen Paint Optimization
+   ========================================================================== */
+#work, #services, #stack, #about, #contact {
+  content-visibility: auto;
+  contain-intrinsic-size: 800px;
+}
+
+.glass-card, .tilt-card {
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
