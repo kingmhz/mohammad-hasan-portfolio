@@ -1,9 +1,15 @@
 // Haute Executive 3D Dual-Device Rig: Separated & Realistic MacBook Pro + iPhone 15 Pro
 // Engineered with Extruded Rounded Bevels, Dynamic Retina Canvas UI, and 60 FPS Parallax Physics
 
-(function() {
+function initThreeHeroScene() {
   const container = document.getElementById('three-hero-container');
   if (!container) return;
+  if (typeof THREE === 'undefined') {
+    setTimeout(initThreeHeroScene, 50);
+    return;
+  }
+  if (container.dataset.initialized === 'true') return;
+  container.dataset.initialized = 'true';
 
   const isMobile = window.innerWidth < 768;
 
@@ -1221,4 +1227,10 @@
   window.addEventListener('load', handleResize);
   setTimeout(handleResize, 200);
   setTimeout(handleResize, 600);
-})();
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initThreeHeroScene);
+} else {
+  initThreeHeroScene();
+}
