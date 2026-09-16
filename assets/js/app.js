@@ -122,7 +122,8 @@ document.addEventListener('DOMContentLoaded', () => {
       const filter = btn.getAttribute('data-filter');
 
       projectCards.forEach(card => {
-        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+        const cardCats = (card.getAttribute('data-category') || '').split(/\s+/);
+        if (filter === 'all' || cardCats.includes(filter)) {
           card.style.display = 'flex';
           filterTimers.push(setTimeout(() => {
             card.style.opacity = '1';

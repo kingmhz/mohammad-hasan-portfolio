@@ -577,8 +577,12 @@
         </div>
 
         <!-- Category Filter Tabs -->
-        <div class="flex items-center gap-1.5 p-1 rounded-xl bg-slate-100 border border-slate-200 self-start text-[11px] uppercase tracking-wider shadow-sm">
+        <div class="flex items-center gap-1.5 p-1 rounded-xl bg-slate-100 border border-slate-200 self-start text-[11px] uppercase tracking-wider shadow-sm flex-wrap">
           <button class="filter-btn px-3.5 py-1.5 rounded-lg font-semibold transition-all bg-[#0284C7] text-white border border-[#0284C7] shadow-sm" data-filter="all">All</button>
+          <button class="filter-btn px-3.5 py-1.5 rounded-lg font-medium text-slate-600 border border-transparent hover:text-slate-950 transition-all flex items-center gap-1.5" data-filter="live">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Live Websites</span>
+          </button>
           <button class="filter-btn px-3.5 py-1.5 rounded-lg font-medium text-slate-600 border border-transparent hover:text-slate-950 transition-all" data-filter="web">SaaS Web</button>
           <button class="filter-btn px-3.5 py-1.5 rounded-lg font-medium text-slate-600 border border-transparent hover:text-slate-950 transition-all" data-filter="mobile">Mobile</button>
           <button class="filter-btn px-3.5 py-1.5 rounded-lg font-medium text-slate-600 border border-transparent hover:text-slate-950 transition-all" data-filter="luxury">Luxury</button>
@@ -589,28 +593,42 @@
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         
         <!-- ==================== PROJECT 1: PetBhar Humanitarian Initiative ==================== -->
-        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-[#0284C7]/50 transition-all bg-white" data-category="web">
+        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-[#0284C7]/50 transition-all bg-white" data-category="live web">
           <div class="tilt-inner space-y-4">
             <!-- Premium Display Tags Header -->
             <div class="flex items-center justify-between gap-2">
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono-luxury tracking-wider text-[#0284C7] bg-blue-50/90 border border-blue-200/80 uppercase font-bold shadow-xs">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#0284C7]"></span>
-                <span>Social Impact Platform</span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono-luxury tracking-wider text-emerald-700 bg-emerald-50 border border-emerald-300 uppercase font-bold shadow-xs">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span>Live Client Website</span>
               </span>
               <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-mono-luxury text-slate-600 bg-slate-100 border border-slate-200 uppercase font-semibold">
-                🌱 Grassroots Initiative
+                🌱 Civic Relief
               </span>
             </div>
 
-            <!-- Interactive Thumbnail Preview -->
-            <div class="relative h-48 sm:h-52 w-full rounded-xl overflow-hidden bg-slate-100 border border-slate-200 group-hover:border-[#0284C7]/40 transition-all duration-500 shadow-inner">
-              <img src="assets/images/project1.svg" alt="PetBhar Initiative Humanitarian Food Security" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy">
-              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/20 via-transparent to-transparent pointer-events-none"></div>
-              
-              <!-- Live System Status Badge -->
-              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md border border-slate-200/90 text-[10px] font-mono-luxury text-slate-800 flex items-center gap-1.5 shadow-sm font-semibold">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse"></span>
-                <span>Live Humanitarian Platform</span>
+            <!-- Interactive Website Interface Window Display -->
+            <div class="relative h-48 sm:h-52 w-full rounded-xl overflow-hidden bg-slate-900 border border-slate-200 group-hover:border-emerald-500/50 transition-all duration-500 shadow-md flex flex-col">
+              <!-- Browser Chrome Top Bar -->
+              <div class="bg-slate-900 text-slate-400 px-3 py-1.5 flex items-center justify-between text-[10px] font-mono border-b border-slate-800 shrink-0 select-none">
+                <div class="flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-rose-500/80 inline-block"></span>
+                  <span class="w-2 h-2 rounded-full bg-amber-500/80 inline-block"></span>
+                  <span class="w-2 h-2 rounded-full bg-emerald-500/80 inline-block"></span>
+                </div>
+                <div class="px-2 py-0.5 rounded bg-slate-800/90 text-slate-300 text-[9.5px] truncate max-w-[210px] border border-slate-700/60 flex items-center gap-1 shadow-inner">
+                  <i data-lucide="lock" class="w-2.5 h-2.5 text-emerald-400 shrink-0"></i>
+                  <span class="truncate">petbhar-initiative.vercel.app</span>
+                </div>
+                <div class="flex items-center gap-1 text-emerald-400 text-[9px] font-bold uppercase tracking-wider">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+                  <span>Live</span>
+                </div>
+              </div>
+
+              <!-- Website Interface Screenshot Preview -->
+              <div class="relative flex-1 w-full overflow-hidden bg-slate-950">
+                <img src="assets/images/petbhar-ui.jpg" alt="PetBhar Initiative Live Website Interface" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/30 via-transparent to-transparent pointer-events-none"></div>
               </div>
             </div>
 
@@ -715,27 +733,42 @@
         </div>
 
         <!-- ==================== PROJECT 3: Haute Luxury Editorial Commerce ==================== -->
-        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-[#0284C7]/50 transition-all bg-white" data-category="luxury">
+        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-[#0284C7]/50 transition-all bg-white" data-category="live luxury">
           <div class="tilt-inner space-y-4">
             <!-- Premium Display Tags Header -->
             <div class="flex items-center justify-between gap-2">
-              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono-luxury tracking-wider text-[#0284C7] bg-blue-50/90 border border-blue-200/80 uppercase font-bold shadow-xs">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#0284C7]"></span>
-                <span>Haute Luxury Commerce</span>
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono-luxury tracking-wider text-sky-700 bg-sky-50 border border-sky-300 uppercase font-bold shadow-xs">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#0284C7] animate-pulse"></span>
+                <span>Live Client Atelier</span>
               </span>
               <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-mono-luxury text-slate-600 bg-slate-100 border border-slate-200 uppercase font-semibold">
                 💎 Jaipur · Global Export
               </span>
             </div>
 
-            <!-- Thumbnail -->
-            <div class="relative h-48 sm:h-52 w-full rounded-xl overflow-hidden bg-slate-100 border border-slate-200 group-hover:border-[#0284C7]/40 transition-all duration-500 shadow-inner">
-              <img src="assets/images/project3.svg" alt="JADE International High Jewelry & Rare Gemstones" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy">
-              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/20 via-transparent to-transparent pointer-events-none"></div>
-              
-              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md border border-slate-200/90 text-[10px] font-mono-luxury text-slate-800 flex items-center gap-1.5 shadow-sm font-semibold">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse"></span>
-                <span>GIA / GRS Certified</span>
+            <!-- Interactive Website Interface Window Display -->
+            <div class="relative h-48 sm:h-52 w-full rounded-xl overflow-hidden bg-slate-950 border border-slate-200 group-hover:border-[#0284C7]/50 transition-all duration-500 shadow-md flex flex-col">
+              <!-- Browser Chrome Top Bar -->
+              <div class="bg-slate-950 text-slate-400 px-3 py-1.5 flex items-center justify-between text-[10px] font-mono border-b border-slate-800 shrink-0 select-none">
+                <div class="flex items-center gap-1.5">
+                  <span class="w-2 h-2 rounded-full bg-rose-500/80 inline-block"></span>
+                  <span class="w-2 h-2 rounded-full bg-amber-500/80 inline-block"></span>
+                  <span class="w-2 h-2 rounded-full bg-emerald-500/80 inline-block"></span>
+                </div>
+                <div class="px-2 py-0.5 rounded bg-slate-900 text-slate-300 text-[9.5px] truncate max-w-[210px] border border-slate-700/60 flex items-center gap-1 shadow-inner">
+                  <i data-lucide="lock" class="w-2.5 h-2.5 text-emerald-400 shrink-0"></i>
+                  <span class="truncate">jadeinternational.vercel.app</span>
+                </div>
+                <div class="flex items-center gap-1 text-sky-400 text-[9px] font-bold uppercase tracking-wider">
+                  <span class="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span>
+                  <span>Live</span>
+                </div>
+              </div>
+
+              <!-- Website Interface Screenshot Preview -->
+              <div class="relative flex-1 w-full overflow-hidden bg-slate-950">
+                <img src="assets/images/jade-ui.jpg" alt="JADE International Live Website Interface" class="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/30 via-transparent to-transparent pointer-events-none"></div>
               </div>
             </div>
 
