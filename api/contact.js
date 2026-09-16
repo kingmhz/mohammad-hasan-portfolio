@@ -139,7 +139,7 @@ module.exports = async (req, res) => {
 
     // 3. Direct Email Forwarding to hasanisbest786@gmail.com via FormSubmit
     try {
-      await forwardViaFormSubmit(sanitizedData);
+      await forwardViaFormSubmit(sanitizedData, req);
     } catch (err) {
       console.error('[FORMSUBMIT_FORWARD_ERROR]', err.message);
     }
@@ -187,7 +187,7 @@ module.exports = async (req, res) => {
 };
 
 // Helper: Forward via FormSubmit directly to hasanisbest786@gmail.com (No API Key Required)
-function forwardViaFormSubmit(data) {
+function forwardViaFormSubmit(data, req) {
   return new Promise((resolve, reject) => {
     const isMeeting = !!data.meetingSlot;
     const postData = JSON.stringify({
@@ -207,6 +207,9 @@ function forwardViaFormSubmit(data) {
       _captcha: "false"
     });
 
+    const host = req && req.headers && (req.headers['x-forwarded-host'] || req.headers.host);
+    const origin = (req && req.headers && req.headers.origin) || (host ? `https://${host}` : 'https://formsubmit.co');
+
     const options = {
       hostname: 'formsubmit.co',
       port: 443,
@@ -215,8 +218,8 @@ function forwardViaFormSubmit(data) {
       headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'Origin': 'https://mohammad-hasan-portfolio.vercel.app',
-        'Referer': 'https://mohammad-hasan-portfolio.vercel.app/',
+        'Origin': origin,
+        'Referer': `${origin}/`,
         'Content-Length': Buffer.byteLength(postData)
       }
     };

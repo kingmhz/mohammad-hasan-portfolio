@@ -905,7 +905,7 @@
   avatarMesh.position.set(0, 0, 0);
   avatarGroup.add(avatarMesh);
 
-  // Load avatar texture with WebP→PNG fallback
+  // Load avatar texture (WebP format for minimal asset payload)
   const texLoader = new THREE.TextureLoader();
   function applyAvatarTexture(tex) {
     tex.generateMipmaps = false;
@@ -914,9 +914,7 @@
     avatarMat.map = tex;
     avatarMat.needsUpdate = true;
   }
-  texLoader.load('assets/images/hasan-3d-avatar.webp', applyAvatarTexture, undefined, () => {
-    texLoader.load('assets/images/hasan-3d-avatar.png', applyAvatarTexture);
-  });
+  texLoader.load('assets/images/hasan-3d-avatar.webp', applyAvatarTexture);
 
   // FLOATING NEON TECH BADGES (Matching LinkedIn Banner Composition)
   const badgesGroup = new THREE.Group();

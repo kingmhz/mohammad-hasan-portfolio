@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="theme-color" content="#0B0F19">
-  <link rel="canonical" href="https://mohammad-hasan-portfolio.vercel.app">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap">
@@ -51,16 +50,14 @@
   <!-- Three.js (WebGL 3D Engine) -->
   <script defer src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 
-  <!-- JSON-LD Structured Data Schema -->
+  <!-- JSON-LD Structured Data Schema (Domain-agnostic) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@graph": [
       {
         "@type": "Person",
-        "@id": "https://mohammad-hasan-portfolio.vercel.app/#person",
         "name": "Mohammad Hasan",
-        "url": "https://mohammad-hasan-portfolio.vercel.app",
         "jobTitle": "Lead Full-Stack & Mobile Software Consultant",
         "description": "Senior software consultant engineering production-grade Next.js web applications and cross-platform Flutter mobile apps.",
         "sameAs": [
@@ -79,12 +76,7 @@
       },
       {
         "@type": "ProfessionalService",
-        "@id": "https://mohammad-hasan-portfolio.vercel.app/#service",
         "name": "Mohammad Hasan — Haute Digital Engineering",
-        "url": "https://mohammad-hasan-portfolio.vercel.app",
-        "founder": {
-          "@id": "https://mohammad-hasan-portfolio.vercel.app/#person"
-        },
         "description": "Bespoke engineering and senior architectural execution for Next.js web platforms and Flutter mobile apps.",
         "priceRange": "$$$$"
       }
@@ -1114,7 +1106,7 @@
       <div class="lg:col-span-6 glass-card p-6 sm:p-8 rounded-2xl border border-slate-200 bg-white shadow-xl relative space-y-6">
         <div class="flex items-center gap-4">
           <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-[#0284C7] via-[#38BDF8] to-[#0369A1] p-[1.5px] shadow-md shrink-0 overflow-hidden relative group">
-            <img src="assets/images/hasan-3d-avatar.webp" onerror="this.src='assets/images/hasan-3d-avatar.png'" alt="Mohammad Hasan 3D Executive Avatar" class="w-full h-full object-cover object-top scale-110 group-hover:scale-120 transition-transform duration-500">
+            <img src="assets/images/hasan-3d-avatar.webp" alt="Mohammad Hasan 3D Executive Avatar" class="w-full h-full object-cover object-top scale-110 group-hover:scale-120 transition-transform duration-500" loading="lazy">
           </div>
           <div>
             <h3 class="text-base sm:text-lg font-luxury font-bold text-slate-950">Mohammad Hasan</h3>
