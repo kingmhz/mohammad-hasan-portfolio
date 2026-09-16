@@ -103,42 +103,41 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 4. Project Category Filter
-  const filterBtns = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-item');
+  // 4. Extend Projects Toggle (Displays 6 projects by default, click to view more)
+  const extendBtn = document.getElementById('btn-extend-projects');
+  const extendedProjects = document.getElementById('extended-projects');
+  const extendBtnText = document.getElementById('extend-btn-text');
+  const extendBtnIcon = document.getElementById('extend-btn-icon');
 
-  let filterTimers = [];
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      // Cancel any pending filter animations
-      filterTimers.forEach(t => clearTimeout(t));
-      filterTimers = [];
-
-      filterBtns.forEach(b => {
-        b.classList.remove('bg-[#0284C7]', 'text-white', 'border-[#0284C7]', 'shadow-sm'); b.classList.add('text-slate-600', 'border-transparent');
-      });
-      btn.classList.add('bg-[#0284C7]', 'text-white', 'border-[#0284C7]', 'shadow-sm'); btn.classList.remove('text-slate-600', 'border-transparent');
-
-      const filter = btn.getAttribute('data-filter');
-
-      projectCards.forEach(card => {
-        const cardCats = (card.getAttribute('data-category') || '').split(/\s+/);
-        if (filter === 'all' || cardCats.includes(filter)) {
-          card.style.display = 'flex';
-          filterTimers.push(setTimeout(() => {
-            card.style.opacity = '1';
-            card.style.transform = 'scale(1)';
-          }, 10));
-        } else {
-          card.style.opacity = '0';
-          card.style.transform = 'scale(0.97)';
-          filterTimers.push(setTimeout(() => {
-            card.style.display = 'none';
-          }, 250));
+  if (extendBtn && extendedProjects) {
+    let isExtended = false;
+    extendBtn.addEventListener('click', () => {
+      isExtended = !isExtended;
+      if (isExtended) {
+        extendedProjects.classList.remove('hidden');
+        extendedProjects.classList.add('grid');
+        extendBtnText.textContent = 'Show Fewer Projects';
+        if (extendBtnIcon) {
+          extendBtnIcon.setAttribute('data-lucide', 'chevron-up');
         }
-      });
+      } else {
+        extendedProjects.classList.add('hidden');
+        extendedProjects.classList.remove('grid');
+        extendBtnText.textContent = 'View More Projects';
+        if (extendBtnIcon) {
+          extendBtnIcon.setAttribute('data-lucide', 'chevron-down');
+        }
+        // Smoothly scroll back to the project section header
+        const workSection = document.getElementById('work');
+        if (workSection) {
+          workSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+      if (window.lucide && window.lucide.createIcons) {
+        window.lucide.createIcons();
+      }
     });
-  });
+  }
 
   // 5. Direct Video Call Scheduler & Interactive Date/Time Modal
   // Clients can pick ANY date and ANY time from 12:00 PM (Midday) to 12:00 AM (Midnight) Day/Night

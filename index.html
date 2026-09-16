@@ -568,24 +568,12 @@
   <section id="work" class="py-10 sm:py-14 px-4 sm:px-6 lg:px-8 relative z-10 border-t border-slate-200">
     <div class="max-w-7xl mx-auto space-y-12 sm:space-y-14">
       
-      <!-- Section Header & Filter Tabs -->
+      <!-- Section Header -->
       <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
-        <div class="space-y-2">
+        <div class="space-y-2 max-w-2xl">
           <span class="text-[10px] font-mono-luxury tracking-[0.25em] text-[#0284C7] uppercase font-semibold">Selected Portfolio</span>
           <h2 class="text-2xl sm:text-4xl font-luxury font-bold text-slate-950">Proven Architectural Delivery</h2>
-          <p class="text-slate-600 text-xs sm:text-sm max-w-xl font-light">Commercial outcomes across enterprise SaaS platforms, cross-platform mobile apps, and luxury editorial web.</p>
-        </div>
-
-        <!-- Category Filter Tabs -->
-        <div class="flex items-center gap-1.5 p-1 rounded-xl bg-slate-100 border border-slate-200 self-start text-[11px] uppercase tracking-wider shadow-sm flex-wrap">
-          <button class="filter-btn px-3.5 py-1.5 rounded-lg font-semibold transition-all bg-[#0284C7] text-white border border-[#0284C7] shadow-sm" data-filter="all">All</button>
-          <button class="filter-btn px-3.5 py-1.5 rounded-lg font-medium text-slate-600 border border-transparent hover:text-slate-950 transition-all flex items-center gap-1.5" data-filter="live">
-            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-            <span>Live Websites</span>
-          </button>
-          <button class="filter-btn px-3.5 py-1.5 rounded-lg font-medium text-slate-600 border border-transparent hover:text-slate-950 transition-all" data-filter="web">SaaS Web</button>
-          <button class="filter-btn px-3.5 py-1.5 rounded-lg font-medium text-slate-600 border border-transparent hover:text-slate-950 transition-all" data-filter="mobile">Mobile</button>
-          <button class="filter-btn px-3.5 py-1.5 rounded-lg font-medium text-slate-600 border border-transparent hover:text-slate-950 transition-all" data-filter="luxury">Luxury</button>
+          <p class="text-slate-600 text-xs sm:text-sm font-light">Commercial outcomes across production client platforms, cross-platform mobile apps, and luxury digital ateliers.</p>
         </div>
       </div>
 
@@ -991,6 +979,195 @@
           </div>
         </div>
 
+      </div>
+
+      <!-- Extended Projects Grid (Projects 7, 8, 9 - Revealed on demand) -->
+      <div id="extended-projects" class="hidden grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 transition-all duration-500">
+        
+        <!-- ==================== PROJECT 7: Cloud Observability & Telemetry ==================== -->
+        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-[#0284C7]/50 transition-all bg-white" data-category="web">
+          <div class="tilt-inner space-y-4">
+            <div class="flex items-center justify-between gap-2">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono-luxury tracking-wider text-[#0284C7] bg-blue-50/90 border border-blue-200/80 uppercase font-bold shadow-xs">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#0284C7]"></span>
+                <span>Cloud Observability</span>
+              </span>
+              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-mono-luxury text-slate-600 bg-slate-100 border border-slate-200 uppercase font-semibold">
+                🇺🇸 Enterprise SecOps
+              </span>
+            </div>
+
+            <div class="relative h-48 sm:h-52 w-full rounded-xl overflow-hidden bg-slate-100 border border-slate-200 group-hover:border-[#0284C7]/40 transition-all duration-500 shadow-inner">
+              <img src="assets/images/project7.svg" alt="Sentinel Cloud Guard" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/20 via-transparent to-transparent pointer-events-none"></div>
+              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md border border-slate-200/90 text-[10px] font-mono-luxury text-slate-800 flex items-center gap-1.5 shadow-sm font-semibold">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse"></span>
+                <span>99.99% Multi-Region SLA</span>
+              </div>
+            </div>
+
+            <div class="space-y-1.5">
+              <h3 class="text-lg sm:text-xl font-luxury font-bold text-slate-950 group-hover:text-[#0284C7] transition-colors leading-tight">
+                Sentinel Cloud Guard
+              </h3>
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light">
+                Distributed telemetry and zero-trust SecOps platform. Features kernel-level eBPF tracing, real-time anomaly alerting, and sub-10ms ClickHouse analytical aggregations.
+              </p>
+            </div>
+
+            <div class="p-2.5 rounded-xl bg-slate-50/80 border border-slate-200/80 flex items-center justify-between text-xs font-mono">
+              <span class="text-slate-600 text-[11px] font-medium flex items-center gap-1.5">
+                <i data-lucide="shield-check" class="w-3.5 h-3.5 text-[#0284C7]"></i>
+                <span>4.2M Events/Sec Ingest</span>
+              </span>
+              <span class="text-[#0284C7] font-bold text-[11px] font-mono-luxury">&lt;8ms Query Latency</span>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5 pt-0.5">
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0284C7] hover:bg-blue-50/70 hover:text-[#0284C7] transition-all">Next.js 14</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0284C7] hover:bg-blue-50/70 hover:text-[#0284C7] transition-all">Go (Golang)</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0284C7] hover:bg-blue-50/70 hover:text-[#0284C7] transition-all">eBPF</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0284C7] hover:bg-blue-50/70 hover:text-[#0284C7] transition-all">Tailwind CSS</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0284C7] hover:bg-blue-50/70 hover:text-[#0284C7] transition-all">ClickHouse</span>
+            </div>
+          </div>
+
+          <div class="pt-4 mt-4 border-t border-slate-200 flex items-center justify-between text-xs">
+            <span class="text-slate-500 font-mono-luxury text-[11px]">Delivery: <strong class="text-slate-900 font-semibold">5.0 Wks Production</strong></span>
+            <a href="https://github.com/kingmhz" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-bold text-[#0284C7] hover:text-[#0369A1] transition-colors uppercase tracking-wider text-[11px]">
+              <span>View Architecture</span>
+              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- ==================== PROJECT 8: IoT Geospatial Logistics ==================== -->
+        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-[#0284C7]/50 transition-all bg-white" data-category="web">
+          <div class="tilt-inner space-y-4">
+            <div class="flex items-center justify-between gap-2">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono-luxury tracking-wider text-[#0284C7] bg-blue-50/90 border border-blue-200/80 uppercase font-bold shadow-xs">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#0284C7]"></span>
+                <span>Geospatial Telematics</span>
+              </span>
+              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-mono-luxury text-slate-600 bg-slate-100 border border-slate-200 uppercase font-semibold">
+                🇪🇺 EU Fleet Logistics
+              </span>
+            </div>
+
+            <div class="relative h-48 sm:h-52 w-full rounded-xl overflow-hidden bg-slate-100 border border-slate-200 group-hover:border-[#0284C7]/40 transition-all duration-500 shadow-inner">
+              <img src="assets/images/project8.svg" alt="Chronos Global Dispatch" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/20 via-transparent to-transparent pointer-events-none"></div>
+              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md border border-slate-200/90 text-[10px] font-mono-luxury text-slate-800 flex items-center gap-1.5 shadow-sm font-semibold">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse"></span>
+                <span>Sub-Second GPS Telematics</span>
+              </div>
+            </div>
+
+            <div class="space-y-1.5">
+              <h3 class="text-lg sm:text-xl font-luxury font-bold text-slate-950 group-hover:text-[#0284C7] transition-colors leading-tight">
+                Chronos Global Dispatch
+              </h3>
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light">
+                Autonomous fleet routing and cold-chain cargo tracking platform. Features real-time Mapbox GL vector tile rendering, offline driver sync, and dynamic transit scheduling.
+              </p>
+            </div>
+
+            <div class="p-2.5 rounded-xl bg-slate-50/80 border border-slate-200/80 flex items-center justify-between text-xs font-mono">
+              <span class="text-slate-600 text-[11px] font-medium flex items-center gap-1.5">
+                <i data-lucide="navigation" class="w-3.5 h-3.5 text-[#0284C7]"></i>
+                <span>12,000+ Active Fleets</span>
+              </span>
+              <span class="text-[#0284C7] font-bold text-[11px] font-mono-luxury">-18% Route Transit Time</span>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5 pt-0.5">
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0284C7] hover:bg-blue-50/70 hover:text-[#0284C7] transition-all">React 18</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0284C7] hover:bg-blue-50/70 hover:text-[#0284C7] transition-all">TypeScript</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0284C7] hover:bg-blue-50/70 hover:text-[#0284C7] transition-all">Mapbox GL</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0284C7] hover:bg-blue-50/70 hover:text-[#0284C7] transition-all">WebSockets</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0284C7] hover:bg-blue-50/70 hover:text-[#0284C7] transition-all">Node.js</span>
+            </div>
+          </div>
+
+          <div class="pt-4 mt-4 border-t border-slate-200 flex items-center justify-between text-xs">
+            <span class="text-slate-500 font-mono-luxury text-[11px]">Delivery: <strong class="text-slate-900 font-semibold">4.5 Wks Launch</strong></span>
+            <a href="https://github.com/kingmhz" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-bold text-[#0284C7] hover:text-[#0369A1] transition-colors uppercase tracking-wider text-[11px]">
+              <span>Explore Platform</span>
+              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- ==================== PROJECT 9: 3D Automotive Configurator ==================== -->
+        <div class="project-item tilt-card glass-card rounded-2xl p-6 sm:p-7 relative overflow-hidden group flex flex-col justify-between border border-slate-200/90 shadow-sm hover:shadow-xl hover:border-[#0284C7]/50 transition-all bg-white" data-category="luxury">
+          <div class="tilt-inner space-y-4">
+            <div class="flex items-center justify-between gap-2">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-mono-luxury tracking-wider text-[#0284C7] bg-blue-50/90 border border-blue-200/80 uppercase font-bold shadow-xs">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#0284C7]"></span>
+                <span>3D WebGL Configurator</span>
+              </span>
+              <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-[10px] font-mono-luxury text-slate-600 bg-slate-100 border border-slate-200 uppercase font-semibold">
+                🇩🇪 Performance Studio
+              </span>
+            </div>
+
+            <div class="relative h-48 sm:h-52 w-full rounded-xl overflow-hidden bg-slate-100 border border-slate-200 group-hover:border-[#0284C7]/40 transition-all duration-500 shadow-inner">
+              <img src="assets/images/project9.svg" alt="Veloce Hypercar 3D" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out" loading="lazy">
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/20 via-transparent to-transparent pointer-events-none"></div>
+              <div class="absolute top-3 right-3 px-2.5 py-1 rounded-full bg-white/95 backdrop-blur-md border border-slate-200/90 text-[10px] font-mono-luxury text-slate-800 flex items-center gap-1.5 shadow-sm font-semibold">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse"></span>
+                <span>60 FPS PBR · Three.js</span>
+              </div>
+            </div>
+
+            <div class="space-y-1.5">
+              <h3 class="text-lg sm:text-xl font-luxury font-bold text-slate-950 group-hover:text-[#0284C7] transition-colors leading-tight">
+                Veloce Hypercar 3D Studio
+              </h3>
+              <p class="text-slate-600 text-xs sm:text-sm leading-relaxed font-light">
+                Photorealistic browser-based bespoke vehicle configurator. Engineered with custom WebGL PBR material shaders, HDR environmental reflections, and instant technical specification builds.
+              </p>
+            </div>
+
+            <div class="p-2.5 rounded-xl bg-slate-50/80 border border-slate-200/80 flex items-center justify-between text-xs font-mono">
+              <span class="text-slate-600 text-[11px] font-medium flex items-center gap-1.5">
+                <i data-lucide="layers" class="w-3.5 h-3.5 text-[#0284C7]"></i>
+                <span>Instant 3D Spec Gen</span>
+              </span>
+              <span class="text-emerald-600 font-bold text-[11px] font-mono-luxury">+42% Client Engagement</span>
+            </div>
+
+            <div class="flex flex-wrap gap-1.5 pt-0.5">
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0284C7] hover:bg-blue-50/70 hover:text-[#0284C7] transition-all">Three.js</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0284C7] hover:bg-blue-50/70 hover:text-[#0284C7] transition-all">WebGL</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0284C7] hover:bg-blue-50/70 hover:text-[#0284C7] transition-all">GLSL Shaders</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0284C7] hover:bg-blue-50/70 hover:text-[#0284C7] transition-all">Next.js</span>
+              <span class="px-2.5 py-1 rounded-lg text-[11px] font-mono-luxury bg-slate-50 border border-slate-200 text-slate-700 font-medium hover:border-[#0284C7] hover:bg-blue-50/70 hover:text-[#0284C7] transition-all">Tailwind CSS</span>
+            </div>
+          </div>
+
+          <div class="pt-4 mt-4 border-t border-slate-200 flex items-center justify-between text-xs">
+            <span class="text-slate-500 font-mono-luxury text-[11px]">Delivery: <strong class="text-slate-900 font-semibold">3.5 Wks Studio Launch</strong></span>
+            <a href="https://github.com/kingmhz" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1 font-bold text-[#0284C7] hover:text-[#0369A1] transition-colors uppercase tracking-wider text-[11px]">
+              <span>Launch Studio</span>
+              <i data-lucide="arrow-up-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Extend Projects Action Button -->
+      <div class="flex justify-center pt-2 sm:pt-4">
+        <button 
+          type="button" 
+          id="btn-extend-projects" 
+          class="btn-silver px-6 sm:px-8 py-3.5 rounded-xl text-xs sm:text-sm uppercase tracking-wider font-bold shadow-sm hover:shadow-lg flex items-center gap-2.5 group cursor-pointer transition-all border border-slate-300 hover:border-[#0284C7] text-slate-900 bg-white"
+        >
+          <i data-lucide="layout-grid" class="w-4 h-4 text-[#0284C7]"></i>
+          <span id="extend-btn-text">View More Projects</span>
+          <i data-lucide="chevron-down" id="extend-btn-icon" class="w-4 h-4 text-slate-600 group-hover:translate-y-0.5 transition-transform"></i>
+        </button>
       </div>
 
     </div>
