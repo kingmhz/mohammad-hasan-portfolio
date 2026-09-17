@@ -861,7 +861,7 @@ document.addEventListener('DOMContentLoaded', () => {
       subtitle: 'Unified Cross-Platform Biometric Telemetry & Fitness Client',
       tag: 'Cross-Platform Mobile',
       region: 'EU Health Scale-Up',
-      image: 'assets/images/project2.svg',
+      image: 'assets/images/aura-pulse-ui.webp',
       challenge: 'Wearable sensor telemetry caused severe device battery drain and jittery frame rates when rendering continuous heart-rate ECG waveforms and multi-ring activity metrics simultaneously.',
       solution: 'Architected a custom Flutter 3 rendering engine utilizing hardware-accelerated Skia shaders for locked 60 FPS charts, coupled with bi-directional SQLite offline sync and native Apple HealthKit / Google Health Connect bridges.',
       stack: ['Flutter 3.24', 'Dart', 'BLoC Pattern', 'SQLite Sync', 'HealthKit', 'Skia Shaders'],
